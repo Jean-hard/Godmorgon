@@ -81,6 +81,11 @@ public class playerMovement : MonoBehaviour
         DOWN_RIGHT
     }
 
+    public void Move(Vector3 direction)
+    {
+        transform.position += direction;
+    }
+
     public void DirectionButton(int orientation)
     {
         direction = Vector3.zero;

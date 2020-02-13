@@ -6,6 +6,9 @@ using UnityEngine.Tilemaps;
 public class TilemapManager : MonoBehaviour
 {
     [SerializeField]
+    private playerMovement player;
+
+    [SerializeField]
     private Tilemap ground;
 
     private Vector3Int playerTilePosition;
@@ -43,7 +46,6 @@ public class TilemapManager : MonoBehaviour
 
     public void PlayerTileOnColor(Vector3 worldPlayerPosition)
     {
-        Debug.Log("YOLO ?");
         //to give back it's original color to last tile where the player was
         if (playerTilePosition != null)
             ground.SetColor(playerTilePosition, Color.white);
@@ -52,5 +54,33 @@ public class TilemapManager : MonoBehaviour
 
         ground.SetTileFlags(playerTilePosition, TileFlags.None);
         ground.SetColor(playerTilePosition, Color.black);
+    }
+
+    public void DirectionForPlayer(int orientation)
+    {
+        Vector3 direction = Vector3.zero;
+        switch (orientation)
+        {
+            //UP_LEFT
+            case 1:
+                direction = new Vector3(-0.5f, 0.25f);
+                break;
+            //UP_RIGHT
+            case 2:
+                direction = new Vector3(0.5f, 0.25f);
+                break;
+            //DOWN_LEFT
+            case 3:
+                direction = new Vector3(-0.5f, -0.25f);
+                break;
+            //DOWN_RIGHT
+            case 4:
+                direction = new Vector3(0.5f, -0.25f);
+                break;
+        }
+
+        player.Move(direction);
+        PlayerTileOnColor(player.transform.position);
+
     }
 }
