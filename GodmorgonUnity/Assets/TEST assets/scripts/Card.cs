@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
     public void MovingEffect(int orientionChoice)
     {
         TilemapManager.Instance.DirectionForPlayer(orientionChoice);
-        //////////faire les liaisons pour les cartes
+
+        OnUse();
     }
 }

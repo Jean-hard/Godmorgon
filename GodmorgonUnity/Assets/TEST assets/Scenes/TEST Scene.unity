@@ -15909,6 +15909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348626da1bf8eb44a3a9c5b49602cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1363010120}
   ground: {fileID: 1228251463}
 --- !u!4 &1999889494
 Transform:
@@ -16124,11 +16125,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2042572572079433482, guid: 90d350f6c2a4e054cbbbb8ae956b5f45,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1363010120}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d350f6c2a4e054cbbbb8ae956b5f45, type: 3}
 --- !u!1001 &5803298248956616910
@@ -16243,11 +16239,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5803298249047876489, guid: ea099943ec325f746879dddf381983fc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1363010120}
     - target: {fileID: 5803298249047876491, guid: ea099943ec325f746879dddf381983fc,
         type: 3}
       propertyPath: m_Name
@@ -16372,11 +16363,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: B-G_DeplacementButton
       objectReference: {fileID: 0}
-    - target: {fileID: 6968637458101087103, guid: 51f6514d84b9955478f44551b3612d54,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1363010120}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51f6514d84b9955478f44551b3612d54, type: 3}
 --- !u!1001 &8438700371784074513
@@ -16391,11 +16377,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: H-G_DeplacementButton
       objectReference: {fileID: 0}
-    - target: {fileID: 8438700371708305422, guid: 1aa73bf25bddf8e42aa835f05a7a2927,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1363010120}
     - target: {fileID: 8438700371708305423, guid: 1aa73bf25bddf8e42aa835f05a7a2927,
         type: 3}
       propertyPath: m_LocalPosition.x
