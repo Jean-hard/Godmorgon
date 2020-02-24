@@ -1,0 +1,37 @@
+
+stages:  
+  - quality
+#  - documentation
+  - build
+#  - deploy
+
+#doxygen-generation:
+#  stage: documentation
+#  script:
+#    - "cd CI/ci_scripts"
+#    - "doxygen Doxyfile"
+#  tags:
+#    - unity
+
+sonar-quality:
+  stage: quality
+  script:
+    - "cd GodmorgonUnity"
+    - "../CI/ci_scripts/before_sonar.bat"
+    - "../CI/ci_scripts/quality_sonar.bat"
+  tags:
+    - unity
+
+unity-build:
+  stage: build
+  script:
+    - "cd GodmorgonUnity"
+    - "../CI/ci_scripts/unity_build.bat"
+  tags:
+    - unity
+
+#playstore:
+#  stage: deploy
+#  script: echo 'Deploying...'
+#  tags:
+#    - unity

@@ -1,0 +1,1 @@
+"D:\autres logiciels\unity 2019.2.5\Editor\Unity.exe" -username "%UNITY_USER%" -password "%UNITY_PASSWORD%" -projectPath "%CD%" -batchmode -quit -nographics -logFile "runner.log" -executeMethod SeriousGaming.Tools.CI.Editor.QualityPrepareCommand.PrepareSonarFiles
