@@ -4,22 +4,10 @@ using UnityEngine;
 
 public class PlayerMgr : MonoBehaviour
 {
-    private int lifeMax = 100;
-    private int life;
-    private int power = 50;
-
-    public List<StuffCard> stuffList;
-
-    private StuffCard stuffCardAdded;
-
-    private enum Stuff
-    {
-        HAT,
-        BODY,
-        LEGS,
-        SHOES
-    }
-
+    public int lifeMax = 100;
+    public int life;
+    public int power = 50;
+    
     private static PlayerMgr instance;
 
     public static PlayerMgr Instance
@@ -60,16 +48,5 @@ public class PlayerMgr : MonoBehaviour
     public void AddStuffCardToInventory(StuffCard stuffCardToAdd)
     {
         
-    }
-
-    public void UpdateLifeAndPower()
-    {
-        if(stuffList.Count > 0)
-        {
-            foreach (StuffCard stuffCard in stuffList)
-            {
-
-            }
-        }
     }
 }

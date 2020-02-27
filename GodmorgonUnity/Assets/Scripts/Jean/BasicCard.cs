@@ -9,6 +9,7 @@ using UnityEngine;
  */
 public class BasicCard : ScriptableObject
 {
+    public int id;
     public new string name;
     public string description;
 

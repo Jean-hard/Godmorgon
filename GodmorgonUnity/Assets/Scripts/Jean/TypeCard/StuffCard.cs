@@ -17,8 +17,8 @@ public class StuffCard : BasicCard
     public enum StuffTypes
     {
         HAT,
-        BODY,
-        LEGS,
+        CHEST,
+        PANTS,
         SHOES
     }
 }
