@@ -791,7 +791,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335989867}
-        m_MethodName: AddBonus
+        m_MethodName: UseStuffCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 501209441}
@@ -857,7 +857,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335989867}
-        m_MethodName: AddBonus
+        m_MethodName: UseStuffCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 587937732}
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335989867}
-        m_MethodName: AddBonus
+        m_MethodName: UseStuffCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 761608991}
@@ -1060,7 +1060,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335989867}
-        m_MethodName: AddBonus
+        m_MethodName: UseStuffCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 772174562}
@@ -1907,7 +1907,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2066,7 +2066,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1331199341}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
