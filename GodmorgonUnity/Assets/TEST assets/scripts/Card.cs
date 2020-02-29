@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+namespace TEST
 {
-    public void OnUse()
+    public class Card : MonoBehaviour
     {
-        Destroy(gameObject);
-    }
+        public void OnUse()
+        {
+            Destroy(gameObject);
+        }
 
-    public void MovingEffect(int orientionChoice)
-    {
-        TilemapManager.Instance.DirectionForPlayer(orientionChoice);
+        public void MovingEffect(int orientionChoice)
+        {
+            TilemapManager.Instance.DirectionForPlayer(orientionChoice);
 
-        OnUse();
+            OnUse();
+        }
     }
 }

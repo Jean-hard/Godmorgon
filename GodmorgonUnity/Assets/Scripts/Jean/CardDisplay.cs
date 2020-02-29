@@ -15,13 +15,16 @@ public class CardDisplay : MonoBehaviour
 
     public Image artworkImage;
 
-    // Start is called before the first frame update
+    //Load the data of the card in the gameObject at start, if the card exist.
     void Start()
     {
-        nameText.text = card.name;
-        descriptionText.text = card.description;
-        artworkImage.sprite = card.artwork;
-        cardId = card.id;
+        if (card)
+        {
+            nameText.text = card.name;
+            descriptionText.text = card.description;
+            artworkImage.sprite = card.artwork;
+            cardId = card.id;
+        }
     }
 
 }

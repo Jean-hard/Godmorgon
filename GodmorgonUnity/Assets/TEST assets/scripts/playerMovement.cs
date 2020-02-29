@@ -3,124 +3,127 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class playerMovement : MonoBehaviour
+namespace TEST
 {
-    private float moveH, moveV;
-    private Vector3 direction;
-
-    bool hasMoved;
-
-    private Vector3Int playerTilePosition;
-
-    private void Start()
+    public class playerMovement : MonoBehaviour
     {
-        transform.position = TilemapManager.Instance.GetCurrentTileCenterPosition(transform.position);
+        private float moveH, moveV;
+        private Vector3 direction;
 
-        TilemapManager.Instance.PlayerTileOnColor(transform.position);
-        //PlayerTileOnColor();
-    }
+        bool hasMoved;
 
-    void Update()
-    {
-        moveH = Input.GetAxisRaw("Horizontal");
-        moveV = Input.GetAxisRaw("Vertical");
+        private Vector3Int playerTilePosition;
 
-        if (moveH == 0)
+        private void Start()
         {
-            hasMoved = false;
-        }
-        else if (moveH != 0 && !hasMoved)
-        {
-            hasMoved = true;
+            transform.position = TilemapManager.Instance.GetCurrentTileCenterPosition(transform.position);
 
-            GetMovementDirection();
+            TilemapManager.Instance.PlayerTileOnColor(transform.position);
+            //PlayerTileOnColor();
         }
 
-    }
-
-    public void GetMovementDirection()
-    {
-        direction = Vector3.zero;
-
-        if (moveH < 0)
+        void Update()
         {
-            if (moveV > 0)
+            moveH = Input.GetAxisRaw("Horizontal");
+            moveV = Input.GetAxisRaw("Vertical");
+
+            if (moveH == 0)
             {
-                direction = new Vector3(-0.5f, 0.25f);
+                hasMoved = false;
             }
-            else if (moveV < 0)
+            else if (moveH != 0 && !hasMoved)
             {
-                direction = new Vector3(-0.5f, -0.25f);
+                hasMoved = true;
+
+                GetMovementDirection();
             }
+
+        }
+
+        public void GetMovementDirection()
+        {
+            direction = Vector3.zero;
+
+            if (moveH < 0)
+            {
+                if (moveV > 0)
+                {
+                    direction = new Vector3(-0.5f, 0.25f);
+                }
+                else if (moveV < 0)
+                {
+                    direction = new Vector3(-0.5f, -0.25f);
+                }
+                transform.position += direction;
+            }
+
+            else if (moveH > 0)
+            {
+                if (moveV > 0)
+                {
+                    direction = new Vector3(0.5f, 0.25f);
+                }
+                else if (moveV < 0)
+                {
+                    direction = new Vector3(0.5f, -0.25f);
+                }
+                transform.position += direction;
+            }
+
+            TilemapManager.Instance.PlayerTileOnColor(transform.position);
+            //PlayerTileOnColor();
+        }
+
+
+        public enum directionOrientation
+        {
+            UP_LEFT = 1,
+            UP_RIGHT,
+            DOWN_LEFT,
+            DOWN_RIGHT
+        }
+
+        public void Move(Vector3 direction)
+        {
             transform.position += direction;
         }
 
-        else if (moveH > 0)
+        public void DirectionButton(int orientation)
         {
-            if (moveV > 0)
+            direction = Vector3.zero;
+            switch (orientation)
             {
-                direction = new Vector3(0.5f, 0.25f);
+                //UP_LEFT
+                case 1:
+                    direction = new Vector3(-0.5f, 0.25f);
+                    break;
+                //UP_RIGHT
+                case 2:
+                    direction = new Vector3(0.5f, 0.25f);
+                    break;
+                //DOWN_LEFT
+                case 3:
+                    direction = new Vector3(-0.5f, -0.25f);
+                    break;
+                //DOWN_RIGHT
+                case 4:
+                    direction = new Vector3(0.5f, -0.25f);
+                    break;
             }
-            else if (moveV < 0)
-            {
-                direction = new Vector3(0.5f, -0.25f);
-            }
+
             transform.position += direction;
+            TilemapManager.Instance.PlayerTileOnColor(transform.position);
+
         }
 
-        TilemapManager.Instance.PlayerTileOnColor(transform.position);
-        //PlayerTileOnColor();
+        ////to know on wich tile the player is
+        //private void PlayerTileOnColor()
+        //{
+        //    playerTilePosition = ground.WorldToCell(transform.position);
+        //    playerTilePosition = TilemapManager.Instance.GetTilePosition(transform.position);
+
+        //    ground.SetTileFlags(playerTilePosition, TileFlags.None);
+        //    ground.SetColor(playerTilePosition, Color.black);
+        //}
     }
-
-
-    public enum directionOrientation
-    {
-        UP_LEFT = 1,
-        UP_RIGHT,
-        DOWN_LEFT,
-        DOWN_RIGHT
-    }
-
-    public void Move(Vector3 direction)
-    {
-        transform.position += direction;
-    }
-
-    public void DirectionButton(int orientation)
-    {
-        direction = Vector3.zero;
-        switch (orientation)
-        {
-            //UP_LEFT
-            case 1:
-                direction = new Vector3(-0.5f, 0.25f);
-                break;
-            //UP_RIGHT
-            case 2:
-                direction = new Vector3(0.5f, 0.25f);
-                break;
-            //DOWN_LEFT
-            case 3:
-                direction = new Vector3(-0.5f, -0.25f);
-                break;
-            //DOWN_RIGHT
-            case 4:
-                direction = new Vector3(0.5f, -0.25f);
-                break;
-        }
-
-        transform.position += direction;
-        TilemapManager.Instance.PlayerTileOnColor(transform.position);
-
-    }
-
-    ////to know on wich tile the player is
-    //private void PlayerTileOnColor()
-    //{
-    //    playerTilePosition = ground.WorldToCell(transform.position);
-    //    playerTilePosition = TilemapManager.Instance.GetTilePosition(transform.position);
-
-    //    ground.SetTileFlags(playerTilePosition, TileFlags.None);
-    //    ground.SetColor(playerTilePosition, Color.black);
-    //}
 }

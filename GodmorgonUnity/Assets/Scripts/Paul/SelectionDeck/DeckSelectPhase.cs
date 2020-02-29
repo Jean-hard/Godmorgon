@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.component;
 
 namespace Game.SelectionDeck
 {
@@ -15,7 +16,7 @@ namespace Game.SelectionDeck
         /**
          * Read the list of card contain in the deck and update the card in the panel.
          */
-        public void ShowDeckCard()
+        public void ShowDeckCard(DeckContent deck)
         {
             deckScrollView.SetActive(true);
         }
