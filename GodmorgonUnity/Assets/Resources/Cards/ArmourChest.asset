@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263b189b8ed9f6c4ba28419440b18187, type: 3}
   m_Name: ArmourChest
   m_EditorClassIdentifier: 
-  id: 0
+  id: 8
   name: Armour
   description: +10 PV max
   template: {fileID: 21300000, guid: e365c8d97edf02b4bbe2c837548d0266, type: 3}
