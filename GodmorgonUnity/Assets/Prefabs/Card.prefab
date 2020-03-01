@@ -57,6 +57,7 @@ MonoBehaviour:
   nameText: {fileID: 2277794921791027398}
   descriptionText: {fileID: 2277794922735761751}
   artworkImage: {fileID: 2277794922001364697}
+  template: {fileID: 5387282604749307338}
 --- !u!1 &2277794921791027392
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using UnityEngine;
  * Elle contient des variables communes à chaque type de carte
  * Elle permet que toutes les classes filles soient de scriptable object
  */
+[CreateAssetMenu(fileName = "New Card", menuName = "Cards/BasicCard")]
 public class BasicCard : ScriptableObject
 {
     public int id;

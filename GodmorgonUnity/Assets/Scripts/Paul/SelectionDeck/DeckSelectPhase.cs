@@ -9,7 +9,7 @@ namespace Game.SelectionDeck
     {
         //Scroll view that show the card of the selected deck
         [SerializeField]
-        private GameObject deckScrollView;
+        private DeckDisplayer deckDisplayer;
 
 #region function for button
 
@@ -18,7 +18,8 @@ namespace Game.SelectionDeck
          */
         public void ShowDeckCard(DeckContent deck)
         {
-            deckScrollView.SetActive(true);
+            deckDisplayer.gameObject.SetActive(true);
+            deckDisplayer.UpdateCards(deck);
         }
 
         /**
@@ -26,7 +27,8 @@ namespace Game.SelectionDeck
          */
         public void HideDeckCard()
         {
-            deckScrollView.SetActive(false);
+            deckDisplayer.ResetCards();
+            deckDisplayer.gameObject.SetActive(false);
         }
 
         /**

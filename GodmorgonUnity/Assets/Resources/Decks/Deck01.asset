@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Deck01
-  description: Deck de base 1
+  description: Deck de base 1 fort en attaque
   cards:
   - {fileID: 11400000, guid: da2da64ccb3d9e14282b19f7bd80ac98, type: 2}
   - {fileID: 11400000, guid: 886e30394b8c8cb4594f694c33862d44, type: 2}
