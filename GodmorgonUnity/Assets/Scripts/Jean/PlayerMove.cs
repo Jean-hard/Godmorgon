@@ -43,6 +43,7 @@ public class PlayerMove : MonoBehaviour
         // CLICK ON TILE
         if (Input.GetMouseButton(0) && !hasMoved)
         {
+            //transpose la position de la souris au moment du clique en position sur la grid, ce qui donne donc la tile sur laquelle on a cliqué
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             nextTileCoordinate = moveGrid.WorldToCell(mouseWorldPos);
             currentTileCoordinate = moveGrid.WorldToCell(transform.position);
@@ -64,16 +65,16 @@ public class PlayerMove : MonoBehaviour
     //Fonction pour se déplacer sur une tile en cliquant dessus
     public void Move(Vector3Int tileDirection)
     {
-        // La position de la tile étant en bas du losange, on ajoute 0.2f en hauteur
+        //la position de la tile étant en bas du losange, on ajoute 0.2f en hauteur pour cibler le milieu de la tile
         Vector3 nextPos = moveGrid.CellToWorld(tileDirection) + new Vector3(0, gridY / 2 + 0.2f, 10);
         
-        if (Vector3.Distance(transform.position, nextPos) < 0.001)
+        if (Vector3.Distance(transform.position, nextPos) < 0.001f)
         {
             canMove = false;
             hasMoved = true;
         }
         else
-            transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);        
+            transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime); //avance jusqu'à la tile cliquée       
     }
 
     //Fonction pour se déplacer avec les touches du clavier
