@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.component;
 
 namespace Game.SelectionDeck
 {
@@ -8,16 +9,17 @@ namespace Game.SelectionDeck
     {
         //Scroll view that show the card of the selected deck
         [SerializeField]
-        private GameObject deckScrollView;
+        private DeckDisplayer deckDisplayer;
 
 #region function for button
 
         /**
          * Read the list of card contain in the deck and update the card in the panel.
          */
-        public void ShowDeckCard()
+        public void ShowDeckCard(DeckContent deck)
         {
-            deckScrollView.SetActive(true);
+            deckDisplayer.gameObject.SetActive(true);
+            deckDisplayer.UpdateCards(deck);
         }
 
         /**
@@ -25,7 +27,8 @@ namespace Game.SelectionDeck
          */
         public void HideDeckCard()
         {
-            deckScrollView.SetActive(false);
+            deckDisplayer.ResetCards();
+            deckDisplayer.gameObject.SetActive(false);
         }
 
         /**
