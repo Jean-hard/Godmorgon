@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.component;
 
-namespace Game.SelectionDeck
+namespace Game.DeckBuilding.SelectionDeck
 {
     /**
      * this class manages the deck display for the deck selection phase

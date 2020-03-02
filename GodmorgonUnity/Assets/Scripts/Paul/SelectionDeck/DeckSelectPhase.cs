@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.component;
 
-namespace Game.SelectionDeck
+namespace Game.DeckBuilding.SelectionDeck
 {
     public class DeckSelectPhase : MonoBehaviour
     {
         //Scroll view that show the card of the selected deck
         [SerializeField]
         private DeckDisplayer deckDisplayer;
+
+        /**
+         * Stored the current deck selected
+         */
+        private DeckContent currentDeck;
 
 #region function for button
 
@@ -32,11 +37,12 @@ namespace Game.SelectionDeck
         }
 
         /**
-         * Save the deck selected and launch the game scene.
+         * Save the deck selected and launch the draft phase.
          */
         public void ValidateDeck()
         {
-
+            DeckBuildingManager.Instance.SetPlayerDeck(currentDeck);
+            DeckBuildingManager.Instance.DraftStart();
         }
 #endregion
     }
