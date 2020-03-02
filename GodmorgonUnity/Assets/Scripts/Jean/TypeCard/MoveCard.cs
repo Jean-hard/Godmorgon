@@ -10,5 +10,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Cards/MoveCard")]
 public class MoveCard : BasicCard
 {
-    
+
 }

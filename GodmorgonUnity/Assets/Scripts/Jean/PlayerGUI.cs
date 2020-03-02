@@ -47,10 +47,7 @@ public class PlayerGUI : MonoBehaviour
     //ajoute les bonus aux stats de la GUI
     public void UseStuffCard(GameObject addedCard)
     {
-        /**
-         * var ? ALED !!!
-         */
-        var addedStuffCard = CardsDataBase.GetCard<StuffCard>(addedCard.GetComponent<CardDisplay>().cardId);
+        StuffCard addedStuffCard = CardsDataBase.GetCard<StuffCard>(addedCard.GetComponent<CardDisplay>().cardId);
 
         //check si la carte existe bien
         if (!addedStuffCard)
