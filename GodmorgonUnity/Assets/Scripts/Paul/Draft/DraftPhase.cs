@@ -28,5 +28,14 @@ namespace Game.DeckBuilding.Draft
          * ----Temporaire------
          */
         public Text nbDraftLeftText;
+
+        /**
+         * Start a draft sequence
+         * search in the card database and choose 3 card randomly and display them on screen
+         */
+        public void StartDraftSequence()
+        {
+            
+        }
     }
 }
