@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * Classe de la carte de type stuff (équipement)
- * Elle hérite de BasicCard qui contient ses infos de base (nom, description, ...)
- * Elle contient ses effets propres à elle
- */
-[CreateAssetMenu(fileName = "New Card", menuName = "Cards/StuffCard")]
-public class StuffCard : BasicCard
+namespace GodMorgon.Models
 {
-    public int lifeBonus = 10;
-    public int powerBonus = 5;
-
-    public StuffTypes StuffType;
-    public enum StuffTypes
+    /**
+     * Classe de la carte de type stuff (équipement)
+     * Elle hérite de BasicCard qui contient ses infos de base (nom, description, ...)
+     * Elle contient ses effets propres à elle
+     */
+    [CreateAssetMenu(fileName = "New Card", menuName = "Cards/StuffCard")]
+    public class StuffCard : BasicCard
     {
-        HAT,
-        CHEST,
-        PANTS,
-        SHOES
+        public int lifeBonus = 10;
+        public int powerBonus = 5;
+
+        public StuffTypes StuffType;
+        public enum StuffTypes
+        {
+            HAT,
+            CHEST,
+            PANTS,
+            SHOES
+        }
     }
 }

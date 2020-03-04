@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.DeckBuilding.Draft
+using GodMorgon.Models;
+
+namespace GodMorgon.DeckBuilding.Draft
 {
     public class DraftPhase : MonoBehaviour
     {
+        //Deck use to draw card for the draft
+        [SerializeField]
+        private DeckContent draftDeck;
+
         /**
-         * link for the three card gameObject to choose during the draft
+         * link for the three card to choose during the draft
          */
         [SerializeField]
-        private GameObject card1;
-        [SerializeField]
-        private GameObject card2;
-        [SerializeField]
-        private GameObject card3;
+        private List<CardDisplay> cardsOnDraft;
 
         /**
          * Number of draft to execute
@@ -31,11 +33,32 @@ namespace Game.DeckBuilding.Draft
 
         /**
          * Start a draft sequence
-         * search in the card database and choose 3 card randomly and display them on screen
+         * choose 3 card randomly from draft deck and display them on screen
          */
         public void StartDraftSequence()
         {
-            
+            if (nbDraftLeft > 0)
+            {
+                int rdmCardNb;
+                for (int i = 0; i < cardsOnDraft.Count; i++)
+                {
+                    rdmCardNb = Random.Range(0, draftDeck.cards.Count);
+                    cardsOnDraft[i].UpdateCard(draftDeck.cards[rdmCardNb]);
+                }
+                nbDraftLeft -= 1;
+            }
+            else
+                Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
+        }
+
+        /**
+         * button function
+         * Add the card choose durring the draft to the deck player.
+         * And reload the draft sequence
+         */
+        public void ChooseCard(CardDisplay cardChoosed)
+        {
+            DeckBuildingManager.Instance.AddCardToPlayerDeck(cardChoosed.card);
         }
     }
 }

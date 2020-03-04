@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using GodMorgon.Models;
+
 /// <summary>
 /// à commenter !!!!!!!!!!
 /// </summary>
@@ -35,6 +37,9 @@ public class CardDisplay : MonoBehaviour
      */
     public void UpdateCard(BasicCard cardData)
     {
+        //Save the scriptableObject use by this card gameObject
+        card = cardData;
+
         nameText.text = cardData.name;
         descriptionText.text = cardData.description;
         if (cardData.template)

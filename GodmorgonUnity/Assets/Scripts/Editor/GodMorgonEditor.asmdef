@@ -1,0 +1,14 @@
+{
+    "name": "GodMorgonEditor",
+    "references": [
+        "GUID:02173256b2cb2b74eaf5d53475ec116b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
