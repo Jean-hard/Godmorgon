@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.component;
+using GodMorgon.Models;
 
-namespace Game.DeckBuilding.SelectionDeck
+namespace GodMorgon.DeckBuilding.SelectionDeck
 {
     /**
      * this class manages the deck display for the deck selection phase

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using GodMorgon.Models;
+
 public class PlayerGUI : MonoBehaviour
 {
     public Text lifeNbText;

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using GodMorgon.Models;
+
 public class PlayerMgr : MonoBehaviour
 {
     public int lifeMax = 100;

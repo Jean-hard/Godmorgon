@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Game.DeckBuilding.SelectionDeck;
-using Game.DeckBuilding.Draft;
-using Game.component;
+using GodMorgon.DeckBuilding.SelectionDeck;
+using GodMorgon.DeckBuilding.Draft;
+using GodMorgon.Models;
 
-namespace Game.DeckBuilding
+namespace GodMorgon.DeckBuilding
 {
     public class DeckBuildingManager : MonoBehaviour
     {
@@ -61,6 +61,7 @@ namespace Game.DeckBuilding
         {
             deckSelectPhase.gameObject.SetActive(false);
             draftPhase.gameObject.SetActive(true);
+            draftPhase.StartDraftSequence();
         }
 
         /**
@@ -69,6 +70,12 @@ namespace Game.DeckBuilding
         public void SetPlayerDeck(DeckContent deckSelected)
         {
             playerDeck = deckSelected;
+        }
+
+        //Add a card to the player Deck (normaly only use by the draftPhase)
+        public void AddCardToPlayerDeck(BasicCard cardToAdd)
+        {
+            playerDeck.cards.Add(cardToAdd);
         }
     }
 }

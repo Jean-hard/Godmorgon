@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+using GodMorgon.Models;
+
 /**
  * Création d'un database pour toutes les cartes
  * Elle se load en récupérant toutes les cartes(scriptables objects) du dossier Resources/Cards

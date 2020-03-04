@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Game.component;
+using GodMorgon.Models;
 
-namespace Game.DeckBuilding.SelectionDeck
+namespace GodMorgon.DeckBuilding.SelectionDeck
 {
     public class DeckSelectPhase : MonoBehaviour
     {

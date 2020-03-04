@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.component
+namespace GodMorgon.Models
 {
     [CreateAssetMenu(fileName = "New Deck", menuName = "Deck")]
 
