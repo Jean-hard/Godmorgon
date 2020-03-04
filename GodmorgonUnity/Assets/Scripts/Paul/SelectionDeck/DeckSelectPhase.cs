@@ -14,7 +14,7 @@ namespace GodMorgon.DeckBuilding.SelectionDeck
         /**
          * Stored the current deck selected
          */
-        private DeckContent currentDeck;
+        private DeckContent currentDeck;///AAAAAAAARRRRGGGGG ok j'ai oublié un truc /
 
 #region function for button
 
@@ -25,6 +25,7 @@ namespace GodMorgon.DeckBuilding.SelectionDeck
         {
             deckDisplayer.gameObject.SetActive(true);
             deckDisplayer.UpdateCards(deck);
+            currentDeck = deck;
         }
 
         /**

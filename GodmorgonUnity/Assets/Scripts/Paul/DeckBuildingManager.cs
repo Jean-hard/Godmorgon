@@ -41,7 +41,7 @@ namespace GodMorgon.DeckBuilding
         private DraftPhase draftPhase;
 
         /**
-         * Deck choose during the deck selection phase
+         * Deck chosen during the deck selection phase
          */
         private DeckContent playerDeck;
 
@@ -69,12 +69,14 @@ namespace GodMorgon.DeckBuilding
          */
         public void SetPlayerDeck(DeckContent deckSelected)
         {
-            playerDeck = deckSelected;
+            playerDeck = deckSelected; // C'est ici que ça merde ?//oui // OK // C'est rigolo :)//ouai X)
+            Debug.Log("player deck set, player deck = " + playerDeck);
         }
 
         //Add a card to the player Deck (normaly only use by the draftPhase)
         public void AddCardToPlayerDeck(BasicCard cardToAdd)
         {
+            Debug.Log(playerDeck);
             playerDeck.cards.Add(cardToAdd);
         }
     }
