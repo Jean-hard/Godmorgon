@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.component;
 
 public class GameEngine
 {
     private GameState currentState;
+
+    public DeckContent currentDeck;
 
     private static GameEngine instance;
 

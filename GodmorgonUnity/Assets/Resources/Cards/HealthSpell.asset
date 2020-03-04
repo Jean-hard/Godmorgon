@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e818b846c1c76459f3605c5817e029, type: 3}
   m_Name: HealthSpell
   m_EditorClassIdentifier: 
+  id: 3
   name: Soin
   description: Rend +20 pv
   template: {fileID: 0}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
   m_Name: Mouvement
   m_EditorClassIdentifier: 
+  id: 8
   name: Mouvement
   description: Avance d'une case
   template: {fileID: 0}
