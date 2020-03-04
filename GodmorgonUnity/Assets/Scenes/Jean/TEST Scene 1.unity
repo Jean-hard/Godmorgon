@@ -44207,7 +44207,7 @@ GameObject:
   - component: {fileID: 652673497}
   - component: {fileID: 652673498}
   m_Layer: 5
-  m_Name: LayoutButton
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44699,7 +44699,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1018549863}
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -44826,6 +44826,12 @@ PrefabInstance:
 --- !u!224 &1018549862 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2277794921241343045, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018549861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1018549863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
     type: 3}
   m_PrefabInstance: {fileID: 1018549861}
   m_PrefabAsset: {fileID: 0}
@@ -45268,6 +45274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b14738c43e6dda4485965d58b710d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGUI: {fileID: 1626838730}
+  hand: {fileID: 652673496}
 --- !u!1 &1363010119
 GameObject:
   m_ObjectHideFlags: 0
@@ -45649,7 +45657,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1752976221}
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -45776,6 +45784,12 @@ PrefabInstance:
 --- !u!224 &1752976220 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2277794921241343045, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1752976219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1752976221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
     type: 3}
   m_PrefabInstance: {fileID: 1752976219}
   m_PrefabAsset: {fileID: 0}
@@ -46349,6 +46363,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1626838730}
@@ -46510,13 +46529,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1626838730}
+      objectReference: {fileID: 0}
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UseStuffCard
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
@@ -46683,7 +46707,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2145250427}
     - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -46820,6 +46844,12 @@ PrefabInstance:
 --- !u!224 &2145250426 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2277794921241343045, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2145250425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2145250427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
     type: 3}
   m_PrefabInstance: {fileID: 2145250425}
   m_PrefabAsset: {fileID: 0}
