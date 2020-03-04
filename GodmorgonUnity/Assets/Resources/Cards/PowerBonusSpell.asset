@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e818b846c1c76459f3605c5817e029, type: 3}
   m_Name: PowerBonusSpell
   m_EditorClassIdentifier: 
+  id: 10
   name: Puissance
   description: Augmente de +10 la puissance pendant 2 combats
   template: {fileID: 0}
