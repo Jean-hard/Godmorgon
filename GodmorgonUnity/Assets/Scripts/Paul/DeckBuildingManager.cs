@@ -56,6 +56,7 @@ namespace GodMorgon.DeckBuilding
          */
         public void DraftStart()
         {
+            GameEngine.Instance.CurrentState = GameEngine.GameState.DRAFTING;
             deckSelectPhase.gameObject.SetActive(false);
             draftPhase.gameObject.SetActive(true);
             draftPhase.StartDraftSequence();

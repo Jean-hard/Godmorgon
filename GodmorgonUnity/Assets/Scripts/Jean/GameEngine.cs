@@ -135,15 +135,26 @@ public class GameEngine
         }
     }
 
+    #region CardManagement
+    //clear all the card in the player deck
+    public void ClearPlayerDeck()
+    {
+        playerDeck.cards.Clear();
+    }
+
+    //draw card from the deck to the hand of the player
+    public void DrawCard()
+    {
+
+    }
+
+    #endregion
+
     private void SetChooseDeckMode()
     {
-        //Debug.Log("YOLO SWAG");
         // On commence par charger les decks préconstruits
         foreach (DeckContent unDeck in settings.decksPreconstruits)
-        {
-            //Debug.Log("deck ajouté : " + unDeck.name);
             AddDeck(unDeck);
-        }
     }
 
     // ========================= Deck Management
