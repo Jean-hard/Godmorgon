@@ -59,13 +59,14 @@ namespace Tests
         //public void CantDrawCardWhenDeckIsEmpty()
         //{
         //    // Low level
-        //    GameEngine.deck.ClearCards(); // Remove all cards! Debug only
-        //    Card myCard = GameEngine.deck.DrawCard();
+        //    GameEngine.Instance.playerDeck.ClearCards(); // Remove all cards! Debug only
+        //    BasicCard myCard = GameEngine.Instance.playerDeck.DrawCard();
         //    Assert.IsNull(myCard);
 
         //    // High Level
         //    GameEngine.deck.ClearCards();
-        //    Assert.Throws<DeckIsEmptyException>(() => {
+        //    Assert.Throws<DeckIsEmptyException>(() =>
+        //    {
         //        GameEngine.DrawCard();
         //    });
         //}
