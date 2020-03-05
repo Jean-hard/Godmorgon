@@ -11,21 +11,25 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject hand;
 
-    private bool isCardSelected;
+    private bool isHandUpdated;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!isHandUpdated)
+        {
+            //HandSetup();
+            isHandUpdated = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isCardSelected)
-            HandSetup();
+        
     }
 
+    /*
     private void HandSetup()
     {
         Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
@@ -39,14 +43,5 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    
-
-    //Sélectionne la carte sur laquelle on a cliqué
-    public void SelectCard(string btnClickedName) 
-    {
-        Debug.Log("Card selected : " + btnClickedName);
-        isCardSelected = true;
-    }
-
+    */
 }

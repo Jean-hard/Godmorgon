@@ -40,11 +40,6 @@ namespace GodMorgon.DeckBuilding
         [SerializeField]
         private DraftPhase draftPhase;
 
-        /**
-         * Deck choose during the deck selection phase
-         */
-        private DeckContent playerDeck;
-
 
         /**
          * Launch the deck selection phase
