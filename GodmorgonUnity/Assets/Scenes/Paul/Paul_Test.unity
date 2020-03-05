@@ -1965,7 +1965,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 965e43151c76b4e458f491fcd92bf1cc,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: Game.Model.DeckContent, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: GodMorgon.Models.DeckContent, GodMorgon
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3025,6 +3025,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 357879073}
     m_Modifications:
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357879074}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseCard
+      objectReference: {fileID: 0}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 433960448}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CardDisplay, GodMorgon
+      objectReference: {fileID: 0}
     - target: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_Name
@@ -3786,7 +3806,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 08e5e4e476bd77340979bc492a1cb8b4,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: Game.Model.DeckContent, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: GodMorgon.Models.DeckContent, GodMorgon
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5945,6 +5965,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 357879073}
     m_Modifications:
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357879074}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseCard
+      objectReference: {fileID: 0}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 940703150}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CardDisplay, GodMorgon
+      objectReference: {fileID: 0}
     - target: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_Name
@@ -11769,7 +11809,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: c4ad0658fc7c43943b6e1fe5efe8a99e,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: Game.Model.DeckContent, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: GodMorgon.Models.DeckContent, GodMorgon
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12672,6 +12712,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 357879073}
     m_Modifications:
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357879074}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseCard
+      objectReference: {fileID: 0}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2025425883}
+    - target: {fileID: -1631074187647502866, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CardDisplay, GodMorgon
+      objectReference: {fileID: 0}
     - target: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_Name

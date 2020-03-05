@@ -59,6 +59,7 @@ namespace GodMorgon.DeckBuilding.Draft
         public void ChooseCard(CardDisplay cardChoosed)
         {
             DeckBuildingManager.Instance.AddCardToPlayerDeck(cardChoosed.card);
+            StartDraftSequence();
         }
     }
 }
