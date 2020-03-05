@@ -29,7 +29,7 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
     private StuffCard currentShoesStuff;
 
     //Delegate à utiliser dans d'autres scripts si on veut qu'il se passe qqchose qd on drop une carte dans la fiche joueur
-    public delegate void DropDelegate(CardDropArea cardDropArea, PointerEventData eventData);
+    public delegate void DropDelegate(PlayerGUI dropGUIArea, PointerEventData eventData);
     public DropDelegate onDropDelegate;
 
     // Start is called before the first frame update

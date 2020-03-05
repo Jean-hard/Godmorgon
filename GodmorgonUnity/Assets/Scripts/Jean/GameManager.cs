@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject hand;
 
+    private GameObject player;
+
     CardDisplay cardDisplay;
 
     public BasicCard selectedCard;
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -59,17 +61,17 @@ public class GameManager : MonoBehaviour
             cardDisplay = _card.GetComponent<CardDisplay>();
             if(null != cardDisplay)
             {
-                cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
-                cardDisplay.onCardDragDelegate += OnCardDrag;
+                //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
+                //cardDisplay.onCardDragDelegate += OnCardDrag;
                 cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
             }
         }
     }
 
-    private void OnCardDragBegin(CardDisplay card, PointerEventData eventData)
+    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
     {
         //Debug.Log("on drag begin " + card.name);
-        //selectedCard = card;
+        selectedCard = choosedCard.card;
     }
 
     private void OnCardDrag(CardDisplay card, PointerEventData eventData)
@@ -78,8 +80,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void OnCardDragEnd(CardDisplay card, PointerEventData eventData)
+    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
     {
-        //Debug.Log("on drag end");
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
+        {
+            player.GetComponent<PlayerMove>().UseMoveCard();
+            Destroy(choosedCard.gameObject);
+            //Debug.Log("La carte move est droppée");
+        }
     }
 }

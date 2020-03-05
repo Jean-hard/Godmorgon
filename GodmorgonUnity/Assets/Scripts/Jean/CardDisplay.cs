@@ -64,7 +64,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        UpdateCardPosition();
+        startPosition = this.transform.position;
         onCardDragBeginDelegate?.Invoke(this, eventData);
     }
 
@@ -76,17 +76,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        ResetCardPosition();
-        onCardDragEndDelegate?.Invoke(this, eventData);
-    }
-
-    public void UpdateCardPosition()
-    {
-        startPosition = this.transform.position;
-    }
-
-    public void ResetCardPosition()
-    {
         this.transform.position = startPosition;
+        onCardDragEndDelegate?.Invoke(this, eventData);
     }
 }
