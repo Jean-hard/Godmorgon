@@ -8,14 +8,13 @@ public class GameEngine
     /**
      * Current Game State.
      */
-    private GameState currentState;
+    private GameState currentState = GameState.DEFAULT;
 
     /**
      * Current Game Settings
      */
     private GameSettings settings;
 
-    // Si ça c'est pas le deck du joueur (parce que, mettons, on le mettrait dans le player)
     // List of Deck to choose from.
     public List<DeckContent> availableDecks = new List<DeckContent>();
 
@@ -46,7 +45,14 @@ public class GameEngine
     {
         // Le GameEngine doit, lors de sa création, commencer
         // par charger les Settings du jeu ! Hop !
+        /// oui mais si il y a plusieurs fichiers GameSettings ? : "...mode 1" et "... mode hardcore" par exemple.
         settings = ScriptableObject.CreateInstance<GameSettings>();
+    }
+
+    //Set settings from bootStrap or else
+    public void SetSettings(GameSettings theSettings)
+    {
+        settings = theSettings;
     }
 
     public enum GameState
@@ -75,48 +81,65 @@ public class GameEngine
 
         set
         {
+            //Debug.Log("passage dans le setter");
             if (currentState != value)
             { // Quitte à faire un test avant de changer la valeur, autant ne rien faire du tout si on ne change pas d'état ;)
                 currentState = value;
-
-                switch (currentState)
-                {
-                    // Lors du choix du deck
-                    case GameState.CHOOSEDECK:
-                        // On commence par charger les decks préconstruits
-                        foreach (DeckContent unDeck in settings.decksPreconstruits)
-                            AddDeck(unDeck);
-
-                        break;
-                    case GameState.DRAFTING:
-                        // Lors de la phase draft
-                        break;
-                    case GameState.PLAYING:
-                        // Lorsque le joueur doit choisir quelle carte il joue
-                        break;
-                    case GameState.MOVING:
-                        // Lorsque le joueur se déplace d'une case à l'autre
-                        break;
-                    case GameState.FIGHTING:
-                        // Lors d'un combat entre joueur et PNJ
-                        break;
-                    case GameState.GAMEOVER:
-                        // Lorsque le joueur est mort
-                        break;
-                    case GameState.MENU:
-                        // Lorsque le joueur est sur le main menu
-                        break;
-                    case GameState.OPTIONS:
-                        // Lorsque le joueur est dans le menu options
-                        break;
-                    case GameState.DEFAULT:
-                        // On ne devrait jamais être dans cet état
-                        break;
-                    default:
-                        // Si on n'est dans aucun de ces états
-                        break;
-                }
+                ApplyStateEffect();
             }
+        }
+    }
+    
+    // ========================= Methods
+
+    private void ApplyStateEffect ()
+    {
+
+        switch (currentState)
+        {
+            // Lors du choix du deck
+            case GameState.CHOOSEDECK:
+                SetChooseDeckMode();
+
+                break;
+            case GameState.DRAFTING:
+                // Lors de la phase draft
+                break;
+            case GameState.PLAYING:
+                // Lorsque le joueur doit choisir quelle carte il joue
+                break;
+            case GameState.MOVING:
+                // Lorsque le joueur se déplace d'une case à l'autre
+                break;
+            case GameState.FIGHTING:
+                // Lors d'un combat entre joueur et PNJ
+                break;
+            case GameState.GAMEOVER:
+                // Lorsque le joueur est mort
+                break;
+            case GameState.MENU:
+                // Lorsque le joueur est sur le main menu
+                break;
+            case GameState.OPTIONS:
+                // Lorsque le joueur est dans le menu options
+                break;
+            case GameState.DEFAULT:
+                // On ne devrait jamais être dans cet état
+                break;
+            default:
+                // Si on n'est dans aucun de ces états
+                break;
+        }
+    }
+
+    private void SetChooseDeckMode()
+    {
+        //Debug.Log("YOLO SWAG");
+        // On commence par charger les decks préconstruits
+        foreach (DeckContent unDeck in settings.decksPreconstruits)
+        {
+            //Debug.Log("deck ajouté : " + unDeck.name);
+            AddDeck(unDeck);
         }
     }
 
@@ -129,5 +152,6 @@ public class GameEngine
     {
         if (!availableDecks.Contains(newDeck))
             availableDecks.Add(newDeck);
+        //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
     }
 }

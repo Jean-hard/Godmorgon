@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4377108}
+  - component: {fileID: 4377109}
   m_Layer: 0
   m_Name: Deck 2
   m_TagString: Untagged
@@ -157,6 +158,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 435.9, y: 629.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4377109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4377107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d58237f5609254ea0756be38e9e373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 0}
+  cardId: 0
+  artwork: {fileID: 951401195}
+  nameText: {fileID: 1971333364}
+  descriptionText: {fileID: 0}
 --- !u!224 &12866069 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2277794921241343045, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
@@ -1958,19 +1976,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 294957572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 436098516}
-        m_MethodName: ShowDeckCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 965e43151c76b4e458f491fcd92bf1cc,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: GodMorgon.Models.DeckContent, GodMorgon
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &294957572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,6 +3236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d003927f4e950214b9e69c0be2fb895f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckDisplayed:
+  - {fileID: 1808204841}
+  - {fileID: 4377109}
+  - {fileID: 1105577675}
+  SeeCardButtons:
+  - {fileID: 1909254436}
+  - {fileID: 485283821}
+  - {fileID: 294957571}
   deckDisplayer: {fileID: 443468590}
 --- !u!1 &443468585
 GameObject:
@@ -3799,19 +3813,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 485283822}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 436098516}
-        m_MethodName: ShowDeckCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 08e5e4e476bd77340979bc492a1cb8b4,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: GodMorgon.Models.DeckContent, GodMorgon
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &485283822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4750,6 +4752,7 @@ RectTransform:
   - {fileID: 2061815999}
   - {fileID: 436098515}
   - {fileID: 357879073}
+  - {fileID: 1311421319}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6814,6 +6817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1105577674}
+  - component: {fileID: 1105577675}
   m_Layer: 0
   m_Name: Deck 3
   m_TagString: Untagged
@@ -6842,6 +6846,23 @@ RectTransform:
   m_AnchoredPosition: {x: 600, y: 0}
   m_SizeDelta: {x: 435.9, y: 629.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1105577675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105577673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d58237f5609254ea0756be38e9e373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 0}
+  cardId: 0
+  artwork: {fileID: 1634873190}
+  nameText: {fileID: 1353638019}
+  descriptionText: {fileID: 0}
 --- !u!1 &1116726084
 GameObject:
   m_ObjectHideFlags: 0
@@ -8064,6 +8085,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ab8435548ed934394e9090860bf826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1311421318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311421319}
+  - component: {fileID: 1311421320}
+  m_Layer: 5
+  m_Name: BOOTSTRAP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1311421319
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311421318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 669776224}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1311421320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311421318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfbb4b94936be15449c156af967d6c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 94264bb68903fd44b8fce201d4986865, type: 2}
 --- !u!1 &1353638017
 GameObject:
   m_ObjectHideFlags: 0
@@ -10803,6 +10873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1808204840}
+  - component: {fileID: 1808204841}
   m_Layer: 0
   m_Name: Deck 1
   m_TagString: Untagged
@@ -10831,6 +10902,23 @@ RectTransform:
   m_AnchoredPosition: {x: -600, y: 0}
   m_SizeDelta: {x: 435.9, y: 629.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1808204841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808204839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d58237f5609254ea0756be38e9e373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: {fileID: 0}
+  cardId: 0
+  artwork: {fileID: 1668448937}
+  nameText: {fileID: 275179331}
+  descriptionText: {fileID: 0}
 --- !u!1 &1808447203
 GameObject:
   m_ObjectHideFlags: 0
@@ -11802,19 +11890,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1909254437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 436098516}
-        m_MethodName: ShowDeckCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c4ad0658fc7c43943b6e1fe5efe8a99e,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: GodMorgon.Models.DeckContent, GodMorgon
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1909254437
 MonoBehaviour:
   m_ObjectHideFlags: 0
