@@ -40,11 +40,6 @@ namespace GodMorgon.DeckBuilding
         private DraftPhase draftPhase;
 
         /**
-         * Deck chosen during the deck selection phase
-         */
-        private DeckContent playerDeck;
-
-        /**
          * Set the GameState for ChooseDeck at start
          * Setup the deckSelectPhase screen.
          * Launch the deck selection phase
@@ -71,15 +66,15 @@ namespace GodMorgon.DeckBuilding
          */
         public void SetPlayerDeck(DeckContent deckSelected)
         {
-            playerDeck = deckSelected;
-            Debug.Log("player deck set, player deck = " + playerDeck);
+            GameEngine.Instance.SetPlayerDeck(deckSelected);
+            Debug.Log("player deck set, player deck = " + GameEngine.Instance.playerDeck);
         }
 
         //Add a card to the player Deck (normaly only use by the draftPhase)
         public void AddCardToPlayerDeck(BasicCard cardToAdd)
         {
-            Debug.Log(playerDeck);
-            playerDeck.cards.Add(cardToAdd);
+            //Debug.Log(GameEngine.Instance.playerDeck);
+            GameEngine.Instance.playerDeck.cards.Add(cardToAdd);
         }
     }
 }
