@@ -13,7 +13,6 @@ namespace GodMorgon.DeckBuilding
         /**
          * This class will be called several times by the managers of the different phases
          * because it will store main data for the rest of the game.
-         * To facilitate calls to this class we create a singleton.
          */
         #region SINGLETON PATTERN
         private static DeckBuildingManager _instance;
@@ -45,12 +44,15 @@ namespace GodMorgon.DeckBuilding
          */
         private DeckContent playerDeck;
 
-
         /**
+         * Set the GameState for ChooseDeck at start
+         * Setup the deckSelectPhase screen.
          * Launch the deck selection phase
          */
         public void DeckSelectionStart()
         {
+            GameEngine.Instance.CurrentState = GameEngine.GameState.CHOOSEDECK;
+            deckSelectPhase.SetAvailableDeck();
             deckSelectPhase.gameObject.SetActive(true);
         }
 
@@ -69,7 +71,7 @@ namespace GodMorgon.DeckBuilding
          */
         public void SetPlayerDeck(DeckContent deckSelected)
         {
-            playerDeck = deckSelected; // C'est ici que ça merde ?//oui // OK // C'est rigolo :)//ouai X)
+            playerDeck = deckSelected;
             Debug.Log("player deck set, player deck = " + playerDeck);
         }
 

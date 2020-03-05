@@ -45,7 +45,6 @@ namespace GodMorgon.DeckBuilding.Draft
                     rdmCardNb = Random.Range(0, draftDeck.cards.Count);
                     cardsOnDraft[i].UpdateCard(draftDeck.cards[rdmCardNb]);
                 }
-                nbDraftLeft -= 1;
             }
             else
                 Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
@@ -60,6 +59,8 @@ namespace GodMorgon.DeckBuilding.Draft
         {
             DeckBuildingManager.Instance.AddCardToPlayerDeck(cardChoosed.card);
             StartDraftSequence();
+            nbDraftLeft -= 1;
+            nbDraftLeftText.text = nbDraftLeft.ToString();
         }
     }
 }
