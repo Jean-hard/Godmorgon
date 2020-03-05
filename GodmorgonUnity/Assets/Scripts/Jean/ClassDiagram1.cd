@@ -3,7 +3,7 @@
   <Class Name="GameManager">
     <Position X="10.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACIUAAAgAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AgAAAAAAACIAAAAgAIAAAAEAAAAAAAAAAAAAAAADBIA=</HashCode>
       <FileName>Assets\Scripts\Jean\GameManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -88,13 +88,21 @@
   </Class>
   <Class Name="CardDisplay">
     <Position X="12.75" Y="3.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="CardDisplay.CardDragDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Jean\CardDisplay.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>iABAAAAAQCAAAABAAAAAAAAAQAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>iABACAAAQCAAABBACABAEQAAQAAAACAAAAAAAAABAAA=</HashCode>
       <FileName>Assets\Scripts\Jean\CardDisplay.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="card" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="PlayerMove">
     <Position X="4" Y="3.5" Width="1.5" />
@@ -113,10 +121,9 @@
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAQACAAAACAAAAAACABAEQAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAABAACAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Jean\CardInteractions.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="GodMorgon.Models.DeckContent">
     <Position X="6" Y="11.75" Width="1.5" />
@@ -136,7 +143,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GodMorgon.DeckBuilding.SelectionDeck.DeckDisplayer">
-    <Position X="1" Y="7.25" Width="1.5" />
+    <Position X="1.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAgAAAAAEIAAAAAAIAAAAIAAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\SelectionDeck\DeckDisplayer.cs</FileName>
@@ -159,13 +166,28 @@
   <Class Name="GodMorgon.DeckBuilding.DeckBuildingManager">
     <Position X="9.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAEAAAAAAAAAAAAEBAAAAAAAAAAAAgAQAAAAAgQAEA=</HashCode>
+      <HashCode>AIAEAAAAAAAAAAAAEBAAAAAAAAAAAAgAQAAAAAgQAUA=</HashCode>
       <FileName>Assets\Scripts\Paul\DeckBuildingManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="deckSelectPhase" />
       <Field Name="draftPhase" />
     </ShowAsAssociation>
+  </Class>
+  <Class Name="CardDropArea">
+    <Position X="16.25" Y="3.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="CardDropArea.DropDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Jean\CardDropArea.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Jean\CardDropArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

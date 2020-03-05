@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: virage droit bas inchallah
+  m_Name: croix
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 8d8dd2ae8d7160a478493c16e88d28d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb1297cd62c9cc445b3442ab91701c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
 
-/// <summary>
-/// à commenter !!!!!!!!!!
-/// </summary>
-public class CardDisplay : MonoBehaviour
+/**
+ * Présent sur chaque carte
+ * Gère l'affichage des infos Name, Description, Artwork et Template sur le prefab Card
+ * Gère aussi le drag and drop de la carte, et les effets qui en découlent
+ * On peut déclencher des évènements liés au drag and drop dans les autres scripts grâce aux delegate
+ */
+public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public BasicCard card;
 
@@ -19,6 +24,14 @@ public class CardDisplay : MonoBehaviour
 
     public Image artworkImage;
     public Image template;
+
+    public delegate void CardDragDelegate(CardDisplay card, PointerEventData eventData);
+
+    public CardDragDelegate onCardDragBeginDelegate;
+    public CardDragDelegate onCardDragDelegate;
+    public CardDragDelegate onCardDragEndDelegate;
+
+    private Vector3 startPosition;
 
     //Load the data of the card in the gameObject at start, if the card exist.
     void Start()
@@ -49,4 +62,31 @@ public class CardDisplay : MonoBehaviour
 
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        UpdateCardPosition();
+        onCardDragBeginDelegate?.Invoke(this, eventData);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        this.transform.position = eventData.position;
+        onCardDragDelegate?.Invoke(this, eventData);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        ResetCardPosition();
+        onCardDragEndDelegate?.Invoke(this, eventData);
+    }
+
+    public void UpdateCardPosition()
+    {
+        startPosition = this.transform.position;
+    }
+
+    public void ResetCardPosition()
+    {
+        this.transform.position = startPosition;
+    }
 }

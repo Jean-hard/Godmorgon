@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
 
-public class PlayerGUI : MonoBehaviour
+public class PlayerGUI : MonoBehaviour, IDropHandler
 {
     public Text lifeNbText;
     public Text powerNbText;
@@ -27,6 +28,10 @@ public class PlayerGUI : MonoBehaviour
     private StuffCard currentPantsStuff;
     private StuffCard currentShoesStuff;
 
+    //Delegate à utiliser dans d'autres scripts si on veut qu'il se passe qqchose qd on drop une carte dans la fiche joueur
+    public delegate void DropDelegate(CardDropArea cardDropArea, PointerEventData eventData);
+    public DropDelegate onDropDelegate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +42,7 @@ public class PlayerGUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //modifie la santé en fonction lors d'évènements (combats, ...)
@@ -45,6 +50,19 @@ public class PlayerGUI : MonoBehaviour
     {
 
     }
+    public void OnDrop(PointerEventData eventData)
+    {
+        //onDropDelegate?.Invoke(this, eventData);
+        //Debug.Log("object dropped: " + eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name);
+        
+        //ne drop l'équipement seulement si c'est une carte équipement. Elle retourne direct à la main dans le cas contraire
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "StuffCard")
+        {
+            UseStuffCard(eventData.pointerDrag);
+            Destroy(eventData.pointerDrag);
+        }
+    }
+
 
     //ajoute les bonus aux stats de la GUI
     public void UseStuffCard(GameObject addedCard)
@@ -55,15 +73,16 @@ public class PlayerGUI : MonoBehaviour
         if (!addedStuffCard)
         {
             Debug.LogErrorFormat("Card ID: {0} is not a card or was not found!", addedCard.GetComponent<CardDisplay>().cardId);
+
             return;
         }
 
         //vérifie s'il y a déjà un équipement du même type déjà porté, dans ce cas on retire le bonus de l'ancien pour mettre celui de la nouvelle carte 
         //sinon, on ajoute celui de la nouvelle carte
-        switch(addedStuffCard.StuffType)
+        switch (addedStuffCard.StuffType)
         {
             case StuffCard.StuffTypes.HAT:
-                if(currentHatStuff != null)
+                if (currentHatStuff != null)
                 {
                     //retire le bonus de l'équipement déjà présent
                     PlayerMgr.Instance.lifeMax -= currentHatStuff.lifeBonus;
@@ -71,7 +90,8 @@ public class PlayerGUI : MonoBehaviour
                     //applique les bonus de la nouvelle carte
                     PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
                     PlayerMgr.Instance.power += addedStuffCard.powerBonus;
-                } else
+                }
+                else
                 {
                     //applique les bonus de la carte
                     PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
@@ -151,16 +171,16 @@ public class PlayerGUI : MonoBehaviour
                 break;
         }
 
-        
+
 
         //update les textes des valeurs
         lifeNbText.text = PlayerMgr.Instance.life.ToString() + " / " + PlayerMgr.Instance.lifeMax.ToString();
         powerNbText.text = PlayerMgr.Instance.power.ToString();
 
         //mets l'image du stuff ajouté dans le slot associé
-        switch(addedStuffCard.StuffType)
+        switch (addedStuffCard.StuffType)
         {
-            case StuffCard.StuffTypes.HAT :
+            case StuffCard.StuffTypes.HAT:
                 hatSlot.sprite = addedStuffCard.artwork;
                 hatSlot.color = notTransparentColor;
                 break;
@@ -186,4 +206,5 @@ public class PlayerGUI : MonoBehaviour
         lifeNbText.text = PlayerMgr.Instance.lifeMax.ToString() + " / " + PlayerMgr.Instance.lifeMax.ToString();
         powerNbText.text = PlayerMgr.Instance.power.ToString();
     }
+
 }
