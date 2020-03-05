@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: croisement croix inchallah
+  m_Name: droit1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 1a303eb7363e35f489d8cae619e1f432, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9004c3a55b5ae5d40b8384b1e16ffb2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
