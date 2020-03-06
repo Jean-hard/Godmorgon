@@ -14,7 +14,6 @@ public class PlayerMove : MonoBehaviour
     Vector3Int nextTileCoordinate;
     Vector3Int currentTileCoordinate;
 
-
     public float speed = 1.0f;
 
     void Start()
@@ -39,7 +38,7 @@ public class PlayerMove : MonoBehaviour
 
             SetDirection();
         }
-
+        /*
         // CLICK ON TILE
         if (Input.GetMouseButton(0) && !hasMoved)
         {
@@ -54,12 +53,31 @@ public class PlayerMove : MonoBehaviour
             if (Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1
                 && Mathf.Abs(nextTileCoordinate.y) - Mathf.Abs(currentTileCoordinate.y) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1)
                 canMove = true;
-        }
+        }*/
 
         if (canMove)
         {
             Move(nextTileCoordinate);
         }
+    }
+
+    //CORRIGER LA LIMITATION AUX CASES VOISINES
+    public void UseMoveCard()
+    {
+        //transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        nextTileCoordinate = moveGrid.WorldToCell(mouseWorldPos);
+        currentTileCoordinate = moveGrid.WorldToCell(transform.position);
+
+        if (currentTileCoordinate.x != nextTileCoordinate.x && currentTileCoordinate.y != nextTileCoordinate.y)
+        {
+            Debug.Log("Carte move droppée dans une case trop éloignée");
+            return;
+        }
+        //check si on clique bien sur une case à côté de nous
+        if (Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1
+            && Mathf.Abs(nextTileCoordinate.y) - Mathf.Abs(currentTileCoordinate.y) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1)
+            canMove = true;
     }
 
     //Fonction pour se déplacer sur une tile en cliquant dessus

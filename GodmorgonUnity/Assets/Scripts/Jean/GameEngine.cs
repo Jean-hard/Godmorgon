@@ -19,7 +19,7 @@ public class GameEngine
     public List<DeckContent> availableDecks = new List<DeckContent>();
 
     // Current Playing Deck.
-    public DeckContent currentDeck;
+    public DeckContent playerDeck;
 
     #region Singleton Pattern
     private static GameEngine instance;
@@ -43,16 +43,19 @@ public class GameEngine
      */
     private GameEngine ()
     {
-        // Le GameEngine doit, lors de sa création, commencer
-        // par charger les Settings du jeu ! Hop !
-        /// oui mais si il y a plusieurs fichiers GameSettings ? : "...mode 1" et "... mode hardcore" par exemple.
-        settings = ScriptableObject.CreateInstance<GameSettings>();
+        playerDeck = DeckContent.CreateInstance<DeckContent>();
     }
 
     //Set settings from bootStrap or else
     public void SetSettings(GameSettings theSettings)
     {
         settings = theSettings;
+    }
+
+    //Set Player deck
+    public void SetPlayerDeck(DeckContent theDeckChoosed)
+    {
+        playerDeck = theDeckChoosed;
     }
 
     public enum GameState
@@ -132,15 +135,26 @@ public class GameEngine
         }
     }
 
+    #region CardManagement
+    //clear all the card in the player deck
+    public void ClearPlayerDeck()
+    {
+        playerDeck.cards.Clear();
+    }
+
+    //draw card from the deck to the hand of the player
+    public void DrawCard()
+    {
+
+    }
+
+    #endregion
+
     private void SetChooseDeckMode()
     {
-        //Debug.Log("YOLO SWAG");
         // On commence par charger les decks préconstruits
         foreach (DeckContent unDeck in settings.decksPreconstruits)
-        {
-            //Debug.Log("deck ajouté : " + unDeck.name);
             AddDeck(unDeck);
-        }
     }
 
     // ========================= Deck Management
