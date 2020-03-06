@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad9c89485b93da4d8c6366f575bff17, type: 3}
   m_Name: Deck02
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   name: Deck02
   description: "Deck de base 2 fort en d\xE9fense"
+  artwork: {fileID: 0}
   cards:
   - {fileID: 11400000, guid: b64485cf89aa73544b7734fc3301b4f5, type: 2}
   - {fileID: 11400000, guid: 81e488c64dbf3b94bbf19c8fed88bdb1, type: 2}
