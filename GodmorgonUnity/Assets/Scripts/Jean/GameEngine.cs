@@ -135,17 +135,24 @@ public class GameEngine
         }
     }
 
-    #region CardManagement
+    #region CARD MANAGEMENT
+
     //clear all the card in the player deck
     public void ClearPlayerDeck()
     {
         playerDeck.cards.Clear();
     }
 
-    //draw card from the deck to the hand of the player
-    public void DrawCard()
+    //draw the card on top of the player deck
+    public BasicCard DrawCard()
     {
+        return playerDeck.cards[playerDeck.cards.Count];
+    }
 
+    //add card to the deck of the player
+    public void AddCardToPlayerDeck(BasicCard newCard)
+    {
+        playerDeck.cards.Add(newCard);
     }
 
     #endregion
