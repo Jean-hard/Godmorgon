@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="GameManager">
-    <Position X="10.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACIAAAAgCIAAAAEAAABAAAABQAAAAAADBIA=</HashCode>
-      <FileName>Assets\Scripts\Jean\GameManager.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="playerGUI" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="PlayerMgr">
     <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
@@ -115,19 +105,19 @@
   <Class Name="PlayerMove">
     <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAqAgAwAAAAABAAEQAAAAARIAAACAAAAAAAI=</HashCode>
+      <HashCode>AAQAAAAAAqAgBwAAAAABAAEQAAAAARIAAASACAAAAAI=</HashCode>
       <FileName>Assets\Scripts\Jean\PlayerMove.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.DeckContent">
-    <Position X="6" Y="11.75" Width="1.5" />
+    <Position X="5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAIAgAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Assets\Scripts\Paul\Models\DeckContent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.DeckBuilding.Draft.DraftPhase">
-    <Position X="9.5" Y="11.75" Width="1.5" />
+    <Position X="8.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAABAAAAAAAwAAAAAAAAABAAAAAAAACAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\Draft\DraftPhase.cs</FileName>
@@ -147,7 +137,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GodMorgon.DeckBuilding.SelectionDeck.DeckSelectPhase">
-    <Position X="6" Y="7.75" Width="1.5" />
+    <Position X="6" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAQACAAACAAAgAIAAAAAAAAAAAACAACAA=</HashCode>
       <FileName>Assets\Scripts\Paul\SelectionDeck\DeckSelectPhase.cs</FileName>
@@ -158,7 +148,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GodMorgon.DeckBuilding.DeckBuildingManager">
-    <Position X="9.5" Y="7.75" Width="1.5" />
+    <Position X="9" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAEAAAAAAAAAAAAEBAAAAAAAAAAAAgAQAAAAAgQAEA=</HashCode>
       <FileName>Assets\Scripts\Paul\DeckBuildingManager.cs</FileName>
@@ -168,5 +158,87 @@
       <Field Name="draftPhase" />
     </ShowAsAssociation>
   </Class>
+  <Class Name="GameEngine">
+    <Position X="11.25" Y="11.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="GameEngine.GameState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Jean\GameEngine.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAACgKIAAACWAEALAAAABQAAAAAgQFYA=</HashCode>
+      <FileName>Assets\Scripts\Jean\GameEngine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="playerDeck" />
+      <Field Name="settings" />
+      <Field Name="cardDisplay" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GodMorgon.Models.GameSettings">
+    <Position X="0.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Models\GameSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BootStrap">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\BootStrap.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameSettings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DeckDisplay">
+    <Position X="2.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAABAASAAAAAAAAAAAAAAgAAAAEAAAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\DeckDisplay.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="deck" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GodMorgon.CardContainer.Hand">
+    <Position X="15.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\Hand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.CardContainer.DisposalPile">
+    <Position X="13.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\DisposalPile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.CardContainer.CardList">
+    <Position X="14.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAgAAAQAEAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\CardList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CardsDataBase">
+    <Position X="14.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAIAAQAAQAAAEAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Jean\CardsDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GodMorgon.CardContainer.ICardContainer">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\ICardContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

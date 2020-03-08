@@ -65,6 +65,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         startPosition = this.transform.position;
+
         onCardDragBeginDelegate?.Invoke(this, eventData);
     }
 

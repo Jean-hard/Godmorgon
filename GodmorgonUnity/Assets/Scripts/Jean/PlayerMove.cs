@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public Grid moveGrid;
+    private List<Vector3Int> nearestTilesList = new List<Vector3Int>();
+
     private float moveH, moveV;
     private float gridX, gridY;
 
     private bool hasMoved;
     private bool canMove;
+    private bool moveValidate;
 
     Vector3Int nextTileCoordinate;
     Vector3Int currentTileCoordinate;
@@ -20,6 +23,8 @@ public class PlayerMove : MonoBehaviour
     {
         gridX = moveGrid.gameObject.GetComponent<Grid>().cellSize.x;
         gridY = moveGrid.gameObject.GetComponent<Grid>().cellSize.y;
+
+        UpdateNearestTilesList();
     }
 
     void Update()
@@ -62,22 +67,39 @@ public class PlayerMove : MonoBehaviour
     }
 
     //CORRIGER LA LIMITATION AUX CASES VOISINES
-    public void UseMoveCard()
+    public bool UseMoveCard()
     {
         //transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         nextTileCoordinate = moveGrid.WorldToCell(mouseWorldPos);
         currentTileCoordinate = moveGrid.WorldToCell(transform.position);
 
+        /*
         if (currentTileCoordinate.x != nextTileCoordinate.x && currentTileCoordinate.y != nextTileCoordinate.y)
         {
             Debug.Log("Carte move droppée dans une case trop éloignée");
-            return;
+            canMove = false;
+            //return canMove;
         }
         //check si on clique bien sur une case à côté de nous
         if (Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1
             && Mathf.Abs(nextTileCoordinate.y) - Mathf.Abs(currentTileCoordinate.y) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1)
+        {
             canMove = true;
+            //return canMove;
+        }*/
+
+        if (nearestTilesList.Contains(nextTileCoordinate))
+        {
+            canMove = true;
+            Debug.Log("Carte move droppée dans une case proche");
+        }
+        else
+        {
+            canMove = false;
+            Debug.Log("Carte move droppée dans une case : " + nextTileCoordinate);
+        }
+        return canMove;
     }
 
     //Fonction pour se déplacer sur une tile en cliquant dessus
@@ -88,11 +110,27 @@ public class PlayerMove : MonoBehaviour
         
         if (Vector3.Distance(transform.position, nextPos) < 0.001f)
         {
+            UpdateNearestTilesList();
             canMove = false;
             hasMoved = true;
         }
         else
             transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime); //avance jusqu'à la tile cliquée       
+    }
+
+    public void UpdateNearestTilesList()
+    {
+        nearestTilesList.Clear();
+        currentTileCoordinate = moveGrid.WorldToCell(transform.position);
+        //nearestTilesList.Add(currentTileCoordinate);
+        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x + 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));
+        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x - 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));
+        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y + 1, currentTileCoordinate.z - 10));
+        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y - 1, currentTileCoordinate.z - 10));
+        foreach(Vector3Int tile in nearestTilesList)
+        {
+            Debug.Log(tile);
+        }
     }
 
     //Fonction pour se déplacer avec les touches du clavier
