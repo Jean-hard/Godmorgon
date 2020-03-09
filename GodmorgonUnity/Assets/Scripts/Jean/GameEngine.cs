@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GodMorgon.Models;
+using UnityEngine.EventSystems;
 
 public class GameEngine
 {
@@ -20,6 +21,18 @@ public class GameEngine
 
     // Current Playing Deck.
     public DeckContent playerDeck;
+
+    //=========================== WIP ===== transfert de GameManager vers GameEngine
+    [SerializeField]
+    private GameObject hand;
+
+    private GameObject player;
+
+    CardDisplay cardDisplay;
+
+    public BasicCard selectedCard;
+    //============================
+
 
     #region Singleton Pattern
     private static GameEngine instance;
@@ -184,4 +197,45 @@ public class GameEngine
             availableDecks.Add(newDeck);
         //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
     }
+
+    //================================= WIP ===== Transfert de GameManager vers GameEngine
+    private void HandSetup()
+    {
+        Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
+        foreach (Transform _card in cardsInHand)
+        {
+            cardDisplay = _card.GetComponent<CardDisplay>();
+            if (null != cardDisplay)
+            {
+                //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
+                //cardDisplay.onCardDragDelegate += OnCardDrag;
+                cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
+            }
+        }
+    }
+
+    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
+    {
+        //Debug.Log("on drag begin " + card.name);
+        selectedCard = choosedCard.card;
+    }
+
+    private void OnCardDrag(CardDisplay card, PointerEventData eventData)
+    {
+        //Debug.Log("on drag " + card.name);
+
+    }
+
+    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
+    {
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
+        {
+            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+            //if (moveValidate)
+                //Destroy(choosedCard.gameObject);
+            //Debug.Log("La carte move est droppée");
+        }
+    }
+
+    //============================================================================
 }

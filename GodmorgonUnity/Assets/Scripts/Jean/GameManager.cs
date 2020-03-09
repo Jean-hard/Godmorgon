@@ -84,8 +84,9 @@ public class GameManager : MonoBehaviour
     {
         if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
         {
-            player.GetComponent<PlayerMove>().UseMoveCard();
-            Destroy(choosedCard.gameObject);
+            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+            if(moveValidate)
+                Destroy(choosedCard.gameObject);
             //Debug.Log("La carte move est droppée");
         }
     }

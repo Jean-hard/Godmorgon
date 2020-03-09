@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 using GodMorgon.Models;
 
 namespace GodMorgon.DeckBuilding.Draft
@@ -47,7 +47,8 @@ namespace GodMorgon.DeckBuilding.Draft
                 }
             }
             else
-                Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
+                SceneManager.LoadScene("GameScene");
+            //Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
         }
 
         /**
