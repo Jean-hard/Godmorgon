@@ -10,48 +10,55 @@ namespace Tests
 {
     public class GameEngine_CardManagement
     {
+        [SetUp]
+        public void SetUpCardManagement()
+        {
+            GameEngine.Instance.InitializePlayerDeck();
+            Debug.Log("Setup Done");
+        }
+
         #region Draft
-        [Test]
-        public void CanDrawCardFromDraftDeck()
-        {
-            BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
-        }
+        //[Test]
+        //public void CanDrawCardFromDraftDeck()
+        //{
+        //    BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
+        //}
 
-        [Test]
-        public void DraftPickerChooseTheNumberOfCardFromTheSettings()
-        {
+        //[Test]
+        //public void DraftPickerChooseTheNumberOfCardFromTheSettings()
+        //{
 
-        }
+        //}
 
-        [Test]
-        public void UserCanOnlyChooseOneCardFromTheSettings()
-        {
+        //[Test]
+        //public void UserCanOnlyChooseOneCardFromTheSettings()
+        //{
 
-        }
+        //}
 
-        [Test]
-        public void DraftTurnIsLimitedByTheSettings ()
-        {
+        //[Test]
+        //public void DraftTurnIsLimitedByTheSettings ()
+        //{
 
-        }
+        //}
 
-        [Test]//pas sur
-        public void DraftCardIsAddedToTheChosenDeckAndBackToTheDraftDeck()
-        {
+        //[Test]//pas sur
+        //public void DraftCardIsAddedToTheChosenDeckAndBackToTheDraftDeck()
+        //{
 
-        }
+        //}
 
-        [Test]
-        public void NonDraftCardIsAddedToTheChosenDeck()
-        {
+        //[Test]
+        //public void NonDraftCardIsAddedToTheChosenDeck()
+        //{
 
-        }
+        //}
 
-        [Test]
-        public void WhenNoDraftSequenceRemainsGameEngineIsSetToPlayMode()
-        {
+        //[Test]
+        //public void WhenNoDraftSequenceRemainsGameEngineIsSetToPlayMode()
+        //{
 
-        }
+        //}
         #endregion
 
 
@@ -71,26 +78,26 @@ namespace Tests
             //});
         }
 
-        //[Test]
-        //public void CanDrawFromTheDeckWhenNotEmpty()
-        //{
-        //    GameEngine.deck.ClearCards();
-        //    Card myCard = ScriptableObject.CreateInstance<Card>();
-        //    GameEngine.deck.AddCard(myCard);
-        //    Card myDrawedCard = GameEngine.deck.DrawCard();
-        //    Assert.AreSame(myCard, myDrawedCard);
-        //}
+        [Test]
+        public void CanDrawFromTheDeckWhenNotEmpty()
+        {
+            GameEngine.Instance.ClearPlayerDeck();
+            BasicCard myCard = ScriptableObject.CreateInstance<BasicCard>();
+            GameEngine.Instance.AddCardToPlayerDeck(myCard);
+            BasicCard myDrawedCard = GameEngine.Instance.DrawCard();
+            Assert.AreSame(myCard, myDrawedCard);
+        }
 
-        //[Test]
-        //public void AlwaysDrawTheTopOfTheDeck()
-        //{
-        //    Card cardA = ScriptableObject.CreateInstance<Card>();
-        //    Card cardB = ScriptableObject.CreateInstance<Card>();
-        //    GameEngine.deck.AddCard(cardA);
-        //    GameEngine.deck.AddCard(cardB);
-        //    Card myDrawedCard = GameEngine.deck.DrawCard();
-        //    Assert.AreSame(cardB, myDrawedCard);
-        //}
+        [Test]
+        public void AlwaysDrawTheTopOfTheDeck()
+        {
+            BasicCard cardA = ScriptableObject.CreateInstance<BasicCard>();
+            BasicCard cardB = ScriptableObject.CreateInstance<BasicCard>();
+            GameEngine.Instance.AddCardToPlayerDeck(cardA);
+            GameEngine.Instance.AddCardToPlayerDeck(cardB);
+            BasicCard myDrawedCard = GameEngine.Instance.DrawCard();
+            Assert.AreSame(cardB, myDrawedCard);
+        }
 
         //[Test]
         //public void CantDiscardFromTheHandWhenEmpty()

@@ -136,6 +136,13 @@ public class GameEngine
     }
 
     #region CARD MANAGEMENT
+    //FOR DEBUG
+    public void InitializePlayerDeck()
+    {
+        playerDeck = DeckContent.CreateInstance<DeckContent>();
+        playerDeck.cards = new List<BasicCard>();
+    }
+
 
     //clear all the card in the player deck
     public void ClearPlayerDeck()
@@ -143,10 +150,12 @@ public class GameEngine
         playerDeck.cards.Clear();
     }
 
-    //draw the card on top of the player deck
+    //draw the card on top of the player deck and remove it from the deck
     public BasicCard DrawCard()
     {
-        return playerDeck.cards[playerDeck.cards.Count];
+        BasicCard drawnCard = playerDeck.cards[0];
+        playerDeck.cards.Remove(drawnCard);
+        return drawnCard;
     }
 
     //add card to the deck of the player
