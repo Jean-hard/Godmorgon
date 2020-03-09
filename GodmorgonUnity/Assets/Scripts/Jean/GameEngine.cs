@@ -21,8 +21,10 @@ public class GameEngine
     // List of Deck to choose from.
     public List<DeckContent> availableDecks = new List<DeckContent>();
 
-    // Current Playing Deck.
-    public DeckContent playerDeck;
+    //// Current Playing Deck.
+    //public DeckContent playerDeck;
+
+    public Deck playerDeckSTACK;
 
     //=========================== WIP ===== transfert de GameManager vers GameEngine // PAS DE SERIALIZEFIELD, pas monobehaviour
 
@@ -65,7 +67,7 @@ public class GameEngine
      */
     private GameEngine ()
     {
-        playerDeck = DeckContent.CreateInstance<DeckContent>();
+        playerDeckSTACK = new Deck();
         hand = new Hand();
         disposalPile = new DisposalPile();
     }
@@ -76,11 +78,21 @@ public class GameEngine
         settings = theSettings;
     }
 
-    //Set Player deck
+    //Set Player deck content
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
-        playerDeck = theDeckChoosed;
+        foreach (BasicCard card in theDeckChoosed.cards)
+            playerDeckSTACK.AddCard(card);
+        //playerDeck = theDeckChoosed;
+        //SetPlayerDeckStack(playerDeck.cards);
     }
+
+    //Set player deck Stack
+    //public void SetPlayerDeckStack(List<BasicCard> cards)
+    //{
+    //    foreach (BasicCard card in cards)
+    //        playerDeckSTACK.AddCard(card);
+    //}
 
     public enum GameState
     {
@@ -163,35 +175,49 @@ public class GameEngine
     //FOR DEBUG
     public void InitializePlayerDeck()
     {
-        playerDeck = DeckContent.CreateInstance<DeckContent>();
-        playerDeck.cards = new List<BasicCard>();
+        //playerDeck = DeckContent.CreateInstance<DeckContent>();
+        //playerDeck.cards = new List<BasicCard>();
+        playerDeckSTACK = new Deck();
     }
 
 
     //clear all the card in the player deck
     public void ClearPlayerDeck()
     {
-        playerDeck.cards.Clear();
+        playerDeckSTACK.ClearCards();
     }
 
     //draw the card on top of the player deck and remove it from the deck
-    public BasicCard DrawCard()
+    public void DrawCard()
     {
-        BasicCard drawnCard;
-        if (playerDeck.cards.Count != 0)
-        {
-            drawnCard = playerDeck.cards[0];
-            playerDeck.cards.RemoveAt(0);
-        }
+        // Check if We Can!
+        if (hand.Count() >= settings.MaxHandCapability /*+ player.HandOverflow*/)//important pour le player
+            throw new HandIsFullException();
+        else if (playerDeckSTACK.Count() == 0)
+            throw new DeckIsEmptyException();
+
         else
-            return null;
-        return drawnCard;
+        {
+            // Take from the deck
+            BasicCard myNewCard = playerDeckSTACK.DrawCard();
+            hand.AddCard(myNewCard);
+        }
+
+        //BasicCard drawnCard;
+        //if (playerDeckSTACK.Count() != 0)
+        //{
+        //    drawnCard = playerDeck.cards[0];
+        //    playerDeck.cards.RemoveAt(0);
+        //}
+        //else
+        //    return null;
+        //return drawnCard;   
     }
 
     //Add card to the deck of the player
     public void AddCardToPlayerDeck(BasicCard newCard)
     {
-        playerDeck.cards.Add(newCard);
+        playerDeckSTACK.AddCard(newCard);
     }
 
     //Takes a card from the hand and junk it to the disposal pile (Discard)
@@ -213,6 +239,18 @@ public class GameEngine
         BasicCard discarded = hand.DrawCard();
         if (discarded != null)
             disposalPile.AddCard(discarded);
+    }
+
+    // Moves the card from the disposal, randomly into the desk
+    public void ShuffleDeck()
+    {
+        // The desck MUST be empty before to be shuffled with
+        // the disposal pile :)
+        if (playerDeckSTACK.Count() == 0)
+            while (disposalPile.Count() > 0)
+            {
+                playerDeckSTACK.AddCard(disposalPile.DrawCard());
+            }
     }
 
     #endregion

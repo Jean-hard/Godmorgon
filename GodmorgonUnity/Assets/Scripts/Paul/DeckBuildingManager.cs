@@ -68,14 +68,13 @@ namespace GodMorgon.DeckBuilding
         public void SetPlayerDeck(DeckContent deckSelected)
         {
             GameEngine.Instance.SetPlayerDeck(deckSelected);
-            Debug.Log("player deck set, player deck = " + GameEngine.Instance.playerDeck);
         }
 
         //Add a card to the player Deck (normaly only use by the draftPhase)
         public void AddCardToPlayerDeck(BasicCard cardToAdd)
         {
             //Debug.Log(GameEngine.Instance.playerDeck);
-            GameEngine.Instance.playerDeck.cards.Add(cardToAdd);
+            GameEngine.Instance.playerDeckSTACK.AddCard(cardToAdd);
         }
     }
 }

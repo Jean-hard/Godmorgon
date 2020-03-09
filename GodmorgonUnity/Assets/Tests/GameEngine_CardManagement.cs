@@ -69,11 +69,11 @@ namespace Tests
         {
             // Low level
             GameEngine.Instance.ClearPlayerDeck(); // Remove all cards! Debug only
-            BasicCard myCard = GameEngine.Instance.DrawCard();
+            BasicCard myCard = GameEngine.Instance.playerDeckSTACK.DrawCard();
             Assert.IsNull(myCard);
 
-            //// High Level
-            //GameEngine.Instance.ClearPlayerDeck();
+            // High Level
+            //GameEngine.Instance.ClearPlayerDeck(); ///si ça envoie l'exception le test renvoie erreur alors que... bas c'est bon du coup... non ?
             //Assert.Throws<DeckIsEmptyException>(() =>
             //{
             //    GameEngine.Instance.DrawCard();
@@ -86,7 +86,7 @@ namespace Tests
             GameEngine.Instance.ClearPlayerDeck();
             BasicCard myCard = ScriptableObject.CreateInstance<BasicCard>();
             GameEngine.Instance.AddCardToPlayerDeck(myCard);
-            BasicCard myDrawedCard = GameEngine.Instance.DrawCard();
+            BasicCard myDrawedCard = GameEngine.Instance.playerDeckSTACK.DrawCard();
             Assert.AreSame(myCard, myDrawedCard);
         }
 
@@ -97,8 +97,8 @@ namespace Tests
             BasicCard cardB = ScriptableObject.CreateInstance<BasicCard>();
             GameEngine.Instance.AddCardToPlayerDeck(cardA);
             GameEngine.Instance.AddCardToPlayerDeck(cardB);
-            BasicCard myDrawedCard = GameEngine.Instance.DrawCard();
-            Assert.AreSame(cardA, myDrawedCard);
+            BasicCard myDrawedCard = GameEngine.Instance.playerDeckSTACK.DrawCard();
+            Assert.AreSame(cardB, myDrawedCard);
         }
 
         [Test]
@@ -116,45 +116,45 @@ namespace Tests
             Assert.AreEqual(0, GameEngine.Instance.disposalPile.Count());
         }
 
-        //[Test]
-        //public void CanDiscardFromTheHandWhenNotEmpty()
-        //{
-        //    Card myCardToRemove = ScriptableObject.CreateInstance<Card>();
-        //    GameEngine.hand.ClearCards();
-        //    GameEngine.hand.AddCard(myCardToRemove);
+        [Test]
+        public void CanDiscardFromTheHandWhenNotEmpty()
+        {
+            BasicCard myCardToRemove = ScriptableObject.CreateInstance<BasicCard>();
+            GameEngine.Instance.hand.ClearCards();
+            GameEngine.Instance.hand.AddCard(myCardToRemove);
 
-        //    GameEngine.disposalPile.ClearCards();
+            GameEngine.Instance.disposalPile.ClearCards();
 
-        //    // Main action!
-        //    GameEngine.DiscardCard(myCardToRemove);
-        //    // Results are:
-        //    // - The card should no more be in hand! (Hand must be empty)
-        //    // - the card should be found in the disposal
+            // Main action!
+            GameEngine.Instance.DiscardCard(myCardToRemove);
+            // Results are:
+            // - The card should no more be in hand! (Hand must be empty)
+            // - the card should be found in the disposal
 
-        //    Assert.AreEqual(0, GameEngine.hand.Count());
-        //    Assert.AreSame(myCardToRemove, GameEngine.disposalPile.DrawCard());
+            Assert.AreEqual(0, GameEngine.Instance.hand.Count());
+            Assert.AreSame(myCardToRemove, GameEngine.Instance.disposalPile.DrawCard());
 
-        //    // Rebelote
-        //    GameEngine.hand.AddCard(myCardToRemove);
-        //    GameEngine.DiscardCard(); // Blindly remove a card (but only one, then... ;) )
+            // Rebelote
+            GameEngine.Instance.hand.AddCard(myCardToRemove);
+            GameEngine.Instance.DiscardCard(); // Blindly remove a card (but only one, then... ;) )
 
-        //    Assert.AreEqual(0, GameEngine.hand.Count());
-        //    Assert.AreSame(myCardToRemove, GameEngine.disposalPile.DrawCard());
-        //}
+            Assert.AreEqual(0, GameEngine.Instance.hand.Count());
+            Assert.AreSame(myCardToRemove, GameEngine.Instance.disposalPile.DrawCard());
+        }
 
-        //[Test]
-        //public void CanShuffleDeckWhenEmpty()
-        //{
+        [Test]
+        public void CanShuffleDeckWhenEmpty()
+        {
 
-        //    GameEngine.deck.ClearCards();
-        //    GameEngine.disposalPile.ClearCards();
-        //    GameEngine.disposalPile.AddCard(ScriptableObject.CreateInstance<Card>());
+            GameEngine.Instance.ClearPlayerDeck();
+            GameEngine.Instance.disposalPile.ClearCards();
+            GameEngine.Instance.disposalPile.AddCard(ScriptableObject.CreateInstance<BasicCard>());
 
-        //    GameEngine.ShuffleDeck();
+            GameEngine.Instance.ShuffleDeck();
 
-        //    Assert.AreEqual(0, GameEngine.disposalPile.Count());
-        //    Assert.AreEqual(1, GameEngine.deck.Count());
-        //}
+            Assert.AreEqual(0, GameEngine.Instance.disposalPile.Count());
+            Assert.AreEqual(1, GameEngine.Instance.playerDeckSTACK.Count());
+        }
 
         //[Test]
         //public void CantShuffleDeckWhenNotEmpty()
