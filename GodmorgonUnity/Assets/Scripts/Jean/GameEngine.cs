@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GodMorgon.Models;
 using UnityEngine.EventSystems;
+
+using GodMorgon.Models;
+using GodMorgon.CardContainer;
 
 public class GameEngine
 {
@@ -22,10 +24,17 @@ public class GameEngine
     // Current Playing Deck.
     public DeckContent playerDeck;
 
-    //=========================== WIP ===== transfert de GameManager vers GameEngine
-    [SerializeField]
-    private GameObject hand;
+    //=========================== WIP ===== transfert de GameManager vers GameEngine // PAS DE SERIALIZEFIELD, pas monobehaviour
 
+    /**
+     * The card container list
+     */
+    public Hand hand;
+
+    public DisposalPile disposalPile;
+
+
+    //dans la mesure du possible, il ne devrait pas y avoir de référence GameObjectdans le GameEngine
     private GameObject player;
 
     CardDisplay cardDisplay;
@@ -57,6 +66,8 @@ public class GameEngine
     private GameEngine ()
     {
         playerDeck = DeckContent.CreateInstance<DeckContent>();
+        hand = new Hand();
+        disposalPile = new DisposalPile();
     }
 
     //Set settings from bootStrap or else
@@ -149,6 +160,13 @@ public class GameEngine
     }
 
     #region CARD MANAGEMENT
+    //FOR DEBUG
+    public void InitializePlayerDeck()
+    {
+        playerDeck = DeckContent.CreateInstance<DeckContent>();
+        playerDeck.cards = new List<BasicCard>();
+    }
+
 
     //clear all the card in the player deck
     public void ClearPlayerDeck()
@@ -156,16 +174,45 @@ public class GameEngine
         playerDeck.cards.Clear();
     }
 
-    //draw the card on top of the player deck
+    //draw the card on top of the player deck and remove it from the deck
     public BasicCard DrawCard()
     {
-        return playerDeck.cards[playerDeck.cards.Count];
+        BasicCard drawnCard;
+        if (playerDeck.cards.Count != 0)
+        {
+            drawnCard = playerDeck.cards[0];
+            playerDeck.cards.RemoveAt(0);
+        }
+        else
+            return null;
+        return drawnCard;
     }
 
-    //add card to the deck of the player
+    //Add card to the deck of the player
     public void AddCardToPlayerDeck(BasicCard newCard)
     {
         playerDeck.cards.Add(newCard);
+    }
+
+    //Takes a card from the hand and junk it to the disposal pile (Discard)
+    public void DiscardCard(BasicCard toRemove = null)
+    {
+        if (toRemove == null)
+            DiscardRandomCard();
+        else
+        {
+            BasicCard discarded = hand.DrawCard(toRemove);
+            if (discarded != null)
+                disposalPile.AddCard(discarded);
+        }
+    }
+
+    //Takes a random card from the hand and junk it to the disposal pile
+    public void DiscardRandomCard()
+    {
+        BasicCard discarded = hand.DrawCard();
+        if (discarded != null)
+            disposalPile.AddCard(discarded);
     }
 
     #endregion
@@ -189,21 +236,21 @@ public class GameEngine
         //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
     }
 
-    //================================= WIP ===== Transfert de GameManager vers GameEngine
-    private void HandSetup()
-    {
-        Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
-        foreach (Transform _card in cardsInHand)
-        {
-            cardDisplay = _card.GetComponent<CardDisplay>();
-            if (null != cardDisplay)
-            {
-                //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
-                //cardDisplay.onCardDragDelegate += OnCardDrag;
-                cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
-            }
-        }
-    }
+    ////================================= WIP ===== Transfert de GameManager vers GameEngine ---------- //doit rester dans le gameManager, seul les fonctions "regle du jeu" doivents être dans le gameEngine
+    //private void HandSetup()
+    //{
+    //   /*LA CA CASSE */ Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
+    //    foreach (Transform _card in cardsInHand)
+    //    {
+    //        cardDisplay = _card.GetComponent<CardDisplay>();
+    //        if (null != cardDisplay)
+    //        {
+    //            //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
+    //            //cardDisplay.onCardDragDelegate += OnCardDrag;
+    //            cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
+    //        }
+    //    }
+    //}
 
     private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
     {
