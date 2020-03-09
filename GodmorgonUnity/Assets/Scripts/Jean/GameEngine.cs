@@ -24,23 +24,12 @@ public class GameEngine
     //// Current Playing Deck.
     public Deck playerDeck;
 
-    //=========================== WIP ===== transfert de GameManager vers GameEngine // PAS DE SERIALIZEFIELD, pas monobehaviour
-
     /**
      * The card container list
      */
     public Hand hand;
 
     public DisposalPile disposalPile;
-
-
-    //dans la mesure du possible, il ne devrait pas y avoir de référence GameObjectdans le GameEngine
-    private GameObject player;
-
-    CardDisplay cardDisplay;
-
-    public BasicCard selectedCard;
-    //============================
 
 
     #region Singleton Pattern
@@ -260,45 +249,4 @@ public class GameEngine
             availableDecks.Add(newDeck);
         //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
     }
-
-    ////================================= WIP ===== Transfert de GameManager vers GameEngine ---------- //doit rester dans le gameManager, seul les fonctions "regle du jeu" doivents être dans le gameEngine
-    //private void HandSetup()
-    //{
-    //   /*LA CA CASSE */ Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
-    //    foreach (Transform _card in cardsInHand)
-    //    {
-    //        cardDisplay = _card.GetComponent<CardDisplay>();
-    //        if (null != cardDisplay)
-    //        {
-    //            //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
-    //            //cardDisplay.onCardDragDelegate += OnCardDrag;
-    //            cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
-    //        }
-    //    }
-    //}
-
-    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        //Debug.Log("on drag begin " + card.name);
-        selectedCard = choosedCard.card;
-    }
-
-    private void OnCardDrag(CardDisplay card, PointerEventData eventData)
-    {
-        //Debug.Log("on drag " + card.name);
-
-    }
-
-    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-        {
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            //if (moveValidate)
-                //Destroy(choosedCard.gameObject);
-            //Debug.Log("La carte move est droppée");
-        }
-    }
-
-    //============================================================================
 }
