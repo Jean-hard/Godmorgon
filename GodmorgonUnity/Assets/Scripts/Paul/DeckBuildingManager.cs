@@ -74,7 +74,7 @@ namespace GodMorgon.DeckBuilding
         public void AddCardToPlayerDeck(BasicCard cardToAdd)
         {
             //Debug.Log(GameEngine.Instance.playerDeck);
-            GameEngine.Instance.playerDeckSTACK.AddCard(cardToAdd);
+            GameEngine.Instance.playerDeck.AddCard(cardToAdd);
         }
     }
 }

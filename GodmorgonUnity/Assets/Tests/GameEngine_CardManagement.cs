@@ -69,7 +69,7 @@ namespace Tests
         {
             // Low level
             GameEngine.Instance.ClearPlayerDeck(); // Remove all cards! Debug only
-            BasicCard myCard = GameEngine.Instance.playerDeckSTACK.DrawCard();
+            BasicCard myCard = GameEngine.Instance.playerDeck.DrawCard();
             Assert.IsNull(myCard);
 
             // High Level
@@ -86,7 +86,7 @@ namespace Tests
             GameEngine.Instance.ClearPlayerDeck();
             BasicCard myCard = ScriptableObject.CreateInstance<BasicCard>();
             GameEngine.Instance.AddCardToPlayerDeck(myCard);
-            BasicCard myDrawedCard = GameEngine.Instance.playerDeckSTACK.DrawCard();
+            BasicCard myDrawedCard = GameEngine.Instance.playerDeck.DrawCard();
             Assert.AreSame(myCard, myDrawedCard);
         }
 
@@ -97,7 +97,7 @@ namespace Tests
             BasicCard cardB = ScriptableObject.CreateInstance<BasicCard>();
             GameEngine.Instance.AddCardToPlayerDeck(cardA);
             GameEngine.Instance.AddCardToPlayerDeck(cardB);
-            BasicCard myDrawedCard = GameEngine.Instance.playerDeckSTACK.DrawCard();
+            BasicCard myDrawedCard = GameEngine.Instance.playerDeck.DrawCard();
             Assert.AreSame(cardB, myDrawedCard);
         }
 
@@ -153,7 +153,7 @@ namespace Tests
             GameEngine.Instance.ShuffleDeck();
 
             Assert.AreEqual(0, GameEngine.Instance.disposalPile.Count());
-            Assert.AreEqual(1, GameEngine.Instance.playerDeckSTACK.Count());
+            Assert.AreEqual(1, GameEngine.Instance.playerDeck.Count());
         }
 
         //[Test]

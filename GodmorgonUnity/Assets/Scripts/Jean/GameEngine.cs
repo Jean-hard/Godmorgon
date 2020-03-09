@@ -22,9 +22,7 @@ public class GameEngine
     public List<DeckContent> availableDecks = new List<DeckContent>();
 
     //// Current Playing Deck.
-    //public DeckContent playerDeck;
-
-    public Deck playerDeckSTACK;
+    public Deck playerDeck;
 
     //=========================== WIP ===== transfert de GameManager vers GameEngine // PAS DE SERIALIZEFIELD, pas monobehaviour
 
@@ -67,7 +65,7 @@ public class GameEngine
      */
     private GameEngine ()
     {
-        playerDeckSTACK = new Deck();
+        playerDeck = new Deck();
         hand = new Hand();
         disposalPile = new DisposalPile();
     }
@@ -82,17 +80,8 @@ public class GameEngine
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
         foreach (BasicCard card in theDeckChoosed.cards)
-            playerDeckSTACK.AddCard(card);
-        //playerDeck = theDeckChoosed;
-        //SetPlayerDeckStack(playerDeck.cards);
+            playerDeck.AddCard(card);
     }
-
-    //Set player deck Stack
-    //public void SetPlayerDeckStack(List<BasicCard> cards)
-    //{
-    //    foreach (BasicCard card in cards)
-    //        playerDeckSTACK.AddCard(card);
-    //}
 
     public enum GameState
     {
@@ -175,16 +164,14 @@ public class GameEngine
     //FOR DEBUG
     public void InitializePlayerDeck()
     {
-        //playerDeck = DeckContent.CreateInstance<DeckContent>();
-        //playerDeck.cards = new List<BasicCard>();
-        playerDeckSTACK = new Deck();
+        playerDeck = new Deck();
     }
 
 
     //clear all the card in the player deck
     public void ClearPlayerDeck()
     {
-        playerDeckSTACK.ClearCards();
+        playerDeck.ClearCards();
     }
 
     //draw the card on top of the player deck and remove it from the deck
@@ -193,13 +180,13 @@ public class GameEngine
         // Check if We Can!
         if (hand.Count() >= settings.MaxHandCapability /*+ player.HandOverflow*/)//important pour le player
             throw new HandIsFullException();
-        else if (playerDeckSTACK.Count() == 0)
+        else if (playerDeck.Count() == 0)
             throw new DeckIsEmptyException();
 
         else
         {
             // Take from the deck
-            BasicCard myNewCard = playerDeckSTACK.DrawCard();
+            BasicCard myNewCard = playerDeck.DrawCard();
             hand.AddCard(myNewCard);
         }
 
@@ -217,7 +204,7 @@ public class GameEngine
     //Add card to the deck of the player
     public void AddCardToPlayerDeck(BasicCard newCard)
     {
-        playerDeckSTACK.AddCard(newCard);
+        playerDeck.AddCard(newCard);
     }
 
     //Takes a card from the hand and junk it to the disposal pile (Discard)
@@ -246,10 +233,10 @@ public class GameEngine
     {
         // The desck MUST be empty before to be shuffled with
         // the disposal pile :)
-        if (playerDeckSTACK.Count() == 0)
+        if (playerDeck.Count() == 0)
             while (disposalPile.Count() > 0)
             {
-                playerDeckSTACK.AddCard(disposalPile.DrawCard());
+                playerDeck.AddCard(disposalPile.DrawCard());
             }
     }
 
