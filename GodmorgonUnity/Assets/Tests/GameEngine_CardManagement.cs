@@ -98,7 +98,7 @@ namespace Tests
             GameEngine.Instance.AddCardToPlayerDeck(cardA);
             GameEngine.Instance.AddCardToPlayerDeck(cardB);
             BasicCard myDrawedCard = GameEngine.Instance.DrawCard();
-            Assert.AreSame(cardB, myDrawedCard);
+            Assert.AreSame(cardA, myDrawedCard);
         }
 
         [Test]

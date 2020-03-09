@@ -181,7 +181,7 @@ public class GameEngine
         if (playerDeck.cards.Count != 0)
         {
             drawnCard = playerDeck.cards[0];
-            playerDeck.cards.Remove(drawnCard);
+            playerDeck.cards.RemoveAt(0);
         }
         else
             return null;
