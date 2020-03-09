@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+
 using GodMorgon.Models;
+using GodMorgon.CardContainer;
 
 
 namespace Tests
@@ -99,20 +101,20 @@ namespace Tests
             Assert.AreSame(cardB, myDrawedCard);
         }
 
-        //[Test]
-        //public void CantDiscardFromTheHandWhenEmpty()
-        //{
-        //    Card myCardToRemove = ScriptableObject.CreateInstance<Card>();
-        //    GameEngine.hand.ClearCards();
-        //    GameEngine.disposalPile.ClearCards();
-        //    GameEngine.DiscardCard(myCardToRemove);
+        [Test]
+        public void CantDiscardFromTheHandWhenEmpty()
+        {
+            BasicCard myCardToRemove = ScriptableObject.CreateInstance<BasicCard>();
+            GameEngine.Instance.hand.ClearCards();
+            GameEngine.Instance.disposalPile.ClearCards();
+            GameEngine.Instance.DiscardCard(myCardToRemove);
 
-        //    Assert.AreEqual(0, GameEngine.disposalPile.Count());
+            Assert.AreEqual(0, GameEngine.Instance.disposalPile.Count());
 
-        //    GameEngine.DiscardCard(); // Blindly remove a card
+            GameEngine.Instance.DiscardCard(); // Blindly remove a card
 
-        //    Assert.AreEqual(0, GameEngine.disposalPile.Count());
-        //}
+            Assert.AreEqual(0, GameEngine.Instance.disposalPile.Count());
+        }
 
         //[Test]
         //public void CanDiscardFromTheHandWhenNotEmpty()
