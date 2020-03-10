@@ -178,16 +178,6 @@ public class GameEngine
             BasicCard myNewCard = playerDeck.DrawCard();
             hand.AddCard(myNewCard);
         }
-
-        //BasicCard drawnCard;
-        //if (playerDeckSTACK.Count() != 0)
-        //{
-        //    drawnCard = playerDeck.cards[0];
-        //    playerDeck.cards.RemoveAt(0);
-        //}
-        //else
-        //    return null;
-        //return drawnCard;   
     }
 
     //Add card to the deck of the player
@@ -223,10 +213,12 @@ public class GameEngine
         // The desck MUST be empty before to be shuffled with
         // the disposal pile :)
         if (playerDeck.Count() == 0)
+        {
             while (disposalPile.Count() > 0)
             {
                 playerDeck.AddCard(disposalPile.DrawCard());
             }
+        }
     }
 
     #endregion
