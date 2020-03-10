@@ -62,5 +62,11 @@ namespace GodMorgon.CardContainer
         {
             return cards.Count;
         }
+
+        //Get the cards list
+        public List<BasicCard> GetCards()
+        {
+            return cards;
+        }
     }
 }

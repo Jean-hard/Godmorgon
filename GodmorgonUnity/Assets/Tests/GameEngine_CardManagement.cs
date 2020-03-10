@@ -7,6 +7,8 @@ using UnityEngine.TestTools;
 using GodMorgon.Models;
 using GodMorgon.CardContainer;
 
+using GodMorgon.DeckBuilding.Draft;
+
 
 namespace Tests
 {
@@ -20,11 +22,12 @@ namespace Tests
         }
 
         #region Draft
-        //[Test]
-        //public void CanDrawCardFromDraftDeck()
-        //{
-        //    BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
-        //}
+        [Test]
+        public void CanDrawCardFromDraftDeck()
+        {
+            DraftPhase draft = new DraftPhase();
+            BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
+        }
 
         //[Test]
         //public void DraftPickerChooseTheNumberOfCardFromTheSettings()

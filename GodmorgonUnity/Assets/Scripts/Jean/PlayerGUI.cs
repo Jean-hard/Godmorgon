@@ -85,17 +85,17 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
                 if (currentHatStuff != null)
                 {
                     //retire le bonus de l'équipement déjà présent
-                    PlayerMgr.Instance.lifeMax -= currentHatStuff.lifeBonus;
-                    PlayerMgr.Instance.power -= currentHatStuff.powerBonus; ;
+                    PlayerData.Instance.lifeMax -= currentHatStuff.lifeBonus;
+                    PlayerData.Instance.power -= currentHatStuff.powerBonus; ;
                     //applique les bonus de la nouvelle carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 else
                 {
                     //applique les bonus de la carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 //set l'équipement porté à : celui de la carte qu'on vient de poser
                 currentHatStuff = addedStuffCard;
@@ -107,17 +107,17 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
                 if (currentChestStuff != null)
                 {
                     //retire le bonus de l'équipement déjà présent
-                    PlayerMgr.Instance.lifeMax -= currentChestStuff.lifeBonus;
-                    PlayerMgr.Instance.power -= currentChestStuff.powerBonus; ;
+                    PlayerData.Instance.lifeMax -= currentChestStuff.lifeBonus;
+                    PlayerData.Instance.power -= currentChestStuff.powerBonus; ;
                     //applique les bonus de la nouvelle carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 else
                 {
                     //applique les bonus de la carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 //set l'équipement porté à : celui de la carte qu'on vient de poser
                 currentChestStuff = addedStuffCard;
@@ -129,17 +129,17 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
                 if (currentPantsStuff != null)
                 {
                     //retire le bonus de l'équipement déjà présent
-                    PlayerMgr.Instance.lifeMax -= currentPantsStuff.lifeBonus;
-                    PlayerMgr.Instance.power -= currentPantsStuff.powerBonus; ;
+                    PlayerData.Instance.lifeMax -= currentPantsStuff.lifeBonus;
+                    PlayerData.Instance.power -= currentPantsStuff.powerBonus; ;
                     //applique les bonus de la nouvelle carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 else
                 {
                     //applique les bonus de la carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 //set l'équipement porté à : celui de la carte qu'on vient de poser
                 currentPantsStuff = addedStuffCard;
@@ -151,17 +151,17 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
                 if (currentShoesStuff != null)
                 {
                     //retire le bonus de l'équipement déjà présent
-                    PlayerMgr.Instance.lifeMax -= currentShoesStuff.lifeBonus;
-                    PlayerMgr.Instance.power -= currentShoesStuff.powerBonus; ;
+                    PlayerData.Instance.lifeMax -= currentShoesStuff.lifeBonus;
+                    PlayerData.Instance.power -= currentShoesStuff.powerBonus; ;
                     //applique les bonus de la nouvelle carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 else
                 {
                     //applique les bonus de la carte
-                    PlayerMgr.Instance.lifeMax += addedStuffCard.lifeBonus;
-                    PlayerMgr.Instance.power += addedStuffCard.powerBonus;
+                    PlayerData.Instance.lifeMax += addedStuffCard.lifeBonus;
+                    PlayerData.Instance.power += addedStuffCard.powerBonus;
                 }
                 //set l'équipement porté à : celui de la carte qu'on vient de poser
                 currentShoesStuff = addedStuffCard;
@@ -174,8 +174,8 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
 
 
         //update les textes des valeurs
-        lifeNbText.text = PlayerMgr.Instance.life.ToString() + " / " + PlayerMgr.Instance.lifeMax.ToString();
-        powerNbText.text = PlayerMgr.Instance.power.ToString();
+        lifeNbText.text = PlayerData.Instance.life.ToString() + " / " + PlayerData.Instance.lifeMax.ToString();
+        powerNbText.text = PlayerData.Instance.power.ToString();
 
         //mets l'image du stuff ajouté dans le slot associé
         switch (addedStuffCard.StuffType)
@@ -203,8 +203,8 @@ public class PlayerGUI : MonoBehaviour, IDropHandler
     public IEnumerator WaitForGUIStatsSetup()
     {
         yield return new WaitForSeconds(3f);
-        lifeNbText.text = PlayerMgr.Instance.lifeMax.ToString() + " / " + PlayerMgr.Instance.lifeMax.ToString();
-        powerNbText.text = PlayerMgr.Instance.power.ToString();
+        lifeNbText.text = PlayerData.Instance.lifeMax.ToString() + " / " + PlayerData.Instance.lifeMax.ToString();
+        powerNbText.text = PlayerData.Instance.power.ToString();
     }
 
 }

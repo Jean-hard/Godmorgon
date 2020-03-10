@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="PlayerMgr">
+  <Class Name="PlayerData">
     <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAACAAAAAAAAAAAAIAEAFAAAAAQAAAAgAAEAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\PlayerMgr.cs</FileName>
+      <FileName>Assets\Scripts\Jean\PlayerData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PlayerGUI">

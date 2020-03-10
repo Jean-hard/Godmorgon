@@ -15,10 +15,13 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
+    //wtf ?
     CardDisplay cardDisplay;
 
+    //wtf ?
     public BasicCard selectedCard;
 
+    //ça sert à quoi ?
     private bool isHandUpdated;
 
     #region Singleton Pattern
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //ça marche comment ?
         if (!isHandUpdated)
         {
             HandSetup();
@@ -55,11 +59,12 @@ public class GameManager : MonoBehaviour
 
     private void HandSetup()
     {
+        //wtf ?
         Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
         foreach (Transform _card in cardsInHand)
         {
             cardDisplay = _card.GetComponent<CardDisplay>();
-            if(null != cardDisplay)
+            if(cardDisplay != null)
             {
                 //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
                 //cardDisplay.onCardDragDelegate += OnCardDrag;
@@ -67,6 +72,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    /**
+     * update the card gameObject in the Hand
+     */
+    //public void UpdateHand()
+    //{
+    //    foreach
+    //}
 
     private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
     {
@@ -90,4 +103,15 @@ public class GameManager : MonoBehaviour
             //Debug.Log("La carte move est droppée");
         }
     }
+
+    #region IN-GAME BUTTON FUNCTION
+    /**
+     * Draw a card from the player Deck
+     */
+    public void DrawCardButton()
+    {
+        GameEngine.Instance.DrawCard();
+    }
+
+    #endregion
 }

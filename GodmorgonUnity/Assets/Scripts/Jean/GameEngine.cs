@@ -241,4 +241,12 @@ public class GameEngine
             availableDecks.Add(newDeck);
         //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
     }
+
+    /**
+     * Get the cards in the hand
+     */
+    public List<BasicCard> GetHandCards()
+    {
+        return hand.GetCards();
+    }
 }
