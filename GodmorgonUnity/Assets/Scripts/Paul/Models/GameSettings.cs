@@ -13,7 +13,9 @@ namespace GodMorgon.Models
         */
         public int MaxHandCapability = 5;
 
-        // Les decks disponibles pour démarrer le jeu
+        public DeckContent GameDeck;
+
+        // Les decks disponibles pour démarrer le jeu ______________Obsolète
         public List<DeckContent> decksPreconstruits = new List<DeckContent>();
 
     }

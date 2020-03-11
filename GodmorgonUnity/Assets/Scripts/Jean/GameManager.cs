@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using GodMorgon.Models;
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject hand;
+
+    [SerializeField]
+    private HandManager handManager;
 
     private GameObject player;
 
@@ -110,7 +114,8 @@ public class GameManager : MonoBehaviour
      */
     public void DrawCardButton()
     {
-        GameEngine.Instance.DrawCard();
+        BasicCard cardDrawn = GameEngine.Instance.DrawCard();
+        handManager.AddCard(cardDrawn);
     }
 
     #endregion

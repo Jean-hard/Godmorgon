@@ -15,12 +15,23 @@ public class HandManager : MonoBehaviour
     private GameObject cardDisplayPrefab;
 
     //list of CardDisplay in the hand
-    public List<CardDisplay> CardDisplayList = new List<CardDisplay>();
+    private List<CardDisplay> CardDisplayList = new List<CardDisplay>();
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    /**
+     * Create a card gameObject in the hand and add it to the list
+     * Use when a card is draw
+     */
+    public void AddCard(BasicCard cardDraw)
+    {
+        CardDisplay cardDisplay = Instantiate(cardDisplayPrefab, this.transform).GetComponent<CardDisplay>();
+        cardDisplay.UpdateCard(cardDraw);
+        CardDisplayList.Add(cardDisplay);
     }
 
     /**

@@ -69,13 +69,17 @@ public class GameEngine
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
         foreach (BasicCard card in theDeckChoosed.cards)
+        {
+            Debug.Log(card);
             playerDeck.AddCard(card);
+        }
     }
 
     public enum GameState
     {
         CHOOSEDECK,     //Le joueur doit choisir un deck
         DRAFTING,       //Le joueur doit choisir une carte parmi 3
+        STARTGAME,      //Arrivé sur le plateau de jeu
         PLAYING,        //Au tour du joueur de jouer
         MOVING,         //Le joueur se déplace
         FIGHTING,       //Le joueur combat un PNJ
@@ -111,7 +115,6 @@ public class GameEngine
 
     private void ApplyStateEffect ()
     {
-
         switch (currentState)
         {
             // Lors du choix du deck
@@ -122,6 +125,12 @@ public class GameEngine
             case GameState.DRAFTING:
                 // Lors de la phase draft
                 break;
+
+            case GameState.STARTGAME:
+                // Lorsque le joueur doit choisir quelle carte il joue
+                SetStartGameMode();
+                break;
+
             case GameState.PLAYING:
                 // Lorsque le joueur doit choisir quelle carte il joue
                 break;
@@ -164,7 +173,7 @@ public class GameEngine
     }
 
     //draw the card on top of the player deck and remove it from the deck
-    public void DrawCard()
+    public BasicCard DrawCard()
     {
         // Check if We Can!
         if (hand.Count() >= settings.MaxHandCapability /*+ player.HandOverflow*/)//important pour le player
@@ -177,6 +186,7 @@ public class GameEngine
             // Take from the deck
             BasicCard myNewCard = playerDeck.DrawCard();
             hand.AddCard(myNewCard);
+            return myNewCard;
         }
     }
 
@@ -206,7 +216,7 @@ public class GameEngine
         if (discarded != null)
             disposalPile.AddCard(discarded);
     }
-
+    
     // Moves the card from the disposal, randomly into the desk
     public void ShuffleDeck()
     {
@@ -228,6 +238,23 @@ public class GameEngine
         // On commence par charger les decks préconstruits
         foreach (DeckContent unDeck in settings.decksPreconstruits)
             AddDeck(unDeck);
+    }
+
+    /**
+     * Set the playerDeck and shuffle it
+     */
+    private void SetStartGameMode()
+    {
+        Deck tempDeck = new Deck();
+        SetPlayerDeck(settings.GameDeck);
+
+        while (playerDeck.Count() > 0)
+        {
+            tempDeck.AddCard(playerDeck.DrawCard());
+        }
+        Debug.Log(playerDeck.Count());
+        playerDeck = tempDeck;
+        Debug.Log(playerDeck.Count());
     }
 
     // ========================= Deck Management
