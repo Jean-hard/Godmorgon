@@ -25,7 +25,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public Image artworkImage;
     public Image template;
 
-    public delegate void CardDragDelegate(BasicCard draggedCard, PointerEventData eventData);
+    public delegate void CardDragDelegate(GameObject draggedCard, PointerEventData eventData);
 
     public CardDragDelegate onCardDragBeginDelegate;
     public CardDragDelegate onCardDragDelegate;
@@ -33,13 +33,9 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     private Vector3 startPosition;
 
-    private GameObject player;
-
     //Load the data of the card in the gameObject at start, if the card exist.
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");    //Récupère le player pour utiliser ses propriétés/fonctions
-
         if (card)
         {
             nameText.text = card.name;
@@ -70,36 +66,20 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         startPosition = this.transform.position;
-        onCardDragBeginDelegate?.Invoke(card, eventData);
+        onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
     }
 
     //fonction lancée lorsqu'on a une carte en main
     public void OnDrag(PointerEventData eventData)
     {
         this.transform.position = eventData.position;
-        onCardDragDelegate?.Invoke(card, eventData);
+        onCardDragDelegate?.Invoke(this.gameObject, eventData);
     }
 
     //fonction lancée au drop d'une carte
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.position = startPosition;
-        onCardDragEndDelegate?.Invoke(card, eventData);
-
-        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-        {
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            if (moveValidate)
-                GameEngine.Instance.DiscardCard(card);   //on place la carte dans la disposal pile une fois utilisée
-        }
-        
-        //on place la carte dans la disposal pile une fois utilisée
-            /*
-            if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-            {
-                bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-                if (moveValidate)
-                    GameEngine.Instance.DiscardCard(choosedCard);   //on place la carte dans la disposal pile une fois utilisée
-            }*/
-        }
+        onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
+    }
 }
