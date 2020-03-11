@@ -25,7 +25,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public Image artworkImage;
     public Image template;
 
-    public delegate void CardDragDelegate(CardDisplay card, PointerEventData eventData);
+    public delegate void CardDragDelegate(GameObject draggedCard, PointerEventData eventData);
 
     public CardDragDelegate onCardDragBeginDelegate;
     public CardDragDelegate onCardDragDelegate;
@@ -62,22 +62,24 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     }
 
+    //fonction lancée au drag d'une carte
     public void OnBeginDrag(PointerEventData eventData)
     {
         startPosition = this.transform.position;
-
-        onCardDragBeginDelegate?.Invoke(this, eventData);
+        onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
     }
 
+    //fonction lancée lorsqu'on a une carte en main
     public void OnDrag(PointerEventData eventData)
     {
         this.transform.position = eventData.position;
-        onCardDragDelegate?.Invoke(this, eventData);
+        onCardDragDelegate?.Invoke(this.gameObject, eventData);
     }
 
+    //fonction lancée au drop d'une carte
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.position = startPosition;
-        onCardDragEndDelegate?.Invoke(this, eventData);
+        onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
     }
 }

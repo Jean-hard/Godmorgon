@@ -61,18 +61,50 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /**
+     * Set l'écoute du comportement des cartes de la main
+     */
     private void HandSetup()
     {
-        //wtf ?
-        Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
+        // tableau contenant les cartes en main SUR LA SCENE --> TODO: les récup du gameengine
+        Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   
+        
+        //parcourt toutes les cartes de la main pour y lier les fonctions disponibles ici lors du drag and drop de ces cartes
         foreach (Transform _card in cardsInHand)
         {
             cardDisplay = _card.GetComponent<CardDisplay>();
             if(cardDisplay != null)
             {
-                //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
-                //cardDisplay.onCardDragDelegate += OnCardDrag;
-                cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
+                cardDisplay.onCardDragBeginDelegate += OnCardDragBegin; //on ajoute une fonction à la liste de celles lancées au début du drag
+                cardDisplay.onCardDragDelegate += OnCardDrag;   //on ajoute une fonction à la liste de celles lancées pendant le drag
+                cardDisplay.onCardDragEndDelegate += OnCardDragEnd; //on ajoute une fonction à la liste de celles lancées à la fin du drag
+            }
+        }
+    }
+
+    //fonction lancée au drag d'une carte
+    private void OnCardDragBegin(GameObject draggedCard, PointerEventData eventData)
+    {
+
+    }
+
+    //fonction lancée lorsqu'on a une carte en main
+    private void OnCardDrag(GameObject draggedCard, PointerEventData eventData)
+    {
+        
+    }
+
+    //fonction lancée au drop d'une carte
+    private void OnCardDragEnd(GameObject draggedCard, PointerEventData eventData)
+    {
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
+        {
+            //supprime la case si la carte est droppée dans une case voisine de celle du player
+            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+            if (moveValidate)
+            {
+                GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
+                Destroy(draggedCard);   // WIP : retirer de la main plutot que détruire
             }
         }
     }
@@ -84,29 +116,6 @@ public class GameManager : MonoBehaviour
     //{
     //    foreach
     //}
-
-    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        //Debug.Log("on drag begin " + card.name);
-        selectedCard = choosedCard.card;
-    }
-
-    private void OnCardDrag(CardDisplay card, PointerEventData eventData)
-    {
-        //Debug.Log("on drag " + card.name);
-
-    }
-
-    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-        {
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            if(moveValidate)
-                Destroy(choosedCard.gameObject);
-            //Debug.Log("La carte move est droppée");
-        }
-    }
 
     #region IN-GAME BUTTON FUNCTION
     /**
