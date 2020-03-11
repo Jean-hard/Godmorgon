@@ -43,22 +43,6 @@ public class PlayerMove : MonoBehaviour
 
             SetDirection();
         }
-        /*
-        // CLICK ON TILE
-        if (Input.GetMouseButton(0) && !hasMoved)
-        {
-            //transpose la position de la souris au moment du clique en position sur la grid, ce qui donne donc la tile sur laquelle on a cliqué
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            nextTileCoordinate = moveGrid.WorldToCell(mouseWorldPos);
-            currentTileCoordinate = moveGrid.WorldToCell(transform.position);
-            
-            //check si on clique bien sur une case à côté de nous
-            if (currentTileCoordinate.x != nextTileCoordinate.x && currentTileCoordinate.y != nextTileCoordinate.y)
-                return;
-            if (Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1
-                && Mathf.Abs(nextTileCoordinate.y) - Mathf.Abs(currentTileCoordinate.y) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1)
-                canMove = true;
-        }*/
 
         if (canMove)
         {
@@ -66,28 +50,18 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    //CORRIGER LA LIMITATION AUX CASES VOISINES
+    /**
+     * Lancée dans le GameManager lorsque la carte movement est droppée qqpart
+     * Active le mouvement du player si la carte est droppée sur une tile voisine du player
+     */
     public bool UseMoveCard()
     {
-        //transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
+        //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         nextTileCoordinate = moveGrid.WorldToCell(mouseWorldPos);
-        currentTileCoordinate = moveGrid.WorldToCell(transform.position);
 
-        /*
-        if (currentTileCoordinate.x != nextTileCoordinate.x && currentTileCoordinate.y != nextTileCoordinate.y)
-        {
-            Debug.Log("Carte move droppée dans une case trop éloignée");
-            canMove = false;
-            //return canMove;
-        }
-        //check si on clique bien sur une case à côté de nous
-        if (Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1
-            && Mathf.Abs(nextTileCoordinate.y) - Mathf.Abs(currentTileCoordinate.y) <= 1 && Mathf.Abs(nextTileCoordinate.x) - Mathf.Abs(currentTileCoordinate.x) >= -1)
-        {
-            canMove = true;
-            //return canMove;
-        }*/
+        //Transpose la position scène du player en position grid 
+        currentTileCoordinate = moveGrid.WorldToCell(transform.position);
 
         if (nearestTilesList.Contains(nextTileCoordinate))
         {
@@ -108,9 +82,10 @@ public class PlayerMove : MonoBehaviour
         //la position de la tile étant en bas du losange, on ajoute 0.2f en hauteur pour cibler le milieu de la tile
         Vector3 nextPos = moveGrid.CellToWorld(tileDirection) + new Vector3(0, gridY / 2 + 0.2f, 10);
         
+        //si le joueur arrive sur la targer position
         if (Vector3.Distance(transform.position, nextPos) < 0.001f)
         {
-            UpdateNearestTilesList();
+            UpdateNearestTilesList();   //on update les tiles voisines
             canMove = false;
             hasMoved = true;
         }
@@ -118,22 +93,24 @@ public class PlayerMove : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime); //avance jusqu'à la tile cliquée       
     }
 
+    /**
+     * Donne les 4 cases les plus proches du joueur 
+     * Lancée au Start et lorsque le joueur arrive sur une nouvelle tile
+     */
     public void UpdateNearestTilesList()
     {
-        nearestTilesList.Clear();
-        currentTileCoordinate = moveGrid.WorldToCell(transform.position);
-        //nearestTilesList.Add(currentTileCoordinate);
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x + 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x - 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));
+        nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
+        currentTileCoordinate = moveGrid.WorldToCell(transform.position);   //On transpose la position scène du player en position grid 
+        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x + 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));   //Ajoute la case en +1 en x dans la liste des cases voisines
+        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x - 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));   //Ne pas oubliez le -10 en z car la grid est à -10 en z
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y + 1, currentTileCoordinate.z - 10));
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y - 1, currentTileCoordinate.z - 10));
-        foreach(Vector3Int tile in nearestTilesList)
-        {
-            Debug.Log(tile);
-        }
     }
 
-    //Fonction pour se déplacer avec les touches du clavier
+    /**
+     * Set la direction pour se déplacer avec les touches du clavier
+     * Lancée dans l'update lors d'un appui sur les flèches directionnelles
+     */
     public void SetDirection()
     {
         Vector3 direction = Vector3.zero;

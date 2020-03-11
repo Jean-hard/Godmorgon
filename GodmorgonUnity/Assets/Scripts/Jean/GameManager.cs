@@ -63,31 +63,8 @@ public class GameManager : MonoBehaviour
             {
                 //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
                 //cardDisplay.onCardDragDelegate += OnCardDrag;
-                cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
+                //cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
             }
-        }
-    }
-
-    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        //Debug.Log("on drag begin " + card.name);
-        selectedCard = choosedCard.card;
-    }
-
-    private void OnCardDrag(CardDisplay card, PointerEventData eventData)
-    {
-        //Debug.Log("on drag " + card.name);
-
-    }
-
-    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-        {
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            if(moveValidate)
-                Destroy(choosedCard.gameObject);
-            //Debug.Log("La carte move est droppée");
         }
     }
 }
