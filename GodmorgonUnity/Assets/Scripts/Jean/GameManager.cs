@@ -81,29 +81,6 @@ public class GameManager : MonoBehaviour
     //    foreach
     //}
 
-    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        //Debug.Log("on drag begin " + card.name);
-        selectedCard = choosedCard.card;
-    }
-
-    private void OnCardDrag(CardDisplay card, PointerEventData eventData)
-    {
-        //Debug.Log("on drag " + card.name);
-
-    }
-
-    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-        {
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            if(moveValidate)
-                Destroy(choosedCard.gameObject);
-            //Debug.Log("La carte move est droppée");
-        }
-    }
-
     #region IN-GAME BUTTON FUNCTION
     /**
      * Draw a card from the player Deck
