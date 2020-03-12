@@ -7,6 +7,8 @@ using UnityEngine.TestTools;
 using GodMorgon.Models;
 using GodMorgon.CardContainer;
 
+using GodMorgon.DeckBuilding.Draft;
+
 
 namespace Tests
 {
@@ -20,11 +22,12 @@ namespace Tests
         }
 
         #region Draft
-        //[Test]
-        //public void CanDrawCardFromDraftDeck()
-        //{
-        //    BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
-        //}
+        [Test]
+        public void CanDrawCardFromDraftDeck()
+        {
+            DraftPhase draft = new DraftPhase();
+            BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
+        }
 
         //[Test]
         //public void DraftPickerChooseTheNumberOfCardFromTheSettings()
@@ -155,21 +158,21 @@ namespace Tests
             Assert.AreEqual(1, GameEngine.Instance.playerDeck.Count());
         }
 
-        //[Test]
-        //public void CantShuffleDeckWhenNotEmpty()
-        //{
-        //    Card cardA = ScriptableObject.CreateInstance<Card>();
-        //    Card cardB = ScriptableObject.CreateInstance<Card>();
-        //    GameEngine.deck.ClearCards();
-        //    GameEngine.disposalPile.ClearCards();
-        //    GameEngine.disposalPile.AddCard(cardA);
-        //    GameEngine.deck.AddCard(cardB);
+        [Test]
+        public void CantShuffleDeckWhenNotEmpty()
+        {
+            BasicCard cardA = ScriptableObject.CreateInstance<BasicCard>();
+            BasicCard cardB = ScriptableObject.CreateInstance<BasicCard>();
+            GameEngine.Instance.ClearPlayerDeck();
+            GameEngine.Instance.disposalPile.ClearCards();
+            GameEngine.Instance.disposalPile.AddCard(cardA);
+            GameEngine.Instance.AddCardToPlayerDeck(cardB);
 
-        //    GameEngine.ShuffleDeck();
+            GameEngine.Instance.ShuffleDeck();
 
-        //    Assert.AreSame(cardA, GameEngine.disposalPile.DrawCard());
-        //    Assert.AreSame(cardB, GameEngine.deck.DrawCard());
-        //}
+            Assert.AreSame(cardA, GameEngine.Instance.disposalPile.DrawCard());
+            Assert.AreSame(cardB, GameEngine.Instance.playerDeck.DrawCard());
+        }
 
         //[Test]
         //public void CanUseACardFromHand()
@@ -177,37 +180,39 @@ namespace Tests
 
         //}
 
+
+        /// WHEN PLAYER WILL BE DONE
         //[Test]
         //public void CantDrawMoreCardWhenHandIsFull()
         //{
         //    // No Low level test with hand...
-        //    GameEngine.deck.ClearCards(); // Remove all cards! Debug only
-        //    Card myCard = GameEngine.deck.DrawCard();
+        //    GameEngine.Instance.ClearPlayerDeck(); // Remove all cards! Debug only
+        //    BasicCard myCard = GameEngine.Instance.playerDeck.DrawCard();
         //    Assert.IsNull(myCard);
 
         //    // We DO have cards to draw
-        //    Card cardA = ScriptableObject.CreateInstance<Card>();
-        //    GameEngine.deck.AddCard(cardA);
+        //    BasicCard cardA = ScriptableObject.CreateInstance<BasicCard>();
+        //    GameEngine.Instance.AddCardToPlayerDeck(cardA);
 
         //    // Hand is full!
-        //    Settings settings = ScriptableObject.CreateInstance<Settings>();
+        //    GameSettings settings = ScriptableObject.CreateInstance<GameSettings>();
         //    Player player = new Player();
-        //    GameEngine.hand.ClearCards();
+        //    GameEngine.Instance.hand.ClearCards();
         //    int FullHand = player.HandOverflow + settings.MaxHandCapability;
-        //    while (GameEngine.hand.Count() < FullHand)
+        //    while (GameEngine.Instance.hand.Count() < FullHand)
         //    {
-        //        Card newCard = ScriptableObject.CreateInstance<Card>();
-        //        GameEngine.hand.AddCard(newCard);
+        //        BasicCard newCard = ScriptableObject.CreateInstance<BasicCard>();
+        //        GameEngine.Instance.hand.AddCard(newCard);
         //    }
 
         //    // High Level
-        //    Assert.Throws<HandIsFullException>(() => {
-        //        GameEngine.DrawCard();
+        //    Assert.Throws<HandIsFullException>(() =>
+        //    {
+        //        GameEngine.Instance.DrawCard();
         //    });
         //    // No card actually drawn
-        //    Assert.AreEqual(1, GameEngine.deck.Count());
-        //    Assert.AreEqual(FullHand, GameEngine.hand.Count());
-
+        //    Assert.AreEqual(1, GameEngine.Instance.playerDeck.Count());
+        //    Assert.AreEqual(FullHand, GameEngine.Instance.hand.Count());
         //}
 
         //[Test]

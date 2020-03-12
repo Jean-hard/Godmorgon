@@ -13,7 +13,7 @@ namespace TEST
 
         public void MovingEffect(int orientionChoice)
         {
-            TilemapManager.Instance.DirectionForPlayer(orientionChoice);
+            //TilemapManager.Instance.DirectionForPlayer(orientionChoice);
 
             OnUse();
         }

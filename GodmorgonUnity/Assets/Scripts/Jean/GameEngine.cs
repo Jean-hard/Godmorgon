@@ -24,23 +24,12 @@ public class GameEngine
     //Current Playing Deck.
     public Deck playerDeck;
 
-    //=========================== WIP ===== transfert de GameManager vers GameEngine // PAS DE SERIALIZEFIELD, pas monobehaviour
-
     /**
      * The card container list
      */
     public Hand hand;
 
     public DisposalPile disposalPile;
-
-
-    //dans la mesure du possible, il ne devrait pas y avoir de référence GameObjectdans le GameEngine
-    private GameObject player;
-
-    CardDisplay cardDisplay;
-
-    public BasicCard selectedCard;
-    //============================
 
 
     #region Singleton Pattern
@@ -80,13 +69,17 @@ public class GameEngine
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
         foreach (BasicCard card in theDeckChoosed.cards)
+        {
+            Debug.Log(card);
             playerDeck.AddCard(card);
+        }
     }
 
     public enum GameState
     {
         CHOOSEDECK,     //Le joueur doit choisir un deck
         DRAFTING,       //Le joueur doit choisir une carte parmi 3
+        STARTGAME,      //Arrivé sur le plateau de jeu
         PLAYING,        //Au tour du joueur de jouer
         MOVING,         //Le joueur se déplace
         FIGHTING,       //Le joueur combat un PNJ
@@ -122,7 +115,6 @@ public class GameEngine
 
     private void ApplyStateEffect ()
     {
-
         switch (currentState)
         {
             // Lors du choix du deck
@@ -133,6 +125,12 @@ public class GameEngine
             case GameState.DRAFTING:
                 // Lors de la phase draft
                 break;
+
+            case GameState.STARTGAME:
+                // Lorsque le joueur doit choisir quelle carte il joue
+                SetStartGameMode();
+                break;
+
             case GameState.PLAYING:
                 // Lorsque le joueur doit choisir quelle carte il joue
                 break;
@@ -175,7 +173,7 @@ public class GameEngine
     }
 
     //draw the card on top of the player deck and remove it from the deck
-    public void DrawCard()
+    public BasicCard DrawCard()
     {
         // Check if We Can!
         if (hand.Count() >= settings.MaxHandCapability /*+ player.HandOverflow*/)//important pour le player
@@ -188,17 +186,8 @@ public class GameEngine
             // Take from the deck
             BasicCard myNewCard = playerDeck.DrawCard();
             hand.AddCard(myNewCard);
+            return myNewCard;
         }
-
-        //BasicCard drawnCard;
-        //if (playerDeckSTACK.Count() != 0)
-        //{
-        //    drawnCard = playerDeck.cards[0];
-        //    playerDeck.cards.RemoveAt(0);
-        //}
-        //else
-        //    return null;
-        //return drawnCard;   
     }
 
     //Add card to the deck of the player
@@ -227,17 +216,19 @@ public class GameEngine
         if (discarded != null)
             disposalPile.AddCard(discarded);
     }
-
+    
     // Moves the card from the disposal, randomly into the desk
     public void ShuffleDeck()
     {
         // The desck MUST be empty before to be shuffled with
         // the disposal pile :)
         if (playerDeck.Count() == 0)
+        {
             while (disposalPile.Count() > 0)
             {
                 playerDeck.AddCard(disposalPile.DrawCard());
             }
+        }
     }
 
     #endregion
@@ -247,6 +238,23 @@ public class GameEngine
         // On commence par charger les decks préconstruits
         foreach (DeckContent unDeck in settings.decksPreconstruits)
             AddDeck(unDeck);
+    }
+
+    /**
+     * Set the playerDeck and shuffle it
+     */
+    private void SetStartGameMode()
+    {
+        Deck tempDeck = new Deck();
+        SetPlayerDeck(settings.GameDeck);
+
+        while (playerDeck.Count() > 0)
+        {
+            tempDeck.AddCard(playerDeck.DrawCard());
+        }
+        Debug.Log(playerDeck.Count());
+        playerDeck = tempDeck;
+        Debug.Log(playerDeck.Count());
     }
 
     // ========================= Deck Management
@@ -261,44 +269,11 @@ public class GameEngine
         //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
     }
 
-    ////================================= WIP ===== Transfert de GameManager vers GameEngine ---------- //doit rester dans le gameManager, seul les fonctions "regle du jeu" doivents être dans le gameEngine
-    //private void HandSetup()
-    //{
-    //   /*LA CA CASSE */ Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   // tableau contenant les cartes en main --> TODO: les récup du gameengine
-    //    foreach (Transform _card in cardsInHand)
-    //    {
-    //        cardDisplay = _card.GetComponent<CardDisplay>();
-    //        if (null != cardDisplay)
-    //        {
-    //            //cardDisplay.onCardDragBeginDelegate += OnCardDragBegin;
-    //            //cardDisplay.onCardDragDelegate += OnCardDrag;
-    //            cardDisplay.onCardDragEndDelegate += OnCardDragEnd;
-    //        }
-    //    }
-    //}
-
-    private void OnCardDragBegin(CardDisplay choosedCard, PointerEventData eventData)
+    /**
+     * Get the cards in the hand
+     */
+    public List<BasicCard> GetHandCards()
     {
-        //Debug.Log("on drag begin " + card.name);
-        selectedCard = choosedCard.card;
+        return hand.GetCards();
     }
-
-    private void OnCardDrag(CardDisplay card, PointerEventData eventData)
-    {
-        //Debug.Log("on drag " + card.name);
-
-    }
-
-    private void OnCardDragEnd(CardDisplay choosedCard, PointerEventData eventData)
-    {
-        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.GetType().Name == "MoveCard")
-        {
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            //if (moveValidate)
-                //Destroy(choosedCard.gameObject);
-            //Debug.Log("La carte move est droppée");
-        }
-    }
-
-    //============================================================================
 }

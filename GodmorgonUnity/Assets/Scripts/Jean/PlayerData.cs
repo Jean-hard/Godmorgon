@@ -4,36 +4,36 @@ using UnityEngine;
 
 using GodMorgon.Models;
 
-public class PlayerMgr : MonoBehaviour
+public class PlayerData
 {
-    public int lifeMax = 100;
+    public int lifeMax;
     public int life;
-    public int power = 50;
-    
-    private static PlayerMgr instance;
+    public int power;
 
-    public static PlayerMgr Instance
+    #region Singleton Pattern
+    private static PlayerData instance;
+
+    public static PlayerData Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = GameObject.FindObjectOfType<PlayerMgr>();
-
-                if (instance == null)
-                {
-                    GameObject container = new GameObject("Player");
-                    instance = container.AddComponent<PlayerMgr>();
-                }
+                instance = new PlayerData();
             }
 
             return instance;
         }
     }
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    //Sera créer et configurer par le gameEngine
+    public PlayerData()
     {
+        //à configurer par le gameEngine
+        lifeMax = 100;
+        power = 50;
+
         life = lifeMax;
     }
 
