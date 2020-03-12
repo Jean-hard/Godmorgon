@@ -63,7 +63,6 @@ namespace Tests
         //}
         #endregion
 
-
         [Test]
         public void CantDrawCardWhenDeckIsEmpty()
         {

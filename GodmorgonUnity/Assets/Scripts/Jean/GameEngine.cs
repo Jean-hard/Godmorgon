@@ -21,7 +21,7 @@ public class GameEngine
     // List of Deck to choose from.
     public List<DeckContent> availableDecks = new List<DeckContent>();
 
-    //// Current Playing Deck.
+    //Current Playing Deck.
     public Deck playerDeck;
 
     //=========================== WIP ===== transfert de GameManager vers GameEngine // PAS DE SERIALIZEFIELD, pas monobehaviour
