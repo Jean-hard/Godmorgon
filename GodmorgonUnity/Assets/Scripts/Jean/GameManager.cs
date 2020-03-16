@@ -53,32 +53,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //ça marche comment ?
-        if (!isHandUpdated)
-        {
-            HandSetup();
-            isHandUpdated = true;
-        }
+        
     }
 
     /**
-     * Set l'écoute du comportement des cartes de la main
+     * Set l'écoute du comportement des cartes de la main pour pouvoir ajouter des évènements dans le GameManager lors du drag/drop d'une carte
+     * TODO : Lancer après la distribution d'une carte
      */
-    private void HandSetup()
+    private void ListenHandCardsBehaviour()
     {
-        // tableau contenant les cartes en main SUR LA SCENE --> TODO: les récup du gameengine
-        Transform[] cardsInHand = hand.gameObject.GetComponentsInChildren<Transform>();   
-        
+        // tableau contenant les cartes en mainsur la scène
+        List<BasicCard> cardsInHand = GameEngine.Instance.GetHandCards();        
         //parcourt toutes les cartes de la main pour y lier les fonctions disponibles ici lors du drag and drop de ces cartes
-        foreach (Transform _card in cardsInHand)
+        foreach (BasicCard _card in cardsInHand)
         {
-            cardDisplay = _card.GetComponent<CardDisplay>();
-            if(cardDisplay != null)
-            {
-                cardDisplay.onCardDragBeginDelegate += OnCardDragBegin; //on ajoute une fonction à la liste de celles lancées au début du drag
-                cardDisplay.onCardDragDelegate += OnCardDrag;   //on ajoute une fonction à la liste de celles lancées pendant le drag
-                cardDisplay.onCardDragEndDelegate += OnCardDragEnd; //on ajoute une fonction à la liste de celles lancées à la fin du drag
-            }
+            cardDisplay.onCardDragBeginDelegate += OnCardDragBegin; //on ajoute pour chaque carte une fonction à la liste de celles lancées au début du drag
+            cardDisplay.onCardDragDelegate += OnCardDrag;   //on ajoute pour chaque carte une fonction à la liste de celles lancées pendant le drag
+            cardDisplay.onCardDragEndDelegate += OnCardDragEnd; //on ajoute pour chaque carte une fonction à la liste de celles lancées à la fin du drag
         }
     }
 
