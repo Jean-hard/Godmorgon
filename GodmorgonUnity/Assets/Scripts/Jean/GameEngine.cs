@@ -19,6 +19,7 @@ public class GameEngine
     private GameSettings settings;
 
     // List of Deck to choose from.
+    //______________plus utilisé___________________
     public List<DeckContent> availableDecks = new List<DeckContent>();
 
     //Current Playing Deck.
@@ -68,11 +69,12 @@ public class GameEngine
     //Set Player deck content
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
+        //Debug.Log("le deck sélectionner fait : " + theDeckChoosed.cards.Count);
         foreach (BasicCard card in theDeckChoosed.cards)
         {
-            Debug.Log(card);
-            playerDeck.AddCard(card);
+            AddCardToPlayerDeck(card);
         }
+        Debug.Log("le deck fait maintenant : " + playerDeck.Count());
     }
 
     public enum GameState
@@ -119,16 +121,17 @@ public class GameEngine
         {
             // Lors du choix du deck
             case GameState.CHOOSEDECK:
-                SetChooseDeckMode();
+                Debug.Log("error Current State ! CHOOSEDECK no more exist");
 
                 break;
             case GameState.DRAFTING:
                 // Lors de la phase draft
+                SetStartingGame();
                 break;
 
             case GameState.STARTGAME:
                 // Lorsque le joueur doit choisir quelle carte il joue
-                SetStartGameMode();
+                SetStartingGame();////Si la game est lancé directement depuis la scène
                 break;
 
             case GameState.PLAYING:
@@ -233,34 +236,40 @@ public class GameEngine
 
     #endregion
 
-    private void SetChooseDeckMode()
-    {
-        // On commence par charger les decks préconstruits
-        foreach (DeckContent unDeck in settings.decksPreconstruits)
-            AddDeck(unDeck);
-    }
+    /**
+     * __________plus utilisé_____________
+     */
+    //private void SetChooseDeckMode()
+    //{
+    //    // On commence par charger les decks préconstruits
+    //    foreach (DeckContent unDeck in settings.decksPreconstruits)
+    //        AddDeck(unDeck);
+    //}
 
     /**
      * Set the playerDeck and shuffle it
      */
-    private void SetStartGameMode()
+    private void SetStartingGame()
     {
+        //deck for the shuffle
         Deck tempDeck = new Deck();
+
         SetPlayerDeck(settings.GameDeck);
+        //Debug.Log(tempDeck.GetCards().Count);
 
         while (playerDeck.Count() > 0)
         {
             tempDeck.AddCard(playerDeck.DrawCard());
         }
-        Debug.Log(playerDeck.Count());
         playerDeck = tempDeck;
-        Debug.Log(playerDeck.Count());
+        Debug.Log(playerDeck.GetCards().Count);
     }
 
     // ========================= Deck Management
 
     /**
      * Adds a new deck to the available decks list.
+     * ________________plus utilisé__________________
      */
     public void AddDeck (DeckContent newDeck)
     {

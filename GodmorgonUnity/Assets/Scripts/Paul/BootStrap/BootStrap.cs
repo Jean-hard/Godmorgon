@@ -21,6 +21,6 @@ public class BootStrap : MonoBehaviour
         GameEngine.Instance.SetSettings(gameSettings);
 
         ///actually the game start with this :
-        DeckBuildingManager.Instance.DeckSelectionStart();
+        DeckBuildingManager.Instance.DraftStart();
     }
 }
