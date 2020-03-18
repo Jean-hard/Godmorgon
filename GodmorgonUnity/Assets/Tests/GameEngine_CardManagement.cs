@@ -27,7 +27,7 @@ namespace Tests
         public void DeckAlreadySetupAtStart()
         {
             DeckContent baseDeck = Resources.Load<DeckContent>("decks/GameDeck");
-            GameEngine.Instance.CurrentState = GameEngine.GameState.DRAFTING;
+            //GameEngine.Instance.CurrentState = GameEngine.GameState.DRAFTING;
             Assert.AreEqual(baseDeck.cards, GameEngine.Instance.playerDeck.GetCards());
         }
 

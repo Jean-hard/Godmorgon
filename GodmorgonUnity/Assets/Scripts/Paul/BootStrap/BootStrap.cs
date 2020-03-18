@@ -4,10 +4,11 @@ using UnityEngine;
 
 using GodMorgon.Models;
 using GodMorgon.DeckBuilding;
+using GodMorgon.StateMachine;
 
 
 /**
- * Class that initialize data like settings and truly launch the game
+ * Class that initialize data like settings and truly launch the game ---- FROM DRAFT SCENE !
  */
 public class BootStrap : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class BootStrap : MonoBehaviour
     //initialize data at start and launch first game function
     public void Start()
     {
-        GameEngine.Instance.SetSettings(gameSettings);
+        if (GameEngine.Instance.gameLaunched == false)
+        {
+            GameEngine.Instance.SetSettings(gameSettings);
+            GameEngine.Instance.SetStartingGame();
 
-        ///actually the game start with this :
-        DeckBuildingManager.Instance.DraftStart();
+            GameEngine.Instance.SetState(StateMachine.STATE.DRAFT);
+        }
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 using GodMorgon.Models;
+using GodMorgon.StateMachine;
 
 namespace GodMorgon.DeckBuilding.Draft
 {
@@ -47,7 +49,7 @@ namespace GodMorgon.DeckBuilding.Draft
                 }
             }
             else
-                SceneManager.LoadScene("GameScene");
+                GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.INITIALIZATION_MAZE);
             //Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
         }
 
