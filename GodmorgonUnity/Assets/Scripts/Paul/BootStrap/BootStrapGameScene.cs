@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using GodMorgon.Models;
-using GodMorgon.DeckBuilding;
+using GodMorgon.StateMachine;
 
+/**
+ * Class that initialize data like settings and truly launch the game ---- FROM GAME SCENE !
+ */
 public class BootStrapGameScene : MonoBehaviour
 {
     //Settings parameter for GameEngine
@@ -14,9 +17,12 @@ public class BootStrapGameScene : MonoBehaviour
     //initialize data at start and launch first game function
     public void Start()
     {
-        GameEngine.Instance.SetSettings(gameSettings);
+        if (GameEngine.Instance.gameLaunched == false)
+        {
+            GameEngine.Instance.SetSettings(gameSettings);
+            GameEngine.Instance.SetState(StateMachine.STATE.INITIALIZATION_MAZE);
 
-        ///actually the game scene start with this :
-        GameEngine.Instance.CurrentState = GameEngine.GameState.STARTGAME;
+            GameEngine.Instance.SetStartingGame();
+        }
     }
 }

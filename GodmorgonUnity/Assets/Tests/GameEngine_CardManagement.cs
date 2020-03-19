@@ -17,17 +17,26 @@ namespace Tests
         [SetUp]
         public void SetUpCardManagement()
         {
+            GameEngine.Instance.SetSettings(Resources.Load<GameSettings>("Game Settings Game"));
             GameEngine.Instance.InitializePlayerDeck();
             Debug.Log("Setup Done");
         }
 
         #region Draft
         [Test]
-        public void CanDrawCardFromDraftDeck()
+        public void DeckAlreadySetupAtStart()
         {
-            DraftPhase draft = new DraftPhase();
-            BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
+            DeckContent baseDeck = Resources.Load<DeckContent>("decks/GameDeck");
+            //GameEngine.Instance.CurrentState = GameEngine.GameState.DRAFTING;
+            Assert.AreEqual(baseDeck.cards, GameEngine.Instance.playerDeck.GetCards());
         }
+
+        //[Test]
+        //public void CanDrawCardFromDraftDeck()
+        //{
+        //    DraftPhase draft = new DraftPhase();
+        //    BasicCard card = ScriptableObject.CreateInstance<BasicCard>();
+        //}
 
         //[Test]
         //public void DraftPickerChooseTheNumberOfCardFromTheSettings()
@@ -65,7 +74,6 @@ namespace Tests
 
         //}
         #endregion
-
 
         [Test]
         public void CantDrawCardWhenDeckIsEmpty()

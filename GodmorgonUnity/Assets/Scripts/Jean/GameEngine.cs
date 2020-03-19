@@ -5,32 +5,38 @@ using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
 using GodMorgon.CardContainer;
+using GodMorgon.StateMachine;
 
 public class GameEngine
 {
     /**
-     * Current Game State.
+     * FOR BOOTSTRAP
+     * check if the game is already launch
      */
-    private GameState currentState = GameState.DEFAULT;
+    public bool gameLaunched = false;
 
     /**
      * Current Game Settings
      */
     private GameSettings settings;
 
-    // List of Deck to choose from.
-    public List<DeckContent> availableDecks = new List<DeckContent>();
-
-    //// Current Playing Deck.
+    //Current Playing Deck.
     public Deck playerDeck;
 
     /**
-     * The card container list
+     * The hand card container 
      */
     public Hand hand;
 
+    /**
+     * The discard card container
+     */
     public DisposalPile disposalPile;
 
+    /**
+     * The State Machine use by the gameEngine
+     */
+    public StateMachine stateMachine;
 
     #region Singleton Pattern
     private static GameEngine instance;
@@ -49,113 +55,65 @@ public class GameEngine
     }
     #endregion
 
-    /**
-     * Private Constructor for Singleton.
-     */
-    private GameEngine ()
-    {
-        playerDeck = new Deck();
-        hand = new Hand();
-        disposalPile = new DisposalPile();
-    }
-
-    //Set settings from bootStrap or else
+    //Set settings from bootStrap
     public void SetSettings(GameSettings theSettings)
     {
         settings = theSettings;
     }
 
+    /**
+     * Private Constructor for Singleton.
+     * Initialize the list and the stateMachine
+     */
+    private GameEngine ()
+    {
+
+        playerDeck = new Deck();
+        hand = new Hand();
+        disposalPile = new DisposalPile();
+        stateMachine = new StateMachine();
+    }
+
+    /**
+     * Set the new state of the game
+     */
+    public void SetState(StateMachine.STATE beginState)
+    {
+        stateMachine.SetState(beginState);
+    }
+
     //Set Player deck content
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
+        //Debug.Log("le deck sélectionner fait : " + theDeckChoosed.cards.Count);
         foreach (BasicCard card in theDeckChoosed.cards)
         {
-            Debug.Log(card);
-            playerDeck.AddCard(card);
+            AddCardToPlayerDeck(card);
         }
+        Debug.Log("le deck fait maintenant : " + playerDeck.Count());
     }
 
-    public enum GameState
+    /**
+     * Set the playerDeck and shuffle it
+     */
+    public void SetStartingGame()
     {
-        CHOOSEDECK,     //Le joueur doit choisir un deck
-        DRAFTING,       //Le joueur doit choisir une carte parmi 3
-        STARTGAME,      //Arrivé sur le plateau de jeu
-        PLAYING,        //Au tour du joueur de jouer
-        MOVING,         //Le joueur se déplace
-        FIGHTING,       //Le joueur combat un PNJ
-        GAMEOVER,       //Le joueur a perdu
-        MENU,           //Le joueur est dans le menu principal
-        OPTIONS,        //Le joueur est dans le menu option
-        DEFAULT
-    };
+        Debug.Log("Game set");
+        //deck for the shuffle
+        Deck tempDeck = new Deck();
 
-    //permet de get l'état courant, et set l'état courant en lançant ce qu'il doit se passer pour le nouvel état
-    public GameState CurrentState
-    {
-        get
+        SetPlayerDeck(settings.GameDeck);
+        //Debug.Log(tempDeck.GetCards().Count);
+
+        while (playerDeck.Count() > 0)
         {
-            if (currentState == GameState.DEFAULT)
-                Debug.LogError("Il y a un problème de GameState !");
-
-            return currentState;
+            tempDeck.AddCard(playerDeck.DrawCard());
         }
+        playerDeck = tempDeck;
+        Debug.Log(playerDeck.GetCards().Count);
 
-        set
-        {
-            //Debug.Log("passage dans le setter");
-            if (currentState != value)
-            { // Quitte à faire un test avant de changer la valeur, autant ne rien faire du tout si on ne change pas d'état ;)
-                currentState = value;
-                ApplyStateEffect();
-            }
-        }
-    }
-    
-    // ========================= Methods
+        gameLaunched = true;
 
-    private void ApplyStateEffect ()
-    {
-        switch (currentState)
-        {
-            // Lors du choix du deck
-            case GameState.CHOOSEDECK:
-                SetChooseDeckMode();
-
-                break;
-            case GameState.DRAFTING:
-                // Lors de la phase draft
-                break;
-
-            case GameState.STARTGAME:
-                // Lorsque le joueur doit choisir quelle carte il joue
-                SetStartGameMode();
-                break;
-
-            case GameState.PLAYING:
-                // Lorsque le joueur doit choisir quelle carte il joue
-                break;
-            case GameState.MOVING:
-                // Lorsque le joueur se déplace d'une case à l'autre
-                break;
-            case GameState.FIGHTING:
-                // Lors d'un combat entre joueur et PNJ
-                break;
-            case GameState.GAMEOVER:
-                // Lorsque le joueur est mort
-                break;
-            case GameState.MENU:
-                // Lorsque le joueur est sur le main menu
-                break;
-            case GameState.OPTIONS:
-                // Lorsque le joueur est dans le menu options
-                break;
-            case GameState.DEFAULT:
-                // On ne devrait jamais être dans cet état
-                break;
-            default:
-                // Si on n'est dans aucun de ces états
-                break;
-        }
     }
 
     #region CARD MANAGEMENT
@@ -232,42 +190,6 @@ public class GameEngine
     }
 
     #endregion
-
-    private void SetChooseDeckMode()
-    {
-        // On commence par charger les decks préconstruits
-        foreach (DeckContent unDeck in settings.decksPreconstruits)
-            AddDeck(unDeck);
-    }
-
-    /**
-     * Set the playerDeck and shuffle it
-     */
-    private void SetStartGameMode()
-    {
-        Deck tempDeck = new Deck();
-        SetPlayerDeck(settings.GameDeck);
-
-        while (playerDeck.Count() > 0)
-        {
-            tempDeck.AddCard(playerDeck.DrawCard());
-        }
-        Debug.Log(playerDeck.Count());
-        playerDeck = tempDeck;
-        Debug.Log(playerDeck.Count());
-    }
-
-    // ========================= Deck Management
-
-    /**
-     * Adds a new deck to the available decks list.
-     */
-    public void AddDeck (DeckContent newDeck)
-    {
-        if (!availableDecks.Contains(newDeck))
-            availableDecks.Add(newDeck);
-        //Debug.Log("deck ajouté a la liste de deck dispo : " + newDeck.name);
-    }
 
     /**
      * Get the cards in the hand

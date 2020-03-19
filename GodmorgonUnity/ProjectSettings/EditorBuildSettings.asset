@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jean/GameSceneOld.unity
     guid: 9b46ddb97df20754cae0e2d7ad4c0116
+  - enabled: 1
+    path: Assets/Scenes/Jean/GameScene.unity
+    guid: 0eca1d710e7f07b4f98fec9396e58a81
   m_configObjects: {}

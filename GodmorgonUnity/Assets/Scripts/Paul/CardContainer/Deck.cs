@@ -17,7 +17,9 @@ namespace GodMorgon.CardContainer
         public new void AddCard(BasicCard newCard)
         {
             if (newCard != null)
+            {
                 cards.Push(newCard);
+            }
             else
                 throw new InconsistentCardExecption();
         }
@@ -33,6 +35,7 @@ namespace GodMorgon.CardContainer
             cards.Clear();
         }
 
+        //Return the count in the Stack
         public new int Count() { return cards.Count; }
     }
 }

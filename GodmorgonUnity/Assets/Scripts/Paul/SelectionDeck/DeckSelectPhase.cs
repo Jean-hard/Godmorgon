@@ -6,6 +6,9 @@ using GodMorgon.Models;
 
 namespace GodMorgon.DeckBuilding.SelectionDeck
 {
+    /**
+     * Obsolète
+     */
     public class DeckSelectPhase : MonoBehaviour
     {
         //list of deck displayed on screen.
@@ -30,53 +33,53 @@ namespace GodMorgon.DeckBuilding.SelectionDeck
          * Set the available deck to the deck gameObject on screen.
          * And Set the button for the right deck.
          */
-        public void SetAvailableDeck()
-        {
-            for(int i = 0; i < 3; i++)
-            {
-                Debug.Log(deckDisplayed[i].name);
-                deckDisplayed[i].UpdateDeck(GameEngine.Instance.availableDecks[i]);
-            }
+        //public void SetAvailableDeck()
+        //{
+        //    for(int i = 0; i < 3; i++)
+        //    {
+        //        Debug.Log(deckDisplayed[i].name);
+        //        deckDisplayed[i].UpdateDeck(GameEngine.Instance.availableDecks[i]);
+        //    }
 
-            // assigns the right function to the linked deck
-            SeeCardButtons[0].onClick.AddListener(delegate
-            {ShowDeckCard(deckDisplayed[0].deck);});
-            SeeCardButtons[1].onClick.AddListener(delegate      //======= ALED =========
-            { ShowDeckCard(deckDisplayed[1].deck); });
-            SeeCardButtons[2].onClick.AddListener(delegate
-            { ShowDeckCard(deckDisplayed[2].deck); });
-        }
+        //    // assigns the right function to the linked deck
+        //    SeeCardButtons[0].onClick.AddListener(delegate
+        //    {ShowDeckCard(deckDisplayed[0].deck);});
+        //    SeeCardButtons[1].onClick.AddListener(delegate      //======= ALED =========
+        //    { ShowDeckCard(deckDisplayed[1].deck); });
+        //    SeeCardButtons[2].onClick.AddListener(delegate
+        //    { ShowDeckCard(deckDisplayed[2].deck); });
+        //}
 
-#region function for button
+//#region function for button
 
-        /**
-         * Read the list of card contain in the deck and update the card in the panel.
-         */
-        public void ShowDeckCard(DeckContent deck)
-        {
-            deckDisplayer.gameObject.SetActive(true);
-            deckDisplayer.UpdateCards(deck);
-            currentDeck = deck;
-        }
+//        /**
+//         * Read the list of card contain in the deck and update the card in the panel.
+//         */
+//        public void ShowDeckCard(DeckContent deck)
+//        {
+//            deckDisplayer.gameObject.SetActive(true);
+//            deckDisplayer.UpdateCards(deck);
+//            currentDeck = deck;
+//        }
 
-        /**
-         * Hide the panel
-         */
-        public void HideDeckCard()
-        {
-            deckDisplayer.ResetCards();
-            deckDisplayer.gameObject.SetActive(false);
-        }
+//        /**
+//         * Hide the panel
+//         */
+//        public void HideDeckCard()
+//        {
+//            deckDisplayer.ResetCards();
+//            deckDisplayer.gameObject.SetActive(false);
+//        }
 
-        /**
-         * Save the deck selected and launch the draft phase.
-         */
-        public void ValidateDeck()
-        {
-            DeckBuildingManager.Instance.SetPlayerDeck(currentDeck);
-            DeckBuildingManager.Instance.DraftStart();
-        }
-#endregion
+//        /**
+//         * Save the deck selected and launch the draft phase.
+//         */
+//        public void ValidateDeck()
+//        {
+//            DeckBuildingManager.Instance.SetPlayerDeck(currentDeck);
+//            DeckBuildingManager.Instance.DraftStart();
+//        }
+//#endregion
     }
 }
 

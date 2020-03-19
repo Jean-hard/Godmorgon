@@ -43,20 +43,20 @@ namespace GodMorgon.DeckBuilding
          * Set the GameState for ChooseDeck at start
          * Setup the deckSelectPhase screen.
          * Launch the deck selection phase
+         * _____PLUS UTILISE_________
          */
-        public void DeckSelectionStart()
-        {
-            GameEngine.Instance.CurrentState = GameEngine.GameState.CHOOSEDECK;
-            deckSelectPhase.SetAvailableDeck();
-            deckSelectPhase.gameObject.SetActive(true);
-        }
+        //public void DeckSelectionStart()
+        //{
+        //    GameEngine.Instance.CurrentState = GameEngine.GameState.CHOOSEDECK;
+        //    deckSelectPhase.SetAvailableDeck();
+        //    deckSelectPhase.gameObject.SetActive(true);
+        //}
 
         /**
          * Launch the draft phase and so finish the deck selection phase
          */
         public void DraftStart()
         {
-            GameEngine.Instance.CurrentState = GameEngine.GameState.DRAFTING;
             deckSelectPhase.gameObject.SetActive(false);
             draftPhase.gameObject.SetActive(true);
             draftPhase.StartDraftSequence();
@@ -65,10 +65,10 @@ namespace GodMorgon.DeckBuilding
         /**
          * Set the player deck
          */
-        public void SetPlayerDeck(DeckContent deckSelected)
-        {
-            GameEngine.Instance.SetPlayerDeck(deckSelected);
-        }
+        //public void SetPlayerDeck(DeckContent deckSelected)
+        //{
+        //    GameEngine.Instance.SetPlayerDeck(deckSelected);
+        //}
 
         //Add a card to the player Deck (normaly only use by the draftPhase)
         public void AddCardToPlayerDeck(BasicCard cardToAdd)
