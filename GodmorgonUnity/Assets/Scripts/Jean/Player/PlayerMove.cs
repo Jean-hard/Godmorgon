@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour
         //la position de la tile étant en bas du losange, on ajoute 0.2f en hauteur pour cibler le milieu de la tile
         Vector3 nextPos = moveGrid.CellToWorld(tileDirection) + new Vector3(0, gridY / 2 + 0.2f, 10);
         
-        //si le joueur arrive sur la targer position
+        //si le joueur arrive sur la target position
         if (Vector3.Distance(transform.position, nextPos) < 0.001f)
         {
             UpdateNearestTilesList();   //on update les tiles voisines
