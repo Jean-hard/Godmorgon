@@ -15,6 +15,8 @@ public class BootStrap : MonoBehaviour
     //Settings parameter for GameEngine
     [SerializeField]
     private GameSettings gameSettings;
+    [SerializeField]
+    private string gameSceneName;
 
     //initialize data at start and launch first game function
     public void Start()
@@ -23,6 +25,7 @@ public class BootStrap : MonoBehaviour
         {
             GameEngine.Instance.SetSettings(gameSettings);
             GameEngine.Instance.SetStartingGame();
+            GameEngine.Instance.SetCurrentGameScene(gameSceneName);
 
             GameEngine.Instance.SetState(StateMachine.STATE.DRAFT);
         }

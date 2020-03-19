@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 namespace GodMorgon.StateMachine
 {
     public class Initialization_Maze : State
@@ -12,7 +14,8 @@ namespace GodMorgon.StateMachine
          */
         public override void OnStartState()
         {
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene(GameEngine.Instance.currentGameScene);
+            Debug.Log("le deck fait à présent : " + GameEngine.Instance.playerDeck.Count());
         }
     }
 }

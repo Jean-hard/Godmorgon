@@ -16,6 +16,12 @@ public class GameEngine
     public bool gameLaunched = false;
 
     /**
+     * FOR BOOTSTRAP
+     * the current scene of game to play
+     */
+    public string currentGameScene;
+
+    /**
      * Current Game Settings
      */
     private GameSettings settings;
@@ -113,7 +119,17 @@ public class GameEngine
         Debug.Log(playerDeck.GetCards().Count);
 
         gameLaunched = true;
+    }
 
+    /**
+     * Set the current scene of game
+     */
+    public void SetCurrentGameScene(string gameSceneName)
+    {
+        if (gameSceneName == "")
+            currentGameScene = "GameScene";
+        else
+        currentGameScene = gameSceneName;
     }
 
     #region CARD MANAGEMENT
