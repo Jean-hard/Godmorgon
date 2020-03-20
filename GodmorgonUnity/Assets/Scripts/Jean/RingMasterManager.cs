@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using GodMorgon.Models;
 
 public class RingMasterManager : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class RingMasterManager : MonoBehaviour
     // A recup dans les futurs scriptables object des enemies : nombre de room que l'ennemi peut parcourir en une fois
     public int nbMoves = 1;
 
-    // 
-    public int nbTilesToMove = 4;
+    // nombre de tiles parcourues pour 1 move
+    private int nbTilesToMove = 4;
 
     Astar astar;
     List<Spot> roadPath = new List<Spot>();
@@ -51,10 +52,7 @@ public class RingMasterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         MoveEnemies();
-
     }
 
     /*
@@ -85,7 +83,7 @@ public class RingMasterManager : MonoBehaviour
     public void SetEnemyPath()
     {
         Vector3 playerPos = player.transform.position;
-        Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    // position d'arrivée (player) en format cellule
+        Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    //position d'arrivée (player) en format cellule
 
         enemyIndex = 0;
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
@@ -95,7 +93,7 @@ public class RingMasterManager : MonoBehaviour
             enemiesPathArray[i] = new List<Spot>();
         }
 
-        // s'il y a des ennemis
+        //s'il y a des ennemis
         if (enemiesArray.Length > 0)
         {
             foreach (GameObject enemy in enemiesArray)
@@ -106,8 +104,8 @@ public class RingMasterManager : MonoBehaviour
                 if (roadPath != null && roadPath.Count > 0) //reset le roadpath
                     roadPath.Clear();
 
-                // création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path -> dépend de l'ennemi
-                // roadPath est une liste çde spots = une liste de positions de tiles
+                //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path -> dépend de l'ennemi
+                //roadPath est une liste çde spots = une liste de positions de tiles
                 roadPath = astar.CreatePath(spots, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove * nbMoves);
 
                 if (roadPath == null)
@@ -147,11 +145,11 @@ public class RingMasterManager : MonoBehaviour
             return;
         }
 
-        // FAIRE UNE SECURITE SI 2 ENEMY SE CROISENT
+        //FAIRE UNE SECURITE SI 2 ENEMY SE CROISENT
         
         if (enemyIndex < enemiesArray.Length)
         {
-            // la prochaine position est le spot parmi la liste de spot de l'enemy concerné
+            //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
             Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0)) 
                 + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
             
