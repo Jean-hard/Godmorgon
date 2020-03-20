@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using GodMorgon.Models;
 
 public class RingMasterManager : MonoBehaviour
 {
+    public Grid grid;
     public Tilemap walkableTilemap;
     public Tilemap roadMap;
     public TileBase roadTile;
@@ -18,10 +20,13 @@ public class RingMasterManager : MonoBehaviour
 
     private bool enemiesCanMove = false;
 
-    public float enemySpeed = 1.0f;
+    public float enemySpeed = 0.5f;
 
-    // A recup dans les futurs scriptables object des enemies
-    public int nbMoves;
+    // A recup dans les futurs scriptables object des enemies : nombre de room que l'ennemi peut parcourir en une fois
+    public int nbMoves = 1;
+
+    // nombre de tiles parcourues pour 1 move
+    private int nbTilesToMove = 4;
 
     Astar astar;
     List<Spot> roadPath = new List<Spot>();
@@ -44,54 +49,10 @@ public class RingMasterManager : MonoBehaviour
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
     }
 
-    
-
     // Update is called once per frame
-    public Vector2Int start;
     void Update()
     {
-        // Set la position de départ du path avec le clique droit
-        if (Input.GetMouseButton(1))
-        {
-            Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
-            start = new Vector2Int(gridPos.x, gridPos.y);
-        }
-
-        // Efface le chemin tracé avec le bouton molette
-        if (Input.GetMouseButton(2))
-        {
-            Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
-            roadMap.SetTile(new Vector3Int(gridPos.x, gridPos.y, 0), null);
-        }
-
-        // Trace le chemin entre le start et la tile cliquée avec le clique gauche
-        if (Input.GetMouseButtonDown(0))    //GetMouseButtonDown ici car appelé pendant 1 seule frame
-        {
-            CreateGrid();
-
-            Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = walkableTilemap.WorldToCell(world);    // position d'arrivée en format tile
-
-            if (roadPath != null && roadPath.Count > 0)
-                roadPath.Clear();
-
-            // création du path, prenant en compte la position des tiles walkable, le point de départ, le point d'arrivée, et la longueur en tiles du path
-            // roadPath est une liste de spots = une liste de positions de tiles
-            roadPath = astar.CreatePath(spots, start, new Vector2Int(gridPos.x, gridPos.y), 3);
-            if (roadPath == null)
-                return;
-
-            //Debug.Log(roadPath.Count);
-            // ajoute un sprite sur les tiles du path
-            DrawRoad();
-            // le point d'arrivée de vient le nouveau point de départ
-            start = new Vector2Int(roadPath[0].X, roadPath[0].Y);
-        }
-
         MoveEnemies();
-
     }
 
     /*
@@ -117,14 +78,59 @@ public class RingMasterManager : MonoBehaviour
     }
 
     /*
-     * Ajoute un sprite sur les tile d'un path
+     * Renvoie la liste des tiles sur lequelles l'enemy doit bouger
      */
-    private void DrawRoad()
+    public void SetEnemyPath()
     {
-        for (int i = 0; i < roadPath.Count; i++)
+        Vector3 playerPos = player.transform.position;
+        Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    //position d'arrivée (player) en format cellule
+
+        enemyIndex = 0;
+        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        enemiesPathArray = new List<Spot>[enemiesArray.Length];
+        for (int i = 0; i < enemiesPathArray.Length; i++)
         {
-            roadMap.SetTile(new Vector3Int(roadPath[i].X, roadPath[i].Y, 0), roadTile);
+            enemiesPathArray[i] = new List<Spot>();
         }
+
+        //s'il y a des ennemis
+        if (enemiesArray.Length > 0)
+        {
+            foreach (GameObject enemy in enemiesArray)
+            {
+                spotIndex = 0;
+
+                Vector3Int enemyPos = walkableTilemap.WorldToCell(enemy.transform.position);
+                if (roadPath != null && roadPath.Count > 0) //reset le roadpath
+                    roadPath.Clear();
+
+                //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path -> dépend de l'ennemi
+                //roadPath est une liste çde spots = une liste de positions de tiles
+                roadPath = astar.CreatePath(spots, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove * nbMoves);
+
+                if (roadPath == null)
+                {
+                    return;
+                }
+
+                foreach (Spot spot in roadPath)
+                {
+                    if (spotIndex > 0)  //on zappe le premier spot car correspond à la tile sur laquelle l'enemy est
+                    {
+                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les 3 spots par lesquels il va devoir passer
+                    }
+                    spotIndex++;
+                }
+
+                enemiesPathArray[enemyIndex].Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
+
+                enemyIndex++;
+            }
+        }
+
+        enemiesCanMove = true;  //on autorise les enemies à bouger
+        enemyIndex = 0;
+        spotIndex = 0;
     }
 
     /*
@@ -139,23 +145,22 @@ public class RingMasterManager : MonoBehaviour
             return;
         }
 
-        // FAIRE UNE SECURITE SI UN ENEMY A LA MEME POSITION QUE LA CASE OU CE REND L'ENEMY EN COURS
+        //FAIRE UNE SECURITE SI 2 ENEMY SE CROISENT
         
         if (enemyIndex < enemiesArray.Length)
         {
-            Debug.Log("Taille pathTilesArray : " + enemiesPathArray[enemyIndex].Count);
-            Debug.Log("Enemy Index : " + enemyIndex);
-            Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0));    // la prochaine position est le spot de l'enemy correspondant
-            enemiesArray[enemyIndex].transform.position = Vector3.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime); 
+            //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
+            Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0)) 
+                + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
             
             if (Vector3.Distance(enemiesArray[enemyIndex].transform.position, nextPos) < 0.001f)
             {
-                if(spotIndex == (nbMoves - 1))  //si on arrive à la tile finale où l'enemy peut se rendre
+                if(spotIndex == (nbTilesToMove * nbMoves - nbMoves))  //si on arrive à la tile finale où l'enemy peut se rendre
                 {
                     enemyIndex++;   //on passe à l'enemy suivant
                     spotIndex = 0;  //reset de l'index des spots pour que l'enemy suivant avance sur une case à coté de lui 
                 }
-                else if(spotIndex < (nbMoves - 1))
+                else if(spotIndex < (nbTilesToMove * nbMoves - nbMoves))
                     spotIndex++;    //on passe à la tile suivante
                 
                 if (enemyIndex >= enemiesArray.Length)   //s'il ne reste plus d'enemies à bouger
@@ -165,47 +170,10 @@ public class RingMasterManager : MonoBehaviour
                     spotIndex = 0;
                 }
             }
-        }
-    }
-
-    /*
-     * Renvoie la liste des tiles sur lequelles l'enemy doit bouger
-     */
-    public void SetEnemyPath()
-    {
-        Vector3 playerPos = player.transform.position;
-        Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    // position d'arrivée (player) en format cellule
-
-        enemyIndex = 0;
-        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
-        enemiesPathArray = new List<Spot>[enemiesArray.Length];
-        
-
-        // s'il y a des ennemis
-        if (enemiesArray.Length > 0)
-        {
-            // RECUP LA POSITION CELLULE DE CHAQUE ENEMY
-            foreach (GameObject enemy in enemiesArray)
+            else
             {
-                Vector3Int enemyPos = walkableTilemap.WorldToCell(enemy.transform.position);
-                if (roadPath != null && roadPath.Count > 0)
-                    roadPath.Clear();
-
-                // création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path
-                // roadPath est une liste de spots = une liste de positions de tiles
-                roadPath = astar.CreatePath(spots, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(endPos.x, endPos.y), nbMoves);
-
-                if (roadPath == null)
-                    return;
-
-                enemiesPathArray[enemyIndex] = roadPath;
-                
-                enemyIndex++;
+                enemiesArray[enemyIndex].transform.position = Vector3.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
             }
         }
-
-        enemiesCanMove = true;  //on autorise les enemies à bouger
-        enemyIndex = 0;
-        spotIndex = 0;
     }
 }
