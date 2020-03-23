@@ -27,7 +27,7 @@ public class PlayerData
     }
     #endregion
 
-    //Sera créer et configurer par le gameEngine
+    //Sera créé et configuré par le gameEngine
     public PlayerData()
     {
         //à configurer par le gameEngine
@@ -45,10 +45,5 @@ public class PlayerData
     public void SetPower(int newPower)
     {
         power = newPower;
-    }
-
-    public void AddStuffCardToInventory(StuffCard stuffCardToAdd)
-    {
-        
     }
 }

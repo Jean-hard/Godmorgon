@@ -14,6 +14,11 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     private GameObject cardDisplayPrefab;
 
+    [SerializeField]
+    private float cardWidth = 175f;
+    [SerializeField]
+    private float cardHeight = 300f;
+
     //list of CardDisplay in the hand
     private List<CardDisplay> CardDisplayList = new List<CardDisplay>();
 
@@ -30,6 +35,9 @@ public class HandManager : MonoBehaviour
     public void AddCard(BasicCard cardDraw)
     {
         CardDisplay cardDisplay = Instantiate(cardDisplayPrefab, this.transform).GetComponent<CardDisplay>();
+
+        //Set the display of the card
+        cardDisplay.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);
         cardDisplay.UpdateCard(cardDraw);
         CardDisplayList.Add(cardDisplay);
     }

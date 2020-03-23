@@ -67,6 +67,12 @@ public class GameEngine
         settings = theSettings;
     }
 
+    //return the game settings
+    public GameSettings GetSettings()
+    {
+        return settings;
+    }
+
     /**
      * Private Constructor for Singleton.
      * Initialize the list and the stateMachine

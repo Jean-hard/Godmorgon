@@ -114,8 +114,13 @@ public class GameManager : MonoBehaviour
      */
     public void DrawCardButton()
     {
-        BasicCard cardDrawn = GameEngine.Instance.DrawCard();
-        handManager.AddCard(cardDrawn);
+        if (GameEngine.Instance.hand.Count() < GameEngine.Instance.GetSettings().MaxHandCapability)
+        {
+            BasicCard cardDrawn = GameEngine.Instance.DrawCard();
+            handManager.AddCard(cardDrawn);
+        }
+        else
+            Debug.Log("capacité de carte maximale");
     }
 
     #endregion
