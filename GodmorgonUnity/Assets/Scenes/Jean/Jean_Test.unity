@@ -234,7 +234,7 @@ MonoBehaviour:
   roadMap: {fileID: 256285471}
   roadTile: {fileID: 11400000, guid: fb4e4dcd043222a449b156fbaba8990a, type: 2}
   enemySpeed: 1
-  nbMoves: 1
+  nbMoves: 3
 --- !u!1 &189966575
 GameObject:
   m_ObjectHideFlags: 0
@@ -45572,7 +45572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363010119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.495, y: -2.817, z: 0}
+  m_LocalPosition: {x: 6, y: 0.94, z: 0}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47133,7 +47133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752935683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1273415, y: 4.71, z: 366.99323}
+  m_LocalPosition: {x: 1.1273415, y: -1.33, z: 366.99323}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 2013706972}

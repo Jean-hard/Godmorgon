@@ -17,6 +17,7 @@ public class RingMasterManager : MonoBehaviour
     private List<Spot>[] enemiesPathArray;
     private int enemyIndex;
     private int spotIndex;
+    private List<GameObject> enemyToPlayer;
 
     private bool enemiesCanMove = false;
 
@@ -96,6 +97,9 @@ public class RingMasterManager : MonoBehaviour
         //s'il y a des ennemis
         if (enemiesArray.Length > 0)
         {
+            Vector3Int playerCellPos = walkableTilemap.WorldToCell(player.transform.position);
+            enemyToPlayer = new List<GameObject>();
+
             foreach (GameObject enemy in enemiesArray)
             {
                 spotIndex = 0;
@@ -115,10 +119,18 @@ public class RingMasterManager : MonoBehaviour
 
                 foreach (Spot spot in roadPath)
                 {
-                    if (spotIndex > 0)  //on zappe le premier spot car correspond à la tile sur laquelle l'enemy est
+                    //on met dans un tableau les enemies qui vont se rendre dans la room du player pour pouvoir les faire s'arreter une tile avant le player
+                    if (playerCellPos.x == spot.X && playerCellPos.y == spot.Y)
+                    {
+                        enemyToPlayer.Add(enemiesArray[enemyIndex]);
+                    }
+
+                    //on zappe le premier spot car correspond à la tile sur laquelle l'enemy est
+                    if (spotIndex > 0)  
                     {
                         enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les 3 spots par lesquels il va devoir passer
                     }
+
                     spotIndex++;
                 }
 
@@ -128,6 +140,8 @@ public class RingMasterManager : MonoBehaviour
             }
         }
 
+        
+
         enemiesCanMove = true;  //on autorise les enemies à bouger
         enemyIndex = 0;
         spotIndex = 0;
@@ -135,13 +149,11 @@ public class RingMasterManager : MonoBehaviour
 
     /*
      * Lance le mouvement des ennemis
-     * Prend en paramètre un tableau de listes de positions de tiles
      */
     public void MoveEnemies()
     {
         if (enemiesArray.Length <= 0 || !enemiesCanMove)
         {
-            Debug.Log("Quit MoveEnemies");
             return;
         }
 
@@ -149,20 +161,37 @@ public class RingMasterManager : MonoBehaviour
         
         if (enemyIndex < enemiesArray.Length)
         {
-            //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
-            Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0)) 
-                + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
-            
+            Vector3 nextPos = new Vector3();
+            if(enemiesPathArray[enemyIndex][spotIndex+1] != null)
+            {
+                //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
+                nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0))
+                    + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
+
+            } else
+            {
+                enemyIndex++;
+                spotIndex++;
+            }
+
+            Vector3Int playerCellPos = walkableTilemap.WorldToCell(player.transform.position); // on récup la position de la tile du player pour savoir si on s'arrete sur la tile d'avant
+
             if (Vector3.Distance(enemiesArray[enemyIndex].transform.position, nextPos) < 0.001f)
             {
-                if(spotIndex == (nbTilesToMove * nbMoves - nbMoves))  //si on arrive à la tile finale où l'enemy peut se rendre
+                //on passe à l'ennemy suivant si on arrive à la tile finale où l'enemy peut se rendre ou que la prochaine tile est celle du player
+                if (spotIndex == (nbTilesToMove * nbMoves - nbMoves))
                 {
+                    Debug.Log("next enemy");
                     enemyIndex++;   //on passe à l'enemy suivant
                     spotIndex = 0;  //reset de l'index des spots pour que l'enemy suivant avance sur une case à coté de lui 
                 }
-                else if(spotIndex < (nbTilesToMove * nbMoves - nbMoves))
+                else if (spotIndex < (nbTilesToMove * nbMoves - nbMoves))
+                {
+                    Debug.Log("next spot");
                     spotIndex++;    //on passe à la tile suivante
-                
+                    //if (enemiesPathArray[enemyIndex][spotIndex + 2].X == playerCellPos.x && enemiesPathArray[enemyIndex][spotIndex + 2].Y == playerCellPos.y)
+                      //  return;
+                }
                 if (enemyIndex >= enemiesArray.Length)   //s'il ne reste plus d'enemies à bouger
                 {
                     enemiesCanMove = false;
