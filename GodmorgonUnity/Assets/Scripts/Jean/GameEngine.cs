@@ -122,7 +122,7 @@ public class GameEngine
             tempDeck.AddCard(playerDeck.DrawCard());
         }
         playerDeck = tempDeck;
-        Debug.Log(playerDeck.GetCards().Count);
+        //Debug.Log(playerDeck.GetCards().Count);
 
         gameLaunched = true;
     }
