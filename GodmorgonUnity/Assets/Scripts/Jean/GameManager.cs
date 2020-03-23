@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
      */
     public void DrawCardButton()
     {
+        //Check if the max hand capability is not reach yet.
         if (GameEngine.Instance.hand.Count() < GameEngine.Instance.GetSettings().MaxHandCapability)
         {
             BasicCard cardDrawn = GameEngine.Instance.DrawCard();
