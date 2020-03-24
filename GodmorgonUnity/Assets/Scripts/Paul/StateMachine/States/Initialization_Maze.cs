@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+using GodMorgon.Timeline;
 
 namespace GodMorgon.StateMachine
 {
@@ -18,6 +18,9 @@ namespace GodMorgon.StateMachine
 
             SceneManager.LoadScene(GameEngine.Instance.currentGameScene);
             Debug.Log("le deck fait à présent : " + GameEngine.Instance.playerDeck.Count());
+
+            //set the timeline
+            TimelineManager.Instance.InitTimeline();
         }
     }
 }

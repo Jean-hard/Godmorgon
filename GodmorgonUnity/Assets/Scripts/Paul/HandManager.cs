@@ -12,7 +12,7 @@ public class HandManager : MonoBehaviour
 {
     //card prefab
     [SerializeField]
-    private GameObject cardDisplayPrefab;
+    private GameObject cardDisplayPrefab = null;
 
     [SerializeField]
     private float cardWidth = 175f;

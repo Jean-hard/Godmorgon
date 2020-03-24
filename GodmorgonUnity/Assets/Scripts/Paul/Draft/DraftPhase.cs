@@ -13,13 +13,13 @@ namespace GodMorgon.DeckBuilding.Draft
     {
         //Deck use to draw card for the draft
         [SerializeField]
-        private DeckContent draftDeck;
+        private DeckContent draftDeck = null;
 
         /**
          * link for the three card to choose during the draft
          */
         [SerializeField]
-        private List<CardDisplay> cardsOnDraft;
+        private List<CardDisplay> cardsOnDraft = null;
 
         /**
          * Number of draft to execute

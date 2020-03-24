@@ -15,21 +15,21 @@ namespace GodMorgon.DeckBuilding.SelectionDeck
          * Text zone for the name and description of the selected deck
          */
         [SerializeField]
-        private Text deckName;
+        private Text deckName = null;
         [SerializeField]
-        private Text deckDescription;
+        private Text deckDescription = null;
 
         /**
          * example card with basic information to reset the deck display
          */
         [SerializeField]
-        private BasicCard baseCard;
+        private BasicCard baseCard = null;
 
         /**
          * GameObject list of the card contain in the ScrollView.
          */
         [SerializeField]
-        private List<CardDisplay> cardsDisplayed;
+        private List<CardDisplay> cardsDisplayed = null;
 
         /**
          * updates all cards displayed relative to the card in the selected deck
