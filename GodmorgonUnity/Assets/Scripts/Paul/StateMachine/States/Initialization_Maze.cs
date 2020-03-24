@@ -16,7 +16,7 @@ namespace GodMorgon.StateMachine
         {
             Debug.Log("On Initialization maze State");
 
-            SceneManager.LoadScene(GameEngine.Instance.currentGameScene);
+            SceneManager.LoadScene(GameEngine.Instance.currentGameScene);/////////////va falloir trouver un autre moyen...
             Debug.Log("le deck fait à présent : " + GameEngine.Instance.playerDeck.Count());
 
             //set the timeline
