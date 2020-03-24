@@ -208,7 +208,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    enemiesArray[enemyIndex].transform.position = Vector3.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
+                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
                 }
             }
         }

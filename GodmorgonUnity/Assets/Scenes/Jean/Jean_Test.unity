@@ -1211,7 +1211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535019173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 6.977, z: 9.722618}
+  m_LocalPosition: {x: -0.001, y: 6.977, z: 0}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 1446802515}
@@ -28792,8 +28792,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 7, y: 7, z: 0}
     second:
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -44775,11 +44775,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 72c1e05c66608f6468399c8ccca243c6, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 585b64d2e6a5e1041a821d3d91186d25, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 810892a4aac4f274f8fb2c510bc1f1f9, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: d327d2d708e73c34fb0de4efffbe99c1, type: 2}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: f613608adcdc00b4794f0ef4bd5095a4, type: 2}
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: 64acb8b0bf3bba7448dca6d7376ce772, type: 2}
@@ -44818,11 +44818,11 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: b42b96280fedc884883400b4667fde5c, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 05eb07fc01026b547906fcf72a4bc342, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 2dbce232646dbb74194b9e362fe8a9e8, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: c240f08177181c8479f62e1cac2af618, type: 3}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 42b598df266042348b410798198b8700, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 21300000, guid: 7365afeba8f02974384614fd67e9241f, type: 3}
@@ -45448,6 +45448,7 @@ MonoBehaviour:
   hand: {fileID: 652673496}
   handManager: {fileID: 652673499}
   selectedCard: {fileID: 0}
+  playerTurnButton: {fileID: 0}
 --- !u!1 &1363010119
 GameObject:
   m_ObjectHideFlags: 0
@@ -47114,7 +47115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752935683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 6.217, z: 9.722618}
+  m_LocalPosition: {x: 4.5, y: 6.217, z: 0}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 1446802515}
@@ -47586,7 +47587,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930984284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.498, y: 1.715, z: 9.722618}
+  m_LocalPosition: {x: 10.498, y: 1.715, z: 5}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 1446802515}
