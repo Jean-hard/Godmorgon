@@ -6,6 +6,8 @@ namespace GodMorgon.Timeline
 {
     public abstract class Action : ITimelineAction
     {
+        public Sprite actionLogo;
+
         public virtual void Execute()
         {
 

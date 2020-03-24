@@ -42,7 +42,7 @@ namespace GodMorgon.Timeline
         // Start is called before the first frame update
         void Start()
         {
-            actionlist = settings.ActionInTimeline;
+            actionlist = settings.GetActionList();
             SetDisplay();
         }
 
