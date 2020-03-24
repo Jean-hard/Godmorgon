@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using GodMorgon.Models;
 
-public class RingMasterManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     public Grid grid;
     public Tilemap walkableTilemap;
@@ -12,7 +12,7 @@ public class RingMasterManager : MonoBehaviour
     public TileBase roadTile;
     public Vector3Int[,] spots;
 
-    private GameObject player;
+    public GameObject player;
     private GameObject[] enemiesArray;
     private List<Spot>[] enemiesPathArray;
     private int enemyIndex;
@@ -21,7 +21,7 @@ public class RingMasterManager : MonoBehaviour
 
     private bool enemiesCanMove = false;
 
-    public float enemySpeed = 0.5f;
+    public float enemySpeed = 1f;
 
     // A recup dans les futurs scriptables object des enemies : nombre de room que l'ennemi peut parcourir en une fois
     public int nbMoves = 1;
@@ -31,20 +31,18 @@ public class RingMasterManager : MonoBehaviour
 
     Astar astar;
     List<Spot> roadPath = new List<Spot>();
-    new Camera camera;
     BoundsInt bounds;
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
         roadMap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
         bounds = walkableTilemap.cellBounds;
-        camera = Camera.main;
 
-        player = GameObject.FindGameObjectWithTag("Player");
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        //UpdateEnemiesArray();
 
         CreateGrid();
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
@@ -75,6 +73,14 @@ public class RingMasterManager : MonoBehaviour
                     spots[i, j] = new Vector3Int(x, y, 1);
                 }
             }
+        }
+    }
+
+    private void UpdateEnemiesArray()
+    {
+        for(int i = 0; i<transform.childCount; i++)
+        {
+            enemiesArray[i] = transform.GetChild(i).gameObject;
         }
     }
 
@@ -109,7 +115,7 @@ public class RingMasterManager : MonoBehaviour
                     roadPath.Clear();
 
                 //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path -> dépend de l'ennemi
-                //roadPath est une liste çde spots = une liste de positions de tiles
+                //roadPath est une liste de spots = une liste de positions de tiles
                 roadPath = astar.CreatePath(spots, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove * nbMoves);
 
                 if (roadPath == null)
@@ -120,18 +126,18 @@ public class RingMasterManager : MonoBehaviour
                 foreach (Spot spot in roadPath)
                 {
                     bool hasPlayerOnPath = false;
-                    
+
                     //on met dans un tableau les enemies qui vont se rendre dans la room du player pour pouvoir les faire s'arreter une tile avant le player
                     if (playerCellPos.x == spot.X && playerCellPos.y == spot.Y)
                     {
-                        hasPlayerOnPath = true; 
+                        hasPlayerOnPath = true;
                         enemyToPlayer.Add(enemiesArray[enemyIndex]);
                     }
 
                     //on zappe le premier spot car correspond à la tile sur laquelle l'enemy est
-                    if (!hasPlayerOnPath)  
+                    if (!hasPlayerOnPath)
                     {
-                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les 3 spots par lesquels il va devoir passer
+                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les spots par lesquels il va devoir passer
                     }
 
                     spotIndex++;
@@ -140,9 +146,17 @@ public class RingMasterManager : MonoBehaviour
                 enemiesPathArray[enemyIndex].Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
                 enemiesPathArray[enemyIndex].RemoveAt(0);
 
+                foreach(Spot spot in enemiesPathArray[enemyIndex])
+                {
+                    Debug.Log(spot.X + " / " + spot.Y);
+                }
+
                 enemyIndex++;
             }
         }
+
+        foreach (GameObject enemy in enemyToPlayer)
+            Debug.Log(enemy);
 
         enemiesCanMove = true;  //on autorise les enemies à bouger
         enemyIndex = 0;
@@ -164,12 +178,10 @@ public class RingMasterManager : MonoBehaviour
 
         if (enemyIndex < enemiesArray.Length)
         {
-            Vector3 nextPos = new Vector3();
-
             if (enemiesPathArray[enemyIndex] != null)
             {
                 //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
-                nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0))
+                Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0))
                     + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
 
 
@@ -196,9 +208,17 @@ public class RingMasterManager : MonoBehaviour
                 }
                 else
                 {
-                    enemiesArray[enemyIndex].transform.position = Vector3.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
+                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
                 }
             }
         }
+    }
+
+    public bool EnemiesMoveDone()
+    {
+        if (enemiesCanMove)
+            return false;
+        else
+            return true;
     }
 }
