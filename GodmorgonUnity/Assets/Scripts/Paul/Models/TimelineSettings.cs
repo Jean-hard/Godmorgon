@@ -12,7 +12,7 @@ namespace GodMorgon.Models
      * Data for the timeline of the game
      */
     [CreateAssetMenu(fileName = "Timeline", menuName = "AddTimeLineSettings")]
-    public class TimeLineSettings : ScriptableObject
+    public class TimelineSettings : ScriptableObject
     {
         public enum ACTION_TYPE
         {

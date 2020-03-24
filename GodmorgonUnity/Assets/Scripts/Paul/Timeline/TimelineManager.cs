@@ -12,7 +12,7 @@ namespace GodMorgon.Timeline
          * Settings for the timeline.
          */
         [SerializeField]
-        private TimeLineSettings settings;
+        private TimelineSettings settings;
 
         /**
          * List containing all the actions in order.

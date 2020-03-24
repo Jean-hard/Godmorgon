@@ -35,9 +35,9 @@ namespace GodMorgon.DeckBuilding
          * link to the manager of the different phase during the Deck Building.
          */
         [SerializeField]
-        private DeckSelectPhase deckSelectPhase;
+        private DeckSelectPhase deckSelectPhase = null;
         [SerializeField]
-        private DraftPhase draftPhase;
+        private DraftPhase draftPhase = null;
 
         /**
          * Set the GameState for ChooseDeck at start

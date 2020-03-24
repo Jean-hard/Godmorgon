@@ -105,14 +105,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /**
-     * update the card gameObject in the Hand
-     */
-    //public void UpdateHand()
-    //{
-    //    foreach
-    //}
-
     #region IN-GAME BUTTON FUNCTION
     /**
      * Draw a card from the player Deck

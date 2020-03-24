@@ -12,9 +12,9 @@ public class BootStrapGameScene : MonoBehaviour
 {
     //Settings parameter for GameEngine
     [SerializeField]
-    private GameSettings gameSettings;
+    private GameSettings gameSettings = null;
     [SerializeField]
-    private string gameSceneName;
+    private string gameSceneName = null;
 
     //initialize data at start and launch first game function
     public void Start()

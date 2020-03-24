@@ -14,13 +14,13 @@ public class BootStrap : MonoBehaviour
 {
     //Settings parameter for GameEngine
     [SerializeField]
-    private GameSettings gameSettings;
+    private GameSettings gameSettings = null;
 
     /**
      * Set the game scene for test
      */
     [SerializeField]
-    private string gameSceneName;
+    private string gameSceneName = null;
 
     //initialize data at start and launch first game function
     public void Start()
