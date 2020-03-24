@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     private bool enemiesCanMove = false;
 
     public float enemySpeed = 1f;
+    public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     // A recup dans les futurs scriptables object des enemies : nombre de room que l'ennemi peut parcourir en une fois
     public int nbMoves = 1;
@@ -208,7 +209,10 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
+                    float ratio = (float)spotIndex / (enemiesPathArray[enemyIndex].Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
+                    ratio = enemyMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
+                    float speed = enemySpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse du joueur
+                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
                 }
             }
         }

@@ -47023,7 +47023,49 @@ MonoBehaviour:
   roadTile: {fileID: 11400000, guid: 64acb8b0bf3bba7448dca6d7376ce772, type: 2}
   player: {fileID: 1363010119}
   enemySpeed: 2
-  nbMoves: 2
+  enemyMoveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.3
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.14707118
+      value: 1
+      inSlope: 0.958964
+      outSlope: Infinity
+      tangentMode: 97
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.72001886
+      value: 1
+      inSlope: -0.06385392
+      outSlope: -0.06385392
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.50457346
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.3
+      inSlope: -0.84112304
+      outSlope: -0.84112304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  nbMoves: 3
 --- !u!4 &1446802515
 Transform:
   m_ObjectHideFlags: 0
@@ -47778,7 +47820,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.46
+  orthographic size: 5.3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -47802,7 +47844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 7.65, y: 1.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
