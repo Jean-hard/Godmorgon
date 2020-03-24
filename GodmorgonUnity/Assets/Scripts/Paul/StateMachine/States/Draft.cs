@@ -10,6 +10,8 @@ namespace GodMorgon.StateMachine
     {
         public override void OnStartState()
         {
+            Debug.Log("On Draft State");
+
             DeckBuildingManager.Instance.DraftStart();
         }
     }

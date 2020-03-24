@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 using GodMorgon.Models;
+using GodMorgon.StateMachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     //ça sert à quoi ?
     private bool isHandUpdated;
+
+    //button pour passer au tour du player, DEVRA DISPARAITRE
+    public GameObject playerTurnButton;
 
     #region Singleton Pattern
     private static GameManager instance;
@@ -114,6 +119,7 @@ public class GameManager : MonoBehaviour
      */
     public void DrawCardButton()
     {
+        //Check if the max hand capability is not reach yet.
         if (GameEngine.Instance.hand.Count() < GameEngine.Instance.GetSettings().MaxHandCapability)
         {
             BasicCard cardDrawn = GameEngine.Instance.DrawCard();
@@ -121,6 +127,15 @@ public class GameManager : MonoBehaviour
         }
         else
             Debug.Log("capacité de carte maximale");
+    }
+
+    /**
+     * Button to pass the InitializationState and go to PlayerTurn state
+     */
+    public void StartPlayerTurn()
+    {
+        GameEngine.Instance.SetState(StateMachine.STATE.PLAYER_TURN);
+        playerTurnButton.SetActive(false);
     }
 
     #endregion

@@ -14,6 +14,8 @@ namespace GodMorgon.StateMachine
          */
         public override void OnStartState()
         {
+            Debug.Log("On Initialization maze State");
+
             SceneManager.LoadScene(GameEngine.Instance.currentGameScene);
             Debug.Log("le deck fait à présent : " + GameEngine.Instance.playerDeck.Count());
         }

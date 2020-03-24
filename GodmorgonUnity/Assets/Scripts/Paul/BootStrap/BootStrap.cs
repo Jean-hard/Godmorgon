@@ -15,6 +15,10 @@ public class BootStrap : MonoBehaviour
     //Settings parameter for GameEngine
     [SerializeField]
     private GameSettings gameSettings;
+
+    /**
+     * Set the game scene for test
+     */
     [SerializeField]
     private string gameSceneName;
 
