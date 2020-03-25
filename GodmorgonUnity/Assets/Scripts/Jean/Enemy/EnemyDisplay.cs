@@ -12,13 +12,19 @@ public class EnemyDisplay : MonoBehaviour
 
     public bool isInPlayersRoom;
 
+    public void Start()
+    {
+        enemyId = enemy.id;
+    }
 
+    //Méthode récupérant le nombre de room que l'enemy peut parcourir en une fois
     public int GetNbMoves()
     {
         return enemy.nbMoves;
     }
 
-    public bool IsInPlayersRoom()
+
+    public bool GetIsInPlayersRoom()
     {
         return isInPlayersRoom;
     }
