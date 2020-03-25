@@ -1167,8 +1167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 11400000, guid: 5738cfd2ce9087142bd15899da1a8302, type: 2}
   enemyId: 0
+  enemySprite: {fileID: 0}
+  isInPlayersRoom: 0
 --- !u!212 &535019175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47079,7 +47081,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  nbMoves: 2
 --- !u!4 &1446802515
 Transform:
   m_ObjectHideFlags: 0
@@ -47127,8 +47128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 11400000, guid: 0e60e717b31fae944a70b9b629dcd8c8, type: 2}
   enemyId: 0
+  enemySprite: {fileID: 0}
+  isInPlayersRoom: 0
 --- !u!212 &1752935685
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47614,8 +47617,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 11400000, guid: ff67af8d33284154693dba4be7b31dde, type: 2}
   enemyId: 0
+  enemySprite: {fileID: 0}
+  isInPlayersRoom: 0
 --- !u!212 &1930984286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47673,7 +47678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930984284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.522, y: 0.19, z: 5}
+  m_LocalPosition: {x: 10.526, y: 1.712, z: 5}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 1446802515}
@@ -47888,7 +47893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.65, y: 1.09, z: -10}
+  m_LocalPosition: {x: 3.03, y: 2.48, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

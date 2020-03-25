@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410b9136b0ddc5d46a1e88223a6c0224, type: 3}
-  m_Name: Enemy1
+  m_Name: Enemy3
   m_EditorClassIdentifier: 
-  id: 1
-  name: Sully
+  id: 3
+  name: Mike
   skin: {fileID: 0}
-  nbMoves: 2
+  nbMoves: 1

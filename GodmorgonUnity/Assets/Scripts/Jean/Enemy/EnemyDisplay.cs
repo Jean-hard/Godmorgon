@@ -5,17 +5,26 @@ using GodMorgon.Models;
 public class EnemyDisplay : MonoBehaviour
 {
     public Enemy enemy;
+    
     public int enemyId;
 
-    // Start is called before the first frame update
-    void Start()
+    public Sprite enemySprite;
+
+    public bool isInPlayersRoom;
+
+
+    public int GetNbMoves()
     {
-        
+        return enemy.nbMoves;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsInPlayersRoom()
     {
-        
+        return isInPlayersRoom;
+    }
+
+    public void SetIsInPlayersRoom(bool value)
+    {
+        isInPlayersRoom = value;
     }
 }

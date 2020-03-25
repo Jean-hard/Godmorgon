@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour
     public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     // A recup dans les futurs scriptables object des enemies : nombre de room que l'ennemi peut parcourir en une fois
-    public int nbMoves = 1;
+    //public int nbMoves = 1;
 
     // nombre de tiles parcourues pour 1 move
     private int nbTilesToMove = 3;
@@ -115,6 +115,8 @@ public class EnemyManager : MonoBehaviour
             foreach (GameObject enemy in enemiesArray)
             {
                 spotIndex = 0;
+
+                int nbMoves = enemy.GetComponent<EnemyDisplay>().GetNbMoves();
 
                 Vector3Int enemyPos = walkableTilemap.WorldToCell(enemy.transform.position);
                 if (roadPath != null && roadPath.Count > 0) //reset le roadpath
