@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public Grid moveGrid;
+    public Grid roomsGrid;
     private List<Vector3Int> nearestTilesList = new List<Vector3Int>();
 
     private float moveH, moveV;
@@ -21,8 +21,8 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        gridX = moveGrid.gameObject.GetComponent<Grid>().cellSize.x;
-        gridY = moveGrid.gameObject.GetComponent<Grid>().cellSize.y;
+        gridX = roomsGrid.gameObject.GetComponent<Grid>().cellSize.x;
+        gridY = roomsGrid.gameObject.GetComponent<Grid>().cellSize.y;
 
         UpdateNearestTilesList();
     }
@@ -58,10 +58,10 @@ public class PlayerMove : MonoBehaviour
     {
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        nextTileCoordinate = moveGrid.WorldToCell(mouseWorldPos);
+        nextTileCoordinate = roomsGrid.WorldToCell(mouseWorldPos);
 
         //Transpose la position scène du player en position grid 
-        currentTileCoordinate = moveGrid.WorldToCell(transform.position);
+        currentTileCoordinate = roomsGrid.WorldToCell(transform.position);
 
         if (nearestTilesList.Contains(nextTileCoordinate))
         {
@@ -80,7 +80,7 @@ public class PlayerMove : MonoBehaviour
     public void Move(Vector3Int tileDirection)
     {
         //la position de la tile étant en bas du losange, on ajoute 0.2f en hauteur pour cibler le milieu de la tile
-        Vector3 nextPos = moveGrid.CellToWorld(tileDirection) + new Vector3(0, gridY / 2 + 0.2f, 10);
+        Vector3 nextPos = roomsGrid.CellToWorld(tileDirection) + new Vector3(0, gridY / 2 + 0.2f, 10);
         
         //si le joueur arrive sur la target position
         if (Vector3.Distance(transform.position, nextPos) < 0.001f)
@@ -100,7 +100,7 @@ public class PlayerMove : MonoBehaviour
     public void UpdateNearestTilesList()
     {
         nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
-        currentTileCoordinate = moveGrid.WorldToCell(transform.position);   //On transpose la position scène du player en position grid 
+        currentTileCoordinate = roomsGrid.WorldToCell(transform.position);   //On transpose la position scène du player en position grid 
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x + 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));   //Ajoute la case en +1 en x dans la liste des cases voisines
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x - 1, currentTileCoordinate.y, currentTileCoordinate.z - 10));   //Ne pas oubliez le -10 en z car la grid est à -10 en z
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y + 1, currentTileCoordinate.z - 10));
