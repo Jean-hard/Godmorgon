@@ -47065,7 +47065,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  nbMoves: 3
+  nbMoves: 2
 --- !u!4 &1446802515
 Transform:
   m_ObjectHideFlags: 0
