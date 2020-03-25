@@ -45459,7 +45459,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1363010122}
   - component: {fileID: 1363010121}
-  - component: {fileID: 1363010124}
   - component: {fileID: 1363010120}
   m_Layer: 0
   m_Name: Player
@@ -45480,10 +45479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506dd18d0cdaf884882a56b554f71e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  roadMap: {fileID: 0}
-  roadTile: {fileID: 0}
-  start: {x: 0, y: 0}
+  walkableTilemap: {fileID: 1396355914}
+  roadMap: {fileID: 256285471}
+  roadTile: {fileID: 11400000, guid: f613608adcdc00b4794f0ef4bd5095a4, type: 2}
+  start: {x: -11, y: -2}
 --- !u!212 &1363010121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45547,20 +45546,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1363010124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363010119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca0c24262b1331438a9ea3cd48bba6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomsGrid: {fileID: 0}
-  speed: 1
 --- !u!1001 &1366127288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45681,7 +45666,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396355911}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -47787,7 +47772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.03, y: 2.48, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

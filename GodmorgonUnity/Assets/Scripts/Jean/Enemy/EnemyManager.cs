@@ -32,6 +32,23 @@ public class EnemyManager : MonoBehaviour
     List<Spot> roadPath = new List<Spot>();
     BoundsInt bounds;
 
+    #region Singleton Pattern
+    private static EnemyManager _instance;
+
+    public static EnemyManager Instance { get { return _instance; } }
+    #endregion
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
