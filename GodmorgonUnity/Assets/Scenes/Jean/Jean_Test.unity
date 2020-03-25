@@ -1147,6 +1147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 535019176}
   - component: {fileID: 535019175}
+  - component: {fileID: 535019174}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Enemy
@@ -1154,6 +1155,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &535019174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535019173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  enemyId: 0
 --- !u!212 &535019175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45447,7 +45462,6 @@ MonoBehaviour:
   playerGUI: {fileID: 0}
   hand: {fileID: 652673496}
   handManager: {fileID: 652673499}
-  selectedCard: {fileID: 0}
   playerTurnButton: {fileID: 0}
 --- !u!1 &1363010119
 GameObject:
@@ -45524,7 +45538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363010119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.51, y: -2.814, z: 0}
+  m_LocalPosition: {x: 3.01, y: -0.556, z: 0}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47093,6 +47107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752935686}
   - component: {fileID: 1752935685}
+  - component: {fileID: 1752935684}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -47100,6 +47115,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1752935684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752935683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  enemyId: 0
 --- !u!212 &1752935685
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47565,6 +47594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930984287}
   - component: {fileID: 1930984286}
+  - component: {fileID: 1930984285}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -47572,6 +47602,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1930984285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930984284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  enemyId: 0
 --- !u!212 &1930984286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47629,7 +47673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930984284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.498, y: 1.715, z: 5}
+  m_LocalPosition: {x: 4.522, y: 0.19, z: 5}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 1446802515}

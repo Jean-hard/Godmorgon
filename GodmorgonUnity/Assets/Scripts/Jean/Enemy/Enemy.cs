@@ -9,5 +9,6 @@ namespace GodMorgon.Models
     {
         public new string name;
         public int nbMoves;
+        public bool isInPlayersRoom;
     }
 }

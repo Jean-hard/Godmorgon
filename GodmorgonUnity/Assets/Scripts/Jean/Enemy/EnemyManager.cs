@@ -17,9 +17,10 @@ public class EnemyManager : MonoBehaviour
     private List<Spot>[] enemiesPathArray;
     private int enemyIndex;
     private int spotIndex;
-    private List<GameObject> enemyNearPlayer;
+    private List<GameObject> enemiesCloseToPlayer;
 
     private bool enemiesCanMove = false;
+    private bool closeEnemiesMoved = false;
 
     public float enemySpeed = 1f;
     public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
@@ -108,7 +109,8 @@ public class EnemyManager : MonoBehaviour
         if (enemiesArray.Length > 0)
         {
             Vector3Int playerCellPos = walkableTilemap.WorldToCell(player.transform.position);
-            enemyNearPlayer = new List<GameObject>();
+            
+            enemiesCloseToPlayer = new List<GameObject>();   //Init la liste des/du enemies dans la room du joueur
 
             foreach (GameObject enemy in enemiesArray)
             {
@@ -135,13 +137,12 @@ public class EnemyManager : MonoBehaviour
                     if (playerCellPos.x == spot.X && playerCellPos.y == spot.Y)
                     {
                         hasPlayerOnPath = true;
-                        enemyNearPlayer.Add(enemiesArray[enemyIndex]);
+                        enemiesCloseToPlayer.Add(enemiesArray[enemyIndex]);
                     }
 
-                    //on zappe le premier spot car correspond à la tile sur laquelle l'enemy est
                     if (!hasPlayerOnPath)
                     {
-                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les spots par lesquels il va devoir passer
+                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les spots par lesquels il va devoir passer sauf celui où il y a le player
                     }
 
                     spotIndex++;
@@ -177,11 +178,10 @@ public class EnemyManager : MonoBehaviour
         }
 
         //FAIRE UNE SECURITE SI 2 ENEMY SE CROISENT
-        //Faire sécurité si un enemy est déjà dans la room du player
 
         if (enemyIndex < enemiesArray.Length)
         {
-            if (enemiesPathArray[enemyIndex] != null)
+            if (enemiesArray[enemyIndex] != null)   //peut être null si on a retiré du tableau cet enemy qui est présent dans la room du player
             {
                 //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
                 Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0))
@@ -217,6 +217,8 @@ public class EnemyManager : MonoBehaviour
                     enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
                 }
             }
+            else 
+                enemyIndex++;   //on passe à l'enemy suivant si un enemy a été retiré de la liste pcq dans la room du player
         }
     }
 
