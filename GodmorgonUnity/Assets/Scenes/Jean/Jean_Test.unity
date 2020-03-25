@@ -1147,6 +1147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 535019176}
   - component: {fileID: 535019175}
+  - component: {fileID: 535019174}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Enemy
@@ -1154,6 +1155,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &535019174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535019173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 5738cfd2ce9087142bd15899da1a8302, type: 2}
+  enemyId: 0
+  enemySprite: {fileID: 0}
+  isInPlayersRoom: 0
 --- !u!212 &535019175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45447,7 +45464,6 @@ MonoBehaviour:
   playerGUI: {fileID: 0}
   hand: {fileID: 652673496}
   handManager: {fileID: 652673499}
-  selectedCard: {fileID: 0}
   playerTurnButton: {fileID: 0}
 --- !u!1 &1363010119
 GameObject:
@@ -45524,7 +45540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363010119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.51, y: -2.814, z: 0}
+  m_LocalPosition: {x: 3.01, y: -0.556, z: 0}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47023,7 +47039,48 @@ MonoBehaviour:
   roadTile: {fileID: 11400000, guid: 64acb8b0bf3bba7448dca6d7376ce772, type: 2}
   player: {fileID: 1363010119}
   enemySpeed: 2
-  nbMoves: 2
+  enemyMoveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.3
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.14707118
+      value: 1
+      inSlope: 0.958964
+      outSlope: Infinity
+      tangentMode: 97
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.72001886
+      value: 1
+      inSlope: -0.06385392
+      outSlope: -0.06385392
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.50457346
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.3
+      inSlope: -0.84112304
+      outSlope: -0.84112304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1446802515
 Transform:
   m_ObjectHideFlags: 0
@@ -47051,6 +47108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752935686}
   - component: {fileID: 1752935685}
+  - component: {fileID: 1752935684}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -47058,6 +47116,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1752935684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752935683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 0e60e717b31fae944a70b9b629dcd8c8, type: 2}
+  enemyId: 0
+  enemySprite: {fileID: 0}
+  isInPlayersRoom: 0
 --- !u!212 &1752935685
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47523,6 +47597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930984287}
   - component: {fileID: 1930984286}
+  - component: {fileID: 1930984285}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -47530,6 +47605,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1930984285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930984284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e00719e1e3936648a84906277089775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: ff67af8d33284154693dba4be7b31dde, type: 2}
+  enemyId: 0
+  enemySprite: {fileID: 0}
+  isInPlayersRoom: 0
 --- !u!212 &1930984286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47587,7 +47678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930984284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.498, y: 1.715, z: 5}
+  m_LocalPosition: {x: 10.526, y: 1.712, z: 5}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children: []
   m_Father: {fileID: 1446802515}
@@ -47778,7 +47869,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.46
+  orthographic size: 5.3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -47802,7 +47893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 3.03, y: 2.48, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

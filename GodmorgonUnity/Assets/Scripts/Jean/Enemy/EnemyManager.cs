@@ -17,14 +17,16 @@ public class EnemyManager : MonoBehaviour
     private List<Spot>[] enemiesPathArray;
     private int enemyIndex;
     private int spotIndex;
-    private List<GameObject> enemyToPlayer;
+    private List<GameObject> enemiesCloseToPlayer;
 
     private bool enemiesCanMove = false;
+    private bool closeEnemiesMoved = false;
 
     public float enemySpeed = 1f;
+    public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     // A recup dans les futurs scriptables object des enemies : nombre de room que l'ennemi peut parcourir en une fois
-    public int nbMoves = 1;
+    //public int nbMoves = 1;
 
     // nombre de tiles parcourues pour 1 move
     private int nbTilesToMove = 3;
@@ -40,9 +42,6 @@ public class EnemyManager : MonoBehaviour
         walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
         roadMap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
         bounds = walkableTilemap.cellBounds;
-
-        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
-        //UpdateEnemiesArray();
 
         CreateGrid();
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
@@ -76,9 +75,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    /*
+     * Mets dans un tableau les enemies enfant du gameobject EnemyManager
+     */
     private void UpdateEnemiesArray()
     {
-        for(int i = 0; i<transform.childCount; i++)
+        enemiesArray = new GameObject[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
         {
             enemiesArray[i] = transform.GetChild(i).gameObject;
         }
@@ -93,7 +96,9 @@ public class EnemyManager : MonoBehaviour
         Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    //position d'arrivée (player) en format cellule
 
         enemyIndex = 0;
-        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        UpdateEnemiesArray();
+
         enemiesPathArray = new List<Spot>[enemiesArray.Length];
         for (int i = 0; i < enemiesPathArray.Length; i++)
         {
@@ -104,11 +109,14 @@ public class EnemyManager : MonoBehaviour
         if (enemiesArray.Length > 0)
         {
             Vector3Int playerCellPos = walkableTilemap.WorldToCell(player.transform.position);
-            enemyToPlayer = new List<GameObject>();
+            
+            enemiesCloseToPlayer = new List<GameObject>();   //Init la liste des/du enemies dans la room du joueur
 
             foreach (GameObject enemy in enemiesArray)
             {
                 spotIndex = 0;
+
+                int nbMoves = enemy.GetComponent<EnemyDisplay>().GetNbMoves();
 
                 Vector3Int enemyPos = walkableTilemap.WorldToCell(enemy.transform.position);
                 if (roadPath != null && roadPath.Count > 0) //reset le roadpath
@@ -131,13 +139,12 @@ public class EnemyManager : MonoBehaviour
                     if (playerCellPos.x == spot.X && playerCellPos.y == spot.Y)
                     {
                         hasPlayerOnPath = true;
-                        enemyToPlayer.Add(enemiesArray[enemyIndex]);
+                        enemiesCloseToPlayer.Add(enemiesArray[enemyIndex]);
                     }
 
-                    //on zappe le premier spot car correspond à la tile sur laquelle l'enemy est
                     if (!hasPlayerOnPath)
                     {
-                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les spots par lesquels il va devoir passer
+                        enemiesPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les spots par lesquels il va devoir passer sauf celui où il y a le player
                     }
 
                     spotIndex++;
@@ -146,17 +153,16 @@ public class EnemyManager : MonoBehaviour
                 enemiesPathArray[enemyIndex].Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
                 enemiesPathArray[enemyIndex].RemoveAt(0);
 
+                /*
+                 * Affiche les coordonnées de tiles des paths que les enemies doivent parcourir
                 foreach(Spot spot in enemiesPathArray[enemyIndex])
                 {
                     Debug.Log(spot.X + " / " + spot.Y);
-                }
+                }*/
 
                 enemyIndex++;
             }
         }
-
-        foreach (GameObject enemy in enemyToPlayer)
-            Debug.Log(enemy);
 
         enemiesCanMove = true;  //on autorise les enemies à bouger
         enemyIndex = 0;
@@ -168,17 +174,16 @@ public class EnemyManager : MonoBehaviour
      */
     public void MoveEnemies()
     {
-        if (enemiesArray.Length == 0 || !enemiesCanMove)
+        if (enemiesArray == null || enemiesArray.Length == 0 || !enemiesCanMove)
         {
             return;
         }
 
         //FAIRE UNE SECURITE SI 2 ENEMY SE CROISENT
-        //Faire sécurité si un enemy est déjà dans la room du player
 
         if (enemyIndex < enemiesArray.Length)
         {
-            if (enemiesPathArray[enemyIndex] != null)
+            if (enemiesArray[enemyIndex] != null)   //peut être null si on a retiré du tableau cet enemy qui est présent dans la room du player
             {
                 //la prochaine position est le spot parmi la liste de spot de l'enemy concerné
                 Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0))
@@ -190,13 +195,13 @@ public class EnemyManager : MonoBehaviour
                     //on passe à l'ennemy suivant si on arrive à la tile finale où l'enemy peut se rendre ou que la prochaine tile est celle du player
                     if (spotIndex == enemiesPathArray[enemyIndex].Count - 1)
                     {
-                        Debug.Log("next enemy");
+                        //Debug.Log("next enemy");
                         enemyIndex++;   //on passe à l'enemy suivant
                         spotIndex = 0;  //reset de l'index des spots pour que l'enemy suivant avance sur une case à coté de lui 
                     }
                     else if (spotIndex < enemiesPathArray[enemyIndex].Count - 1)
                     {
-                        Debug.Log("next spot");
+                        //Debug.Log("next spot");
                         spotIndex++;    //on passe à la tile suivante
                     }
                     if (enemyIndex >= enemiesArray.Length)   //s'il ne reste plus d'enemies à bouger
@@ -208,9 +213,14 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, enemySpeed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
+                    float ratio = (float)spotIndex / (enemiesPathArray[enemyIndex].Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
+                    ratio = enemyMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
+                    float speed = enemySpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse du joueur
+                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
                 }
             }
+            else 
+                enemyIndex++;   //on passe à l'enemy suivant si un enemy a été retiré de la liste pcq dans la room du player
         }
     }
 

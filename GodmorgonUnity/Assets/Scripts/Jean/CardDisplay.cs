@@ -33,9 +33,13 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     private Vector3 startPosition;
 
+    private GameObject player;
+
     //Load the data of the card in the gameObject at start, if the card exist.
     void Start()
     {
+        player = GameObject.Find("Player");
+
         if (card)
         {
             nameText.text = card.name;
@@ -81,5 +85,13 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         this.transform.position = startPosition;
         onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
+        
+        //supprime la case si la carte est droppée dans une case voisine de celle du player
+        bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+        if (moveValidate)
+        {
+            GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
+            // WIP : retirer de la main plutot que détruire
+        }
     }
 }
