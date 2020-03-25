@@ -19,6 +19,9 @@ namespace GodMorgon.StateMachine
 
             //set the timeline
             TimelineManager.Instance.InitTimeline();
+
+            //Set the player hand
+            GameManager.Instance.PlayerDraw();
         }
     }
 }

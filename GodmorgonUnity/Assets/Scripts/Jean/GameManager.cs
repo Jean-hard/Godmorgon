@@ -40,6 +40,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /**
+     * At the beginning of turn,
+     * the player discard all his currents cards and draw new one.
+     */
+    public void PlayerDraw()
+    {
+        handManager.DiscardAllCard();
+        for(int i = 0; i < GameEngine.Instance.GetSettings().MaxHandCapability; i++)
+        {
+            BasicCard cardDrawn = GameEngine.Instance.DrawCard();
+            handManager.AddCard(cardDrawn);
+        }
+    }
+
     #region IN-GAME BUTTON FUNCTION
     /**
      * Draw a card from the player Deck
@@ -54,6 +68,15 @@ public class GameManager : MonoBehaviour
         }
         else
             Debug.Log("capacité de carte maximale");
+    }
+
+    /**
+     * Discard the card
+     * Call by the handManager
+     */
+    public void DiscardHandCard(BasicCard cardDiscarded)
+    {
+        GameEngine.Instance.DiscardCard(cardDiscarded);
     }
 
     /**
