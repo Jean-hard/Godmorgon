@@ -49,7 +49,7 @@ namespace GodMorgon.DeckBuilding.Draft
                 }
             }
             else
-                GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.INITIALIZATION_MAZE);
+                GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.LOAD);
             //Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
         }
 

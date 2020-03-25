@@ -89,9 +89,9 @@ public class GameEngine
     /**
      * Set the new state of the game
      */
-    public void SetState(StateMachine.STATE beginState)
+    public void SetState(StateMachine.STATE newState)
     {
-        stateMachine.SetState(beginState);
+        stateMachine.SetState(newState);
     }
 
     //Set Player deck content
@@ -102,7 +102,7 @@ public class GameEngine
         {
             AddCardToPlayerDeck(card);
         }
-        Debug.Log("le deck fait maintenant : " + playerDeck.Count());
+        //Debug.Log("le deck fait maintenant : " + playerDeck.Count());
     }
 
     /**
@@ -110,7 +110,7 @@ public class GameEngine
      */
     public void SetStartingGame()
     {
-        Debug.Log("Game set");
+        //Debug.Log("Game set");
         //deck for the shuffle
         Deck tempDeck = new Deck();
 

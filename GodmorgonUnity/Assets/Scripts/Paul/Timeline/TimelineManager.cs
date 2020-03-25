@@ -68,7 +68,7 @@ namespace GodMorgon.Timeline
         public void InitTimeline()
         {
             //actionlist = settings.GetActionList();
-            Debug.Log("nb action in list : " + actionlist.Count);
+            //Debug.Log("nb action in list : " + actionlist.Count);
             SetDisplay();
         }
 
@@ -79,8 +79,6 @@ namespace GodMorgon.Timeline
          */
         public void SetDisplay()
         {
-            Debug.Log("AAAAAAAAAAALLLLOOOOOOO !!!!");
-
             actionLogo1.sprite = actionlist[indexCurrentAction].actionLogo;
             actionLogo2.sprite = actionlist[indexCurrentAction + 1].actionLogo;
             actionLogo3.sprite = actionlist[indexCurrentAction + 2].actionLogo;

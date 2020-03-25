@@ -34,31 +34,27 @@ public class GameManager : MonoBehaviour
     public GameObject playerTurnButton;
 
     #region Singleton Pattern
-    private static GameManager instance;
+    private static GameManager _instance;
 
-    public static GameManager Instance
+    public static GameManager Instance { get { return _instance; } }
+    #endregion
+
+    private void Awake()
     {
-        get
+        if (_instance != null && _instance != this)
         {
-            if (instance == null)
-            {
-                instance = new GameManager();
-            }
-
-            return instance;
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
         }
     }
-    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-    }
-
-    void Update()
-    {
-        
     }
 
     /**
