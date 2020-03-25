@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Tilemap tilemap;
+    public Tilemap walkableTilemap;
     public Tilemap roadMap;
     public TileBase roadTile;
     public Vector3Int[,] spots;
@@ -18,9 +18,9 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tilemap.CompressBounds();
+        walkableTilemap.CompressBounds();
         roadMap.CompressBounds();
-        bounds = tilemap.cellBounds;
+        bounds = walkableTilemap.cellBounds;
         camera = Camera.main;
 
 
@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         {
             for (int y = bounds.yMin, j = 0; j < (bounds.size.y); y++, j++)
             {
-                if (tilemap.HasTile(new Vector3Int(x, y, 0)))
+                if (walkableTilemap.HasTile(new Vector3Int(x, y, 0)))
                 {
                     spots[i, j] = new Vector3Int(x, y, 0);
                 }
@@ -62,21 +62,22 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(world);
+            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
             start = new Vector2Int(gridPos.x, gridPos.y);
         }
         if (Input.GetMouseButton(2))
         {
             Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(world);
+            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
             roadMap.SetTile(new Vector3Int(gridPos.x, gridPos.y, 0), null);
         }
         if (Input.GetMouseButton(0))
         {
+            Debug.Log("hello");
             CreateGrid();
 
             Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(world);
+            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
 
             if (roadPath != null && roadPath.Count > 0)
                 roadPath.Clear();
@@ -85,7 +86,7 @@ public class PlayerManager : MonoBehaviour
             if (roadPath == null)
                 return;
 
-            //DrawRoad();
+            DrawRoad();
             start = new Vector2Int(roadPath[0].X, roadPath[0].Y);
         }
     }
