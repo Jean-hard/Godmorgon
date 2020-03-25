@@ -6,7 +6,7 @@ namespace GodMorgon.Timeline
 {
     public interface ITimelineAction
     {
-        void Execute();
+        IEnumerator Execute();
 
         void Finish();
     }

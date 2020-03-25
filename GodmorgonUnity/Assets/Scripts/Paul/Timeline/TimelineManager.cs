@@ -30,6 +30,12 @@ namespace GodMorgon.Timeline
         [SerializeField]
         private Image actionLogo4 = null;
 
+        [SerializeField]
+        private GameObject cursorAction = null;
+
+        [System.NonSerialized]
+        public bool isRunning = false;
+
         /**
          * List containing all the actions in order.
          */
@@ -60,6 +66,7 @@ namespace GodMorgon.Timeline
         void Start()
         {
             actionlist = settings.GetActionList();
+            cursorAction.transform.position = actionLogo3.transform.position;
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -93,9 +100,18 @@ namespace GodMorgon.Timeline
             return idx;
         }
 
+        /**
+         * Launch the current target action of the timeline
+         */
         public void DoAction()
         {
+            StartCoroutine(ActionExecution());
+        }
 
+        public IEnumerator ActionExecution()
+        {
+            isRunning = true;
+            yield return actionlist[indexCurrentAction].Execute();
         }
 
 

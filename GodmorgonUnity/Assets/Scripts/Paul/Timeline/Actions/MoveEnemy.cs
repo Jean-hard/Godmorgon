@@ -9,6 +9,7 @@ namespace GodMorgon.Timeline
         public override void Execute()
         {
             Debug.Log("ACTION Move Enemy");
+            EnemyManager.
         }
 
         public override void Finish()
