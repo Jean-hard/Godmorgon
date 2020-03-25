@@ -14,6 +14,7 @@ namespace GodMorgon.StateMachine
         {
             TITLE,
             DRAFT,
+            LOAD,
             INITIALIZATION_MAZE,
             PLAYER_TURN,
             RINGMASTER_TURN,
@@ -42,6 +43,7 @@ namespace GodMorgon.StateMachine
             DictionaryState = new Dictionary<STATE, State>();
 
             DictionaryState.Add(STATE.DRAFT, new Draft());
+            DictionaryState.Add(STATE.LOAD, new Load());
             DictionaryState.Add(STATE.INITIALIZATION_MAZE, new Initialization_Maze());
             DictionaryState.Add(STATE.PLAYER_TURN, new Player_Turn());
             DictionaryState.Add(STATE.RINGMASTER_TURN, new RingMaster_Turn());

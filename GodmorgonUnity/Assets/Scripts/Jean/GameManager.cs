@@ -19,37 +19,25 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private HandManager handManager = null;
 
-    private GameObject player;
-
     //button pour passer au tour du player, DEVRA DISPARAITRE
     public GameObject playerTurnButton;
 
     #region Singleton Pattern
-    private static GameManager instance;
+    private static GameManager _instance;
 
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new GameManager();
-            }
-
-            return instance;
-        }
-    }
+    public static GameManager Instance { get { return _instance; } }
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        player = GameObject.Find("Player");
-    }
-
-    void Update()
-    {
-        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 
     #region IN-GAME BUTTON FUNCTION
