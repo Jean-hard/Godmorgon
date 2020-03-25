@@ -19,6 +19,9 @@ public class PlayerManager : MonoBehaviour
     private int spotIndex;
     private List<Spot> playerPathArray;
 
+    public float playerSpeed = 1f;
+    public AnimationCurve playerMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,40 +98,40 @@ public class PlayerManager : MonoBehaviour
             playerCanMove = true;
         }
 
-        /*
+
         if(playerCanMove)
         {
             float ratio = (float)spotIndex / (playerPathArray.Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
-            ratio = enemyMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
-            float speed = enemySpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse de l'enemy
-            this.transform.position = Vector2.MoveTowards(this.transform.position,);
-        }*/
+            ratio = playerMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
+            float speed = playerSpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse de l'enemy
+            //this.transform.position = Vector2.MoveTowards(this.transform.position,);
+        }
     }
-    /*
+
     public void SetPlayerPath(Vector3 tileClicked)
     {
         Vector3 playerPos = this.transform.position;
+        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
         Vector3Int endPos = walkableTilemap.WorldToCell(tileClicked);    //position d'arrivée (player) en format cellule
 
         playerPathArray = new List<Spot>();
 
         spotIndex = 0;
 
-        int nbMoves = enemy.GetComponent<EnemyDisplay>().GetNbMoves();  //on récupère le nombre de room que peut parcourir un enemy (propre à chacun)
+        int nbMoves = 2;
 
-        Vector3Int enemyPos = walkableTilemap.WorldToCell(enemy.transform.position);
         if (roadPath != null && roadPath.Count > 0) //reset le roadpath
             roadPath.Clear();
 
         //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path -> dépend de l'ennemi
         //roadPath est une liste de spots = une liste de positions de tiles
-        roadPath = astar.CreatePath(spots, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove * nbMoves);
+        //roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove * nbMoves);
 
         if (roadPath == null)
         {
             return;
         }
-
+        /*
         foreach (Spot spot in roadPath)
         {
             bool hasPlayerOnPath = false;
@@ -157,12 +160,12 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log(spot.X + " / " + spot.Y);
         }*/
-        /*
-        enemyIndex++;
+
+        //enemyIndex++;
         
         
 
         playerCanMove = true;  //on autorise les enemies à bouger
         spotIndex = 0;
-    }*/
+    }
 }

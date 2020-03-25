@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     private List<GameObject> enemiesCloseToPlayer;
 
     private bool enemiesCanMove = false;
-    private bool closeEnemiesMoved = false;
+    private bool enemiesHaveMoved = false;
 
     public float enemySpeed = 1f;
     public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
@@ -108,6 +108,8 @@ public class EnemyManager : MonoBehaviour
      */
     public void SetEnemyPath()
     {
+        enemiesHaveMoved = false;
+
         Vector3 playerPos = player.transform.position;
         Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    //position d'arrivée (player) en format cellule
 
@@ -226,6 +228,7 @@ public class EnemyManager : MonoBehaviour
                 if (enemyIndex >= enemiesArray.Count)   //s'il ne reste plus d'enemies à bouger
                 {
                     enemiesCanMove = false;
+                    enemiesHaveMoved = true;
                     enemyIndex = 0;
                     spotIndex = 0;
                 }
@@ -245,7 +248,7 @@ public class EnemyManager : MonoBehaviour
 
     public bool EnemiesMoveDone()
     {
-        if (enemiesCanMove)
+        if (enemiesHaveMoved)
             return true;
         else
             return false;
