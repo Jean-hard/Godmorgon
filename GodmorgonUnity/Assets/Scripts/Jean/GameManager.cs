@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private HandManager handManager = null;
 
-    private GameObject player;
-
     //button pour passer au tour du player, DEVRA DISPARAITRE
     public GameObject playerTurnButton;
 
@@ -40,17 +38,6 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
-
-    void Update()
-    {
-        
     }
 
     #region IN-GAME BUTTON FUNCTION
