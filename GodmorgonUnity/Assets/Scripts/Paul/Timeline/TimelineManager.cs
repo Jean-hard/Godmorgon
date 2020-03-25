@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using GodMorgon.Models;
+////    ????????????????????
+using GodMorgon.StateMachine;
 
 namespace GodMorgon.Timeline
 {
@@ -66,7 +68,6 @@ namespace GodMorgon.Timeline
         void Start()
         {
             actionlist = settings.GetActionList();
-            cursorAction.transform.position = actionLogo3.transform.position;
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -108,10 +109,25 @@ namespace GodMorgon.Timeline
             StartCoroutine(ActionExecution());
         }
 
+        /**
+         * Function that know when the execution of the action is finished and launch the player turn
+         */
         public IEnumerator ActionExecution()
         {
             isRunning = true;
+            //wait for the action to finish
             yield return actionlist[indexCurrentAction].Execute();
+            isRunning = false;
+
+            indexCurrentAction++;
+            //si on arrive au bout des 4 actions affichées
+            if (indexCurrentAction % 4 == 0)
+            {
+                SetTimeline();
+                GameManager.Instance.PlayerDraw();
+            }
+
+            GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
         }
 
 

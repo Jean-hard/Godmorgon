@@ -6,9 +6,10 @@ namespace GodMorgon.Timeline
 {
     public class Defend : Action
     {
-        public override void Execute()
+        public override IEnumerator Execute()
         {
             Debug.Log("ACTION defend");
+            yield return null;
         }
 
         public override void Finish()

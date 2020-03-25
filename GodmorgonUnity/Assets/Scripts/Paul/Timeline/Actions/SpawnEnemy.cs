@@ -6,9 +6,10 @@ namespace GodMorgon.Timeline
 {
     public class SpawnEnemy : Action
     {
-        public override void Execute()
+        public override IEnumerator Execute()
         {
             Debug.Log("ACTION spawn enemy");
+            yield return null;
         }
 
         public override void Finish()
