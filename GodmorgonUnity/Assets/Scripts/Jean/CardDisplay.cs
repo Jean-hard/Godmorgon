@@ -32,6 +32,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public CardDragDelegate onCardDragEndDelegate;
 
     private Vector3 startPosition;
+    private float cardWidth, cardHeight;
 
     private GameObject player;
 
@@ -47,6 +48,9 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             artworkImage.sprite = card.artwork;
             cardId = card.id;
         }
+
+        cardWidth = this.GetComponent<RectTransform>().sizeDelta.x;
+        cardHeight = this.GetComponent<RectTransform>().sizeDelta.y;
     }
 
     /**
@@ -69,29 +73,39 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     //fonction lancée au drag d'une carte
     public void OnBeginDrag(PointerEventData eventData)
     {
+        //onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
+
         startPosition = this.transform.position;
-        onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
+        
     }
 
     //fonction lancée lorsqu'on a une carte en main
     public void OnDrag(PointerEventData eventData)
     {
+        //onCardDragDelegate?.Invoke(this.gameObject, eventData);
+
         this.transform.position = eventData.position;
-        onCardDragDelegate?.Invoke(this.gameObject, eventData);
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth/3, cardHeight/3); 
+        
     }
 
     //fonction lancée au drop d'une carte
     public void OnEndDrag(PointerEventData eventData)
     {
+        //onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
+
         this.transform.position = startPosition;
-        onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
-        
-        //supprime la case si la carte est droppée dans une case voisine de celle du player
-        bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-        if (moveValidate)
-        {
-            GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-            // WIP : retirer de la main plutot que détruire
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //récupère sa taille normale
+
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.name == "Mouvement") 
+        { 
+            //supprime la case si la carte est droppée dans une case voisine de celle du player
+            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+            if (moveValidate)
+            {
+                GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
+                Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
+            } 
         }
     }
 }
