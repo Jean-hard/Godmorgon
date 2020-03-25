@@ -60,29 +60,49 @@ namespace GodMorgon.Timeline
         void Start()
         {
             actionlist = settings.GetActionList();
-            //Debug.Log("nb action in list : " + actionlist.Count);
-            //SetDisplay();
         }
 
         //Init the Timeline, function call in Initialization_Maze state
         public void InitTimeline()
         {
-            //actionlist = settings.GetActionList();
-            //Debug.Log("nb action in list : " + actionlist.Count);
-            SetDisplay();
+            SetTimeline();
         }
 
         /**
          * Set the display of the Timeline
          * We take the picture of the 4 next actions in the timeline
-         * ----------------------------------------------------------TODO : préparer le cas où l'index est au bout de la liste
          */
-        public void SetDisplay()
+        public void SetTimeline()
         {
-            actionLogo1.sprite = actionlist[indexCurrentAction].actionLogo;
-            actionLogo2.sprite = actionlist[indexCurrentAction + 1].actionLogo;
-            actionLogo3.sprite = actionlist[indexCurrentAction + 2].actionLogo;
-            actionLogo4.sprite = actionlist[indexCurrentAction + 3].actionLogo;
+            int idx = indexCurrentAction;
+            idx = SetNextActions(actionLogo1, idx);
+            idx = SetNextActions(actionLogo2, idx);
+            idx = SetNextActions(actionLogo3, idx);
+            idx = SetNextActions(actionLogo4, idx);
+        }
+
+        /**
+         * Set the next action and the display
+         */
+        private int SetNextActions(Image image, int initIdx)
+        {
+            //si initIdx > actionlist.Count, alors idx = 0
+            int idx = (initIdx > actionlist.Count) ? 0 : initIdx;
+            image.sprite = actionlist[idx++].actionLogo;//ici idx = idx;
+            //ici idx = idx + 1; 
+            return idx;
+        }
+
+        public void DoAction()
+        {
+
+        }
+
+
+        //return the id of the current action in the list
+        public int GetIndexCurrentAction()
+        {
+            return indexCurrentAction;
         }
     }
 }

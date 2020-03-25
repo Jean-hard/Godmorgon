@@ -19,6 +19,10 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     private float cardHeight = 300f;
 
+    //tell to the gameManager when the card is well place in hand (later, for the anim)
+    [System.NonSerialized]
+    public bool isCardPlaced = false;
+
     //list of CardDisplay in the hand
     private List<CardDisplay> CardDisplayList = new List<CardDisplay>();
 
@@ -40,6 +44,22 @@ public class HandManager : MonoBehaviour
         cardDisplay.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);
         cardDisplay.UpdateCard(cardDraw);
         CardDisplayList.Add(cardDisplay);
+    }
+
+    /**
+     * Discard all the card in the hand
+     */
+    public void DiscardAllCard()
+    {
+        if (CardDisplayList.Count > 0)
+        {
+            foreach (CardDisplay card in CardDisplayList)
+            {
+                GameManager.Instance.DiscardHandCard(card.card);
+                Destroy(card.gameObject);
+            }
+            CardDisplayList.Clear();
+        }
     }
 
     /**
