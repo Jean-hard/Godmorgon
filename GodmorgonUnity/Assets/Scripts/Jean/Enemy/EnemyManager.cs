@@ -246,8 +246,8 @@ public class EnemyManager : MonoBehaviour
     public bool EnemiesMoveDone()
     {
         if (enemiesCanMove)
-            return false;
-        else
             return true;
+        else
+            return false;
     }
 }
