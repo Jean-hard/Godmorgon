@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using GodMorgon.Timeline;
+using GodMorgon.StateMachine;
 
 namespace GodMorgon.StateMachine
 {
@@ -22,6 +23,9 @@ namespace GodMorgon.StateMachine
 
             //Set the player hand
             GameManager.Instance.PlayerDraw();
+
+            //Start the player turn
+            GameEngine.Instance.SetState(StateMachine.STATE.PLAYER_TURN);
         }
     }
 }
