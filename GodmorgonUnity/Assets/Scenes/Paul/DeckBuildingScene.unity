@@ -2542,7 +2542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01dafa65010f914e900dadc4ccf583b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draftDeck: {fileID: 11400000, guid: c4ad0658fc7c43943b6e1fe5efe8a99e, type: 2}
+  draftDeck: {fileID: 11400000, guid: cbaeafa070b24ab4c815460b04e65f50, type: 2}
   cardsOnDraft:
   - {fileID: 2025425883}
   - {fileID: 433960448}
@@ -3166,7 +3166,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.20000458
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8142491009890245540, guid: 921e0b67fe59d6b4cbea1bcecb75362b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 921e0b67fe59d6b4cbea1bcecb75362b, type: 3}
 --- !u!224 &433960446 stripped
 RectTransform:
@@ -6168,7 +6169,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.20000458
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8142491009890245540, guid: 921e0b67fe59d6b4cbea1bcecb75362b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 921e0b67fe59d6b4cbea1bcecb75362b, type: 3}
 --- !u!224 &940703148 stripped
 RectTransform:
@@ -12993,6 +12995,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 2277794921241343044, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2277794921241343045, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13103,7 +13110,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.20000458
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8142491009890245540, guid: 921e0b67fe59d6b4cbea1bcecb75362b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8142491009890245540, guid: 921e0b67fe59d6b4cbea1bcecb75362b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 921e0b67fe59d6b4cbea1bcecb75362b, type: 3}
 --- !u!224 &2025425881 stripped
 RectTransform:

@@ -94,6 +94,14 @@ public class GameEngine
         stateMachine.SetState(newState);
     }
 
+    /**
+     * Get the current state
+     */
+    public StateMachine.STATE GetState()
+    {
+        return stateMachine.GetCurrentState();
+    }
+
     //Set Player deck content
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
@@ -125,6 +133,17 @@ public class GameEngine
         //Debug.Log(playerDeck.GetCards().Count);
 
         gameLaunched = true;
+    }
+
+    //Shufle the deck after the draft state
+    public void ShufleCompleteDeck()
+    {
+        Deck tempDeck = new Deck();
+        while (playerDeck.Count() > 0)
+        {
+            tempDeck.AddCard(playerDeck.DrawCard());
+        }
+        playerDeck = tempDeck;
     }
 
     /**
