@@ -10,12 +10,9 @@ using GodMorgon.StateMachine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerGUI playerGUI = null;
-
-    [SerializeField]
-    private GameObject hand = null;
-
+    /**
+     * HandManager object
+     */
     [SerializeField]
     private HandManager handManager = null;
 

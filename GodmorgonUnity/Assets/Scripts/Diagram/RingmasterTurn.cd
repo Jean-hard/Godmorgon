@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Le TimelineManager lance l'action ciblé pour ce tour et gère l'animation de la timeline.">
+    <Position X="4.458" Y="5.188" Height="0.75" Width="1.95" />
+  </Comment>
+  <Comment CommentText="EnemyManager gère l'affichage et les positions de tous les ennemies sur la map.">
+    <Position X="10.052" Y="1.583" Height="0.75" Width="1.919" />
+  </Comment>
+  <Class Name="GodMorgon.StateMachine.RingMaster_Turn" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\RingMaster_Turn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.TimelineManager">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEgAAAACAAQBBAAQgAAAAAAACJABAQQAAAAgADAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\TimelineManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="cursorAction" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GodMorgon.Timeline.Action">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\Action.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GodMorgon.Timeline.Attack" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\Attack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.Curse" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\Curse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.Defend" Collapsed="true">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\Defend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.MoveEnemy">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\MoveEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.SpawnEnemy" Collapsed="true">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\SpawnEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.SpawnFOW" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\Actions\SpawnFOW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Confrontation.FightManager" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Confrontation\FightManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Enemy.EnemyData" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAEAAAAAAAAAAAAAAAEAACAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Jean\Enemy\EnemyData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.ActionCursor">
+    <Position X="2.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAwAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\ActionCursor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyManager">
+    <Position X="12.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQEAgFQACIBYIAIAAAAAiAAQAAAAgRFQgACAEgAgEA=</HashCode>
+      <FileName>Assets\Scripts\Jean\Enemy\EnemyManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="astar" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Astar">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Jean\Enemy\Astar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GodMorgon.Timeline.ITimelineAction">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\ITimelineAction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
