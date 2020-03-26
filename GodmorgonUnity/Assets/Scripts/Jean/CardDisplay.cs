@@ -85,8 +85,13 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //onCardDragDelegate?.Invoke(this.gameObject, eventData);
 
         this.transform.position = eventData.position;
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth/3, cardHeight/3); 
-        
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);
+
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.name == "Mouvement")
+        {
+            //Montre les tiles accessibles
+            PlayerManager.Instance.ShowAccessibleSpot();
+        }
     }
 
     //fonction lancée au drop d'une carte
@@ -98,14 +103,23 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //récupère sa taille normale
 
         if (eventData.pointerDrag.GetComponent<CardDisplay>().card.name == "Mouvement") 
-        { 
-            //supprime la case si la carte est droppée dans une case voisine de celle du player
-            bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+        {
+            //Cache les tiles accessibles
+            PlayerManager.Instance.HideAccessibleSpot();
+
+            bool moveValidate = player.GetComponent<PlayerManager>().SetPlayerPath();
             if (moveValidate)
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
                 Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
-            } 
+            }
+            //supprime la carte si la carte est droppée dans une case voisine de celle du player
+            /*bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
+            if (moveValidate)
+            {
+                GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
+                Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
+            } */
         }
     }
 }
