@@ -46370,6 +46370,7 @@ GameObject:
   - component: {fileID: 652673497}
   - component: {fileID: 652673498}
   - component: {fileID: 652673499}
+  - component: {fileID: 652673500}
   m_Layer: 5
   m_Name: Hand
   m_TagString: Untagged
@@ -46442,6 +46443,25 @@ MonoBehaviour:
     type: 3}
   cardWidth: 175
   cardHeight: 300
+--- !u!95 &652673500
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652673496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec03be1007cae164086d1bc7088f73dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &749101618
 GameObject:
   m_ObjectHideFlags: 0

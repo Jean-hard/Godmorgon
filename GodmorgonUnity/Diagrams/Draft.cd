@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GodMorgon.DeckBuilding.Draft.DraftPhase">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAABAAAAAAAwAAAAAAAAABAAAAAAAACAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Draft\DraftPhase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="draftDeck" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GameEngine">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAgAAACAACAgAADABASAEADABAAIRAAAAAgQAQE=</HashCode>
+      <FileName>Assets\Scripts\Jean\GameEngine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="playerDeck" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GodMorgon.CardContainer.Deck">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAgAAAQAEAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\Deck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.CardContainer.CardList">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAoAAAAAAAAAAAAAgAAAQAEAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\CardList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GodMorgon.Models.BasicCard">
+    <Position X="8.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAABAIAAAAAABAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Jean\BasicCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Models.DeckContent" Collapsed="true">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAIAgAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Models\DeckContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

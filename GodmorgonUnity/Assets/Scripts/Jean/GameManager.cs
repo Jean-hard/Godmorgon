@@ -71,15 +71,6 @@ public class GameManager : MonoBehaviour
     }
 
     /**
-     * Discard the card
-     * Call by the handManager
-     */
-    public void DiscardHandCard(BasicCard cardDiscarded)
-    {
-        GameEngine.Instance.DiscardCard(cardDiscarded);
-    }
-
-    /**
      * Button to pass the InitializationState and go to PlayerTurn state
      */
     public void StartPlayerTurn()
@@ -95,4 +86,13 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    /**
+    * Discard the card
+    * Call by the handManager
+    */
+    public void DiscardHandCard(BasicCard cardDiscarded)
+    {
+        GameEngine.Instance.DiscardCard(cardDiscarded);
+    }
 }
