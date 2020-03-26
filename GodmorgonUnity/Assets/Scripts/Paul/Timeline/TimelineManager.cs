@@ -15,26 +15,27 @@ namespace GodMorgon.Timeline
          * Settings for the timeline.
          */
         [SerializeField]
-        private TimelineSettings settings;
+        private TimelineSettings settings = null;
 
         /**
          * The action image on the timeline;
          */
         [SerializeField]
         private Image actionLogo1 = null;
-
         [SerializeField]
         private Image actionLogo2 = null;
-
         [SerializeField]
         private Image actionLogo3 = null;
-
         [SerializeField]
         private Image actionLogo4 = null;
 
+        /**
+         * ActionCursor script manage the animation of the cursor
+         */
         [SerializeField]
-        private GameObject cursorAction = null;
+        private ActionCursor cursorAction = null;
 
+        //Tell if the current action is running
         [System.NonSerialized]
         public bool isRunning = false;
 
@@ -126,6 +127,9 @@ namespace GodMorgon.Timeline
                 SetTimeline();
                 GameManager.Instance.PlayerDraw();
             }
+
+            //at the end of the action, we set the cursor
+            cursorAction.RunCursorAnim();
 
             GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
         }

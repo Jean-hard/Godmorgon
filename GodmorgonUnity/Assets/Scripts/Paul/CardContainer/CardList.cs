@@ -41,7 +41,7 @@ namespace GodMorgon.CardContainer
             Debug.Log("Drawing: " + toDraw.ToString());
             if (cards.Contains(toDraw))
             {
-                Debug.Log("    Found!");
+                //Debug.Log("    Found!");
                 cards.Remove(toDraw);
                 return toDraw;
             }
