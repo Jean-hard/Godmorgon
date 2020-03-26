@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Tous les changements de state se font en passant par le GameEngine.">
+    <Position X="4.75" Y="1" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Les différents states rythme les séquences de jeu.">
+    <Position X="12.073" Y="4.615" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="GameEngine">
+    <Position X="1.75" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAgAAACAACAgAADABASAEADABAAIRAAAAAgQAQE=</HashCode>
+      <FileName>Assets\Scripts\Jean\GameEngine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="stateMachine" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.StateMachine">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="GodMorgon.StateMachine.StateMachine.STATE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Paul\StateMachine\StateMachine.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAIAAAAACAAAIAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\StateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.State">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\State.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GodMorgon.StateMachine.Draft" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\Draft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.Initialization_Maze" Collapsed="true">
+    <Position X="10" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\Initialization_Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.Load" Collapsed="true">
+    <Position X="10" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\Load.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.Player_Turn" Collapsed="true">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\Player_Turn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.RingMaster_Turn" Collapsed="true">
+    <Position X="10" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\RingMaster_Turn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

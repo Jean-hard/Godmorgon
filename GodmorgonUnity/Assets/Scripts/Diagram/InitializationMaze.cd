@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Load charge la scène de jeu et lance l'état Initialization maze.">
+    <Position X="0.583" Y="2.802" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Cet état initialise la Hand et la timeline du ringmaster.">
+    <Position X="7.99" Y="0.833" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="HandManager gère le contenu graphique de la main du joueur.">
+    <Position X="7.75" Y="7.25" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="TimeLineManager Gère la liste d'action que le ringmaster lancera lors de ses tours.">
+    <Position X="12.854" Y="5.375" Height="0.75" Width="1.898" />
+  </Comment>
+  <Class Name="GodMorgon.StateMachine.Load">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\Load.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.IniatializationScene.InitializationScene">
+    <Position X="2.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAAAAAAACAAAAAACAAAgQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\InitializationScene\InitializationScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.StateMachine.Initialization_Maze">
+    <Position X="5.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\StateMachine\States\Initialization_Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="5.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEkABAQAAAAAAEgAAAAAAAAAAAAAgAAQAABAAABAEA=</HashCode>
+      <FileName>Assets\Scripts\Jean\GameManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="handManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HandManager">
+    <Position X="7.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAICIAAAACAAAAAAAAIAAAAAQAACAAAAAAAAACAAAAE=</HashCode>
+      <FileName>Assets\Scripts\Paul\HandManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Timeline.TimelineManager">
+    <Position X="10.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACEgAAAACAAQBBAAQgAAAAAAACJABAQQAAAAgADAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Timeline\TimelineManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="settings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GodMorgon.Models.TimelineSettings">
+    <Position X="13" Y="1.75" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="GodMorgon.Models.TimelineSettings.ACTION_TYPE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Paul\Models\TimelineSettings.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAQAAAJAAAAAhgAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Models\TimelineSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
