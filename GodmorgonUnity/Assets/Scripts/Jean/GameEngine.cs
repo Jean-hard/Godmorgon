@@ -94,6 +94,14 @@ public class GameEngine
         stateMachine.SetState(newState);
     }
 
+    /**
+     * Get the current state
+     */
+    public StateMachine.STATE GetState()
+    {
+        return stateMachine.GetCurrentState();
+    }
+
     //Set Player deck content
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {
