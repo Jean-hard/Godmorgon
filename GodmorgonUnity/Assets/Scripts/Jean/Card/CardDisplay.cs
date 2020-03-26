@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
+using GodMorgon.StateMachine;
 
 
 /**
@@ -55,7 +56,5 @@ public class CardDisplay : MonoBehaviour
             template.sprite = cardData.template;
         if (cardData.artwork)
             artworkImage.sprite = cardData.artwork;
-
-        //if(GameEngine.Instance.stateMachine == )
     }
 }
