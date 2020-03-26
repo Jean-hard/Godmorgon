@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using GodMorgon.Models;
+////    ????????????????????
+using GodMorgon.StateMachine;
 
 namespace GodMorgon.Timeline
 {
@@ -13,22 +15,29 @@ namespace GodMorgon.Timeline
          * Settings for the timeline.
          */
         [SerializeField]
-        private TimelineSettings settings;
+        private TimelineSettings settings = null;
 
         /**
          * The action image on the timeline;
          */
         [SerializeField]
         private Image actionLogo1 = null;
-
         [SerializeField]
         private Image actionLogo2 = null;
-
         [SerializeField]
         private Image actionLogo3 = null;
-
         [SerializeField]
         private Image actionLogo4 = null;
+
+        /**
+         * ActionCursor script manage the animation of the cursor
+         */
+        [SerializeField]
+        private ActionCursor cursorAction = null;
+
+        //Tell if the current action is running
+        [System.NonSerialized]
+        public bool isRunning = false;
 
         /**
          * List containing all the actions in order.
@@ -93,9 +102,36 @@ namespace GodMorgon.Timeline
             return idx;
         }
 
+        /**
+         * Launch the current target action of the timeline
+         */
         public void DoAction()
         {
+            StartCoroutine(ActionExecution());
+        }
 
+        /**
+         * Function that know when the execution of the action is finished and launch the player turn
+         */
+        public IEnumerator ActionExecution()
+        {
+            isRunning = true;
+            //wait for the action to finish
+            yield return actionlist[indexCurrentAction].Execute();
+            isRunning = false;
+
+            indexCurrentAction++;
+            //si on arrive au bout des 4 actions affichées
+            if (indexCurrentAction % 4 == 0)
+            {
+                SetTimeline();
+                GameManager.Instance.PlayerDraw();
+            }
+
+            //at the end of the action, we set the cursor
+            cursorAction.RunCursorAnim();
+
+            GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
         }
 
 

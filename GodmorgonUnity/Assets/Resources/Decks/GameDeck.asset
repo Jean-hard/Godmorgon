@@ -17,9 +17,9 @@ MonoBehaviour:
   description: Deck de base de jeu
   artwork: {fileID: 0}
   cards:
-  - {fileID: 11400000, guid: 9b29992861b5b48488657d61bf339c08, type: 2}
+  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
   - {fileID: 11400000, guid: da2da64ccb3d9e14282b19f7bd80ac98, type: 2}
-  - {fileID: 11400000, guid: a41ebea982906df4780605a3f5a40ea8, type: 2}
+  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
   - {fileID: 11400000, guid: b64485cf89aa73544b7734fc3301b4f5, type: 2}
   - {fileID: 11400000, guid: 81e488c64dbf3b94bbf19c8fed88bdb1, type: 2}
   - {fileID: 11400000, guid: 91a74b11491a55c4db2a2420d949d0f8, type: 2}

@@ -88,5 +88,11 @@ public class GameManager : MonoBehaviour
         playerTurnButton.SetActive(false);
     }
 
+    public void StartRingmasterTurn()
+    {
+        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+        //playerTurnButton.SetActive(false);
+    }
+
     #endregion
 }

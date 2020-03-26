@@ -13,6 +13,7 @@ namespace GodMorgon.StateMachine
     {
         public override void OnStartState()
         {
+            Debug.Log("On RingMaster turn State");
             TimelineManager.Instance.DoAction();
         }
     }
