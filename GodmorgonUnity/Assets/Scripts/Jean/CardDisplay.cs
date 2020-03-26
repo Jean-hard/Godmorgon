@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
-using GodMorgon.StateMachine;
+
 
 /**
  * Présent sur chaque carte
@@ -36,11 +36,15 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private float cardWidth, cardHeight;
 
     private GameObject player;
+    private Transform movingCardParent;
+    private Transform hand;
 
     //Load the data of the card in the gameObject at start, if the card exist.
     void Start()
     {
         player = GameObject.Find("Player");
+        movingCardParent = GameObject.Find("MovingCardParent").transform;
+        hand = GameObject.Find("Hand").transform;
 
         if (card)
         {
@@ -77,7 +81,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
 
         startPosition = this.transform.position;
-        
+        this.transform.SetParent(movingCardParent);
     }
 
     //fonction lancée lorsqu'on a une carte en main
@@ -112,17 +116,11 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (moveValidate)
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-                StartCoroutine(WaitForRingMasterTurn());
+                
+                this.gameObject.SetActive(false);
             }
         }
-    }
 
-    // WIP
-    IEnumerator WaitForRingMasterTurn()
-    {
-        yield return new WaitForSeconds(4f);
-        Debug.Log("Ringmaster turn");
-        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
-        Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
+        this.transform.SetParent(hand);
     }
 }
