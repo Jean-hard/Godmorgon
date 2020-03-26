@@ -35,6 +35,10 @@ public class PlayerManager : MonoBehaviour
     private List<Vector3Int> nearestTilesList = new List<Vector3Int>();
     Vector3Int currentTileCoordinate;
 
+    public GameObject moveTileEffect;
+    public Transform effectsParent;
+    private bool effectInstantiated = false;
+
     #region Singleton Pattern
     private static PlayerManager _instance;
 
@@ -229,7 +233,13 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < accessibleSpots.Count; i++)
         {
             roadMap.SetTile(new Vector3Int(accessibleSpots[i].x, accessibleSpots[i].y, 0), accessibleTile);
+            Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleSpots[i]) + new Vector3(0, 0.2f, 0);
+            if (!effectInstantiated)
+            {
+                Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent);
+            }
         }
+        effectInstantiated = true;
     }
 
     /*
@@ -238,6 +248,11 @@ public class PlayerManager : MonoBehaviour
     public void HideAccessibleSpot()
     {
         roadMap.ClearAllTiles();
+        for (int i = 0; i < effectsParent.childCount; i++)
+        {
+            Destroy(effectsParent.GetChild(i).gameObject);
+        }
+        effectInstantiated = false;
     }
 
     // WIP

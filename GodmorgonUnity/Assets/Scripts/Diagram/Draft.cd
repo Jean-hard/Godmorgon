@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="BootStrap initialize le jeu en lançant les fonction de paramètrage et de démarage.">
-    <Position X="1.25" Y="6" Height="0.708" Width="2.044" />
+    <Position X="3.396" Y="1.5" Height="0.708" Width="2.044" />
   </Comment>
   <Comment CommentText="DraftPhase remplit le playerDeck à partir d'un deck prédéfini.">
-    <Position X="5.344" Y="0.604" Height="0.75" Width="1.7" />
+    <Position X="7.125" Y="0.573" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Un deck est une stack de plusieurs basicCard.">
     <Position X="12.5" Y="2.75" Height="0.75" Width="1.7" />
   </Comment>
   <Class Name="GodMorgon.DeckBuilding.Draft.DraftPhase">
-    <Position X="4.25" Y="3.75" Width="1.75" />
+    <Position X="5" Y="4.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAABAAAAAAAwAAAAAAAAABAAAAAAAACAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\Draft\DraftPhase.cs</FileName>
@@ -20,9 +20,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GameEngine">
-    <Position X="7" Y="1.75" Width="1.5" />
+    <Position X="7" Y="1.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAABAgAAACAACAgAADABASAEADABAAIRAAAAAgQAQE=</HashCode>
+      <HashCode>AAAABEgAAACAACAgQADABASAEADABAAIRAAAAAgQAQE=</HashCode>
       <FileName>Assets\Scripts\Jean\GameEngine.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -30,7 +30,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GodMorgon.Models.DeckContent" Collapsed="true">
-    <Position X="4.25" Y="2.5" Width="1.5" />
+    <Position X="5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAIAgAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Assets\Scripts\Paul\Models\DeckContent.cs</FileName>
@@ -44,7 +44,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BootStrap">
-    <Position X="1.5" Y="3.5" Width="1.75" />
+    <Position X="1" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AgACAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\BootStrap\BootStrap.cs</FileName>
@@ -54,9 +54,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GodMorgon.Models.GameSettings">
-    <Position X="1.5" Y="1.5" Width="1.75" />
+    <Position X="1" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\Models\GameSettings.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -72,8 +72,25 @@
     <Position X="12.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAABAIAAAAAABAAAEAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>Assets\Scripts\Jean\BasicCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\BasicCard.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="GodMorgon.DeckBuilding.DeckBuildingManager">
+    <Position X="2" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAEAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAgAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\DeckBuildingManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="draftPhase" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="GodMorgon.CardContainer.ICardContainer">
+    <Position X="10.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Paul\CardContainer\ICardContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

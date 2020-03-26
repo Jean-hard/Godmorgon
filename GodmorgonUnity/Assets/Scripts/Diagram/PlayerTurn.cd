@@ -1,142 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Le player ne peut jouer qu'une carte qui est dans sa main.">
-    <Position X="6.958" Y="5.604" Height="0.75" Width="1.7" />
+    <Position X="1.958" Y="5.854" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Le tour du player se termine lorsque que l'effet de la carte selectionné est finie.">
-    <Position X="12.25" Y="7.75" Height="0.75" Width="2.023" />
+    <Position X="5.385" Y="1" Height="0.75" Width="2.023" />
   </Comment>
   <Comment CommentText="FightManager gèrera toutes les confrontations de la partie.">
-    <Position X="19.896" Y="3.219" Height="0.75" Width="1.7" />
+    <Position X="10.271" Y="0.5" Height="0.75" Width="1.7" />
   </Comment>
   <Class Name="GodMorgon.StateMachine.Player_Turn">
-    <Position X="1" Y="0.75" Width="1.5" />
+    <Position X="0.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\StateMachine\States\Player_Turn.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HandManager">
-    <Position X="6.75" Y="2" Width="1.5" />
+    <Position X="1.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAICIAAAACAAAAAAAAIAAAAAQAACAAAAAAAAACAAAAE=</HashCode>
       <FileName>Assets\Scripts\Paul\HandManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CardDisplay">
-    <Position X="9" Y="2" Width="2.25" />
-    <NestedTypes>
-      <Delegate Name="CardDisplay.CardDragDelegate" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Jean\CardDisplay.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
+    <Position X="4" Y="2.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>iAJACAAAQCAAABBgCABAEQAAQAAAACABAAAAAAABAQA=</HashCode>
-      <FileName>Assets\Scripts\Jean\CardDisplay.cs</FileName>
+      <HashCode>iABAAAAAQCAAAABAAAAAAAAAQAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\Jean\Card\CardDisplay.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="card" />
     </ShowAsAssociation>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="PlayerData">
-    <Position X="1" Y="2.25" Width="1.5" />
+    <Position X="17.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAEAFAAAAAQAAAAgAAEAA=</HashCode>
       <FileName>Assets\Scripts\Jean\Player\PlayerData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PlayerManager">
-    <Position X="3.25" Y="0.5" Width="2.25" />
+    <Position X="12.75" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>gAQEAgBAAiABcICAIAAAEgIQQBAAAAAEQgQCABgAAkA=</HashCode>
       <FileName>Assets\Scripts\Jean\Player\PlayerManager.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="astar" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="GodMorgon.Models.BasicCard">
-    <Position X="12" Y="2.25" Width="1.5" />
+    <Position X="7" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAABAIAAAAAABAAAEAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>Assets\Scripts\Jean\BasicCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\BasicCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.AttackCard" Collapsed="true">
-    <Position X="15" Y="1" Width="1.5" />
+    <Position X="9.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\AttackCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\AttackCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.CursedCard" Collapsed="true">
-    <Position X="15" Y="1.75" Width="1.5" />
+    <Position X="9.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\CursedCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\CursedCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.DefenseCard" Collapsed="true">
-    <Position X="15" Y="2.5" Width="1.5" />
+    <Position X="9.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\DefenseCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\DefenseCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.DrawCard" Collapsed="true">
-    <Position X="15" Y="3.25" Width="1.5" />
+    <Position X="9.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\DrawCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\DrawCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.MoveCard" Collapsed="true">
-    <Position X="15" Y="4" Width="1.5" />
+    <Position X="9.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\MoveCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\MoveCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.PowerUpCard" Collapsed="true">
-    <Position X="15" Y="5.5" Width="1.5" />
+    <Position X="9.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\PowerUpCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\PowerUpCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.SightCard" Collapsed="true">
-    <Position X="15" Y="6.25" Width="1.5" />
+    <Position X="9.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\SightCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\SightCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.SpellCard" Collapsed="true">
-    <Position X="15" Y="7" Width="1.5" />
+    <Position X="9.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\SpellCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\SpellCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Models.TimelineCard" Collapsed="true">
-    <Position X="15" Y="4.75" Width="1.5" />
+    <Position X="9.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Jean\TypeCard\TimelineCard.cs</FileName>
+      <FileName>Assets\Scripts\Jean\Card\TypeCard\TimelineCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Confrontation.FightManager">
-    <Position X="20" Y="0.75" Width="1.5" />
+    <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AASAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Paul\Confrontation\FightManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GodMorgon.Enemy.EnemyData">
-    <Position X="22.25" Y="0.75" Width="1.5" />
+    <Position X="15" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAUAAAAAACAEAAAAAAAAAAAAAAAEAACAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAEAAAAAAAAEAAAAAAAAAAAAAAAEAACAAAAAAAAAAAI=</HashCode>
       <FileName>Assets\Scripts\Jean\Enemy\EnemyData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Astar">
+    <Position X="15.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Jean\Enemy\Astar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

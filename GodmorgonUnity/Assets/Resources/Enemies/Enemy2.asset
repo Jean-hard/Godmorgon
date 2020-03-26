@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 2
   name: Bob
   skin: {fileID: 0}
-  nbMoves: 2
+  nbMoves: 1

@@ -10,6 +10,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private GameObject player;
     private Transform movingCardParent;
+    private Transform effectsParent;
     private Transform hand;
 
     public delegate void CardDragDelegate(GameObject draggedCard, PointerEventData eventData);
@@ -17,6 +18,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public CardDragDelegate onCardDragBeginDelegate;
     public CardDragDelegate onCardDragDelegate;
     public CardDragDelegate onCardDragEndDelegate;
+
+    public GameObject dropEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         player = GameObject.Find("Player");
         movingCardParent = GameObject.Find("MovingCardParent").transform;
         hand = GameObject.Find("Hand").transform;
+        effectsParent = GameObject.Find("EffectsParent").transform;
     }
 
     // Update is called once per frame
@@ -77,6 +81,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
 
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(dropEffect, mouseWorldPos, Quaternion.identity, effectsParent);
                 this.gameObject.SetActive(false);
             }
         }

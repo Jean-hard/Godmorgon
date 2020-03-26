@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca1b638ad152ba46ae9269c966d7418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropEffect: {fileID: 100006, guid: 8b940ede2c20ec44ba870a2cdd277051, type: 3}
 --- !u!1 &2277794921791027392
 GameObject:
   m_ObjectHideFlags: 0
