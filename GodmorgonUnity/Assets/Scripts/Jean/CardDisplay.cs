@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
 
+
 /**
  * Présent sur chaque carte
  * Gère l'affichage des infos Name, Description, Artwork et Template sur le prefab Card
@@ -35,11 +36,15 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private float cardWidth, cardHeight;
 
     private GameObject player;
+    private Transform movingCardParent;
+    private Transform hand;
 
     //Load the data of the card in the gameObject at start, if the card exist.
     void Start()
     {
         player = GameObject.Find("Player");
+        movingCardParent = GameObject.Find("MovingCardParent").transform;
+        hand = GameObject.Find("Hand").transform;
 
         if (card)
         {
@@ -76,7 +81,7 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
 
         startPosition = this.transform.position;
-        
+        this.transform.SetParent(movingCardParent);
     }
 
     //fonction lancée lorsqu'on a une carte en main
@@ -111,15 +116,11 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (moveValidate)
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-                Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
+                
+                this.gameObject.SetActive(false);
             }
-            //supprime la carte si la carte est droppée dans une case voisine de celle du player
-            /*bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            if (moveValidate)
-            {
-                GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-                Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
-            } */
         }
+
+        this.transform.SetParent(hand);
     }
 }

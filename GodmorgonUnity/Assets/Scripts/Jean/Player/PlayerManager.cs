@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+using GodMorgon.StateMachine;
+
 public class PlayerManager : MonoBehaviour
 {
     public Tilemap walkableTilemap;
@@ -133,10 +135,12 @@ public class PlayerManager : MonoBehaviour
             playerPathArray.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
             playerPathArray.RemoveAt(0);
 
+            /*
             foreach (Spot spot in playerPathArray)
             {
                 Debug.Log(spot.X + " " + spot.Y);
-            }
+            }*/
+
             playerCanMove = true;  //on autorise le player à bouger
         }
         else
@@ -172,7 +176,8 @@ public class PlayerManager : MonoBehaviour
 
                 playerCanMove = false;
                 playerHasMoved = true;
-                spotIndex = 0;  
+                spotIndex = 0;
+                StartCoroutine(WaitForRingMasterTurn());
             }
             else if (spotIndex < playerPathArray.Count - 1)
             {
@@ -233,5 +238,13 @@ public class PlayerManager : MonoBehaviour
     public void HideAccessibleSpot()
     {
         roadMap.ClearAllTiles();
+    }
+
+    // WIP
+    IEnumerator WaitForRingMasterTurn()
+    {
+        yield return new WaitForSeconds(4f);
+        Debug.Log("Ringmaster turn");
+        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
     }
 }
