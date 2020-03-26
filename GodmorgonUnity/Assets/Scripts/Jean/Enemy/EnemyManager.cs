@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     private List<GameObject> enemiesCloseToPlayer;
 
     private bool enemiesCanMove = false;
-    private bool closeEnemiesMoved = false;
+    private bool enemiesHaveMoved = false;
 
     public float enemySpeed = 1f;
     public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
@@ -32,6 +32,23 @@ public class EnemyManager : MonoBehaviour
     List<Spot> roadPath = new List<Spot>();
     BoundsInt bounds;
 
+    #region Singleton Pattern
+    private static EnemyManager _instance;
+
+    public static EnemyManager Instance { get { return _instance; } }
+    #endregion
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +108,8 @@ public class EnemyManager : MonoBehaviour
      */
     public void SetEnemyPath()
     {
+        enemiesHaveMoved = false;
+
         Vector3 playerPos = player.transform.position;
         Vector3Int endPos = walkableTilemap.WorldToCell(playerPos);    //position d'arrivée (player) en format cellule
 
@@ -209,6 +228,7 @@ public class EnemyManager : MonoBehaviour
                 if (enemyIndex >= enemiesArray.Count)   //s'il ne reste plus d'enemies à bouger
                 {
                     enemiesCanMove = false;
+                    enemiesHaveMoved = true;
                     enemyIndex = 0;
                     spotIndex = 0;
                 }
@@ -217,7 +237,7 @@ public class EnemyManager : MonoBehaviour
             {
                 float ratio = (float)spotIndex / (enemiesPathArray[enemyIndex].Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
                 ratio = enemyMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
-                float speed = enemySpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse du joueur
+                float speed = enemySpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse de l'enemy
                 enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
             }
         }
@@ -228,9 +248,9 @@ public class EnemyManager : MonoBehaviour
 
     public bool EnemiesMoveDone()
     {
-        if (enemiesCanMove)
-            return false;
-        else
+        if (enemiesHaveMoved)
             return true;
+        else
+            return false;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Tilemap tilemap;
+    public Tilemap walkableTilemap;
     public Tilemap roadMap;
     public TileBase roadTile;
     public Vector3Int[,] spots;
@@ -15,12 +15,19 @@ public class PlayerManager : MonoBehaviour
     new Camera camera;
     BoundsInt bounds;
 
+    private bool playerCanMove = false;
+    private int spotIndex;
+    private List<Spot> playerPathArray;
+
+    public float playerSpeed = 1f;
+    public AnimationCurve playerMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+
     // Start is called before the first frame update
     void Start()
     {
-        tilemap.CompressBounds();
+        walkableTilemap.CompressBounds();
         roadMap.CompressBounds();
-        bounds = tilemap.cellBounds;
+        bounds = walkableTilemap.cellBounds;
         camera = Camera.main;
 
 
@@ -35,7 +42,7 @@ public class PlayerManager : MonoBehaviour
         {
             for (int y = bounds.yMin, j = 0; j < (bounds.size.y); y++, j++)
             {
-                if (tilemap.HasTile(new Vector3Int(x, y, 0)))
+                if (walkableTilemap.HasTile(new Vector3Int(x, y, 0)))
                 {
                     spots[i, j] = new Vector3Int(x, y, 0);
                 }
@@ -62,21 +69,22 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(world);
+            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
             start = new Vector2Int(gridPos.x, gridPos.y);
         }
         if (Input.GetMouseButton(2))
         {
             Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(world);
+            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
             roadMap.SetTile(new Vector3Int(gridPos.x, gridPos.y, 0), null);
         }
         if (Input.GetMouseButton(0))
         {
+            Debug.Log("hello");
             CreateGrid();
 
             Vector3 world = camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPos = tilemap.WorldToCell(world);
+            Vector3Int gridPos = walkableTilemap.WorldToCell(world);
 
             if (roadPath != null && roadPath.Count > 0)
                 roadPath.Clear();
@@ -85,8 +93,79 @@ public class PlayerManager : MonoBehaviour
             if (roadPath == null)
                 return;
 
-            //DrawRoad();
+            DrawRoad();
             start = new Vector2Int(roadPath[0].X, roadPath[0].Y);
+            playerCanMove = true;
         }
+
+
+        if(playerCanMove)
+        {
+            float ratio = (float)spotIndex / (playerPathArray.Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
+            ratio = playerMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
+            float speed = playerSpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse de l'enemy
+            //this.transform.position = Vector2.MoveTowards(this.transform.position,);
+        }
+    }
+
+    public void SetPlayerPath(Vector3 tileClicked)
+    {
+        Vector3 playerPos = this.transform.position;
+        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
+        Vector3Int endPos = walkableTilemap.WorldToCell(tileClicked);    //position d'arrivée (player) en format cellule
+
+        playerPathArray = new List<Spot>();
+
+        spotIndex = 0;
+
+        int nbMoves = 2;
+
+        if (roadPath != null && roadPath.Count > 0) //reset le roadpath
+            roadPath.Clear();
+
+        //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path -> dépend de l'ennemi
+        //roadPath est une liste de spots = une liste de positions de tiles
+        //roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove * nbMoves);
+
+        if (roadPath == null)
+        {
+            return;
+        }
+        /*
+        foreach (Spot spot in roadPath)
+        {
+            bool hasPlayerOnPath = false;
+
+            //on met dans un tableau les enemies qui vont se rendre dans la room du player pour pouvoir les faire s'arreter une tile avant le player
+            if (playerCellPos.x == spot.X && playerCellPos.y == spot.Y)
+            {
+                hasPlayerOnPath = true;
+                enemiesCloseToPlayer.Add(enemiesArray[enemyIndex]);
+            }
+
+            if (!hasPlayerOnPath)
+            {
+                playerPathArray[enemyIndex].Add(spot);     //on ajoute pour tel enemy les spots par lesquels il va devoir passer sauf celui où il y a le player
+            }
+
+            spotIndex++;
+        }
+
+        playerPathArray[enemyIndex].Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
+        playerPathArray[enemyIndex].RemoveAt(0);
+
+        /*
+            * Affiche les coordonnées de tiles des paths que les enemies doivent parcourir
+        foreach(Spot spot in enemiesPathArray[enemyIndex])
+        {
+            Debug.Log(spot.X + " / " + spot.Y);
+        }*/
+
+        //enemyIndex++;
+        
+        
+
+        playerCanMove = true;  //on autorise les enemies à bouger
+        spotIndex = 0;
     }
 }
