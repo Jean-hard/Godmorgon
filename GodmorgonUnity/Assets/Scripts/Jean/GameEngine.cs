@@ -135,6 +135,17 @@ public class GameEngine
         gameLaunched = true;
     }
 
+    //Shufle the deck after the draft state
+    public void ShufleCompleteDeck()
+    {
+        Deck tempDeck = new Deck();
+        while (playerDeck.Count() > 0)
+        {
+            tempDeck.AddCard(playerDeck.DrawCard());
+        }
+        playerDeck = tempDeck;
+    }
+
     /**
      * Set the current scene of game
      */

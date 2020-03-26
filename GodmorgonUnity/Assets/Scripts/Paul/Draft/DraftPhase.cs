@@ -35,7 +35,7 @@ namespace GodMorgon.DeckBuilding.Draft
 
         /**
          * Start a draft sequence
-         * choose 3 card randomly from draft deck and display them on screen
+         * choose 5 card randomly from draft deck and display them on screen
          */
         public void StartDraftSequence()
         {
@@ -48,8 +48,12 @@ namespace GodMorgon.DeckBuilding.Draft
                     cardsOnDraft[i].UpdateCard(draftDeck.cards[rdmCardNb]);
                 }
             }
+            //after pick all the card, we shuffle the deck and start the load of the game scene
             else
+            {
+                GameEngine.Instance.ShufleCompleteDeck();
                 GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.LOAD);
+            }
             //Debug.Log("Phase de draft Complete, Lancement de la scene de jeu avec le deck complet");
         }
 

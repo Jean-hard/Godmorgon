@@ -6,6 +6,9 @@
   <Comment CommentText="Le tour du player se termine lorsque que l'effet de la carte selectionné est finie.">
     <Position X="12.25" Y="7.75" Height="0.75" Width="2.023" />
   </Comment>
+  <Comment CommentText="FightManager gèrera toutes les confrontations de la partie.">
+    <Position X="19.896" Y="3.219" Height="0.75" Width="1.7" />
+  </Comment>
   <Class Name="GodMorgon.StateMachine.Player_Turn">
     <Position X="1" Y="0.75" Width="1.5" />
     <TypeIdentifier>
@@ -120,6 +123,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Jean\TypeCard\TimelineCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Confrontation.FightManager">
+    <Position X="20" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Paul\Confrontation\FightManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GodMorgon.Enemy.EnemyData">
+    <Position X="22.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAACAEAAAAAAAAAAAAAAAEAACAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Jean\Enemy\EnemyData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
