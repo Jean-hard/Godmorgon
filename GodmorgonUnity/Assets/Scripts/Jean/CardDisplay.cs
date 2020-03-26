@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 using GodMorgon.Models;
+using GodMorgon.StateMachine;
 
 /**
  * Présent sur chaque carte
@@ -111,15 +112,17 @@ public class CardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (moveValidate)
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-                Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
+                StartCoroutine(WaitForRingMasterTurn());
             }
-            //supprime la carte si la carte est droppée dans une case voisine de celle du player
-            /*bool moveValidate = player.GetComponent<PlayerMove>().UseMoveCard();
-            if (moveValidate)
-            {
-                GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-                Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
-            } */
         }
+    }
+
+    // WIP
+    IEnumerator WaitForRingMasterTurn()
+    {
+        yield return new WaitForSeconds(4f);
+        Debug.Log("Ringmaster turn");
+        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+        Destroy(this.gameObject);// WIP : retirer de la main plutot que détruire
     }
 }
