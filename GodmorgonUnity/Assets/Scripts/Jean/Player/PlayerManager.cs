@@ -243,7 +243,7 @@ public class PlayerManager : MonoBehaviour
     // WIP
     IEnumerator WaitForRingMasterTurn()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         Debug.Log("Ringmaster turn");
         GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
     }
