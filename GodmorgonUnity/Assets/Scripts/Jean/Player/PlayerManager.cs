@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 using GodMorgon.StateMachine;
 
+
 public class PlayerManager : MonoBehaviour
 {
     public Tilemap walkableTilemap;
@@ -15,11 +16,9 @@ public class PlayerManager : MonoBehaviour
     
     Astar astar;
     List<Spot> roadPath = new List<Spot>();
-    new Camera camera;
     BoundsInt bounds;
 
     private bool playerCanMove = false;
-    private bool playerHasMoved;
     private int spotIndex;
     private List<Spot> playerPathArray;
     private List<Vector3Int> accessibleSpots = new List<Vector3Int>();
@@ -63,7 +62,6 @@ public class PlayerManager : MonoBehaviour
         walkableTilemap.CompressBounds();
         roadMap.CompressBounds();
         bounds = walkableTilemap.cellBounds;
-        camera = Camera.main;
 
 
         CreateGrid();
@@ -105,16 +103,21 @@ public class PlayerManager : MonoBehaviour
         MovePlayer();
     }
 
+
+    /**
+     * Détermine la liste de tiles (=path) à parcourir jusqu'à l'endroit où la carte mouvement est déposée
+     */
     public bool SetPlayerPath()
     {
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
         endPos = walkableTilemap.WorldToCell(mouseWorldPos);
 
+        //Si la tile sélectionnée fait partie de la liste des tiles accessibles
         if (accessibleSpots.Contains(endPos))
         {
             Vector3 playerPos = this.transform.position;
-            Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
+            Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
 
             playerPathArray = new List<Spot>();
 
@@ -179,7 +182,6 @@ public class PlayerManager : MonoBehaviour
                 }*/
 
                 playerCanMove = false;
-                playerHasMoved = true;
                 spotIndex = 0;
                 StartCoroutine(WaitForRingMasterTurn());
             }
@@ -211,7 +213,9 @@ public class PlayerManager : MonoBehaviour
 
         accessibleSpots.Clear();
         Vector3 playerPos = this.transform.position;
-        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
+        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
+        
+        //Pour tous les spots walkable, on regarde s'il fait partie des 4 cases (room) voisines, et si le chemin vers cette room est direct, dans ce cas on met le spot dans la liste des accessibles
         foreach (Vector3Int spot in spotsList)
         {
             roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(spot.x, spot.y), 100);
@@ -223,7 +227,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    /*
+    /**
      * Montre les tiles sur lesquelles le joueur peut se déplacer
      */
     public void ShowAccessibleSpot()
@@ -232,17 +236,17 @@ public class PlayerManager : MonoBehaviour
 
         for (int i = 0; i < accessibleSpots.Count; i++)
         {
-            roadMap.SetTile(new Vector3Int(accessibleSpots[i].x, accessibleSpots[i].y, 0), accessibleTile);
+            roadMap.SetTile(new Vector3Int(accessibleSpots[i].x, accessibleSpots[i].y, 0), accessibleTile); //On applique le sprite de tile sur les spots accessibles
             Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleSpots[i]) + new Vector3(0, 0.2f, 0);
             if (!effectInstantiated)
             {
-                Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent);
+                Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent); //on lance l'effet de drop de carte sur la map, qui sera en enfant de effectsParent
             }
         }
         effectInstantiated = true;
     }
 
-    /*
+    /**
      * Cache les tiles sur lesquelles le joueur peut se déplacer
      */
     public void HideAccessibleSpot()

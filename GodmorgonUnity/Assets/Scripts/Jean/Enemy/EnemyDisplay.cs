@@ -2,35 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GodMorgon.Models;
-public class EnemyDisplay : MonoBehaviour
+
+namespace GodMorgon.Enemy
 {
-    public Enemy enemy;
-    
-    public int enemyId;
-
-    public Sprite enemySprite;
-
-    public bool isInPlayersRoom;
-
-    public void Start()
+    public class EnemyDisplay : MonoBehaviour
     {
-        enemyId = enemy.id;
-    }
+        public Models.Enemy enemy;
 
-    //Méthode récupérant le nombre de room que l'enemy peut parcourir en une fois
-    public int GetNbMoves()
-    {
-        return enemy.nbMoves;
-    }
+        public int enemyId;
 
+        public Sprite enemySprite;
 
-    public bool GetIsInPlayersRoom()
-    {
-        return isInPlayersRoom;
-    }
+        public bool isInPlayersRoom;
 
-    public void SetIsInPlayersRoom(bool value)
-    {
-        isInPlayersRoom = value;
+        public void Start()
+        {
+            enemyId = enemy.id;
+        }
+
+        //Récupére le nombre de room que l'enemy peut parcourir en une fois
+        public int GetNbMoves()
+        {
+            return enemy.nbMoves;
+        }
+
+        //Retourne true si l'enemy est dans la room du player
+        public bool GetIsInPlayersRoom()
+        {
+            return isInPlayersRoom;
+        }
+
+        //Set le bool de la présence de l'enemy dans la room du player
+        public void SetIsInPlayersRoom(bool value)
+        {
+            isInPlayersRoom = value;
+        }
     }
 }

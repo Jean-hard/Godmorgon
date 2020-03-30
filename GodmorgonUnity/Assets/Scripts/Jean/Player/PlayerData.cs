@@ -4,46 +4,49 @@ using UnityEngine;
 
 using GodMorgon.Models;
 
-public class PlayerData
+namespace GodMorgon.Player
 {
-    public int lifeMax;
-    public int life;
-    public int power;
-
-    #region Singleton Pattern
-    private static PlayerData instance;
-
-    public static PlayerData Instance
+    public class PlayerData
     {
-        get
+        public int lifeMax;
+        public int life;
+        public int power;
+
+        #region Singleton Pattern
+        private static PlayerData instance;
+
+        public static PlayerData Instance
         {
-            if (instance == null)
+            get
             {
-                instance = new PlayerData();
+                if (instance == null)
+                {
+                    instance = new PlayerData();
+                }
+
+                return instance;
             }
-
-            return instance;
         }
-    }
-    #endregion
+        #endregion
 
-    //Sera créé et configuré par le gameEngine
-    public PlayerData()
-    {
-        //à configurer par le gameEngine
-        lifeMax = 100;
-        power = 50;
+        //Sera créé et configuré par le gameEngine
+        public PlayerData()
+        {
+            //à configurer par le gameEngine
+            lifeMax = 100;
+            power = 50;
 
-        life = lifeMax;
-    }
+            life = lifeMax;
+        }
 
-    public void SetLife(int newLife)
-    {
-        life = newLife;
-    }
+        public void SetLife(int newLife)
+        {
+            life = newLife;
+        }
 
-    public void SetPower(int newPower)
-    {
-        power = newPower;
+        public void SetPower(int newPower)
+        {
+            power = newPower;
+        }
     }
 }

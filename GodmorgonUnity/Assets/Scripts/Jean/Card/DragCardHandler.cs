@@ -27,6 +27,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         cardWidth = this.GetComponent<RectTransform>().sizeDelta.x;
         cardHeight = this.GetComponent<RectTransform>().sizeDelta.y;
 
+        // WIP : essayer de les récupérer autrement
         player = GameObject.Find("Player");
         movingCardParent = GameObject.Find("MovingCardParent").transform;
         hand = GameObject.Find("Hand").transform;
@@ -53,12 +54,12 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         //onCardDragDelegate?.Invoke(this.gameObject, eventData);
 
-        this.transform.position = eventData.position;
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);
+        this.transform.position = eventData.position;   //La carte prend la position de la souris
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);  //On réduit la taille de la carte lors du drag
 
+        //Si la carte draggée est de type Mouvement, on montre les tiles accessibles
         if (eventData.pointerDrag.GetComponent<CardDisplay>().card.name == "Mouvement")
         {
-            //Montre les tiles accessibles
             PlayerManager.Instance.ShowAccessibleSpot();
         }
     }
@@ -68,8 +69,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         //onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
 
-        this.transform.position = startPosition;
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //récupère sa taille normale
+        this.transform.position = startPosition;    //
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //La carte récupère sa taille normale
 
         if (eventData.pointerDrag.GetComponent<CardDisplay>().card.name == "Mouvement")
         {
