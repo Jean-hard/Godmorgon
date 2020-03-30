@@ -6,6 +6,9 @@ using GodMorgon.Models;
 
 namespace GodMorgon.CardContainer
 {
+    /**
+     * object containing a stack of card to be use as the deck of the player
+     */
     public class Deck : CardList
     {
         // ==== Attributes
@@ -14,6 +17,7 @@ namespace GodMorgon.CardContainer
 
         // ==== Methods
 
+        //add a card on top of the stack
         public new void AddCard(BasicCard newCard)
         {
             if (newCard != null)
@@ -24,6 +28,7 @@ namespace GodMorgon.CardContainer
                 throw new InconsistentCardExecption();
         }
 
+        //draw the card on top of the stack
         public new BasicCard DrawCard()
         {
             return cards.Count > 0 ? cards.Pop() : null;

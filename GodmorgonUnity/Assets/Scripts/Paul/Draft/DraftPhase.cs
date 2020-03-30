@@ -31,7 +31,7 @@ namespace GodMorgon.DeckBuilding.Draft
          * text indiquant le nombre de séquence de draft restante
          * ----Temporaire------
          */
-        public Text nbDraftLeftText;
+        public Text nbDraftLeftText = null;
 
         /**
          * Start a draft sequence
