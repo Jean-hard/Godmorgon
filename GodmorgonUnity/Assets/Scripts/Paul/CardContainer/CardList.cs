@@ -6,6 +6,9 @@ using GodMorgon.Models;
 
 namespace GodMorgon.CardContainer
 {
+    /**
+     * abstract class for all type of list of card use during the game
+     */
     public abstract class CardList : ICardContainer 
     {
         //list of cards contains in this object.
