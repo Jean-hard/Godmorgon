@@ -8,25 +8,33 @@ namespace GodMorgon.Enemy
 {
     public class EnemyManager : MonoBehaviour
     {
+        [Header("General Settings")]
         public Grid grid;
         public Tilemap walkableTilemap;
         public Tilemap roadMap;
         public TileBase roadTile;
-        public Vector3Int[,] spots;
-
         public GameObject player;
-        private List<GameObject> enemiesArray;  //Tableau des ennemies présents sur la map
-        private List<Spot>[] enemiesPathArray;  //Tableau contenant la liste de spots à parcourir de CHAQUE enemy présent sur la map
-        private int enemyIndex;
-        private int spotIndex;
-        private List<GameObject> enemiesCloseToPlayer;  //Liste contenant les enemies qui au prochain move se retrouveront dans la room du player
-
-        private bool enemiesCanMove = false;
-        private bool enemiesHaveMoved = false;
-
+        
+        [Header("Movement Settings")]
         public float enemySpeed = 1f;
         public AnimationCurve enemyMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);   //Curve liée à la vitesse des ennemies (pour leur donner un pattern de move)
 
+        [Header("Attack Settings")]
+        public float attackDuration = 3f; 
+
+        private List<GameObject> farEnemiesList;  //Tableau des ennemis présents sur la map mais hors de la room du player
+        private List<GameObject> enemiesCloseToPlayer;  //Liste contenant les ennemis qui au prochain move se retrouveront dans la room du player
+        private List<Spot>[] enemiesPathArray;  //Tableau contenant la liste de spots à parcourir de CHAQUE enemy présent sur la map
+        public Vector3Int[,] spots;
+        private int spotIndex;
+        private int enemyIndex;
+        private bool enemiesCanMove = false;
+        private bool enemiesHaveMoved = false;
+
+        private List<GameObject> enemiesList;
+        private List<EnemyData> enemyDatasList;
+
+        
         // nombre de tiles parcourues pour 1 move
         private int nbTilesToMove = 3;
 
@@ -52,7 +60,6 @@ namespace GodMorgon.Enemy
             }
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
@@ -63,13 +70,13 @@ namespace GodMorgon.Enemy
             astar = new Astar(spots, bounds.size.x, bounds.size.y);
         }
 
-        // Update is called once per frame
+        
         void Update()
         {
             MoveEnemies();
         }
 
-        /*
+        /**
          * Ajoute dans un tableau de Vector3 les positions des tiles de la tilemap Walkable
          */
         public void CreateGrid()
@@ -91,21 +98,21 @@ namespace GodMorgon.Enemy
             }
         }
 
-        /*
-         * Mets dans un tableau les enemies enfant du gameobject EnemyManager qui ne sont pas dans la room du player
+        /**
+         * Mets dans un tableau SEULEMENT les enemies enfant du gameobject EnemyManager HORS DE LA ROOM DU PLAYER
          */
-        private void UpdateEnemiesArray()
+        private void UpdateFarEnemiesArray()
         {
-            enemiesArray = new List<GameObject>();
+            farEnemiesList = new List<GameObject>();
             for (int i = 0; i < transform.childCount; i++)
             {
                 //s'il n'est pas dans la room du player, on ne l'ajoute pas dans le tableau des enemies
-                if (transform.GetChild(i).gameObject.GetComponent<EnemyDisplay>().GetIsInPlayersRoom() == false)
-                    enemiesArray.Add(transform.GetChild(i).gameObject);
+                if (transform.GetChild(i).gameObject.GetComponent<EnemyDisplay>().IsInPlayersRoom() == false)
+                    farEnemiesList.Add(transform.GetChild(i).gameObject);
             }
         }
 
-        /*
+        /**
          * Renvoie la liste des tiles sur lesquelles l'enemy doit bouger
          */
         public void SetEnemyPath()
@@ -117,22 +124,22 @@ namespace GodMorgon.Enemy
 
             enemyIndex = 0;
 
-            UpdateEnemiesArray();
+            UpdateFarEnemiesArray();
 
-            enemiesPathArray = new List<Spot>[enemiesArray.Count];
+            enemiesPathArray = new List<Spot>[farEnemiesList.Count];
             for (int i = 0; i < enemiesPathArray.Length; i++)
             {
                 enemiesPathArray[i] = new List<Spot>();
             }
 
             //s'il y a des ennemis
-            if (enemiesArray.Count > 0)
+            if (farEnemiesList.Count > 0)
             {
                 Vector3Int playerCellPos = walkableTilemap.WorldToCell(player.transform.position);
 
                 enemiesCloseToPlayer = new List<GameObject>();   //Init la liste des/du enemies dans la room du joueur
 
-                foreach (GameObject enemy in enemiesArray)
+                foreach (GameObject enemy in farEnemiesList)
                 {
                     spotIndex = 0;
 
@@ -159,7 +166,7 @@ namespace GodMorgon.Enemy
                         if (playerCellPos.x == spot.X && playerCellPos.y == spot.Y)
                         {
                             hasPlayerOnPath = true;
-                            enemiesCloseToPlayer.Add(enemiesArray[enemyIndex]);
+                            enemiesCloseToPlayer.Add(farEnemiesList[enemyIndex]);
                         }
 
                         if (!hasPlayerOnPath)
@@ -189,34 +196,34 @@ namespace GodMorgon.Enemy
             spotIndex = 0;
         }
 
-        /*
+        /**
          * Lance le mouvement des ennemis
          */
         public void MoveEnemies()
         {
-            if (enemiesArray == null || enemiesArray.Count == 0 || !enemiesCanMove)
+            if (farEnemiesList == null || farEnemiesList.Count == 0 || !enemiesCanMove)
             {
                 return;
             }
 
             //FAIRE UNE SECURITE SI 2 ENEMY SE CROISENT
 
-            if (enemyIndex < enemiesArray.Count)
+            if (enemyIndex < farEnemiesList.Count)
             {
                 //la prochaine position est le spot[spotIndex] parmi la liste de spot de l'enemy concerné
                 Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(enemiesPathArray[enemyIndex][spotIndex].X, enemiesPathArray[enemyIndex][spotIndex].Y, 0))
                     + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
 
 
-                if (Vector3.Distance(enemiesArray[enemyIndex].transform.position, nextPos) < 0.001f)
+                if (Vector3.Distance(farEnemiesList[enemyIndex].transform.position, nextPos) < 0.001f)
                 {
                     //on passe à l'ennemy suivant si on arrive à la tile finale où l'enemy peut se rendre
                     if (spotIndex == enemiesPathArray[enemyIndex].Count - 1)
                     {
                         //si l'enemy avait sur son chemin le player (il est donc dans sa room à ce moment là)
-                        if (enemiesCloseToPlayer.Contains(enemiesArray[enemyIndex]))
+                        if (enemiesCloseToPlayer.Contains(farEnemiesList[enemyIndex]))
                         {
-                            enemiesArray[enemyIndex].GetComponent<EnemyDisplay>().SetIsInPlayersRoom(true); //on set l'état de cet enemy dans la room
+                            farEnemiesList[enemyIndex].GetComponent<EnemyDisplay>().SetInPlayersRoomBool(true); //on set l'état de cet enemy dans la room
                         }
 
                         enemyIndex++;   //on passe à l'enemy suivant
@@ -227,7 +234,7 @@ namespace GodMorgon.Enemy
                         spotIndex++;    //on passe à la tile suivante tant qu'on a pas atteint la dernière
                     }
 
-                    if (enemyIndex >= enemiesArray.Count)   //s'il ne reste plus d'enemies à bouger
+                    if (enemyIndex >= farEnemiesList.Count)   //s'il ne reste plus d'enemies à bouger
                     {
                         enemiesCanMove = false;
                         enemiesHaveMoved = true;
@@ -240,7 +247,7 @@ namespace GodMorgon.Enemy
                     float ratio = (float)spotIndex / (enemiesPathArray[enemyIndex].Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
                     ratio = enemyMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
                     float speed = enemySpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse de l'enemy
-                    enemiesArray[enemyIndex].transform.position = Vector2.MoveTowards(enemiesArray[enemyIndex].transform.position, nextPos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
+                    farEnemiesList[enemyIndex].transform.position = Vector2.MoveTowards(farEnemiesList[enemyIndex].transform.position, nextPos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
                 }
             }
             else
@@ -249,7 +256,7 @@ namespace GodMorgon.Enemy
         }
 
         /**
-         * Renvoie true si le mouvement des ennemies est terminé
+         * Renvoie true si le mouvement des ennemis est terminé
          */
         public bool EnemiesMoveDone()
         {
@@ -257,6 +264,49 @@ namespace GodMorgon.Enemy
                 return true;
             else
                 return false;
+        }
+
+
+        /**
+         * Mets dans un tableau TOUS les enemies enfant du gameobject EnemyManager sur la map
+         */
+        private void UpdateEnemiesArray()
+        {
+            enemiesList = new List<GameObject>();
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                enemiesList.Add(transform.GetChild(i).gameObject);
+            }
+        }
+
+        /**
+         * Lance l'attaque des ennemis
+         */
+        public void Attack()
+        {
+            UpdateEnemiesArray();
+
+            StartCoroutine(TimedAttacks(attackDuration));
+        }
+
+        /**
+         * Applique les effets de l'attaque tous les [attackDuration] secondes
+         */
+        IEnumerator TimedAttacks(float attackDuration)
+        {
+            foreach (GameObject enemy in enemiesList)
+            {
+                //Si l'ennemi est dans la room du player
+                if (enemy.GetComponent<EnemyDisplay>().IsInPlayersRoom())
+                {
+                    //Lance anim d'attack
+
+                    //Fait des damages au player
+                    PlayerManager.Instance.HitPlayer(3);
+                }
+                
+                yield return new WaitForSeconds(attackDuration);    //Attend X temps pour passer à l'ennemi suivant
+            }
         }
     }
 }

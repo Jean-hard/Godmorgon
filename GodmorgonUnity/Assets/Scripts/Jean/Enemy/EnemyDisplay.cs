@@ -7,13 +7,26 @@ namespace GodMorgon.Enemy
 {
     public class EnemyDisplay : MonoBehaviour
     {
-        public Models.Enemy enemy;
+        public Models.Enemy enemy;  //Scriptable object Enemy
 
+        [System.NonSerialized]
         public int enemyId;
-
+        [System.NonSerialized]
         public Sprite enemySprite;
 
-        public bool isInPlayersRoom;
+        //public bool isInPlayersRoom;
+
+        public EnemyData enemyData;
+
+        public void Awake()
+        {
+            enemyData.name = enemy.name;
+            enemyData.health = enemy.health;
+            enemyData.attack = enemy.attack;
+            enemyData.defense = enemy.defense;
+            enemyData.nbMoves = enemy.nbMoves;
+            enemyData.inPlayersRoom = false;
+        }
 
         public void Start()
         {
@@ -27,15 +40,15 @@ namespace GodMorgon.Enemy
         }
 
         //Retourne true si l'enemy est dans la room du player
-        public bool GetIsInPlayersRoom()
+        public bool IsInPlayersRoom()
         {
-            return isInPlayersRoom;
+            return enemyData.inPlayersRoom;
         }
 
         //Set le bool de la présence de l'enemy dans la room du player
-        public void SetIsInPlayersRoom(bool value)
+        public void SetInPlayersRoomBool(bool value)
         {
-            isInPlayersRoom = value;
+            enemyData.inPlayersRoom = value;
         }
     }
 }
