@@ -8,8 +8,8 @@ namespace GodMorgon.Player
 {
     public class PlayerData
     {
-        public int lifeMax;
-        public int life;
+        public int healthMax;
+        public int health;
         public int power;
 
         #region Singleton Pattern
@@ -33,15 +33,15 @@ namespace GodMorgon.Player
         public PlayerData()
         {
             //à configurer par le gameEngine
-            lifeMax = 100;
+            healthMax = 100;
             power = 50;
 
-            life = lifeMax;
+            health = healthMax;
         }
 
-        public void SetLife(int newLife)
+        public void SetHealth(int newHealth)
         {
-            life = newLife;
+            health = newHealth;
         }
 
         public void SetPower(int newPower)

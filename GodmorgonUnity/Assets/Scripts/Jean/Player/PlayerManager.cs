@@ -4,27 +4,30 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 using GodMorgon.StateMachine;
-
+using GodMorgon.Player;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public Tilemap walkableTilemap;
     public Tilemap roadMap;
     public TileBase accessibleTile;
     public Vector3Int[,] spots;
     private List<Vector3Int> spotsList;
-    
+    public float playerSpeed = 1f;
+    public AnimationCurve playerMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+
     Astar astar;
     List<Spot> roadPath = new List<Spot>();
     BoundsInt bounds;
 
     private bool playerCanMove = false;
+    private bool playerHasMoved = false;
     private int spotIndex;
     private List<Spot> playerPathArray;
     private List<Vector3Int> accessibleSpots = new List<Vector3Int>();
 
-    public float playerSpeed = 1f;
-    public AnimationCurve playerMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+    
 
     Vector3Int endPos;
 
@@ -158,6 +161,9 @@ public class PlayerManager : MonoBehaviour
         
     }
 
+    /**
+     * Lance le mouvement du player
+     */
     public void MovePlayer()
     {
         if(!playerCanMove)
@@ -182,6 +188,7 @@ public class PlayerManager : MonoBehaviour
                 }*/
 
                 playerCanMove = false;
+                playerHasMoved = true;
                 spotIndex = 0;
                 StartCoroutine(WaitForRingMasterTurn());
             }
@@ -197,6 +204,17 @@ public class PlayerManager : MonoBehaviour
             float speed = playerSpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse du player
             this.transform.position = Vector2.MoveTowards(this.transform.position, nextPos, speed * Time.deltaTime);
         }
+    }
+
+    /**
+    * Renvoie true si le mouvement des ennemis est terminé
+    */
+    public bool PlayerMoveDone()
+    {
+        if (playerHasMoved)
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -265,5 +283,19 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Debug.Log("Ringmaster turn");
         GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+        playerHasMoved = false;
+    }
+
+    /**
+     * Inflige des damages au player
+     */
+    public void HitPlayer(int damageValue)
+    {
+        //WIP : considérer le shield du player
+
+        int newLife = PlayerData.Instance.health - damageValue;
+        PlayerData.Instance.SetHealth(newLife);
+
+        Debug.Log("Update player's life ");
     }
 }
