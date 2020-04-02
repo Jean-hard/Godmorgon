@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}" SchemaVersion="97">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="TurnState" ID="{7E4684CB-6A0B-4394-9F30-81482398C12B}">
+					<ChildrenList>
+						<State Name="None" ID="{6356896E-7EC3-4F01-A367-0283CF9DA656}"/>
+						<State Name="Player" ID="{BCFEC34A-32B5-4B83-B516-000D4E65B916}"/>
+						<State Name="Ringmaster" ID="{7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

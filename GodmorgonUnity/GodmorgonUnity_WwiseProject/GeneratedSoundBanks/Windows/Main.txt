@@ -1,0 +1,15 @@
+Event	ID	Name			Wwise Object Path	Notes
+	417627684	PlayMusic			\Default Work Unit\PlayMusic	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3653852827	TurnState			\Default Work Unit\TurnState	
+
+State	ID	Name	State Group			Notes
+	748895195	None	TurnState			
+	1069431850	Player	TurnState			
+	1506151517	Ringmaster	TurnState			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	782884905	MUS_Main_Theme_2_V2	T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\MUS_Main_Theme_2_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\TurnTheme\Ringmaster\MUS_Main_Theme_2_V2\MUS_Main_Theme_2_V2		17539264
+	832796481	MUS_Main_Theme_1_V2	T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\MUS_Main_Theme_1_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\TurnTheme\Player\MUS_Main_Theme_1_V2\MUS_Main_Theme_1_V2		19169172
+
