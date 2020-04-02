@@ -24,8 +24,4 @@ public class MusicManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Keypad2))
             RingmasterState.SetValue();
     }
-
-    public void 
-
-    
 }
