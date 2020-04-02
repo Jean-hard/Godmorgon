@@ -24,6 +24,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="DropCardEvent" ID="{302064A7-9BF1-4DBE-86C4-421EAF1645A0}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
