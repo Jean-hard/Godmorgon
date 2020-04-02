@@ -20,12 +20,16 @@ namespace GodMorgon.Enemy
 
         public void Awake()
         {
-            enemyData.name = enemy.name;
-            enemyData.health = enemy.health;
-            enemyData.attack = enemy.attack;
-            enemyData.defense = enemy.defense;
-            enemyData.nbMoves = enemy.nbMoves;
-            enemyData.inPlayersRoom = false;
+            if (enemy != null)
+            {
+                enemyData.name = enemy.name;
+                enemyData.health = enemy.health;
+                enemyData.attack = enemy.attack;
+                enemyData.defense = enemy.defense;
+                enemyData.nbMoves = enemy.nbMoves;
+                enemyData.skin = enemy.skin;
+                enemyData.inPlayersRoom = false;
+            }
         }
 
         public void Start()

@@ -11,6 +11,7 @@ namespace GodMorgon.Enemy
         public int attack = 0;
         public int defense = 0;
         public int nbMoves = 0;
+        public Sprite skin = null;
         public bool inPlayersRoom = false;
     }
 }
