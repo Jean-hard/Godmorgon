@@ -5,13 +5,6 @@
 			<ChildrenList>
 				<Event Name="PlayMusic" ID="{C7E7F265-9C48-4128-80FD-0B94F23798CB}">
 					<ChildrenList>
-						<Action Name="" ID="{D001AB20-A11E-4842-B31F-F29DA8A17B45}" ShortID="90117961">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="TurnTheme" ID="{9F7DA552-2058-483C-B91C-D8D78CA48C89}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
 						<Action Name="" ID="{BF184FC4-DC46-40BA-B948-5971B78CD74B}" ShortID="254669356">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="22"/>
@@ -19,6 +12,13 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Player" ID="{BCFEC34A-32B5-4B83-B516-000D4E65B916}" WorkUnitID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D001AB20-A11E-4842-B31F-F29DA8A17B45}" ShortID="90117961">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TurnTheme" ID="{9F7DA552-2058-483C-B91C-D8D78CA48C89}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

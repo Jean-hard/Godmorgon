@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13035d043ff112049a3d359233b30e95, type: 3}
+  m_Name: 7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A
+  m_EditorClassIdentifier: 
+  objectName: Ringmaster
+  id: 1506151517
+  guid: 7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A
+  WwiseStateGroupReference: {fileID: 11400000, guid: 45930712b6dfc5548accfec9f8c984cb,
+    type: 2}
