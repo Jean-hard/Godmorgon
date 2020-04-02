@@ -100,7 +100,19 @@
 								</MusicTransition>
 							</TransitionList>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{718AC829-7209-491A-8513-3A3483A323EA}" ShortID="222789850"/>
+								<MusicPlaylistItem Name="" ID="{718AC829-7209-491A-8513-3A3483A323EA}" ShortID="222789850">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{E1401D1F-CE8E-4364-9312-28256F2ED06A}" ShortID="842945214">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="MUS_Main_Theme_1_V2" ID="{0915ADAF-E010-4C7F-B5EB-C4E50C6556A2}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Ringmaster" ID="{9BDDD7BE-6BA4-44BB-9D37-899951D1FF69}" ShortID="101820516">
@@ -190,7 +202,19 @@
 								</MusicTransition>
 							</TransitionList>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{9F2EDAF3-F65B-49B4-B3D4-376EFC42D345}" ShortID="177971953"/>
+								<MusicPlaylistItem Name="" ID="{9F2EDAF3-F65B-49B4-B3D4-376EFC42D345}" ShortID="177971953">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{E6E2D708-BBEC-4A01-9CB7-E110D3C01458}" ShortID="59266215">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="MUS_Main_Theme_2_V2" ID="{720314F0-2078-47F2-ACC2-E7123E901F74}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 					</ChildrenList>
@@ -201,6 +225,9 @@
 							</PropertyList>
 							<ChildrenList>
 								<MusicTransition Name="Transition" ID="{885BA9E0-2369-4ABC-A821-6C8242970771}">
+									<PropertyList>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+									</PropertyList>
 									<TransitionInfo/>
 								</MusicTransition>
 							</ChildrenList>
