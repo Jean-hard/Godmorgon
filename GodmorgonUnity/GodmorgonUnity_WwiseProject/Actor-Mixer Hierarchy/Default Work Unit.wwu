@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}" SchemaVersion="97">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="dropCard" ID="{F4A85750-8407-4A6E-BEA0-4268B020824D}" ShortID="902331180">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="dropCard" ID="{4114377A-A27C-48C3-B7B2-A9E0DE9BF8FD}">
+							<Language>SFX</Language>
+							<AudioFile>dropCard.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="391925900"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="dropCard" ID="{4114377A-A27C-48C3-B7B2-A9E0DE9BF8FD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

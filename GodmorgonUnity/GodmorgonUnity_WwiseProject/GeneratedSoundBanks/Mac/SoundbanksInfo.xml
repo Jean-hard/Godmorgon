@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3799801636" Name="DropCardEvent" ObjectPath="\Events\Default Work Unit\DropCardEvent" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

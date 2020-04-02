@@ -12,14 +12,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09dc774dc70082142acf1b5bb3994a14, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  AcousticTextureWwu: []
-  AuxBusWwu: []
-  BankWwu: []
-  EventWwu: []
-  RtpcWwu: []
-  StateWwu: []
-  SwitchWwu: []
-  TriggerWwu: []
-  ExpandedItems: []
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: d220adce33713443b6353c1aa5503967
+    GuidInternal: 
+    m_lastTime: -8586157915640060343
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: b21c0c948f26d849a09dd53859f93695
+    GuidInternal: 
+    m_lastTime: -8586157915637295108
+    List:
+    - name: Master Audio Bus
+      guid: d8a41415a61d2a41a17e75ca0c2149f3
+      id: 3803692087
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      Path: Default Work Unit\Master Audio Bus
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: 373ae5b7949aa14c9a49a81c65bfa4fb
+    GuidInternal: 
+    m_lastTime: -8586157888407552448
+    List:
+    - name: Main
+      guid: a54cbc9e86e85945ac3c8f10dec83e7a
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main
+        ObjectType: 7
+      Path: Default Work Unit\Main
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: 18df17eb1a42a94fb2768ca9fbe003fe
+    GuidInternal: 
+    m_lastTime: -8586157888744795435
+    List:
+    - name: DropCardEvent
+      guid: d880a4427d72954ab93f373ea72fed59
+      id: 3799801636
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: DropCardEvent
+        ObjectType: 3
+      Path: Default Work Unit\DropCardEvent
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: e8ed79a78084244ea3a2708de730abd5
+    GuidInternal: 
+    m_lastTime: -8586157915638212732
+    List: []
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: 0fa91cb90daeb14dbacee7b04132a4d2
+    GuidInternal: 
+    m_lastTime: -8586157915639043024
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: 983f95c515a2f44cb6ee7bf5aece0106
+    GuidInternal: 
+    m_lastTime: -8586157915637654216
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPath: Default Work Unit
+    guid: 7c3990d46ce63044979e0355f208c74a
+    GuidInternal: 
+    m_lastTime: -8586157915639322302
+    List: []
+  ExpandedItems:
+  - /GodmorgonUnity_WwiseProject
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

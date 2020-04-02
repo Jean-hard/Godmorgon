@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" SchemaVersion="97">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="DropCardEvent" ID="{42A480D8-727D-4A95-B93F-373EA72FED59}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>
