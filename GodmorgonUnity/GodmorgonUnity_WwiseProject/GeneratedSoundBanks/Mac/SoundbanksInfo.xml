@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -21,8 +21,40 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3799801636" Name="DropCardEvent" ObjectPath="\Events\Default Work Unit\DropCardEvent" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="417627684" Name="PlayMusic" ObjectPath="\Events\Default Work Unit\PlayMusic" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="782884905" Language="SFX">
+							<ShortName>MUS_Main_Theme_2_V2.wav</ShortName>
+							<Path>SFX\MUS_Main_Theme_2_V2_D79FB2B7.wem</Path>
+						</File>
+						<File Id="832796481" Language="SFX">
+							<ShortName>MUS_Main_Theme_1_V2.wav</ShortName>
+							<Path>SFX\MUS_Main_Theme_1_V2_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{BCFEC34A-32B5-4B83-B516-000D4E65B916}">
+							<Media>
+								<File Id="832796481"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A}">
+							<Media>
+								<File Id="782884905"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
 			</IncludedEvents>
+			<StateGroups>
+				<StateGroup Id="3653852827" Name="TurnState" ObjectPath="\States\Default Work Unit\TurnState">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\TurnState\None"/>
+						<State Id="1069431850" Name="Player" ObjectPath="\States\Default Work Unit\TurnState\Player"/>
+						<State Id="1506151517" Name="Ringmaster" ObjectPath="\States\Default Work Unit\TurnState\Ringmaster"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

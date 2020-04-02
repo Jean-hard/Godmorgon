@@ -17,14 +17,14 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: d220adce33713443b6353c1aa5503967
     GuidInternal: 
-    m_lastTime: -8586157915640060343
+    m_lastTime: -8586157906141012605
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: b21c0c948f26d849a09dd53859f93695
     GuidInternal: 
-    m_lastTime: -8586157915637295108
+    m_lastTime: -8586157906141142506
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -40,10 +40,10 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 373ae5b7949aa14c9a49a81c65bfa4fb
     GuidInternal: 
-    m_lastTime: -8586157888407552448
+    m_lastTime: -8586157887228601986
     List:
     - name: Main
-      guid: a54cbc9e86e85945ac3c8f10dec83e7a
+      guid: 6003b9fee289174ebe946e7b0909e0ba
       id: 3161908922
       PathAndIcons:
       - ElementName: Default Work Unit
@@ -56,17 +56,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 18df17eb1a42a94fb2768ca9fbe003fe
     GuidInternal: 
-    m_lastTime: -8586157888744795435
+    m_lastTime: -8586157888057330642
     List:
-    - name: DropCardEvent
-      guid: d880a4427d72954ab93f373ea72fed59
-      id: 3799801636
+    - name: PlayMusic
+      guid: 65f2e7c7489c284180fd0b94f23798cb
+      id: 417627684
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: DropCardEvent
+      - ElementName: PlayMusic
         ObjectType: 3
-      Path: Default Work Unit\DropCardEvent
+      Path: Default Work Unit\PlayMusic
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -75,30 +75,60 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: e8ed79a78084244ea3a2708de730abd5
     GuidInternal: 
-    m_lastTime: -8586157915638212732
+    m_lastTime: -8586157906141172483
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 0fa91cb90daeb14dbacee7b04132a4d2
     GuidInternal: 
-    m_lastTime: -8586157915639043024
-    List: []
+    m_lastTime: -8586157890052815842
+    List:
+    - name: TurnState
+      guid: cb84467e0b6a94439f3081482398c12b
+      id: 3653852827
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: TurnState
+        ObjectType: 9
+      Path: Default Work Unit\TurnState
+      values:
+      - name: None
+        guid: 6e895663c37e014fa3670283cf9da656
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: Player
+        guid: 4ac3febcb532834bb516000d4e65b916
+        id: 1069431850
+        PathAndIcons:
+        - ElementName: Player
+          ObjectType: 8
+      - name: Ringmaster
+        guid: a7b205709ce5bd4ea950d7f1d3b52e2a
+        id: 1506151517
+        PathAndIcons:
+        - ElementName: Ringmaster
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 983f95c515a2f44cb6ee7bf5aece0106
     GuidInternal: 
-    m_lastTime: -8586157915637654216
+    m_lastTime: -8586157906141042583
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 7c3990d46ce63044979e0355f208c74a
     GuidInternal: 
-    m_lastTime: -8586157915639322302
+    m_lastTime: -8586157906141012605
     List: []
-  ExpandedItems:
-  - /GodmorgonUnity_WwiseProject
+  ExpandedItems: []
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

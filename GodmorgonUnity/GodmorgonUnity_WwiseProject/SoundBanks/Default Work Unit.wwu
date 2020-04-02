@@ -3,8 +3,10 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{B7E53A37-9A94-4CA1-9A49-A81C65BFA4FB}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Main" ID="{9EBC4CA5-E886-4559-AC3C-8F10DEC83E7A}">
-					<ObjectInclusionList/>
+				<SoundBank Name="Main" ID="{FEB90360-89E2-4E17-BE94-6E7B0909E0BA}">
+					<ObjectInclusionList>
+						<ObjectRef Name="PlayMusic" ID="{C7E7F265-9C48-4128-80FD-0B94F23798CB}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>

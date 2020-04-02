@@ -13,8 +13,24 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID DROPCARDEVENT = 3799801636U;
+        static const AkUniqueID PLAYMUSIC = 417627684U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace TURNSTATE
+        {
+            static const AkUniqueID GROUP = 3653852827U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PLAYER = 1069431850U;
+                static const AkUniqueID RINGMASTER = 1506151517U;
+            } // namespace STATE
+        } // namespace TURNSTATE
+
+    } // namespace STATES
 
     namespace BANKS
     {
