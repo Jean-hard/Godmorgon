@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{FEB90360-89E2-4E17-BE94-6E7B0909E0BA}">
 					<ObjectInclusionList>
+						<ObjectRef Name="RollingKartEvent" ID="{73BB6B66-829B-4018-90CB-20E409A553C1}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayMusic" ID="{C7E7F265-9C48-4128-80FD-0B94F23798CB}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DropCardEvent" ID="{884A5B5C-A46E-4F35-A101-82DCA93E4EDA}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

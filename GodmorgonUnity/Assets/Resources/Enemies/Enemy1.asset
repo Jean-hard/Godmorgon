@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410b9136b0ddc5d46a1e88223a6c0224, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: 
-  id: 1
-  name: Sully
+  enemyId: Slayer
+  health: 20
   skin: {fileID: 0}
   nbMoves: 1
+  attack: 2
+  defense: 1

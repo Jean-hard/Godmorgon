@@ -48,6 +48,20 @@ namespace GodMorgon.Enemy
         public static EnemyManager Instance { get { return _instance; } }
         #endregion
 
+        /*
+        public EnemyView GetEnemyView(string id)
+        {
+            foreach (EnemyView enemyView in farEnemiesList)
+            {
+                if (enemyView.enemyId == id)
+                {
+                    return enemyView;
+                }
+            }
+
+            return null;
+        }*/
+
         private void Awake()
         {
             if (_instance != null && _instance != this)

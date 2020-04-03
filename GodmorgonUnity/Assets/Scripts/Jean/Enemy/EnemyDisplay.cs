@@ -16,13 +16,13 @@ namespace GodMorgon.Enemy
 
         public bool inPlayersRoom;
 
-        public EnemyData enemyData;
+        public EnemyData enemyData = new EnemyData();
 
         public void Awake()
         {
             if (enemy != null && enemyData != null)
             {
-                enemyData.name = enemy.name;
+                //enemyData.id = enemy.id;
                 enemyData.health = enemy.health;
                 enemyData.attack = enemy.attack;
                 enemyData.defense = enemy.defense;
@@ -31,11 +31,6 @@ namespace GodMorgon.Enemy
                 
                 inPlayersRoom = false;
             }
-        }
-
-        public void Start()
-        {
-            enemyId = enemy.id;
         }
 
         //Récupére le nombre de room que l'enemy peut parcourir en une fois

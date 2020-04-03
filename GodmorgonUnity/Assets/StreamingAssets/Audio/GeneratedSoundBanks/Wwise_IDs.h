@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID DROPCARDEVENT = 3799801636U;
         static const AkUniqueID PLAYMUSIC = 417627684U;
+        static const AkUniqueID ROLLINGKARTEVENT = 2348184254U;
     } // namespace EVENTS
 
     namespace STATES
