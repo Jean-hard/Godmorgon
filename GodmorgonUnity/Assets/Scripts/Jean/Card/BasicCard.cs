@@ -20,5 +20,7 @@ namespace GodMorgon.Models
 
         public Sprite template;
         public Sprite artwork;
+
+        public CardEffectData[] effectsData;
     }
 }
