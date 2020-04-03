@@ -15,5 +15,10 @@ MonoBehaviour:
   id: 8
   name: Mouvement
   description: Avance d'une case
+  actionCost: 1
   template: {fileID: 0}
   artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}
+  effectsData:
+  - currentEffect: 1
+    damagePoint: 0
+    movePoint: 1
