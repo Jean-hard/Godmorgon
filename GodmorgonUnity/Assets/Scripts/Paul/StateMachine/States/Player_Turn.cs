@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using GodMorgon.Sound;
+
 namespace GodMorgon.StateMachine
 {
     public class Player_Turn : State
@@ -9,6 +11,7 @@ namespace GodMorgon.StateMachine
         public override void OnStartState()
         {
             Debug.Log("On Player turn State");
+            MusicManager.Instance.PlayPlayerTurnTheme();
         }
     }
 }
