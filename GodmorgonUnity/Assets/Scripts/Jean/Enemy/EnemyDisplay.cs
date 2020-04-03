@@ -14,13 +14,13 @@ namespace GodMorgon.Enemy
         [System.NonSerialized]
         public Sprite enemySprite;
 
-        //public bool isInPlayersRoom;
+        public bool inPlayersRoom;
 
         public EnemyData enemyData;
 
         public void Awake()
         {
-            if (enemy != null)
+            if (enemy != null && enemyData != null)
             {
                 enemyData.name = enemy.name;
                 enemyData.health = enemy.health;
@@ -28,7 +28,8 @@ namespace GodMorgon.Enemy
                 enemyData.defense = enemy.defense;
                 enemyData.nbMoves = enemy.nbMoves;
                 enemyData.skin = enemy.skin;
-                enemyData.inPlayersRoom = false;
+                
+                inPlayersRoom = false;
             }
         }
 
@@ -46,13 +47,13 @@ namespace GodMorgon.Enemy
         //Retourne true si l'enemy est dans la room du player
         public bool IsInPlayersRoom()
         {
-            return enemyData.inPlayersRoom;
+            return inPlayersRoom;
         }
 
         //Set le bool de la présence de l'enemy dans la room du player
         public void SetInPlayersRoomBool(bool value)
         {
-            enemyData.inPlayersRoom = value;
+            inPlayersRoom = value;
         }
     }
 }
