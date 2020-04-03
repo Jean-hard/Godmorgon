@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410b9136b0ddc5d46a1e88223a6c0224, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 808cbb1dcbfc0fa4fa03ab9d67b27098, type: 3}
+  m_Name: 73BB6B66-829B-4018-90CB-20E409A553C1
   m_EditorClassIdentifier: 
-  enemyId: Slayer
-  health: 20
-  skin: {fileID: 0}
-  nbMoves: 1
-  attack: 2
-  defense: 1
+  objectName: RollingKartEvent
+  id: 2348184254
+  guid: 73BB6B66-829B-4018-90CB-20E409A553C1

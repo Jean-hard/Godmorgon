@@ -35,6 +35,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="RollingKartEvent" ID="{73BB6B66-829B-4018-90CB-20E409A553C1}">
+					<ChildrenList>
+						<Action Name="" ID="{9F3F155B-D2B6-46EA-A05F-D0B26E4A0341}" ShortID="918484056">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wheel" ID="{CFC90A4D-C18B-4AD6-A9B7-E1372206050E}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

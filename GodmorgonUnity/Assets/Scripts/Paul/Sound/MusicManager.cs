@@ -11,6 +11,7 @@ namespace GodMorgon.Sound
     {
         public AK.Wwise.Event musicEvent;
         public AK.Wwise.Event dropCardEvent;
+        public AK.Wwise.Event rollingKartEvent;
 
         public AK.Wwise.State PlayerState;
         public AK.Wwise.State RingmasterState;
@@ -61,6 +62,11 @@ namespace GodMorgon.Sound
         public void PlayDropCard()
         {
             dropCardEvent.Post(gameObject);
+        }
+
+        public void PlayRollingKart()
+        {
+            rollingKartEvent.Post(gameObject);
         }
     }
 }

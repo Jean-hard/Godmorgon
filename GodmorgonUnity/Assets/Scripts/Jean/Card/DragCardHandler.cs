@@ -89,7 +89,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 this.gameObject.SetActive(false);
 
                 //sound
-                MusicManager.Instance.PlayDropCard();
+                //MusicManager.Instance.PlayDropCard();
+                MusicManager.Instance.PlayRollingKart();
             }
         }
 
