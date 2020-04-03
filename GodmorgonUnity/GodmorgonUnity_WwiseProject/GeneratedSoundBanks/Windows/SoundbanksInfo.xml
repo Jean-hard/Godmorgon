@@ -53,6 +53,14 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="2348184254" Name="RollingKartEvent" ObjectPath="\Events\Default Work Unit\RollingKartEvent" DurationType="OneShot" DurationMin="9.000000" DurationMax="9.000000">
+					<IncludedMemoryFiles>
+						<File Id="582225710" Language="SFX">
+							<ShortName>wheel.wav</ShortName>
+							<Path>SFX\wheel_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 			</IncludedEvents>
 			<StateGroups>
 				<StateGroup Id="3653852827" Name="TurnState" ObjectPath="\States\Default Work Unit\TurnState">
