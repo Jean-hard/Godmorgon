@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using GodMorgon.Timeline;
+using GodMorgon.Sound;
 
 namespace GodMorgon.StateMachine
 {
@@ -14,6 +15,8 @@ namespace GodMorgon.StateMachine
         public override void OnStartState()
         {
             Debug.Log("On RingMaster turn State");
+            MusicManager.Instance.PlayRingmasterTurnTheme();
+
             TimelineManager.Instance.DoAction();
         }
     }

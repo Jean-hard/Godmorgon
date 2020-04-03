@@ -24,7 +24,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="DropCardEvent" ID="{302064A7-9BF1-4DBE-86C4-421EAF1645A0}"/>
+				<Event Name="DropCardEvent" ID="{884A5B5C-A46E-4F35-A101-82DCA93E4EDA}">
+					<ChildrenList>
+						<Action Name="" ID="{1CFA8D70-7EAA-4D60-A5BA-E199B1A50851}" ShortID="151249241">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="dropCard" ID="{F4A85750-8407-4A6E-BEA0-4268B020824D}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

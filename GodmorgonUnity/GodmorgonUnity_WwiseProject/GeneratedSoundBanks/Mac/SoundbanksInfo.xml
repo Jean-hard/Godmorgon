@@ -21,6 +21,14 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="3799801636" Name="DropCardEvent" ObjectPath="\Events\Default Work Unit\DropCardEvent" DurationType="OneShot" DurationMin="0.731429" DurationMax="0.731429">
+					<IncludedMemoryFiles>
+						<File Id="391925900" Language="SFX">
+							<ShortName>dropCard.wav</ShortName>
+							<Path>SFX\dropCard_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="417627684" Name="PlayMusic" ObjectPath="\Events\Default Work Unit\PlayMusic" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="782884905" Language="SFX">

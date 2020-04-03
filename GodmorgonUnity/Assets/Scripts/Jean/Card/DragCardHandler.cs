@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+using GodMorgon.Sound;
+
 public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector3 startPosition;
@@ -85,6 +87,9 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Instantiate(dropEffect, mouseWorldPos, Quaternion.identity, effectsParent);
                 this.gameObject.SetActive(false);
+
+                //sound
+                MusicManager.Instance.PlayDropCard();
             }
         }
 
