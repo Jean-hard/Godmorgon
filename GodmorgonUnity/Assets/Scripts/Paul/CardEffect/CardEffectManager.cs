@@ -28,25 +28,25 @@ namespace GodMorgon.CardEffect
         }
         #endregion
 
-        public CardEffect CreateEffect(CardEffectData.CARD_EFFECT_TYPE type)
-        {
-            switch (type)
-            {
-                case CARD_EFFECT_TYPE.DAMAGE: return new DamageEffect();
-                case CARD_EFFECT_TYPE.MOVE: return new MoveEffect();
-            }
+        //public CardEffect CreateEffect(CardEffectData.CARD_EFFECT_TYPE type)
+        //{
+        //    switch (type)
+        //    {
+        //        case CARD_EFFECT_TYPE.DAMAGE: return new DamageEffect();
+        //        case CARD_EFFECT_TYPE.MOVE: return new MoveEffect();
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        public void PlayCard(BasicCard card)
-        {
-            foreach (CardEffectData effectData in card.effectsData)
-            {
-                CardEffect effect = CardEffectFactory.CreateEffect(effectData.GetEffectType());
-                effect.ApplyEffect(gameContext, effectData);
-            }
-        }
+        //public void PlayCard(BasicCard card)
+        //{
+        //    foreach (CardEffectData effectData in card.effectsData)
+        //    {
+        //        CardEffect effect = CardEffectFactory.CreateEffect(effectData.GetEffectType());
+        //        effect.ApplyEffect(gameContext, effectData);
+        //    }
+        //}
 
     }
 }
