@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410b9136b0ddc5d46a1e88223a6c0224, type: 3}
   m_Name: Enemy3
   m_EditorClassIdentifier: 
-  id: 3
-  name: Mike
+  enemyId: Butcher
+  health: 50
   skin: {fileID: 0}
   nbMoves: 1
+  speed: 5
+  attack: 0
+  defense: 0

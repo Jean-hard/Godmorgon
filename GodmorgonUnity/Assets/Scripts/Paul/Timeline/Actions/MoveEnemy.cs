@@ -10,7 +10,7 @@ namespace GodMorgon.Timeline
         public override IEnumerator Execute()
         {
             //Debug.Log("ACTION Move Enemy");
-            EnemyManager.Instance.SetEnemyPath();
+            EnemyManager.Instance.MoveEnemies();
             while(!EnemyManager.Instance.EnemiesMoveDone())
             {
                 yield return null;
