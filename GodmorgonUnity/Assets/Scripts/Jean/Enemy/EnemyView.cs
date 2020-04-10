@@ -34,6 +34,7 @@ namespace GodMorgon.Enemy
 
         private PlayerManager player;
         private Animator _animator;
+        private HealthBar _healthBar;
         public EnemyData enemyData = new EnemyData();
         private bool canMove;
 
@@ -59,9 +60,11 @@ namespace GodMorgon.Enemy
         private void Start()
         {
             player = FindObjectOfType<PlayerManager>();
-            grid = FindObjectOfType<Grid>();
-            walkableTilemap = grid.transform.GetChild(grid.transform.childCount - 1).GetComponent<Tilemap>();
+            grid = EnemyManager.Instance.grid;
+            walkableTilemap = EnemyManager.Instance.walkableTilemap;
             _animator = this.GetComponent<Animator>();
+            _healthBar = this.GetComponentInChildren<HealthBar>();
+
 
             #region Astar Start Setup
             walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
@@ -76,6 +79,12 @@ namespace GodMorgon.Enemy
         {
             if (canMove)
                 LaunchMoveMechanic();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(20);
+                ShowDamageEffect();
+            }
         }
 
         #region CreateGrid --> Astar
@@ -151,10 +160,10 @@ namespace GodMorgon.Enemy
                 tilesList.RemoveAt(0);
 
                 //Affiche les coordonnées de tiles des paths que l'ennemi doit parcourir
-                foreach(Spot spot in tilesList)
+                /*foreach(Spot spot in tilesList)
                 {
                     Debug.Log(spot.X + " / " + spot.Y);
-                }
+                }*/
             }
 
             tileIndex = 0;
@@ -205,9 +214,40 @@ namespace GodMorgon.Enemy
             _animator.Play(animName);
         }
 
-        public void ShowDamageEffect(int damage)
+        public void TakeDamage(int damage)
         {
+            enemyData.health -= damage; //On applique les damages à la vie
+            
+            if (enemyData.health < 0)   //Empêche que la vie soit inférieur à 0
+                enemyData.health = 0;
+        }
 
+        /**
+         * Affiche les effets lors de damage
+         */
+        public void ShowDamageEffect()
+        {
+            _healthBar.SetHealth(enemyData.health);
+        }
+
+        /**
+         * Lance l'attaque
+         */
+        public void Attack()
+        {
+            if(enemyData.inPlayersRoom)
+            {
+                ShowAttackEffect();
+                PlayerManager.Instance.TakeDamage(enemyData.attack);
+            }
+        }
+
+        /**
+         * Affiche les effets lors d'une attaque
+         */
+        public void ShowAttackEffect()
+        {
+            PlayAnim("EnemyAttack");
         }
 
         public bool IsAnimFinished()

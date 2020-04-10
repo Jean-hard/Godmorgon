@@ -79,7 +79,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             //Cache les tiles accessibles
             PlayerManager.Instance.HideAccessibleSpot();
 
-            bool moveValidate = player.GetComponent<PlayerManager>().SetPlayerPath();
+            bool moveValidate = player.GetComponent<PlayerManager>().MovePlayer();
             if (moveValidate)
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée

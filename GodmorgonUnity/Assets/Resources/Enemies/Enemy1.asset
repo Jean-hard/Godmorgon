@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy1
   m_EditorClassIdentifier: 
   enemyId: Slayer
-  health: 20
+  health: 100
   skin: {fileID: 0}
   nbMoves: 2
   speed: 5

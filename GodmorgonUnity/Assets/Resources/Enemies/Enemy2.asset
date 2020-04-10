@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy2
   m_EditorClassIdentifier: 
   enemyId: Killer
-  health: 0
+  health: 100
   skin: {fileID: 0}
   nbMoves: 1
   speed: 5

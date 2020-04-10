@@ -103,14 +103,14 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        LaunchMoveMechanic();
     }
 
 
     /**
      * Détermine la liste de tiles (=path) à parcourir jusqu'à l'endroit où la carte mouvement est déposée
      */
-    public bool SetPlayerPath()
+    public bool MovePlayer()
     {
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
@@ -164,7 +164,7 @@ public class PlayerManager : MonoBehaviour
     /**
      * Lance le mouvement du player
      */
-    public void MovePlayer()
+    private void LaunchMoveMechanic()
     {
         if(!playerCanMove)
         {
@@ -289,11 +289,11 @@ public class PlayerManager : MonoBehaviour
     /**
      * Inflige des damages au player
      */
-    public void HitPlayer(int damageValue)
+    public void TakeDamage(int damage)
     {
         //WIP : considérer le shield du player
 
-        int newLife = PlayerData.Instance.health - damageValue;
+        int newLife = PlayerData.Instance.health - damage;
         PlayerData.Instance.SetHealth(newLife);
 
         Debug.Log("Update player's life ");

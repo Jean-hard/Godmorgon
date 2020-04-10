@@ -11,6 +11,7 @@ namespace GodMorgon.CardEffect
         public override void ApplyEffect(CardEffectData effectData)
         {
             Debug.Log("Move To " + effectData.movePoint + " Tiles");
+            //PlayerManager.Instance.MovePlayer();
         }
     }
 }
