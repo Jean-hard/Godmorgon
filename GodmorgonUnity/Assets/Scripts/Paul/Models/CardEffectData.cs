@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using GodMorgon.CardEffect;
+
 namespace GodMorgon.Models
 {
     /**
@@ -10,15 +12,15 @@ namespace GodMorgon.Models
     [System.Serializable]
     public class CardEffectData
     {
-        //enum of all the type of effect in the game
-        public enum CARD_EFFECT_TYPE
-        {
-            DAMAGE = 0,
-            MOVE
-        }
-
         //current effect select
         public CARD_EFFECT_TYPE currentEffect = CARD_EFFECT_TYPE.DAMAGE;
+
+        public CARD_EFFECT_TYPE GetEffectType()
+        {
+            return currentEffect;
+        }
+
+
 
         /**
          * All the parameter for all the possible effect
@@ -31,5 +33,6 @@ namespace GodMorgon.Models
 
         //nb movement
         public int movePoint = 0;
+
     }
 }
