@@ -282,7 +282,7 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Debug.Log("Ringmaster turn");
-        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+        //GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
         playerHasMoved = false;
     }
 

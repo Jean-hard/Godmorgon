@@ -9,6 +9,8 @@ public class GSA_PlayerMove : GameSequencerAction
 {
     public override IEnumerator ExecuteAction()
     {
-        throw new System.NotImplementedException();
+        PlayerManager.Instance.MovePlayer();
+        while (!PlayerManager.Instance.PlayerMoveDone())
+            yield return null;
     }
 }

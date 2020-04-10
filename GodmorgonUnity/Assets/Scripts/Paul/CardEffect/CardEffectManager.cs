@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using GodMorgon.Models;
+using GodMorgon.GameSequencerSpace;
 
 namespace GodMorgon.CardEffect
 {
@@ -47,6 +48,9 @@ namespace GodMorgon.CardEffect
                 CardEffect effect = CreateEffect(effectData.GetEffectType());
                 effect.ApplyEffect(effectData);
             }
+
+            //Une fois que les effets ont été appliqués, on lance les actions
+            GameSequencer.Instance.ExecuteActions();
         }
 
 

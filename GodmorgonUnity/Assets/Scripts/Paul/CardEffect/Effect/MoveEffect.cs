@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using GodMorgon.Models;
+using GodMorgon.GameSequencerSpace;
 
 namespace GodMorgon.CardEffect
 {
@@ -11,7 +12,9 @@ namespace GodMorgon.CardEffect
         public override void ApplyEffect(CardEffectData effectData)
         {
             Debug.Log("Move To " + effectData.movePoint + " Tiles");
-            //PlayerManager.Instance.MovePlayer();
+            
+            GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();
+            GameSequencer.Instance.AddAction(playerMoveAction);
         }
     }
 }

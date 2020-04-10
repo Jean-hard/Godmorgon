@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 using GodMorgon.Sound;
+using GodMorgon.CardEffect;
 
 public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -71,27 +72,31 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         //onCardDragEndDelegate?.Invoke(this.gameObject, eventData);
 
-        this.transform.position = startPosition;    //
+        this.transform.position = startPosition;    
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //La carte récupère sa taille normale
+
+        Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);
 
         if (eventData.pointerDrag.GetComponent<CardDisplay>().card.name == "Mouvement")
         {
             //Cache les tiles accessibles
             PlayerManager.Instance.HideAccessibleSpot();
-
-            bool moveValidate = player.GetComponent<PlayerManager>().MovePlayer();
+            
+            /*bool moveValidate = player.GetComponent<PlayerManager>().MovePlayer();
             if (moveValidate)
             {
                 GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
 
-                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Instantiate(dropEffect, mouseWorldPos, Quaternion.identity, effectsParent);
+                
+                Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);
                 this.gameObject.SetActive(false);
 
                 //sound
                 //MusicManager.Instance.PlayDropCard();
                 MusicManager.Instance.PlayRollingKart();
-            }
+            }*/
         }
 
         this.transform.SetParent(hand);

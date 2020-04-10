@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GodMorgon.GameSequencer
+namespace GodMorgon.GameSequencerSpace
 {
     /**
      * This class manage the animation and the movement of the player or the enemy in the scene.
@@ -58,6 +58,9 @@ namespace GodMorgon.GameSequencer
             {
                 yield return action.ExecuteAction();
             }
+
+            GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.RINGMASTER_TURN);
+            _actionsList.Clear();
         }
     }
 }
