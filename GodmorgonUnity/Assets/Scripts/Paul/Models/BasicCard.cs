@@ -13,6 +13,13 @@ namespace GodMorgon.Models
     [CreateAssetMenu(fileName = "New Card", menuName = "Cards/BasicCard")]
     public class BasicCard : ScriptableObject
     {
+        public enum CARDTYPE
+        {
+            MOVE,
+            ATTACK,
+            DEFENSE
+        }
+        public CARDTYPE cardType = CARDTYPE.MOVE;
         public int id;
         public new string name;
         public string description;

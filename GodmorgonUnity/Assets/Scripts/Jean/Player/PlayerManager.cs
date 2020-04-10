@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     private bool playerHasMoved = false;
     private int spotIndex;
     private List<Spot> playerPathArray;
-    private List<Vector3Int> accessibleSpots = new List<Vector3Int>();
+    public List<Vector3Int> accessibleTiles = new List<Vector3Int>();
 
     
 
@@ -110,55 +110,58 @@ public class PlayerManager : MonoBehaviour
     /**
      * Détermine la liste de tiles (=path) à parcourir jusqu'à l'endroit où la carte mouvement est déposée
      */
-    public bool MovePlayer()
+    public void MovePlayer()
     {
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
         endPos = walkableTilemap.WorldToCell(mouseWorldPos);
 
         //Si la tile sélectionnée fait partie de la liste des tiles accessibles
-        if (accessibleSpots.Contains(endPos))
-        {
-            Vector3 playerPos = this.transform.position;
-            Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
+        //if (accessibleTiles.Contains(endPos))
+        //{
+        Vector3 playerPos = this.transform.position;
+        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
 
-            playerPathArray = new List<Spot>();
-
-            spotIndex = 0;
-
-            //int nbMoves = 2;
-
-            if (roadPath != null && roadPath.Count > 0) //reset le roadpath
-                roadPath.Clear();
-
-            //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path
-            //roadPath est une liste de spots = une liste de positions de tiles
-            roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove);    // * nbMoves
-
-            foreach (Spot spot in roadPath)
-            {
-                playerPathArray.Add(spot);     //on ajoute les spots par lesquels le player va devoir passer sauf celui où il est
-
-                spotIndex++;
-            }
-
-            playerPathArray.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
-            playerPathArray.RemoveAt(0);
-
-            /*
-            foreach (Spot spot in playerPathArray)
-            {
-                Debug.Log(spot.X + " " + spot.Y);
-            }*/
-
-            playerCanMove = true;  //on autorise le player à bouger
-        }
-        else
-            playerCanMove = false;
+        playerPathArray = new List<Spot>();
 
         spotIndex = 0;
-        return playerCanMove;
-        
+
+        //int nbMoves = 2;
+
+        if (roadPath != null && roadPath.Count > 0) //reset le roadpath
+            roadPath.Clear();
+
+        //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path
+        //roadPath est une liste de spots = une liste de positions de tiles
+        roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove);    // * nbMoves
+
+        foreach (Spot spot in roadPath)
+        {
+            Debug.Log(spot.X + " " + spot.Y);
+        }
+
+        foreach (Spot spot in roadPath)
+        {
+            playerPathArray.Add(spot);     //on ajoute les spots par lesquels le player va devoir passer sauf celui où il est
+
+            spotIndex++;
+        }
+
+        playerPathArray.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
+        playerPathArray.RemoveAt(0);
+
+            
+        foreach (Spot spot in playerPathArray)
+        {
+            Debug.Log(spot.X + " " + spot.Y);
+        }
+
+        playerCanMove = true;  //on autorise le player à bouger
+        //}
+        //else
+            //playerCanMove = false;
+
+        spotIndex = 0;        
     }
 
     /**
@@ -220,7 +223,7 @@ public class PlayerManager : MonoBehaviour
     /**
      * Donne les cases les plus proches du joueur vers lesquelles il peut se déplacer
      */
-    public void UpdateAccessibleSpotsList()
+    public void UpdateAccessibleTilesList()
     {
         nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
         currentTileCoordinate = walkableTilemap.WorldToCell(transform.position);   //On transpose la position scène du player en position grid 
@@ -229,7 +232,7 @@ public class PlayerManager : MonoBehaviour
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y + nbTilesToMove, 0));
         nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y - nbTilesToMove, 0));
 
-        accessibleSpots.Clear();
+        accessibleTiles.Clear();
         Vector3 playerPos = this.transform.position;
         Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
         
@@ -240,7 +243,7 @@ public class PlayerManager : MonoBehaviour
             
             if (nearestTilesList.Contains(spot) && roadPath.Count < 5)
             {
-                accessibleSpots.Add(spot);
+                accessibleTiles.Add(spot);
             }
         }
     }
@@ -248,14 +251,14 @@ public class PlayerManager : MonoBehaviour
     /**
      * Montre les tiles sur lesquelles le joueur peut se déplacer
      */
-    public void ShowAccessibleSpot()
+    public void ShowAccessibleTiles()
     {
-        UpdateAccessibleSpotsList();
+        UpdateAccessibleTilesList();
 
-        for (int i = 0; i < accessibleSpots.Count; i++)
+        for (int i = 0; i < accessibleTiles.Count; i++)
         {
-            roadMap.SetTile(new Vector3Int(accessibleSpots[i].x, accessibleSpots[i].y, 0), accessibleTile); //On applique le sprite de tile sur les spots accessibles
-            Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleSpots[i]) + new Vector3(0, 0.2f, 0);
+            roadMap.SetTile(new Vector3Int(accessibleTiles[i].x, accessibleTiles[i].y, 0), accessibleTile); //On applique le sprite de tile sur les spots accessibles
+            Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleTiles[i]) + new Vector3(0, 0.2f, 0);
             if (!effectInstantiated)
             {
                 Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent); //on lance l'effet de drop de carte sur la map, qui sera en enfant de effectsParent
@@ -267,7 +270,7 @@ public class PlayerManager : MonoBehaviour
     /**
      * Cache les tiles sur lesquelles le joueur peut se déplacer
      */
-    public void HideAccessibleSpot()
+    public void HideAccessibleTiles()
     {
         roadMap.ClearAllTiles();
         for (int i = 0; i < effectsParent.childCount; i++)
