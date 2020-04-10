@@ -10,21 +10,22 @@ namespace GodMorgon.GameSequencer
     public class GameSequencer : MonoBehaviour
     {
         #region Singleton Pattern
-        private static GameSequencer instance;
+        private static GameSequencer _instance;
 
-        public static GameSequencer Instance
+        public static GameSequencer Instance { get { return _instance; } }
+        #endregion
+
+        private void Awake()
         {
-            get
+            if (_instance != null && _instance != this)
             {
-                if (instance == null)
-                {
-                    instance = new GameSequencer();
-                }
-
-                return instance;
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                _instance = this;
             }
         }
-        #endregion
 
         /**
          * List of action complete by effect of card or the timeline.
