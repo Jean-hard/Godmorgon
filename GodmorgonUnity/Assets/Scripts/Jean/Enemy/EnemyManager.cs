@@ -19,8 +19,9 @@ namespace GodMorgon.Enemy
         private List<EnemyView> enemiesList;
         private List<EnemyView> farEnemiesList;  //Tableau des ennemis présents sur la map mais hors de la room du player
         private bool enemiesHaveMoved = false;
+        private bool enemiesHaveAttacked = false;
 
-        
+
         #region Singleton Pattern
         private static EnemyManager _instance;
 
@@ -100,7 +101,7 @@ namespace GodMorgon.Enemy
         {
             foreach (EnemyView enemy in enemiesList)    //Pour chaque ennemi de la liste
             {
-                enemy.MoveEnemy();  //On lance le mouvement de l'ennemi
+                enemy.MoveToPlayer();  //On lance le mouvement de l'ennemi
                 while (!enemy.IsMoveFinished()) //Tant qu'il n'ont pas tous bougé on continue
                 {
                     yield return null;
@@ -128,8 +129,7 @@ namespace GodMorgon.Enemy
         public void Attack()
         {
             UpdateEnemiesArray();
-
-            //StartCoroutine(TimedAttacks(attackDuration));
+            StartCoroutine(TimedAttacks());
         }
 
         
@@ -137,24 +137,23 @@ namespace GodMorgon.Enemy
         /**
          * Applique les effets de l'attaque tous les [attackDuration] secondes
          */
-        /*
-       IEnumerator TimedAttacks(float attackDuration)
+        
+       IEnumerator TimedAttacks()
        {
-           foreach (GameObject enemy in enemiesList)
+           foreach (EnemyView enemy in enemiesList)
            {
                //Si l'ennemi est dans la room du player
-               if (enemy.GetComponent<EnemyDisplay>().IsInPlayersRoom())
+               if (enemy.enemyData.inPlayersRoom)
                {
                    //Lance anim d'attack
-
-                   //Fait des damages au player
-                   PlayerManager.Instance.HitPlayer(3);
+                   enemy.Attack();
                }
+                while (!enemy.IsAttackFinished()) //Tant qu'il n'ont pas tous bougé on continue
+                {
+                    yield return null;
+                }
 
-               yield return new WaitForSeconds(attackDuration);    //Attend X temps pour passer à l'ennemi suivant
            }
-       }*/
-
-
+       }
     }
 }
