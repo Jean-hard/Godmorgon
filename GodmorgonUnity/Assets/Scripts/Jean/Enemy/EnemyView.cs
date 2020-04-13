@@ -52,6 +52,7 @@ namespace GodMorgon.Enemy
                 enemyData.speed = enemy.speed;
                 enemyData.skin = enemy.skin; 
                 enemyData.inPlayersRoom = false;
+                enemyData.enemyView = this;
             }
             else
             {
