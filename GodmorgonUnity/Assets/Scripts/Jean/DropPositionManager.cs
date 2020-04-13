@@ -22,7 +22,8 @@ namespace GodMorgon.CardEffect
                         context.isDropValidate = true;
                     break;
                 case BasicCard.CARDTYPE.ATTACK:
-                    
+                    if (EnemyManager.Instance.attackableEnemiesTiles.Contains(dropPosition))
+                        context.isDropValidate = true;
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:
                     break;
@@ -39,6 +40,7 @@ namespace GodMorgon.CardEffect
                     PlayerManager.Instance.ShowAccessibleTiles();
                     break;
                 case BasicCard.CARDTYPE.ATTACK:
+                    Debug.Log("Show positions for attack");
                     EnemyManager.Instance.ShowAttackableEnemies();
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:
