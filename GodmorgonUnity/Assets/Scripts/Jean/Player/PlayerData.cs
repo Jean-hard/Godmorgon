@@ -6,7 +6,7 @@ using GodMorgon.Models;
 
 namespace GodMorgon.Player
 {
-    public class PlayerData
+    public class PlayerData : Entity
     {
         public int healthMax;
         public int health;
