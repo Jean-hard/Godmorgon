@@ -23,7 +23,7 @@ namespace GodMorgon.CardEffect
                     break;
                 case BasicCard.CARDTYPE.ATTACK:
                     if (EnemyManager.Instance.attackableEnemiesTiles.Contains(dropPosition))
-                        //context.targets = 
+                        context.targets = EnemyManager.Instance.GetEnemyViewByPosition(dropPosition).enemyData;
                         context.isDropValidate = true;
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:

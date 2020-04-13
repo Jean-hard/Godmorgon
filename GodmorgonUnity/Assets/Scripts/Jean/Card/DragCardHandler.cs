@@ -91,7 +91,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card, context);
             
             //Effect + delete card
-            Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);
+            //Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);
             this.gameObject.SetActive(false);
 
             //Cache les positions accessibles
