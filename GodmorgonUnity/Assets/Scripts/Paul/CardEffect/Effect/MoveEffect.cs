@@ -9,7 +9,7 @@ namespace GodMorgon.CardEffect
 {
     public class MoveEffect : CardEffect
     {
-        public override void ApplyEffect(CardEffectData effectData)
+        public override void ApplyEffect(CardEffectData effectData, GameContext context)
         {
             Debug.Log("Move To " + effectData.nbMoves + " Tiles");
             

@@ -15,6 +15,27 @@ namespace GodMorgon.Enemy
         public Sprite skin = null;
         public bool inPlayersRoom = false;
         public EnemyView enemyView = null;
-        
+
+        /**
+         * call when enemy is attacked
+         * the damage are first applied to the armor and after to the health
+         */
+        public override void TakeDamage(int damagePoint)
+        {
+            Debug.Log("enemy healt before was : " + health);
+            while(damagePoint > 0 && defense > 0)
+            {
+                defense--;
+                damagePoint--;
+            }
+
+            while(damagePoint > 0 && health > 0)
+            {
+                health--;
+                damagePoint--;
+            }
+            Debug.Log("enemy healt after was : " + health);
+        }
+
     }
 }
