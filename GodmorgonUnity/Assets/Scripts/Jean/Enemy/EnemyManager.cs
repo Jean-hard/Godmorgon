@@ -67,6 +67,15 @@ namespace GodMorgon.Enemy
         }
 
         /**
+         * Renvoie un tableau des ennemis présents dans la room du player
+         */
+        //public EnemyView[] GetEnemiesInPlayersRoom()
+        //{
+
+        //}
+
+
+        /**
          * Retourne un ennemi par son id
          */
         public EnemyView GetEnemyView(string id)
@@ -130,9 +139,7 @@ namespace GodMorgon.Enemy
         {
             UpdateEnemiesArray();
             StartCoroutine(TimedAttacks());
-        }
-
-        
+        }        
 
         /**
          * Applique les effets de l'attaque tous les [attackDuration] secondes
@@ -148,10 +155,10 @@ namespace GodMorgon.Enemy
                    //Lance anim d'attack
                    enemy.Attack();
                }
-                while (!enemy.IsAttackFinished()) //Tant qu'il n'ont pas tous bougé on continue
-                {
-                    yield return null;
-                }
+               while (!enemy.IsAttackFinished()) //Tant qu'il n'ont pas tous bougé on continue
+               {
+                   yield return null;
+               }
 
            }
        }

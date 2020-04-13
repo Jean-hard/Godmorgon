@@ -30,7 +30,7 @@ namespace GodMorgon.Enemy
         #endregion
 
         [Header("World Settings")]
-        public Grid grid;   //Grid du jeu
+        private Grid grid;   //Grid du jeu
         private Tilemap walkableTilemap;    //Tilemap contenant tous les chemins de tiles walkable
         //private Tilemap roadMap;
 
@@ -246,7 +246,7 @@ namespace GodMorgon.Enemy
         }
 
         /**
-         * Lance l'attaque
+         * Lance l'attaque (effet visuel + calcul)
          */
         public void Attack()
         {
@@ -258,16 +258,16 @@ namespace GodMorgon.Enemy
         }
 
         /**
-         * Affiche les effets lors d'une attaque
+         * Affiche les effets d'une attaque
          */
         public void ShowAttackEffect()
         {
-            PlayAnim("EnemyAttack");
+            PlayAnim("Attack");
         }
 
         public bool IsAttackFinished()
         {
-            if (IsAnimFinished("EnemyAttack"))
+            if (IsAnimFinished("Attack"))
                 isAttackFinished = true;
             else isAttackFinished = false;
             
