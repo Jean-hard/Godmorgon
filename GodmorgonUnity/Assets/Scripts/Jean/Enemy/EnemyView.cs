@@ -20,6 +20,8 @@ namespace GodMorgon.Enemy
         private int nbTilesPerMove = 3;  //Nombre de tiles pour 1 move
         private bool isMoveFinished = false;
 
+        private bool isAttackFinished = false;
+
         #region Astar Settings
         Astar astar;
         List<Spot> roadPath = new List<Spot>();
@@ -80,11 +82,13 @@ namespace GodMorgon.Enemy
             if (canMove)
                 LaunchMoveMechanic();
 
+            // ============ WIP ================== 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 TakeDamage(20);
                 ShowDamageEffect();
             }
+            // ===================================
         }
 
         #region CreateGrid --> Astar
@@ -112,7 +116,7 @@ namespace GodMorgon.Enemy
         #endregion
 
         
-        public void MoveEnemy()
+        public void MoveToPlayer()
         {
             //position d'arrivée (player) en format cellule
             Vector3 playerPos = player.transform.position;
@@ -214,6 +218,16 @@ namespace GodMorgon.Enemy
             _animator.Play(animName);
         }
 
+        public bool IsAnimFinished(string animName)
+        {
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public void TakeDamage(int damage)
         {
             enemyData.health -= damage; //On applique les damages à la vie
@@ -250,9 +264,15 @@ namespace GodMorgon.Enemy
             PlayAnim("EnemyAttack");
         }
 
-        public bool IsAnimFinished()
+        public bool IsAttackFinished()
         {
-            return true;
+            if (IsAnimFinished("EnemyAttack"))
+                isAttackFinished = true;
+            else isAttackFinished = false;
+            
+            return isAttackFinished;
         }
+
+        
     }
 }
