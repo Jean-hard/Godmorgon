@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GSA_playerAttack : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+using GodMorgon.CardEffect;
 
-    // Update is called once per frame
-    void Update()
+namespace GodMorgon.GameSequencerSpace
+{
+    public class GSA_PlayerAttack : GameSequencerAction
     {
-        
+        public override IEnumerator ExecuteAction(GameContext context)
+        {
+            //center the hit effect on the target and play it
+            GameSequencer.Instance.enemyHitParticle.transform.position = context.targets.GetEntityViewPosition();
+            GameSequencer.Instance.enemyHitParticle.Play();
+
+            //wait the time of the hit particle effect ---------------------NOT SURE OF THIS---------------------------
+            yield return new WaitForSeconds(GameSequencer.Instance.enemyHitParticle.main.duration);
+        }
     }
 }

@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameSequencerAction
+using GodMorgon.CardEffect;
+
+namespace GodMorgon.GameSequencerSpace
 {
-    public abstract IEnumerator ExecuteAction();
+    public abstract class GameSequencerAction
+    {
+        public abstract IEnumerator ExecuteAction(GameContext context);
+    }
 }

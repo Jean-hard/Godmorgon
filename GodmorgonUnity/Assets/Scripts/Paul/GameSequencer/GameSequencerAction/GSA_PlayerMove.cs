@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using GodMorgon.CardEffect;
+
 /**
  * Action de déplacement du joueur
  */
-public class GSA_PlayerMove : GameSequencerAction
+namespace GodMorgon.GameSequencerSpace
 {
-    public override IEnumerator ExecuteAction()
+    public class GSA_PlayerMove : GameSequencerAction
     {
-        PlayerManager.Instance.MovePlayer();
-        while (!PlayerManager.Instance.PlayerMoveDone())
-            yield return null;
+        public override IEnumerator ExecuteAction(GameContext context)
+        {
+            PlayerManager.Instance.MovePlayer();
+            while (!PlayerManager.Instance.PlayerMoveDone())
+                yield return null;
+        }
     }
 }

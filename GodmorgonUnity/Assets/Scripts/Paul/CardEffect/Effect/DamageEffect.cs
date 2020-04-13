@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using GodMorgon.Models;
+using GodMorgon.GameSequencerSpace;
 
 namespace GodMorgon.CardEffect
 {
@@ -17,6 +18,10 @@ namespace GodMorgon.CardEffect
 
             //if player attack an enemy
             context.targets.TakeDamage(damagePoint);
+
+            //add the attack sequence
+            GSA_PlayerAttack playerAttackAction = new GSA_PlayerAttack();
+            GameSequencer.Instance.AddAction(playerAttackAction);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace GodMorgon.CardEffect
         {
             Debug.Log("Move To " + effectData.nbMoves + " Tiles");
             
+            //add the move sequence
             GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();
             GameSequencer.Instance.AddAction(playerMoveAction);
         }

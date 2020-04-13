@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using GodMorgon.CardEffect;
+
 namespace GodMorgon.GameSequencerSpace
 {
     /**
@@ -9,6 +11,9 @@ namespace GodMorgon.GameSequencerSpace
      */
     public class GameSequencer : MonoBehaviour
     {
+        [SerializeField]
+        public ParticleSystem enemyHitParticle;
+
         #region Singleton Pattern
         private static GameSequencer _instance;
 
@@ -44,19 +49,19 @@ namespace GodMorgon.GameSequencerSpace
          * Execute all the action in the list and when done,
          * change turn.
          */
-        public void ExecuteActions()
+        public void ExecuteActions(GameContext context)
         {
-            StartCoroutine(_CoroutineExecuteActions());
+            StartCoroutine(_CoroutineExecuteActions(context));
         }
 
         /**
          * Execute the action one by one.
          */
-        private IEnumerator _CoroutineExecuteActions()
+        private IEnumerator _CoroutineExecuteActions(GameContext context)
         {
             foreach (GameSequencerAction action in _actionsList)
             {
-                yield return action.ExecuteAction();
+                yield return action.ExecuteAction(context);
             }
 
             GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.RINGMASTER_TURN);

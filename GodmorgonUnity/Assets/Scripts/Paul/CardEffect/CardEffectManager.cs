@@ -50,7 +50,7 @@ namespace GodMorgon.CardEffect
             }
 
             //Une fois que les effets ont été appliqués, on lance les actions
-            GameSequencer.Instance.ExecuteActions();
+            GameSequencer.Instance.ExecuteActions(context);
         }
 
 
