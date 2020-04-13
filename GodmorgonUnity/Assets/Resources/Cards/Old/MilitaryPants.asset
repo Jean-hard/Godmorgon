@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263b189b8ed9f6c4ba28419440b18187, type: 3}
-  m_Name: JokerPants
+  m_Name: MilitaryPants
   m_EditorClassIdentifier: 
-  id: 5
-  name: Joker's pants
-  description: +10 power
+  cardType: 0
+  id: 7
+  name: Military Pants
+  description: +2 PV max et +7 power
+  actionCost: 1
   template: {fileID: 21300000, guid: e365c8d97edf02b4bbe2c837548d0266, type: 3}
-  artwork: {fileID: 21300000, guid: b5e344de3f1698b4097062afce6a8b19, type: 3}
-  lifeBonus: 0
-  powerBonus: 10
+  artwork: {fileID: 21300000, guid: f87a6864e2f1ca04c930a72f64b9c5e1, type: 3}
+  effectsData: []
+  lifeBonus: 2
+  powerBonus: 7
   StuffType: 2

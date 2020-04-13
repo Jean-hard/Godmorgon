@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263b189b8ed9f6c4ba28419440b18187, type: 3}
-  m_Name: PunkShoes
+  m_Name: ArmourChest
   m_EditorClassIdentifier: 
-  id: 11
-  name: Punk Shoes
-  description: +5 PV max et +5 power
+  cardType: 0
+  id: 1
+  name: Armour
+  description: +10 PV max
+  actionCost: 1
   template: {fileID: 21300000, guid: e365c8d97edf02b4bbe2c837548d0266, type: 3}
-  artwork: {fileID: 21300000, guid: c983dbb868876cd408a7988aa548b401, type: 3}
-  lifeBonus: 5
-  powerBonus: 5
-  StuffType: 3
+  artwork: {fileID: 21300000, guid: e23130bc5054b804e950aad8536d29b5, type: 3}
+  effectsData: []
+  lifeBonus: 10
+  powerBonus: 0
+  StuffType: 1

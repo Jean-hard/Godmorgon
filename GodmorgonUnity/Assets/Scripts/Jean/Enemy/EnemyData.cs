@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GodMorgon.Enemy
 {
-    public class EnemyData
+    public class EnemyData : Entity
     {
         public string enemyId = null;
         public int health = 0;

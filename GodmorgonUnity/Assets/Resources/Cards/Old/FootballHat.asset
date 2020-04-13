@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263b189b8ed9f6c4ba28419440b18187, type: 3}
-  m_Name: PirateHat
+  m_Name: FootballHat
   m_EditorClassIdentifier: 
-  id: 9
-  name: Pirate Tricorn
-  description: +8 power
+  cardType: 0
+  id: 2
+  name: Football Helmet
+  description: +5 PV max et +5 power
+  actionCost: 1
   template: {fileID: 21300000, guid: e365c8d97edf02b4bbe2c837548d0266, type: 3}
-  artwork: {fileID: 21300000, guid: 3d698e32c0fe9b74a99644701c093d46, type: 3}
-  lifeBonus: 0
-  powerBonus: 8
+  artwork: {fileID: 21300000, guid: 00f172aaa8fc7614a897085cc94ab732, type: 3}
+  effectsData: []
+  lifeBonus: 5
+  powerBonus: 5
   StuffType: 0

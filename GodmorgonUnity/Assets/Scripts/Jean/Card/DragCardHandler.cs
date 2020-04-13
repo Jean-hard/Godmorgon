@@ -80,10 +80,11 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
         Vector3Int dropCellPosition = PlayerManager.Instance.walkableTilemap.WorldToCell(dropPosition);
-        
-        
+
+
         //Vérifie si la position du drop est valide
-        if (dropPosManager.CheckDroppedCardPosition(_card, dropCellPosition))
+        GameContext context = dropPosManager.GetDropCardContext(_card, dropCellPosition);
+        if (context.isDropValidate)
         {
             //Joue la carte
             CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);
