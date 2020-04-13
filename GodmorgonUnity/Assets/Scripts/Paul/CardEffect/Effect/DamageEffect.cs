@@ -17,6 +17,8 @@ namespace GodMorgon.CardEffect
             int damagePoint = effectData.damagePoint;
 
             //if player attack an enemy
+            if (context.targets == null)
+                Debug.Log("il manque une target dans le contexte !");
             context.targets.TakeDamage(damagePoint);
 
             //add the attack sequence
