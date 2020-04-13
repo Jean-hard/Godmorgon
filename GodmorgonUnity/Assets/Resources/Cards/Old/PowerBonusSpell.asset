@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07e818b846c1c76459f3605c5817e029, type: 3}
-  m_Name: HealthSpell
+  m_Name: PowerBonusSpell
   m_EditorClassIdentifier: 
-  id: 3
-  name: Soin
-  description: Rend +20 pv
+  cardType: 0
+  id: 10
+  name: Puissance
+  description: Augmente de +10 la puissance pendant 2 combats
+  actionCost: 1
   template: {fileID: 0}
-  artwork: {fileID: 21300000, guid: caa654029013770408a73eca79a6285a, type: 3}
+  artwork: {fileID: 21300000, guid: 263b854d534be7646a931d47c5c7cbf2, type: 3}
+  effectsData: []

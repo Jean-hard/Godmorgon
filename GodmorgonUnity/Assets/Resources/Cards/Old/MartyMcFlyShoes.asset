@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263b189b8ed9f6c4ba28419440b18187, type: 3}
-  m_Name: FootballHat
+  m_Name: MartyMcFlyShoes
   m_EditorClassIdentifier: 
-  id: 2
-  name: Football Helmet
-  description: +5 PV max et +5 power
+  cardType: 0
+  id: 6
+  name: Marty McFly Shoes
+  description: +10 power
+  actionCost: 1
   template: {fileID: 21300000, guid: e365c8d97edf02b4bbe2c837548d0266, type: 3}
-  artwork: {fileID: 21300000, guid: 00f172aaa8fc7614a897085cc94ab732, type: 3}
-  lifeBonus: 5
-  powerBonus: 5
-  StuffType: 0
+  artwork: {fileID: 21300000, guid: 8a9f6208f493e704e9b134f8b2576558, type: 3}
+  effectsData: []
+  lifeBonus: 0
+  powerBonus: 10
+  StuffType: 3
