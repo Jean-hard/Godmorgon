@@ -86,6 +86,23 @@ namespace GodMorgon.Enemy
         }
 
         /**
+         * Retourne un ennemi par sa position cellule
+         */
+        public EnemyView GetEnemyViewByPosition(Vector3Int tilePosition)
+        {
+            foreach (EnemyView enemyView in enemiesList)
+            {
+                Vector3Int enemyViewCellPos = walkableTilemap.WorldToCell(enemyView.transform.position);
+                if (enemyViewCellPos == tilePosition)
+                {
+                    return enemyView;
+                }
+            }
+
+            return null;
+        }
+
+        /**
          * Renvoie la liste des ennemis présents dans la room du player
          * Met à jour en même temps la listes des tiles sur lesquelles sont les ennemis présents dans la room du player
          */
