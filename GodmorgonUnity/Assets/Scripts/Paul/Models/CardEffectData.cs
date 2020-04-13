@@ -32,7 +32,7 @@ namespace GodMorgon.Models
         public int damagePoint = 0;
 
         //nb movement
-        public int movePoint = 0;
+        public int nbMoves = 0;
 
     }
 }

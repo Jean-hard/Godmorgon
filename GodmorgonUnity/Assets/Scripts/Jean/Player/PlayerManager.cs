@@ -176,7 +176,7 @@ public class PlayerManager : MonoBehaviour
 
         //la prochaine position est le spot parmi la liste de spots
         Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(playerPathArray[spotIndex].X, playerPathArray[spotIndex].Y, 0))
-            + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que le player passe bien au milieu de la tile, la position de la tile étant en bas du losange             
+            + new Vector3(0, 0.3f, 0);   //on ajoute 0.x pour que le player passe bien au milieu de la tile, la position de la tile étant en bas du losange             
 
 
         if (Vector3.Distance(this.transform.position, nextPos) < 0.001f)

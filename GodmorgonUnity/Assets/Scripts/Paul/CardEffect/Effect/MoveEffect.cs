@@ -11,7 +11,7 @@ namespace GodMorgon.CardEffect
     {
         public override void ApplyEffect(CardEffectData effectData)
         {
-            Debug.Log("Move To " + effectData.movePoint + " Tiles");
+            Debug.Log("Move To " + effectData.nbMoves + " Tiles");
             
             GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();
             GameSequencer.Instance.AddAction(playerMoveAction);
