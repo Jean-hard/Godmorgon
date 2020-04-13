@@ -99,27 +99,6 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             MusicManager.Instance.PlayDropCard();
             //MusicManager.Instance.PlayRollingKart();  //pas ici qu'il doit être activé
         }
-            
-        /*
-        if (_card.name == "Mouvement")
-        {
-            //Cache les tiles accessibles
-            PlayerManager.Instance.HideAccessibleSpot();
-            
-            bool moveValidate = player.GetComponent<PlayerManager>().MovePlayer();
-            if (moveValidate)
-            {
-                GameEngine.Instance.DiscardCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);   //on place la carte dans la disposal pile une fois utilisée
-
-                
-                Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);
-                this.gameObject.SetActive(false);
-
-                //sound
-                //MusicManager.Instance.PlayDropCard();
-                MusicManager.Instance.PlayRollingKart();
-            }*/
-        //}
 
         this.transform.SetParent(hand);
     }
