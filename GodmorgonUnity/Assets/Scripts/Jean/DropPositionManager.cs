@@ -4,37 +4,43 @@ using UnityEngine;
 
 using GodMorgon.Models;
 
-public class DropPositionManager
+namespace GodMorgon.CardEffect
 {
-    public bool CheckDroppedCardPosition(BasicCard droppedCard, Vector3Int dropPosition)
+    public class DropPositionManager
     {
-        switch (droppedCard.cardType)
+        public GameContext GetDropCardContext(BasicCard droppedCard, Vector3Int dropPosition)
         {
-            case BasicCard.CARDTYPE.MOVE:
-                PlayerManager.Instance.UpdateAccessibleTilesList();
-                if (PlayerManager.Instance.accessibleTiles.Contains(dropPosition))
-                    return true;
-                break;
-            case BasicCard.CARDTYPE.ATTACK:
-                break;
-            case BasicCard.CARDTYPE.DEFENSE:
-                break;
+            //will contain all the information needed for the require effect
+            GameContext context = new GameContext();
+
+            switch (droppedCard.cardType)
+            {
+                case BasicCard.CARDTYPE.MOVE:
+                    PlayerManager.Instance.UpdateAccessibleTilesList();
+                    if (PlayerManager.Instance.accessibleTiles.Contains(dropPosition))
+                        context.isDropValidate = true;
+                    break;
+                case BasicCard.CARDTYPE.ATTACK:
+                    break;
+                case BasicCard.CARDTYPE.DEFENSE:
+                    break;
+            }
+
+            return context;
         }
 
-        return false;
-    }
-
-    public void ShowAvailableTilesToDrop(BasicCard draggedCard)
-    {
-        switch (draggedCard.cardType)
+        public void ShowAvailableTilesToDrop(BasicCard draggedCard)
         {
-            case BasicCard.CARDTYPE.MOVE:
-                PlayerManager.Instance.ShowAccessibleTiles();
-                break;
-            case BasicCard.CARDTYPE.ATTACK:
-                break;
-            case BasicCard.CARDTYPE.DEFENSE:
-                break;
+            switch (draggedCard.cardType)
+            {
+                case BasicCard.CARDTYPE.MOVE:
+                    PlayerManager.Instance.ShowAccessibleTiles();
+                    break;
+                case BasicCard.CARDTYPE.ATTACK:
+                    break;
+                case BasicCard.CARDTYPE.DEFENSE:
+                    break;
+            }
         }
     }
 }
