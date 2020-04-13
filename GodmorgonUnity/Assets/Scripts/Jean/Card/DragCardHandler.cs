@@ -87,7 +87,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (context.isDropValidate)
         {
             //Joue la carte
-            CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card);
+            CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card, context);
             
             //Effect + delete card
             Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);

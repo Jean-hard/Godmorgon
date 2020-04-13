@@ -40,13 +40,13 @@ namespace GodMorgon.CardEffect
         /**
          * Play the effect of the card
          */
-        public void PlayCard(BasicCard card)
+        public void PlayCard(BasicCard card, GameContext context)
         {
             //create and apply all the effect of the card
             foreach (CardEffectData effectData in card.effectsData)
             {
                 CardEffect effect = CreateEffect(effectData.GetEffectType());
-                effect.ApplyEffect(effectData);
+                effect.ApplyEffect(effectData, context);
             }
 
             //Une fois que les effets ont été appliqués, on lance les actions
