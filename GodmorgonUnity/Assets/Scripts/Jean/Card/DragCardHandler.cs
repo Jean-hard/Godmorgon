@@ -66,8 +66,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         this.transform.position = eventData.position;   //La carte prend la position de la souris
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);  //On réduit la taille de la carte lors du drag
 
-        //On montre les tiles disponibles pour la carte
-        dropPosManager.ShowAvailableTilesToDrop(_card);
+        //On montre les positions disponibles pour le drop de la carte
+        dropPosManager.ShowPositionsToDrop(_card);
     }
 
     //fonction lancée au drop d'une carte
@@ -92,9 +92,10 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             //Effect + delete card
             Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);
             this.gameObject.SetActive(false);
+
+            //Cache les positions accessibles
+            dropPosManager.HidePositionsToDrop(_card);
             
-            //Cache les tiles accessibles
-            PlayerManager.Instance.HideAccessibleTiles();
             //sound
             
             MusicManager.Instance.PlayDropCard();
