@@ -70,7 +70,6 @@ namespace GodMorgon.Enemy
             _animator = this.GetComponent<Animator>();
             _healthBar = this.GetComponentInChildren<HealthBar>();
 
-
             #region Astar Start Setup
             walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
             //roadMap.CompressBounds();
@@ -287,6 +286,8 @@ namespace GodMorgon.Enemy
          */
         public void RecenterEnemy()
         {
+            Debug.Log("in recenter enemy");
+
             //position d'arrivée (player) en format cellule
             Vector3 playerPos = player.transform.position;
             Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
@@ -308,6 +309,7 @@ namespace GodMorgon.Enemy
             foreach (Spot tile in roadPath)
             {
                 tilesList.Add(tile);
+                Debug.Log(tile.X + " : " + tile.Y);
             }
 
             tilesList.Reverse();
