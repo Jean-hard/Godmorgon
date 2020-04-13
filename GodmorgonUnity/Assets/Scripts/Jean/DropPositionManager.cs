@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using GodMorgon.Models;
+using GodMorgon.Enemy;
 
 namespace GodMorgon.CardEffect
 {
@@ -21,6 +22,7 @@ namespace GodMorgon.CardEffect
                         context.isDropValidate = true;
                     break;
                 case BasicCard.CARDTYPE.ATTACK:
+                    
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:
                     break;
@@ -29,7 +31,7 @@ namespace GodMorgon.CardEffect
             return context;
         }
 
-        public void ShowAvailableTilesToDrop(BasicCard draggedCard)
+        public void ShowPositionsToDrop(BasicCard draggedCard)
         {
             switch (draggedCard.cardType)
             {
@@ -37,6 +39,22 @@ namespace GodMorgon.CardEffect
                     PlayerManager.Instance.ShowAccessibleTiles();
                     break;
                 case BasicCard.CARDTYPE.ATTACK:
+                    EnemyManager.Instance.ShowAttackableEnemies();
+                    break;
+                case BasicCard.CARDTYPE.DEFENSE:
+                    break;
+            }
+        }
+
+        public void HidePositionsToDrop(BasicCard draggedCard)
+        {
+            switch (draggedCard.cardType)
+            {
+                case BasicCard.CARDTYPE.MOVE:
+                    PlayerManager.Instance.HideAccessibleTiles();
+                    break;
+                case BasicCard.CARDTYPE.ATTACK:
+                    EnemyManager.Instance.HideAttackableEnemies();
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:
                     break;

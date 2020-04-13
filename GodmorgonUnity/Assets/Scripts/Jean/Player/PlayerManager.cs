@@ -135,10 +135,11 @@ public class PlayerManager : MonoBehaviour
         //roadPath est une liste de spots = une liste de positions de tiles
         roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove);    // * nbMoves
 
+        /*
         foreach (Spot spot in roadPath)
         {
             Debug.Log(spot.X + " " + spot.Y);
-        }
+        }*/
 
         foreach (Spot spot in roadPath)
         {

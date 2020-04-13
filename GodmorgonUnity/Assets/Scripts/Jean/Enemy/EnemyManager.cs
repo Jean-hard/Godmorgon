@@ -17,6 +17,7 @@ namespace GodMorgon.Enemy
 
 
         private List<EnemyView> enemiesList;
+        private List<EnemyView> enemiesInPlayersRoom;
         private List<EnemyView> farEnemiesList;  //Tableau des ennemis présents sur la map mais hors de la room du player
         private bool enemiesHaveMoved = false;
         private bool enemiesHaveAttacked = false;
@@ -82,6 +83,47 @@ namespace GodMorgon.Enemy
             return null;
         }
 
+        /**
+         * Renvoie la liste des ennemis présents dans la room du player
+         */
+        public List<EnemyView> GetEnemiesInPlayersRoom()
+        {
+            List<EnemyView> attackableEnemies = new List<EnemyView>();
+            foreach(EnemyView enemy in enemiesList)
+            {
+                if(enemy.enemyData.inPlayersRoom)
+                {
+                    enemiesInPlayersRoom.Add(enemy);
+                }
+            }
+            return attackableEnemies;
+        }
+
+        /**
+        * Montre les ennemis attaquables en activant l'effet (cible) enfant du gameObject de l'ennemi
+        */
+        public void ShowAttackableEnemies()
+        {
+            enemiesInPlayersRoom = GetEnemiesInPlayersRoom();
+
+            foreach(EnemyView enemy in enemiesInPlayersRoom)
+            {
+                enemy.transform.Find("Target").gameObject.SetActive(true);
+            }
+        }
+
+        /**
+        * Désactive l'effet (cible) enfant du gameObject de l'ennemi
+        */
+        public void HideAttackableEnemies()
+        {
+            enemiesInPlayersRoom = GetEnemiesInPlayersRoom();
+
+            foreach (EnemyView enemy in enemiesInPlayersRoom)
+            {
+                enemy.transform.Find("Target").gameObject.SetActive(false);
+            }
+        }
 
         /**
          * Lance le mouvement des ennemis
@@ -130,9 +172,7 @@ namespace GodMorgon.Enemy
         {
             UpdateEnemiesArray();
             StartCoroutine(TimedAttacks());
-        }
-
-        
+        }        
 
         /**
          * Applique les effets de l'attaque tous les [attackDuration] secondes
@@ -148,10 +188,10 @@ namespace GodMorgon.Enemy
                    //Lance anim d'attack
                    enemy.Attack();
                }
-                while (!enemy.IsAttackFinished()) //Tant qu'il n'ont pas tous bougé on continue
-                {
-                    yield return null;
-                }
+               while (!enemy.IsAttackFinished()) //Tant qu'il n'ont pas tous bougé on continue
+               {
+                   yield return null;
+               }
 
            }
        }
