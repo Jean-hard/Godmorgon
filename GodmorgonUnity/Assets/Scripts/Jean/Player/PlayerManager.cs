@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 using GodMorgon.StateMachine;
 using GodMorgon.Player;
+using GodMorgon.Enemy;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -151,11 +152,11 @@ public class PlayerManager : MonoBehaviour
         playerPathArray.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
         playerPathArray.RemoveAt(0);
 
-            
+        /*    
         foreach (Spot spot in playerPathArray)
         {
             Debug.Log(spot.X + " " + spot.Y);
-        }
+        }*/
 
         playerCanMove = true;  //on autorise le player à bouger
         //}
@@ -194,6 +195,7 @@ public class PlayerManager : MonoBehaviour
                 playerCanMove = false;
                 playerHasMoved = true;
                 spotIndex = 0;
+                EnemyManager.Instance.RecenterEnemies();
                 StartCoroutine(WaitForRingMasterTurn());
             }
             else if (spotIndex < playerPathArray.Count - 1)

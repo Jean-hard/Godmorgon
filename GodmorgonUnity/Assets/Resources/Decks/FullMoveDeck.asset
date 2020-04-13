@@ -17,23 +17,13 @@ MonoBehaviour:
   description: it's full of movement card
   artwork: {fileID: 0}
   cards:
+  - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}

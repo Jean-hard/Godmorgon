@@ -39,6 +39,8 @@ namespace GodMorgon.Enemy
         private HealthBar _healthBar;
         public EnemyData enemyData = new EnemyData();
         private bool canMove;
+        [System.NonSerialized]
+        public bool canRecenter = false;
 
         public void Awake()
         {
@@ -81,6 +83,9 @@ namespace GodMorgon.Enemy
         private void Update()
         {
             if (canMove)
+                LaunchMoveMechanic();
+
+            if (canRecenter)
                 LaunchMoveMechanic();
 
             // ============ WIP ================== 
@@ -152,6 +157,7 @@ namespace GodMorgon.Enemy
                     if (playerCellPos.x == tile.X && playerCellPos.y == tile.Y)
                     {
                         isPlayerOnPath = true;
+                        enemyData.inPlayersRoom = true; //L'ennemi sera présent dans la room
                     }
                     if (!isPlayerOnPath)
                     {
@@ -190,6 +196,7 @@ namespace GodMorgon.Enemy
                 {
                     tileIndex = 0;
 
+                    canRecenter = false;
                     canMove = false;    //On arrête d'autoriser le mouvement
                     isMoveFinished = true;  //Le mouvement est terminé (pour la fonction qui retourne ce bool)
                     tilesList = new List<Spot>();   //Reset de la liste
@@ -274,6 +281,45 @@ namespace GodMorgon.Enemy
             return isAttackFinished;
         }
 
-        
+        /**
+         * Replace l'ennemi au milieu de la room où il est
+         * Lancé si le player fuit une room où l'enemy était
+         */
+        public void RecenterEnemy()
+        {
+            //position d'arrivée (player) en format cellule
+            Vector3 playerPos = player.transform.position;
+            Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
+            
+            //Position cellule de l'enemy
+            Vector3Int enemyPos = walkableTilemap.WorldToCell(transform.position);
+
+            if (roadPath != null && roadPath.Count > 0) //reset le roadpath
+                roadPath.Clear();
+
+            //création du path
+            roadPath = astar.CreatePath(walkableTilesArray, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(playerCellPos.x, playerCellPos.y), 2);
+
+            if (roadPath == null)
+            {
+                return;
+            }
+
+            foreach (Spot tile in roadPath)
+            {
+                tilesList.Add(tile);
+            }
+
+            tilesList.Reverse();
+            tilesList.RemoveAt(0);
+
+            canRecenter = true;
+            enemyData.inPlayersRoom = false;
+        }
+
+        private void LaunchRecenterMechanic()
+        {
+
+        }
     }
 }

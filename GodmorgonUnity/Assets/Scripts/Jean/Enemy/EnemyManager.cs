@@ -17,10 +17,12 @@ namespace GodMorgon.Enemy
 
 
         private List<EnemyView> enemiesList;
-        private List<EnemyView> enemiesInPlayersRoom;
+        private List<EnemyView> enemiesInPlayersRoom = new List<EnemyView>();
+        [System.NonSerialized]
+        public List<Vector3Int> attackableEnemiesTiles = new List<Vector3Int>();
         private List<EnemyView> farEnemiesList;  //Tableau des ennemis présents sur la map mais hors de la room du player
         private bool enemiesHaveMoved = false;
-        private bool enemiesHaveAttacked = false;
+        //private bool enemiesHaveAttacked = false;
 
 
         #region Singleton Pattern
@@ -85,15 +87,24 @@ namespace GodMorgon.Enemy
 
         /**
          * Renvoie la liste des ennemis présents dans la room du player
+         * Met à jour en même temps la listes des tiles sur lesquelles sont les ennemis présents dans la room du player
          */
         public List<EnemyView> GetEnemiesInPlayersRoom()
         {
+            UpdateEnemiesArray();
+
             List<EnemyView> attackableEnemies = new List<EnemyView>();
-            foreach(EnemyView enemy in enemiesList)
+            attackableEnemiesTiles.Clear();
+            enemiesInPlayersRoom.Clear();
+
+            foreach (EnemyView enemy in enemiesList)
             {
                 if(enemy.enemyData.inPlayersRoom)
                 {
-                    enemiesInPlayersRoom.Add(enemy);
+                    attackableEnemies.Add(enemy);
+
+                    Vector3Int enemyCellPos = walkableTilemap.WorldToCell(enemy.transform.position);
+                    attackableEnemiesTiles.Add(enemyCellPos);
                 }
             }
             return attackableEnemies;
@@ -105,9 +116,9 @@ namespace GodMorgon.Enemy
         public void ShowAttackableEnemies()
         {
             enemiesInPlayersRoom = GetEnemiesInPlayersRoom();
-
-            foreach(EnemyView enemy in enemiesInPlayersRoom)
+            foreach (EnemyView enemy in enemiesInPlayersRoom)
             {
+                Debug.Log("Active target of " + enemy.enemyData.enemyId);
                 enemy.transform.Find("Target").gameObject.SetActive(true);
             }
         }
@@ -132,16 +143,16 @@ namespace GodMorgon.Enemy
         {
             enemiesHaveMoved = false;
 
-            UpdateEnemiesArray();   //Recup les ennemis présents sur la map
+            UpdateFarEnemiesArray();   //Recup les ennemis présents sur la map
             StartCoroutine(TimedEnemiesMove());   //Lance la coroutine qui applique un par un le mouvement de chaque ennemi
         }
 
         /**
-         * Permet de lancer le move des ennemis l'un après l'autre
+         * Permet de lancer le move des ennemis loin du player, l'un après l'autre
          */
         IEnumerator TimedEnemiesMove()
         {
-            foreach (EnemyView enemy in enemiesList)    //Pour chaque ennemi de la liste
+            foreach (EnemyView enemy in farEnemiesList)    //Pour chaque ennemi de la liste
             {
                 enemy.MoveToPlayer();  //On lance le mouvement de l'ennemi
                 while (!enemy.IsMoveFinished()) //Tant qu'il n'ont pas tous bougé on continue
@@ -164,6 +175,13 @@ namespace GodMorgon.Enemy
                 return false;
         }
 
+        public void RecenterEnemies()
+        {
+            if(enemiesInPlayersRoom.Count > 0)
+            {
+                enemiesInPlayersRoom[0].RecenterEnemy();
+            }
+        }
 
         /**
          * Lance l'attaque des ennemis

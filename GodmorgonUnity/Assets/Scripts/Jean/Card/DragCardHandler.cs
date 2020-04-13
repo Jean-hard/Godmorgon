@@ -56,6 +56,9 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         this.transform.SetParent(movingCardParent);
 
         _card = eventData.pointerDrag.GetComponent<CardDisplay>().card;
+
+        //On montre les positions disponibles pour le drop de la carte
+        dropPosManager.ShowPositionsToDrop(_card);
     }
 
     //fonction lancée lorsqu'on a une carte en main
@@ -65,9 +68,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         this.transform.position = eventData.position;   //La carte prend la position de la souris
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);  //On réduit la taille de la carte lors du drag
-
-        //On montre les positions disponibles pour le drop de la carte
-        dropPosManager.ShowPositionsToDrop(_card);
+      
     }
 
     //fonction lancée au drop d'une carte
