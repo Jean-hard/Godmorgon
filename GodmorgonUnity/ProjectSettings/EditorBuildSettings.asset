@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Paul/DeckBuildingScene.unity
     guid: 5b705c069eac1e0448803db5b227d378
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jean/GameSceneOld.unity
     guid: 9b46ddb97df20754cae0e2d7ad4c0116
   - enabled: 1
