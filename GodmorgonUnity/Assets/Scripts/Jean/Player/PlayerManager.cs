@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 using GodMorgon.StateMachine;
 using GodMorgon.Player;
@@ -9,6 +10,9 @@ using GodMorgon.Enemy;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("General Settings")]
+    public Text healthText;
+
     [Header("Movement Settings")]
     public Tilemap walkableTilemap;
     public Tilemap roadMap;
@@ -67,6 +71,7 @@ public class PlayerManager : MonoBehaviour
         roadMap.CompressBounds();
         bounds = walkableTilemap.cellBounds;
 
+        UpdateHealthText(PlayerData.Instance.healthMax);
 
         CreateGrid();
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
@@ -299,9 +304,14 @@ public class PlayerManager : MonoBehaviour
     {
         //WIP : considérer le shield du player
 
-        int newLife = PlayerData.Instance.health - damage;
-        PlayerData.Instance.SetHealth(newLife);
-
+        int newHealth = PlayerData.Instance.health - damage;
+        PlayerData.Instance.SetHealth(newHealth);
+        UpdateHealthText(newHealth);
         Debug.Log("Update player's life ");
+    }
+
+    private void UpdateHealthText(int healthValue)
+    {
+        healthText.text = healthValue.ToString();
     }
 }
