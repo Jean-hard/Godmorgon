@@ -14,6 +14,9 @@ namespace GodMorgon.GameSequencerSpace
             GameSequencer.Instance.enemyHitParticle.transform.position = context.targets.GetEntityViewPosition();
             GameSequencer.Instance.enemyHitParticle.Play();
 
+            //update the healthbar of the target
+            context.targets.UpdateHealtBar();
+
             //wait the time of the hit particle effect ---------------------NOT SURE OF THIS---------------------------
             yield return new WaitForSeconds(GameSequencer.Instance.enemyHitParticle.main.duration);
         }

@@ -37,10 +37,16 @@ namespace GodMorgon.Enemy
             Debug.Log("enemy healt after was : " + health);
         }
 
+        //return the position of the enemy
         public override Vector3 GetEntityViewPosition()
         {
             return enemyView.transform.position;
         }
 
+        //update the enemy healthBar
+        public override void UpdateHealtBar()
+        {
+            enemyView.UpdateHealthBar(health, defense);
+        }
     }
 }

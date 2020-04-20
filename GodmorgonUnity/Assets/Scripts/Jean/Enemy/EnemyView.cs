@@ -68,7 +68,9 @@ namespace GodMorgon.Enemy
             grid = EnemyManager.Instance.grid;
             walkableTilemap = EnemyManager.Instance.walkableTilemap;
             _animator = this.GetComponent<Animator>();
+
             _healthBar = this.GetComponentInChildren<HealthBar>();
+            _healthBar.SetBarPoints(enemyData.health, enemyData.defense);
 
             #region Astar Start Setup
             walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
@@ -243,6 +245,12 @@ namespace GodMorgon.Enemy
             
             if (enemyData.health < 0)   //Empêche que la vie soit inférieur à 0
                 enemyData.health = 0;
+        }
+
+        //Update the healthBar
+        public void UpdateHealthBar(float health, float defense)
+        {
+            _healthBar.UpdateHealthBar(defense, health);
         }
 
         /**
