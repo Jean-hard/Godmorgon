@@ -168,7 +168,9 @@ public class PlayerManager : MonoBehaviour
         //else
             //playerCanMove = false;
 
-        spotIndex = 0;        
+        spotIndex = 0;
+
+        EnemyManager.Instance.RecenterEnemies();
     }
 
     /**
@@ -200,7 +202,6 @@ public class PlayerManager : MonoBehaviour
                 playerCanMove = false;
                 playerHasMoved = true;
                 spotIndex = 0;
-                EnemyManager.Instance.RecenterEnemies();
                 StartCoroutine(WaitForRingMasterTurn());
             }
             else if (spotIndex < playerPathArray.Count - 1)

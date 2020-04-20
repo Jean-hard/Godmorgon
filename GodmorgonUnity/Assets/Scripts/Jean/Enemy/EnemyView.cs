@@ -85,7 +85,7 @@ namespace GodMorgon.Enemy
                 LaunchMoveMechanic();
 
             if (canRecenter)
-                LaunchMoveMechanic();
+                LaunchRecenterMechanic();
 
             // ============ WIP ================== 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -123,6 +123,8 @@ namespace GodMorgon.Enemy
         
         public void MoveToPlayer()
         {
+            tilesList = new List<Spot>();
+
             //position d'arrivée (player) en format cellule
             Vector3 playerPos = player.transform.position;
             Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);    
@@ -299,7 +301,7 @@ namespace GodMorgon.Enemy
                 roadPath.Clear();
 
             //création du path
-            roadPath = astar.CreatePath(walkableTilesArray, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(playerCellPos.x, playerCellPos.y), 2);
+            roadPath = astar.CreatePath(walkableTilesArray, new Vector2Int(enemyPos.x, enemyPos.y), new Vector2Int(playerCellPos.x, playerCellPos.y), 1);
 
             if (roadPath == null)
             {
@@ -321,7 +323,18 @@ namespace GodMorgon.Enemy
 
         private void LaunchRecenterMechanic()
         {
+            Vector3 nextTilePos = walkableTilemap.CellToWorld(new Vector3Int(tilesList[tileIndex].X, tilesList[tileIndex].Y, 0))
+                + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange
 
+            float speed = 0.5f;
+            transform.position = Vector2.MoveTowards(transform.position, nextTilePos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile
+        
+            if(transform.position == nextTilePos)
+            {
+                Debug.Log("Enemy recenterd");
+                canRecenter = false;
+                enemyData.inPlayersRoom = false;
+            }
         }
     }
 }
