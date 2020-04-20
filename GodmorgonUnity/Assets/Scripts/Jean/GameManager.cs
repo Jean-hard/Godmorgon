@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private HandManager handManager = null;
 
-    //button pour passer au tour du player, DEVRA DISPARAITRE
-    public GameObject playerTurnButton;
+    [SerializeField]
+    private GameObject downPanelBlock = null;
 
     #region Singleton Pattern
     private static GameManager _instance;
@@ -66,22 +66,6 @@ public class GameManager : MonoBehaviour
         else
             Debug.Log("capacité de carte maximale");
     }
-
-    /**
-     * Button to pass the InitializationState and go to PlayerTurn state
-     */
-    public void StartPlayerTurn()
-    {
-        GameEngine.Instance.SetState(StateMachine.STATE.PLAYER_TURN);
-        playerTurnButton.SetActive(false);
-    }
-
-    public void StartRingmasterTurn()
-    {
-        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
-        //playerTurnButton.SetActive(false);
-    }
-
     #endregion
 
     /**
@@ -91,5 +75,13 @@ public class GameManager : MonoBehaviour
     public void DiscardHandCard(BasicCard cardDiscarded)
     {
         GameEngine.Instance.DiscardCard(cardDiscarded);
+    }
+
+    /**
+     * active panel to block dawn panel during the ringmaster turn
+     */
+    public void DownPanelBlock(bool isPanelBlock)
+    {
+        downPanelBlock.SetActive(isPanelBlock);
     }
 }

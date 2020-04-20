@@ -11,6 +11,7 @@ namespace GodMorgon.StateMachine
         public override void OnStartState()
         {
             Debug.Log("On Player turn State");
+            GameManager.Instance.DownPanelBlock(false);
             MusicManager.Instance.PlayPlayerTurnTheme();
         }
     }
