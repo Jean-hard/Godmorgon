@@ -162,13 +162,19 @@ public class PlayerManager : MonoBehaviour
             spotIndex++;
         }
 
+        //Si on ETAIT le premier arrivé dans la room, alors un ennemi présent dans la room doit se recentrer au milieu de la room
+        if (isFirstInRoom)
+            EnemyManager.Instance.RecenterEnemies();
+
         //Si on n'a pas d'ennemi sur le chemin, on est le premier arrivé dans la room
         if (!isEnemyOnPath)
+        {
             isFirstInRoom = true;
-
-        //Si on était le premier arrivé dans la room, alors un ennemi présent dans la room doit se recentrer au milieu de la room
-        if(isFirstInRoom)
-            EnemyManager.Instance.RecenterEnemies();
+            foreach (EnemyView enemy in EnemyManager.Instance.GetEnemiesInPlayersRoom())
+            {
+                enemy.enemyData.inPlayersRoom = false;
+            }
+        }
 
         playerPathArray.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
         playerPathArray.RemoveAt(0);

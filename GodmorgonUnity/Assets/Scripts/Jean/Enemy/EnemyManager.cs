@@ -208,12 +208,18 @@ namespace GodMorgon.Enemy
          */
         public void RecenterEnemies()
         {
-            enemiesInPlayersRoom = GetEnemiesInPlayersRoom();
+            enemiesInPlayersRoom = GetEnemiesInPlayersRoom();   //On réactualise la liste des ennemis présents dans la room du player
 
+            //Si on a des ennemis dans la room du player
             if (enemiesInPlayersRoom.Count > 0)
             {
                 Debug.Log("Un ennemi doit se recentrer");
-                enemiesInPlayersRoom[0].RecenterEnemy();    //L'ennemi se recentre en avançant d'une case vers le player
+                enemiesInPlayersRoom[0].RecenterEnemy();    //Le premier ennemi se recentre en avançant d'une case vers le player
+                foreach(EnemyView enemy in enemiesInPlayersRoom)
+                {
+                    enemy.enemyData.inPlayersRoom = false;
+                }
+                enemiesInPlayersRoom.Clear();   //On clear la liste car plus d'ennemis présents dans la room du player
             }
         }
 
