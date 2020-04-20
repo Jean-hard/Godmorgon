@@ -194,8 +194,11 @@ namespace GodMorgon.Enemy
 
         public void RecenterEnemies()
         {
-            if(enemiesInPlayersRoom.Count > 0)
+            enemiesInPlayersRoom = GetEnemiesInPlayersRoom();
+
+            if (enemiesInPlayersRoom.Count > 0)
             {
+                Debug.Log("Un ennemi doit se recentrer");
                 enemiesInPlayersRoom[0].RecenterEnemy();
             }
         }
