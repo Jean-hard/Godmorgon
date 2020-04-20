@@ -288,8 +288,6 @@ namespace GodMorgon.Enemy
          */
         public void RecenterEnemy()
         {
-            Debug.Log("in recenter enemy");
-
             //position d'arrivée (player) en format cellule
             Vector3 playerPos = player.transform.position;
             Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);
@@ -316,7 +314,8 @@ namespace GodMorgon.Enemy
 
             tilesList.Reverse();
             tilesList.RemoveAt(0);
-
+            
+            
             canRecenter = true;
             enemyData.inPlayersRoom = false;
         }

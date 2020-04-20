@@ -46,7 +46,7 @@ namespace GodMorgon.Enemy
         /**
          * Mets dans un tableau TOUS les enemies enfant du gameobject EnemyManager sur la map
          */
-        private void UpdateEnemiesArray()
+        private void UpdateEnemiesList()
         {
             enemiesList = new List<EnemyView>();
             for (int i = 0; i < transform.childCount; i++)
@@ -56,9 +56,9 @@ namespace GodMorgon.Enemy
         }
 
         /**
-         * Mets dans un tableau SEULEMENT les ennemis enfant du gameobject EnemyManager HORS DE LA ROOM DU PLAYER
+         * Mets dans une liste SEULEMENT les ennemis enfant du gameobject EnemyManager HORS DE LA ROOM DU PLAYER
          */
-        private void UpdateFarEnemiesArray()
+        private void UpdateFarEnemiesList()
         {
             farEnemiesList = new List<EnemyView>();
             for (int i = 0; i < transform.childCount; i++)
@@ -74,11 +74,16 @@ namespace GodMorgon.Enemy
          */
         public EnemyView GetEnemyView(string id)
         {
-            foreach (EnemyView enemyView in enemiesList)
+            UpdateEnemiesList();
+
+            if (enemiesList.Count > 0)
             {
-                if (enemyView.enemyData.enemyId == id)
+                foreach (EnemyView enemyView in enemiesList)
                 {
-                    return enemyView;
+                    if (enemyView.enemyData.enemyId == id)
+                    {
+                        return enemyView;
+                    }
                 }
             }
 
@@ -90,12 +95,17 @@ namespace GodMorgon.Enemy
          */
         public EnemyView GetEnemyViewByPosition(Vector3Int tilePosition)
         {
-            foreach (EnemyView enemyView in enemiesList)
+            UpdateEnemiesList();
+
+            if (enemiesList.Count > 0)
             {
-                Vector3Int enemyViewCellPos = walkableTilemap.WorldToCell(enemyView.transform.position);
-                if (enemyViewCellPos == tilePosition)
+                foreach (EnemyView enemyView in enemiesList)
                 {
-                    return enemyView;
+                    Vector3Int enemyViewCellPos = walkableTilemap.WorldToCell(enemyView.transform.position);
+                    if (enemyViewCellPos == tilePosition)
+                    {
+                        return enemyView;
+                    }
                 }
             }
 
@@ -108,7 +118,7 @@ namespace GodMorgon.Enemy
          */
         public List<EnemyView> GetEnemiesInPlayersRoom()
         {
-            UpdateEnemiesArray();
+            UpdateEnemiesList();
 
             List<EnemyView> attackableEnemies = new List<EnemyView>();
             attackableEnemiesTiles.Clear();
@@ -160,7 +170,7 @@ namespace GodMorgon.Enemy
         {
             enemiesHaveMoved = false;
 
-            UpdateFarEnemiesArray();   //Recup les ennemis présents sur la map
+            UpdateFarEnemiesList();   //Recup les ennemis présents sur la map
             StartCoroutine(TimedEnemiesMove());   //Lance la coroutine qui applique un par un le mouvement de chaque ennemi
         }
 
@@ -192,6 +202,10 @@ namespace GodMorgon.Enemy
                 return false;
         }
 
+        /**
+         * Prend un ennemi présent dans la room du player et le recentre au milieu de la room
+         * Cela peut arriver si le joueur fuit une room avec des ennemis dedans
+         */
         public void RecenterEnemies()
         {
             enemiesInPlayersRoom = GetEnemiesInPlayersRoom();
@@ -199,7 +213,7 @@ namespace GodMorgon.Enemy
             if (enemiesInPlayersRoom.Count > 0)
             {
                 Debug.Log("Un ennemi doit se recentrer");
-                enemiesInPlayersRoom[0].RecenterEnemy();
+                enemiesInPlayersRoom[0].RecenterEnemy();    //L'ennemi se recentre en avançant d'une case vers le player
             }
         }
 
@@ -208,7 +222,7 @@ namespace GodMorgon.Enemy
          */
         public void Attack()
         {
-            UpdateEnemiesArray();
+            UpdateEnemiesList();
             StartCoroutine(TimedAttacks());
         }        
 
