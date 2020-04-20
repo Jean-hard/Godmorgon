@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyId: Slayer
   health: 100
   skin: {fileID: 0}
-  nbMoves: 2
+  nbMoves: 1
   speed: 5
   attack: 2
   defense: 1
