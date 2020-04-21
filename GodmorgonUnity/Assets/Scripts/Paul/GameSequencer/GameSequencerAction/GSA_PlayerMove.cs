@@ -13,7 +13,7 @@ namespace GodMorgon.GameSequencerSpace
     {
         public override IEnumerator ExecuteAction(GameContext context)
         {
-            PlayerManager.Instance.MovePlayer();
+            PlayerManager.Instance.MovePlayer(context.card.effectsData[0].nbMoves);
             while (!PlayerManager.Instance.PlayerMoveDone())
                 yield return null;
         }

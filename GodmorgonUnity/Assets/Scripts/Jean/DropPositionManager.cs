@@ -9,15 +9,15 @@ namespace GodMorgon.CardEffect
 {
     public class DropPositionManager
     {
-        public GameContext GetDropCardContext(BasicCard droppedCard, Vector3Int dropPosition)
+        public GameContext GetDropCardContext(BasicCard droppedCard, Vector3Int dropPosition, GameContext context)
         {
             //will contain all the information needed for the require effect
-            GameContext context = new GameContext();
+            //GameContext context = new GameContext();
 
             switch (droppedCard.cardType)
             {
                 case BasicCard.CARDTYPE.MOVE:
-                    PlayerManager.Instance.UpdateAccessibleTilesList();
+                    //PlayerManager.Instance.UpdateAccessibleTilesList(droppedCard.effectsData[0].nbMoves);
                     if (PlayerManager.Instance.accessibleTiles.Contains(dropPosition))
                         context.isDropValidate = true;
                     break;
@@ -40,6 +40,7 @@ namespace GodMorgon.CardEffect
             switch (draggedCard.cardType)
             {
                 case BasicCard.CARDTYPE.MOVE:
+                    PlayerManager.Instance.UpdateAccessibleTilesList(draggedCard.effectsData[0].nbMoves);
                     PlayerManager.Instance.ShowAccessibleTiles();
                     break;
                 case BasicCard.CARDTYPE.ATTACK:

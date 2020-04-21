@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GodMorgon.Enemy;
 
 namespace GodMorgon.Timeline
 {
@@ -9,7 +10,12 @@ namespace GodMorgon.Timeline
         public override IEnumerator Execute()
         {
             Debug.Log("ACTION attack");
-            yield return null;
+            EnemyManager.Instance.Attack();
+            while (!EnemyManager.Instance.EnemiesAttackDone())
+            {
+                yield return null;
+            }
+            Debug.Log("Action Attack Done : next");
         }
 
         public override void Finish()

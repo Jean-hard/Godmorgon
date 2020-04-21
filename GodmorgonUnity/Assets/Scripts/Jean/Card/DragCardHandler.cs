@@ -17,6 +17,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Transform movingCardParent;
     private Transform effectsParent;
     private Transform hand;
+    private GameContext context;
 
     public delegate void CardDragDelegate(GameObject draggedCard, PointerEventData eventData);
 
@@ -27,6 +28,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public GameObject dropEffect;
 
     private DropPositionManager dropPosManager = new DropPositionManager();
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,11 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         _card = eventData.pointerDrag.GetComponent<CardDisplay>().card;
 
+        context = new GameContext
+        {
+            card = _card
+        };
+
         //On montre les positions disponibles pour le drop de la carte
         dropPosManager.ShowPositionsToDrop(_card);
     }
@@ -84,7 +92,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
 
         //Vérifie si la position du drop est valide
-        GameContext context = dropPosManager.GetDropCardContext(_card, dropCellPosition);
+        dropPosManager.GetDropCardContext(_card, dropCellPosition, context);
         if (context.isDropValidate)
         {
             //Joue la carte

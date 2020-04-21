@@ -22,7 +22,7 @@ namespace GodMorgon.Enemy
         public List<Vector3Int> attackableEnemiesTiles = new List<Vector3Int>();
         private List<EnemyView> farEnemiesList;  //Tableau des ennemis présents sur la map mais hors de la room du player
         private bool enemiesHaveMoved = false;
-        //private bool enemiesHaveAttacked = false;
+        private bool enemiesHaveAttacked = false;
 
 
         #region Singleton Pattern
@@ -228,6 +228,7 @@ namespace GodMorgon.Enemy
          */
         public void Attack()
         {
+            enemiesHaveAttacked = false;
             UpdateEnemiesList();
             StartCoroutine(TimedAttacks());
         }        
@@ -236,22 +237,36 @@ namespace GodMorgon.Enemy
          * Applique les effets de l'attaque tous les [attackDuration] secondes
          */
         
-       IEnumerator TimedAttacks()
-       {
-           foreach (EnemyView enemy in enemiesList)
-           {
-               //Si l'ennemi est dans la room du player
-               if (enemy.enemyData.inPlayersRoom)
-               {
-                   //Lance anim d'attack
-                   enemy.Attack();
-               }
-               while (!enemy.IsAttackFinished()) //Tant qu'il n'ont pas tous bougé on continue
-               {
-                   yield return null;
-               }
+        IEnumerator TimedAttacks()
+        {
+            foreach (EnemyView enemy in enemiesList)
+            {
+                //Si l'ennemi est dans la room du player
+                if (enemy.enemyData.inPlayersRoom)
+                {
+                    //Lance anim d'attack
+                    enemy.Attack();
 
-           }
-       }
+                    while (!enemy.IsAttackFinished()) //Tant qu'ils n'ont pas tous attaqué (s'ils peuvent) on continue
+                    {
+                        yield return null;
+                    }
+                }
+            }
+
+            Debug.Log("All enemies have attacked");
+            enemiesHaveAttacked = true;
+        }
+
+        /**
+         * Renvoie true si l'attaque des ennemis est terminée
+         */
+        public bool EnemiesAttackDone()
+        {
+            if (enemiesHaveAttacked)
+                return true;
+            else
+                return false;
+        }
     }
 }
