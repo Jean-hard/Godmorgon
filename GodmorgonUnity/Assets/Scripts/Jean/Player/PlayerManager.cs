@@ -241,6 +241,8 @@ public class PlayerManager : MonoBehaviour
             return false;
     }
 
+    #region TILES_MANAGER
+
     /**
      * Donne les cases les plus proches du joueur vers lesquelles il peut se déplacer
      */
@@ -331,6 +333,13 @@ public class PlayerManager : MonoBehaviour
         }
         effectInstantiated = false;
     }
+
+    public void GetPlayerPosition()
+    {
+
+    }
+
+    #endregion
 
     // WIP
     IEnumerator WaitForRingMasterTurn()

@@ -28,11 +28,19 @@ namespace GodMorgon.Models
          * depending on the type of the effect.
          */
 
+        [Header("Damage")]
         //nb damage deal
         public int damagePoint = 0;
 
+
+        [Header("Movement")]
         //nb movement
         public int nbMoves = 0;
+
+
+        [Header("Defense")]
+        //nb block
+        public int nbBlock = 0;
 
     }
 }

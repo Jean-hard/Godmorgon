@@ -11,7 +11,8 @@ namespace GodMorgon.CardEffect
     public enum CARD_EFFECT_TYPE
     {
         DAMAGE = 0,
-        MOVE
+        MOVE,
+        DEFENSE
     }
 
     /**
