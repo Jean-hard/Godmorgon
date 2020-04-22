@@ -14,6 +14,7 @@ namespace GodMorgon.Enemy
         public float speed = 0;
         public Sprite skin = null;
         public bool inPlayersRoom = false;
+        public bool inOtherEnemyRoom = false;
         public EnemyView enemyView = null;
 
         /**

@@ -54,6 +54,7 @@ namespace GodMorgon.Enemy
                 enemyData.speed = enemy.speed;
                 enemyData.skin = enemy.skin; 
                 enemyData.inPlayersRoom = false;
+                enemyData.inOtherEnemyRoom = false;
                 enemyData.enemyView = this;
             }
             else
@@ -124,7 +125,7 @@ namespace GodMorgon.Enemy
             Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);    
 
             //Si l'ennemi n'est pas dans la room du player
-            if (!enemyData.inPlayersRoom)
+            if (!enemyData.inPlayersRoom && !enemyData.inOtherEnemyRoom)
             {
                 tileIndex = 0;
 
@@ -147,14 +148,34 @@ namespace GodMorgon.Enemy
                 foreach (Spot tile in roadPath)
                 {
                     bool isPlayerOnPath = false;
+                    bool isOtherEnemyOnPath = false;
 
-                    //on ajoute les tiles par lesquelles il va devoir passer sauf celle où il y a le player
+                    //on ajoute les tiles par lesquelles il va devoir passer sauf celle où il y a le player ou un autre ennemi
                     if (playerCellPos.x == tile.X && playerCellPos.y == tile.Y)
                     {
                         isPlayerOnPath = true;
                         enemyData.inPlayersRoom = true; //L'ennemi sera présent dans la room
                     }
-                    if (!isPlayerOnPath)
+
+                    //On regarde si on a un autre ennemi sur le path parmis tous les ennemis existants
+                    foreach(EnemyView enemy in EnemyManager.Instance.GetAllEnemies())
+                    {
+                        //Position cellule de l'ennemi
+                        Vector3Int enemyCellPos = walkableTilemap.WorldToCell(enemy.transform.position);
+
+                        //On check seulement les ennemis autres que celui qu'on veut bouger (qui porte ce script)
+                        if(enemy != this)
+                        {
+                            //Si l'ennemi est sur une tile
+                            if (enemyCellPos.x == tile.X && enemyCellPos.y == tile.Y)
+                            {
+                                isOtherEnemyOnPath = true;
+                                enemyData.inOtherEnemyRoom = true; //L'ennemi sera présent dans la room
+                            }
+                        }
+                    }
+
+                    if (!isPlayerOnPath && !isOtherEnemyOnPath)
                     {
                         tilesList.Add(tile);     
                     }
