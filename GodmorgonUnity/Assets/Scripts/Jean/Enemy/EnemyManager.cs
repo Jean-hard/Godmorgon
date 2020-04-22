@@ -18,9 +18,10 @@ namespace GodMorgon.Enemy
 
         private List<EnemyView> enemiesList;
         private List<EnemyView> enemiesInPlayersRoom = new List<EnemyView>();
+        private List<EnemyView> enemiesInOtherEnemyRoom = new List<EnemyView>();
         [System.NonSerialized]
         public List<Vector3Int> attackableEnemiesTiles = new List<Vector3Int>();
-        private List<EnemyView> farEnemiesList;  //Tableau des ennemis présents sur la map mais hors de la room du player
+        private List<EnemyView> movableEnemiesList;  //Tableau des ennemis présents sur la map et autorisé à bouger (hors room du player ou d'un autre ennemi)
         private bool enemiesHaveMoved = false;
         private bool enemiesHaveAttacked = false;
 
@@ -58,14 +59,14 @@ namespace GodMorgon.Enemy
         /**
          * Mets dans une liste SEULEMENT les ennemis enfant du gameobject EnemyManager HORS DE LA ROOM DU PLAYER
          */
-        private void UpdateFarEnemiesList()
+        private void UpdateMovableEnemiesList()
         {
-            farEnemiesList = new List<EnemyView>();
+            movableEnemiesList = new List<EnemyView>();
             for (int i = 0; i < transform.childCount; i++)
             {
-                //s'il n'est pas dans la room du player, on ne l'ajoute pas dans la liste des ennemis
-                if (transform.GetChild(i).gameObject.GetComponent<EnemyView>().enemyData.inPlayersRoom == false)
-                    farEnemiesList.Add(transform.GetChild(i).gameObject.GetComponent<EnemyView>());
+                //s'il est pas dans la room du player ou de l'ennemi, on ne l'ajoute pas dans la liste des ennemis
+                if (transform.GetChild(i).gameObject.GetComponent<EnemyView>().enemyData.inPlayersRoom == false && transform.GetChild(i).gameObject.GetComponent<EnemyView>().enemyData.inOtherEnemyRoom == false)
+                    movableEnemiesList.Add(transform.GetChild(i).gameObject.GetComponent<EnemyView>());
             }
         }
 
@@ -113,6 +114,15 @@ namespace GodMorgon.Enemy
         }
 
         /**
+         * Renvoie la liste de tous les ennemis présents sur la map
+         */
+        public List<EnemyView> GetAllEnemies()
+        {
+            UpdateEnemiesList();
+            return enemiesList;
+        }
+
+        /**
          * Renvoie la liste des ennemis présents dans la room du player
          * Met à jour en même temps la listes des tiles sur lesquelles sont les ennemis présents dans la room du player
          */
@@ -135,6 +145,26 @@ namespace GodMorgon.Enemy
                 }
             }
             return attackableEnemies;
+        }
+
+        /**
+         * Renvoie la liste des ennemis présents dans la room d'un autre ennemi
+         * Met à jour en même temps la listes des tiles sur lesquelles sont les ennemis présents dans la room du player
+         */
+        public List<EnemyView> GetEnemiesInOtherEnemyRoom()
+        {
+            UpdateEnemiesList();
+                        
+            enemiesInOtherEnemyRoom.Clear();
+
+            foreach (EnemyView enemy in enemiesList)
+            {
+                if (enemy.enemyData.inOtherEnemyRoom)
+                {
+                    enemiesInOtherEnemyRoom.Add(enemy);
+                }
+            }
+            return enemiesInOtherEnemyRoom;
         }
 
         /**
@@ -170,7 +200,7 @@ namespace GodMorgon.Enemy
         {
             enemiesHaveMoved = false;
 
-            UpdateFarEnemiesList();   //Recup les ennemis présents sur la map
+            UpdateMovableEnemiesList();   //Recup les ennemis présents sur la map
             StartCoroutine(TimedEnemiesMove());   //Lance la coroutine qui applique un par un le mouvement de chaque ennemi
         }
 
@@ -179,7 +209,7 @@ namespace GodMorgon.Enemy
          */
         IEnumerator TimedEnemiesMove()
         {
-            foreach (EnemyView enemy in farEnemiesList)    //Pour chaque ennemi de la liste
+            foreach (EnemyView enemy in movableEnemiesList)    //Pour chaque ennemi de la liste
             {
                 enemy.MoveToPlayer();  //On lance le mouvement de l'ennemi
                 while (!enemy.IsMoveFinished()) //Tant qu'il n'ont pas tous bougé on continue
