@@ -42,5 +42,10 @@ namespace GodMorgon.Models
         //nb block
         public int nbBlock = 0;
 
+
+        [Header("Power Up")]
+        //double damage done and take
+        public bool KillerInstinct = false;
+
     }
 }

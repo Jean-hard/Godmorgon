@@ -32,7 +32,13 @@ namespace GodMorgon.CardEffect
                     if (PlayerManager.Instance.GetPlayerPosition() == dropPosition)
                     {
                         context.isDropValidate = true;
-                        Debug.Log("DEFEND !!!!");
+                    }
+                    break;
+                case BasicCard.CARDTYPE.POWER_UP:
+                    if (PlayerManager.Instance.GetPlayerPosition() == dropPosition)
+                    {
+                        context.isDropValidate = true;
+                        Debug.Log("POWER UP !!!!");
                     }
                     break;
             }
