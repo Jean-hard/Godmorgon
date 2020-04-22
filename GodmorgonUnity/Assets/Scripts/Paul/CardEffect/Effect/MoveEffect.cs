@@ -9,6 +9,9 @@ namespace GodMorgon.CardEffect
 {
     public class MoveEffect : CardEffect
     {
+        /**
+        * Apply the move effect by creating the sequence in the gameSequencer
+        */
         public override void ApplyEffect(CardEffectData effectData, GameContext context)
         {
             Debug.Log("Move To " + effectData.nbMoves + " Tiles");

@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("General Settings")]
     public Text healthText;
+    public Text blockText;
 
     [Header("Movement Settings")]
     public Tilemap walkableTilemap;
@@ -71,7 +72,8 @@ public class PlayerManager : MonoBehaviour
         roadMap.CompressBounds();
         bounds = walkableTilemap.cellBounds;
 
-        UpdateHealthText(PlayerData.Instance.healthMax);
+        UpdateHealthText();
+        UpdateBlockText();
 
         CreateGrid();
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
@@ -116,7 +118,7 @@ public class PlayerManager : MonoBehaviour
     /**
      * Détermine la liste de tiles (=path) à parcourir jusqu'à l'endroit où la carte mouvement est déposée
      */
-    public void MovePlayer()
+    public void MovePlayer(int nbMoves)
     {
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
@@ -139,7 +141,7 @@ public class PlayerManager : MonoBehaviour
 
         //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path
         //roadPath est une liste de spots = une liste de positions de tiles
-        roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove);    // * nbMoves
+        roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove); //* nbMoves
 
         bool isEnemyOnPath = false;
 
@@ -246,7 +248,7 @@ public class PlayerManager : MonoBehaviour
     /**
      * Donne les cases les plus proches du joueur vers lesquelles il peut se déplacer
      */
-    public void UpdateAccessibleTilesList()
+    public void UpdateAccessibleTilesList(int nbMoves)
     {
         nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
         currentTileCoordinate = walkableTilemap.WorldToCell(transform.position);   //On transpose la position scène du player en position grid 
@@ -307,7 +309,7 @@ public class PlayerManager : MonoBehaviour
      */
     public void ShowAccessibleTiles()
     {
-        UpdateAccessibleTilesList();
+        //UpdateAccessibleTilesList();
 
         for (int i = 0; i < accessibleTiles.Count; i++)
         {
@@ -334,9 +336,10 @@ public class PlayerManager : MonoBehaviour
         effectInstantiated = false;
     }
 
-    public void GetPlayerPosition()
+    //return the position of the player tile
+    public Vector3Int GetPlayerPosition()
     {
-
+        return walkableTilemap.WorldToCell(transform.position);
     }
 
     #endregion
@@ -355,16 +358,35 @@ public class PlayerManager : MonoBehaviour
      */
     public void TakeDamage(int damage)
     {
-        //WIP : considérer le shield du player
+        //considérer le shield du player
+        PlayerData.Instance.TakeDamage(damage);
 
-        int newHealth = PlayerData.Instance.health - damage;
-        PlayerData.Instance.SetHealth(newHealth);
-        UpdateHealthText(newHealth);
+        UpdateHealthText();
+        UpdateBlockText();
         Debug.Log("Update player's life ");
     }
 
-    private void UpdateHealthText(int healthValue)
+    /**
+     * Add black defense to player
+     */
+    public void AddBlock(int blockValue)
     {
-        healthText.text = healthValue.ToString();
+        PlayerData.Instance.AddBlock(blockValue);
+        UpdateBlockText();
+    }
+
+    /**
+     * Update Health Text
+     */
+    private void UpdateHealthText()
+    {
+        healthText.text = PlayerData.Instance.health.ToString();
+    }
+    /**
+     * Update Block Text
+     */
+    private void UpdateBlockText()
+    {
+        blockText.text = PlayerData.Instance.defense.ToString();
     }
 }

@@ -88,14 +88,6 @@ namespace GodMorgon.Enemy
 
             if (canRecenter)
                 LaunchRecenterMechanic();
-
-            // ============ WIP ================== 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TakeDamage(20);
-                ShowDamageEffect();
-            }
-            // ===================================
         }
 
         #region CreateGrid --> Astar
@@ -224,11 +216,17 @@ namespace GodMorgon.Enemy
             return isMoveFinished;
         }
 
+        /**
+         * Joue l'anim avec tel nom
+         */
         public void PlayAnim(string animName)
         {
             _animator.Play(animName);
         }
 
+        /*
+         * Renvoie un booleen true si l'anim est finie
+         */
         public bool IsAnimFinished(string animName)
         {
             if (_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
@@ -239,15 +237,9 @@ namespace GodMorgon.Enemy
             return false;
         }
 
-        public void TakeDamage(int damage)
-        {
-            enemyData.health -= damage; //On applique les damages à la vie
-            
-            if (enemyData.health < 0)   //Empêche que la vie soit inférieur à 0
-                enemyData.health = 0;
-        }
-
-        //Update the healthBar
+        /**
+         * Update the healthBar
+         */
         public void UpdateHealthBar(float health, float defense)
         {
             _healthBar.UpdateHealthBar(defense, health);
@@ -268,6 +260,7 @@ namespace GodMorgon.Enemy
         {
             if(enemyData.inPlayersRoom)
             {
+                Debug.Log("Enemy is attacking");
                 ShowAttackEffect();
                 PlayerManager.Instance.TakeDamage(enemyData.attack);
             }
