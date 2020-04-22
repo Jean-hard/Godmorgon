@@ -234,15 +234,13 @@ namespace GodMorgon.Enemy
         }        
 
         /**
-         * Applique les effets de l'attaque tous les [attackDuration] secondes
+         * Applique les effets de l'attaque pour chacun des ennemis l'un après l'autre
          */
-        
         IEnumerator TimedAttacks()
         {
             foreach (EnemyView enemy in enemiesList)
             {
-                //Si l'ennemi est dans la room du player
-                if (enemy.enemyData.inPlayersRoom)
+                if(enemy.enemyData.inPlayersRoom)
                 {
                     //Lance anim d'attack
                     enemy.Attack();
@@ -250,6 +248,7 @@ namespace GodMorgon.Enemy
                     while (!enemy.IsAttackFinished()) //Tant qu'ils n'ont pas tous attaqué (s'ils peuvent) on continue
                     {
                         yield return null;
+
                     }
                 }
             }

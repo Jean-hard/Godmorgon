@@ -17,5 +17,5 @@ MonoBehaviour:
   skin: {fileID: 0}
   nbMoves: 1
   speed: 5
-  attack: 0
+  attack: 15
   defense: 0

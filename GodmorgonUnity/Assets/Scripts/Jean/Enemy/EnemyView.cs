@@ -227,9 +227,11 @@ namespace GodMorgon.Enemy
         /*
          * Renvoie un booleen true si l'anim est finie
          */
-        public bool IsAnimFinished(string animName)
+        public bool IsAnimFinished()
         {
-            if (_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
+            
+            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.normalizedTime > 1f && !stateInfo.loop)
             {
                 return true;
             }
@@ -257,13 +259,10 @@ namespace GodMorgon.Enemy
          * Lance l'attaque (effet visuel + calcul)
          */
         public void Attack()
-        {
-            if(enemyData.inPlayersRoom)
-            {
-                Debug.Log("Enemy is attacking");
-                ShowAttackEffect();
-                PlayerManager.Instance.TakeDamage(enemyData.attack);
-            }
+        {          
+            Debug.Log("Enemy is attacking");
+            ShowAttackEffect();
+            PlayerManager.Instance.TakeDamage(enemyData.attack);
         }
 
         /**
@@ -276,7 +275,7 @@ namespace GodMorgon.Enemy
 
         public bool IsAttackFinished()
         {
-            if (IsAnimFinished("Attack"))
+            if (IsAnimFinished())
                 isAttackFinished = true;
             else isAttackFinished = false;
             
@@ -307,11 +306,12 @@ namespace GodMorgon.Enemy
                 return;
             }
 
+            /*
             foreach (Spot tile in roadPath)
             {
                 tilesList.Add(tile);
                 Debug.Log(tile.X + " : " + tile.Y);
-            }
+            }*/
 
             tilesList.Reverse();
             tilesList.RemoveAt(0);
