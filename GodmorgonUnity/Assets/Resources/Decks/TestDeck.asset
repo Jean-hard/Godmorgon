@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad9c89485b93da4d8c6366f575bff17, type: 3}
-  m_Name: FullMoveDeck
+  m_Name: TestDeck
   m_EditorClassIdentifier: 
   id: 4
   name: Full Move Deck
@@ -19,11 +19,11 @@ MonoBehaviour:
   cards:
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
   - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: b9059be7a75c79242a71a3257ed552f3, type: 2}
   - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: b9059be7a75c79242a71a3257ed552f3, type: 2}
   - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: ae328a0ce96af204bad8734ae425d364, type: 2}
+  - {fileID: 11400000, guid: b9059be7a75c79242a71a3257ed552f3, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}

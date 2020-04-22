@@ -11,7 +11,8 @@ namespace GodMorgon.CardEffect
     public enum CARD_EFFECT_TYPE
     {
         DAMAGE = 0,
-        MOVE
+        MOVE,
+        DEFENSE
     }
 
     /**
@@ -64,6 +65,7 @@ namespace GodMorgon.CardEffect
             {
                 case CARD_EFFECT_TYPE.DAMAGE: return new DamageEffect();
                 case CARD_EFFECT_TYPE.MOVE: return new MoveEffect();
+                case CARD_EFFECT_TYPE.DEFENSE: return new DefenseEffect();
             }
 
             return null;

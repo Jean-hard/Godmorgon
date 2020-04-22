@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("General Settings")]
     public Text healthText;
+    public Text blockText;
 
     [Header("Movement Settings")]
     public Tilemap walkableTilemap;
@@ -71,7 +72,8 @@ public class PlayerManager : MonoBehaviour
         roadMap.CompressBounds();
         bounds = walkableTilemap.cellBounds;
 
-        UpdateHealthText(PlayerData.Instance.healthMax);
+        UpdateHealthText();
+        UpdateBlockText();
 
         CreateGrid();
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
@@ -241,6 +243,8 @@ public class PlayerManager : MonoBehaviour
             return false;
     }
 
+    #region TILES_MANAGER
+
     /**
      * Donne les cases les plus proches du joueur vers lesquelles il peut se déplacer
      */
@@ -332,6 +336,14 @@ public class PlayerManager : MonoBehaviour
         effectInstantiated = false;
     }
 
+    //return the position of the player tile
+    public Vector3Int GetPlayerPosition()
+    {
+        return walkableTilemap.WorldToCell(transform.position);
+    }
+
+    #endregion
+
     // WIP
     IEnumerator WaitForRingMasterTurn()
     {
@@ -346,16 +358,35 @@ public class PlayerManager : MonoBehaviour
      */
     public void TakeDamage(int damage)
     {
-        //WIP : considérer le shield du player
+        //considérer le shield du player
+        PlayerData.Instance.TakeDamage(damage);
 
-        int newHealth = PlayerData.Instance.health - damage;
-        PlayerData.Instance.SetHealth(newHealth);
-        UpdateHealthText(newHealth);
+        UpdateHealthText();
+        UpdateBlockText();
         Debug.Log("Update player's life ");
     }
 
-    private void UpdateHealthText(int healthValue)
+    /**
+     * Add black defense to player
+     */
+    public void AddBlock(int blockValue)
     {
-        healthText.text = healthValue.ToString();
+        PlayerData.Instance.AddBlock(blockValue);
+        UpdateBlockText();
+    }
+
+    /**
+     * Update Health Text
+     */
+    private void UpdateHealthText()
+    {
+        healthText.text = PlayerData.Instance.health.ToString();
+    }
+    /**
+     * Update Block Text
+     */
+    private void UpdateBlockText()
+    {
+        blockText.text = PlayerData.Instance.defense.ToString();
     }
 }

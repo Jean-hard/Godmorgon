@@ -29,6 +29,11 @@ namespace GodMorgon.CardEffect
                     }
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:
+                    if (PlayerManager.Instance.GetPlayerPosition() == dropPosition)
+                    {
+                        context.isDropValidate = true;
+                        Debug.Log("DEFEND !!!!");
+                    }
                     break;
             }
 
