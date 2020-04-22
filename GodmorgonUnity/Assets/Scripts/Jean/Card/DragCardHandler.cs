@@ -109,6 +109,9 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             
             MusicManager.Instance.PlayDropCard();
             //MusicManager.Instance.PlayRollingKart();  //pas ici qu'il doit être activé
+
+            //discard the used card
+            GameManager.Instance.DiscardHandCard(_card);
         }
 
         this.transform.SetParent(hand);

@@ -13,7 +13,8 @@ namespace GodMorgon.CardEffect
         DAMAGE = 0,
         MOVE,
         DEFENSE,
-        POWER_UP
+        POWER_UP,
+        SPELL
     }
 
     /**
@@ -68,6 +69,7 @@ namespace GodMorgon.CardEffect
                 case CARD_EFFECT_TYPE.MOVE: return new MoveEffect();
                 case CARD_EFFECT_TYPE.DEFENSE: return new DefenseEffect();
                 case CARD_EFFECT_TYPE.POWER_UP: return new PowerUpEffect();
+                case CARD_EFFECT_TYPE.SPELL: return new SpellEffect();
             }
 
             return null;

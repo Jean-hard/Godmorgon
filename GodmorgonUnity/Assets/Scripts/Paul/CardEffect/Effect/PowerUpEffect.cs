@@ -20,6 +20,10 @@ namespace GodMorgon.CardEffect
             {
                 Debug.Log(" - Killer Instinct !");
                 PlayerData.Instance.OnKillerInstinct();
+
+                //add the defense sequence
+                GSA_PowerUp PowerUpAction = new GSA_PowerUp();
+                GameSequencer.Instance.AddAction(PowerUpAction);
             }
         }
     }
