@@ -55382,10 +55382,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  playerHit: {fileID: 0}
+  playerHit: {fileID: 8138207959426972064, guid: 6522cda50e9f3684ba02a2710cdcdee4,
+    type: 3}
   playerShield: {fileID: 8138207959426972064, guid: eb0e298752797bb42ad21b5a515f627d,
     type: 3}
-  playerPowerUp: {fileID: 0}
+  playerPowerUp: {fileID: 8138207959426972064, guid: 034d5f55db9ce564b8b663a628273fec,
+    type: 3}
 --- !u!212 &1363010121
 SpriteRenderer:
   m_ObjectHideFlags: 0
