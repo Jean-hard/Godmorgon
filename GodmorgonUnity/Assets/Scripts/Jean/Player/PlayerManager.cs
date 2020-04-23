@@ -166,7 +166,7 @@ public class PlayerManager : MonoBehaviour
 
         //Si on ETAIT le premier arrivé dans la room, alors un ennemi présent dans la room doit se recentrer au milieu de la room
         if (isFirstInRoom)
-            EnemyManager.Instance.RecenterEnemies();
+            EnemyManager.Instance.RecenterEnemiesAfterPlayerMove();
 
         //Si on n'a pas d'ennemi sur le chemin, on est le premier arrivé dans la room
         if (!isEnemyOnPath)
