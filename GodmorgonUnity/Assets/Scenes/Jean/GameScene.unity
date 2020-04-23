@@ -3558,7 +3558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8756458, y: 0}
   m_AnchorMax: {x: 0.93616676, y: 0.57262117}
-  m_AnchoredPosition: {x: 1.2999878, y: -0.29999924}
+  m_AnchoredPosition: {x: 1.2999878, y: -0.2999878}
   m_SizeDelta: {x: -1.5999999, y: -1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243800492
@@ -54684,7 +54684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8834376, y: 0.57262117}
   m_AnchorMax: {x: 0.9296042, y: 1}
-  m_AnchoredPosition: {x: -0.2599945, y: -1.2299957}
+  m_AnchoredPosition: {x: -0.26000977, y: -1.2299805}
   m_SizeDelta: {x: -1.300003, y: 0.6090088}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268477698
@@ -61491,7 +61491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.13212502, y: 1}
-  m_AnchoredPosition: {x: 0.5999756, y: -0.7570038}
+  m_AnchoredPosition: {x: 0.5999756, y: -0.75701904}
   m_SizeDelta: {x: -1.2000008, y: 0.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717778170
@@ -61687,7 +61687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.94762504, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.6, y: 90}
+  m_AnchoredPosition: {x: -5.5999756, y: 90}
   m_SizeDelta: {x: 369, y: -177.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1728699458
@@ -63211,7 +63211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1.2, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1409445893}
@@ -64349,7 +64349,7 @@ PrefabInstance:
     - target: {fileID: 8808992979267549416, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 356.2224
+      value: -352.7
       objectReference: {fileID: 0}
     - target: {fileID: 8808992979267549416, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
