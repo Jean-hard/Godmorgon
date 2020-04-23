@@ -18,7 +18,6 @@ namespace GodMorgon.Enemy
 
         private List<EnemyView> enemiesList;
         private List<EnemyView> enemiesInPlayersRoom = new List<EnemyView>();
-        private List<EnemyView> enemiesInOtherEnemyRoom = new List<EnemyView>();
         [System.NonSerialized]
         public List<Vector3Int> attackableEnemiesTiles = new List<Vector3Int>();
         private List<EnemyView> movableEnemiesList;  //Tableau des ennemis présents sur la map et autorisé à bouger (hors room du player ou d'un autre ennemi)
@@ -57,16 +56,19 @@ namespace GodMorgon.Enemy
         }
 
         /**
-         * Mets dans une liste SEULEMENT les ennemis enfant du gameobject EnemyManager HORS DE LA ROOM DU PLAYER
+         * Mets dans une liste SEULEMENT les ennemis déplaçable, c'est à dire hors de la room du player ou d'un ennemi
          */
         private void UpdateMovableEnemiesList()
         {
+            UpdateEnemiesList();
+
             movableEnemiesList = new List<EnemyView>();
-            for (int i = 0; i < transform.childCount; i++)
+            
+            foreach(EnemyView enemy in enemiesList)
             {
-                //s'il est pas dans la room du player ou de l'ennemi, on ne l'ajoute pas dans la liste des ennemis
-                if (transform.GetChild(i).gameObject.GetComponent<EnemyView>().enemyData.inPlayersRoom == false && transform.GetChild(i).gameObject.GetComponent<EnemyView>().enemyData.inOtherEnemyRoom == false)
-                    movableEnemiesList.Add(transform.GetChild(i).gameObject.GetComponent<EnemyView>());
+                //s'il est pas dans la room du player ou de l'ennemi, on ne l'ajoute pas dans la liste des ennemis déplaçables
+                if (!enemy.enemyData.inPlayersRoom && !enemy.enemyData.inOtherEnemyRoom)
+                    movableEnemiesList.Add(enemy);
             }
         }
 
@@ -148,26 +150,6 @@ namespace GodMorgon.Enemy
         }
 
         /**
-         * Renvoie la liste des ennemis présents dans la room d'un autre ennemi
-         * Met à jour en même temps la listes des tiles sur lesquelles sont les ennemis présents dans la room du player
-         */
-        public List<EnemyView> GetEnemiesInOtherEnemyRoom()
-        {
-            UpdateEnemiesList();
-                        
-            enemiesInOtherEnemyRoom.Clear();
-
-            foreach (EnemyView enemy in enemiesList)
-            {
-                if (enemy.enemyData.inOtherEnemyRoom)
-                {
-                    enemiesInOtherEnemyRoom.Add(enemy);
-                }
-            }
-            return enemiesInOtherEnemyRoom;
-        }
-
-        /**
         * Montre les ennemis attaquables en activant l'effet (cible) enfant du gameObject de l'ennemi
         */
         public void ShowAttackableEnemies()
@@ -200,7 +182,7 @@ namespace GodMorgon.Enemy
         {
             enemiesHaveMoved = false;
 
-            UpdateMovableEnemiesList();   //Recup les ennemis présents sur la map
+            UpdateMovableEnemiesList();   //Recup les ennemis présents sur la map qui sont déplaçables
             StartCoroutine(TimedEnemiesMove());   //Lance la coroutine qui applique un par un le mouvement de chaque ennemi
         }
 
@@ -218,6 +200,8 @@ namespace GodMorgon.Enemy
                 }
             }
 
+            RecenterEnemiesAfterEnemyMove(); //On recentre les ennemis qui étaient dans la room d'un autre ennemi
+            UpdateMovableEnemiesList();    //On met à jour la liste des ennemis déplaçables après recentrage
             enemiesHaveMoved = true;
         }
 
@@ -236,10 +220,10 @@ namespace GodMorgon.Enemy
          * Prend un ennemi présent dans la room du player et le recentre au milieu de la room
          * Cela peut arriver si le joueur fuit une room avec des ennemis dedans
          */
-        public void RecenterEnemies()
+        public void RecenterEnemiesAfterPlayerMove()
         {
             enemiesInPlayersRoom = GetEnemiesInPlayersRoom();   //On réactualise la liste des ennemis présents dans la room du player
-
+            
             //Si on a des ennemis dans la room du player
             if (enemiesInPlayersRoom.Count > 0)
             {
@@ -250,6 +234,27 @@ namespace GodMorgon.Enemy
                     enemy.enemyData.inPlayersRoom = false;
                 }
                 enemiesInPlayersRoom.Clear();   //On clear la liste car plus d'ennemis présents dans la room du player
+            }
+        }
+
+        /**
+         * Prend un ennemi présent dans la room d'un autre ennemi et le recentre au milieu de la room
+         * Cela peut arriver si 2 ennemis sont dans la même room et que l'ennemi du centre sort de la room
+         */
+        public void RecenterEnemiesAfterEnemyMove()
+        {
+            UpdateEnemiesList();    //On met à jour la liste des ennemis
+
+            //Pour tout les ennemis de la map
+            foreach (EnemyView enemy in enemiesList)
+            {
+                //Si un ennemi est présent dans la room d'un ennemi et ne fait pas partie de la liste des ennemis déplaçables
+                if (enemy.enemyData.inOtherEnemyRoom && !movableEnemiesList.Contains(enemy))
+                {
+                    //Debug.Log("Recentrage d'un ennemi après un EnemyMove");
+                    enemy.RecenterEnemy();  //On le recentre
+                    enemy.enemyData.inOtherEnemyRoom = false;   //L'ennemi n'est plus dans la room d'un autre ennemi
+                }
             }
         }
 

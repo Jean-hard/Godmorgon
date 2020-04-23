@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 using GodMorgon.Models;
+using GodMorgon.VisualEffect;
 
 namespace GodMorgon.Enemy
 {
@@ -41,6 +42,9 @@ namespace GodMorgon.Enemy
         private bool canMove;
         [System.NonSerialized]
         public bool canRecenter = false;
+
+        [Header("Visual Effect")]
+        public ParticleSystemScript enemyHit;
 
         public void Awake()
         {
@@ -171,6 +175,7 @@ namespace GodMorgon.Enemy
                             {
                                 isOtherEnemyOnPath = true;
                                 enemyData.inOtherEnemyRoom = true; //L'ennemi sera présent dans la room
+                                //Debug.Log("L'ennemi " + this.name + " a un ennemi sur sa route : " + enemy.name);
                             }
                         }
                     }
@@ -269,6 +274,14 @@ namespace GodMorgon.Enemy
         }
 
         /**
+         * Launch hit visual effect on enemy
+         */
+        public void OnDamage()
+        {
+            enemyHit.launchParticle();
+        }
+
+        /**
          * Affiche les effets lors de damage
          */
         public void ShowDamageEffect()
@@ -327,12 +340,12 @@ namespace GodMorgon.Enemy
                 return;
             }
 
-            /*
+            
             foreach (Spot tile in roadPath)
             {
                 tilesList.Add(tile);
-                Debug.Log(tile.X + " : " + tile.Y);
-            }*/
+                //Debug.Log(tile.X + " : " + tile.Y);
+            }
 
             tilesList.Reverse();
             tilesList.RemoveAt(0);
@@ -352,7 +365,7 @@ namespace GodMorgon.Enemy
         
             if(transform.position == nextTilePos)
             {
-                Debug.Log("Enemy recenterd");
+                Debug.Log("Enemy recentered");
                 canRecenter = false;
                 enemyData.inPlayersRoom = false;
             }

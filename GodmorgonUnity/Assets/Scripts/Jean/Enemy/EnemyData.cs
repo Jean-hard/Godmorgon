@@ -45,9 +45,21 @@ namespace GodMorgon.Enemy
         }
 
         //update the enemy healthBar
-        public override void UpdateHealtBar()
+        public override void UpdateHealthBar()
         {
             enemyView.UpdateHealthBar(health, defense);
+        }
+
+        //launch hit visual effect
+        public override void OnDamage()
+        {
+            enemyView.OnDamage();
+        }
+
+        //return the duration a the enemy hit visual effect
+        public override float GetDamageHitDuration()
+        {
+            return enemyView.enemyHit.GetDuration();
         }
     }
 }
