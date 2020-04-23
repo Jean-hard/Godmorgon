@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Direct_Hit
+  m_Name: Advantage
   m_EditorClassIdentifier: 
-  cardType: 1
+  cardType: 4
   id: 0
-  name: 
-  description: 
+  name: Advantage
+  description: pioche une carte
   actionCost: 1
   template: {fileID: 0}
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 44cb4f3a6a57b884ca6f0557650f01df, type: 3}
   effectsData:
-  - currentEffect: 0
+  - currentEffect: 4
     damagePoint: 0
     nbMoves: 0
+    nbBlock: 0
+    KillerInstinct: 0
+    DrawCard: 1
+    nbCardToDraw: 1

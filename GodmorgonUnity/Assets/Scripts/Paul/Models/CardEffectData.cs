@@ -42,5 +42,15 @@ namespace GodMorgon.Models
         //nb block
         public int nbBlock = 0;
 
+
+        [Header("Power Up")]
+        //double damage done and take
+        public bool KillerInstinct = false;
+
+
+        [Header("Spell")]
+        //effect to draw card
+        public bool DrawCard = false;
+        public int nbCardToDraw = 0;
     }
 }
