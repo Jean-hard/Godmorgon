@@ -88,7 +88,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //La carte récupère sa taille normale
 
         Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
-        Vector3Int dropCellPosition = PlayerManager.Instance.walkableTilemap.WorldToCell(dropPosition);
+        Vector3Int dropCellPosition = TilesManager.Instance.walkableTilemap.WorldToCell(dropPosition);
 
 
         //Vérifie si la position du drop est valide
@@ -106,14 +106,20 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             dropPosManager.HidePositionsToDrop(_card);
             
             //sound
-            
             MusicManager.Instance.PlayDropCard();
             //MusicManager.Instance.PlayRollingKart();  //pas ici qu'il doit être activé
 
             //discard the used card
             GameManager.Instance.DiscardHandCard(_card);
         }
+        else
+        {
+            this.transform.SetParent(hand);
+            
+            //Cache les positions accessibles
+            dropPosManager.HidePositionsToDrop(_card);
+        }
 
-        this.transform.SetParent(hand);
+        
     }
 }

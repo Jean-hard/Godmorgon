@@ -15,37 +15,21 @@ public class PlayerManager : MonoBehaviour
     public Text blockText;
 
     [Header("Movement Settings")]
-    public Tilemap walkableTilemap;
-    public Tilemap roadMap;
-    public TileBase accessibleTile;
-    public Vector3Int[,] spots;
-    private List<Vector3Int> tilesList;
     public float playerSpeed = 1f;
     public AnimationCurve playerMoveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-
-    Astar astar;
-    List<Spot> roadPath = new List<Spot>();
-    BoundsInt bounds;
 
     private bool playerCanMove = false;
     private bool playerHasMoved = false;
     private int spotIndex;
     private List<Spot> playerPathArray;
-    public List<Vector3Int> accessibleTiles = new List<Vector3Int>();
 
     Vector3Int endPos;
 
     // nombre de tiles parcourues pour 1 move
     private int nbTilesToMove = 3;
 
-    private List<Vector3Int> nearestTilesList = new List<Vector3Int>();
-    Vector3Int currentTileCoordinate;
-
-    public GameObject moveTileEffect;
-    public Transform effectsParent;
-    private bool effectInstantiated = false;
-
-    private bool isFirstInRoom = true;
+    [System.NonSerialized]
+    public bool isFirstInRoom = true;
 
     #region Singleton Pattern
     private static PlayerManager _instance;
@@ -68,44 +52,8 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        walkableTilemap.CompressBounds();
-        roadMap.CompressBounds();
-        bounds = walkableTilemap.cellBounds;
-
         UpdateHealthText();
         UpdateBlockText();
-
-        CreateGrid();
-        astar = new Astar(spots, bounds.size.x, bounds.size.y);
-    }
-
-    public void CreateGrid()
-    {
-        spots = new Vector3Int[bounds.size.x, bounds.size.y];
-        tilesList = new List<Vector3Int>();
-        for (int x = bounds.xMin, i = 0; i < (bounds.size.x); x++, i++)
-        {
-            for (int y = bounds.yMin, j = 0; j < (bounds.size.y); y++, j++)
-            {
-                if (walkableTilemap.HasTile(new Vector3Int(x, y, 0)))
-                {
-                    spots[i, j] = new Vector3Int(x, y, 0);
-                    tilesList.Add(new Vector3Int(x, y, 0));
-                }
-                else
-                {
-                    spots[i, j] = new Vector3Int(x, y, 1);
-                }
-            }
-        }
-    }
-
-    private void DrawRoad()
-    {
-        for (int i = 0; i < roadPath.Count; i++)
-        {
-            roadMap.SetTile(new Vector3Int(roadPath[i].X, roadPath[i].Y, 0), accessibleTile);
-        }
     }
 
     // Update is called once per frame
@@ -114,7 +62,6 @@ public class PlayerManager : MonoBehaviour
         LaunchMoveMechanic();
     }
 
-
     /**
      * Détermine la liste de tiles (=path) à parcourir jusqu'à l'endroit où la carte mouvement est déposée
      */
@@ -122,30 +69,27 @@ public class PlayerManager : MonoBehaviour
     {
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
-        endPos = walkableTilemap.WorldToCell(mouseWorldPos);
+        endPos = TilesManager.Instance.walkableTilemap.WorldToCell(mouseWorldPos);
 
-        //Si la tile sélectionnée fait partie de la liste des tiles accessibles
-        //if (accessibleTiles.Contains(endPos))
-        //{
+        List<Spot> _roadPath = TilesManager.Instance.roadPath;
+
         Vector3 playerPos = this.transform.position;
-        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
+        Vector3Int playerCellPos = TilesManager.Instance.walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
 
         playerPathArray = new List<Spot>();
 
         spotIndex = 0;
 
-        //int nbMoves = 2;
-
-        if (roadPath != null && roadPath.Count > 0) //reset le roadpath
-            roadPath.Clear();
+        if (_roadPath != null && _roadPath.Count > 0) //reset le roadpath
+            _roadPath.Clear();
 
         //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path
         //roadPath est une liste de spots = une liste de positions de tiles
-        roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove); //* nbMoves
+        _roadPath = TilesManager.Instance.astar.CreatePath(TilesManager.Instance.spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove); //* nbMoves
 
         bool isEnemyOnPath = false;
 
-        foreach (Spot tile in roadPath)
+        foreach (Spot tile in _roadPath)
         {
             bool isEnemyOnTile = false;
 
@@ -203,7 +147,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         //la prochaine position est le spot parmi la liste de spots
-        Vector3 nextPos = walkableTilemap.CellToWorld(new Vector3Int(playerPathArray[spotIndex].X, playerPathArray[spotIndex].Y, 0))
+        Vector3 nextPos = TilesManager.Instance.walkableTilemap.CellToWorld(new Vector3Int(playerPathArray[spotIndex].X, playerPathArray[spotIndex].Y, 0))
             + new Vector3(0, 0.3f, 0);   //on ajoute 0.x pour que le player passe bien au milieu de la tile, la position de la tile étant en bas du losange             
 
 
@@ -243,106 +187,13 @@ public class PlayerManager : MonoBehaviour
             return false;
     }
 
-    #region TILES_MANAGER
-
     /**
-     * Donne les cases les plus proches du joueur vers lesquelles il peut se déplacer
+     * Return player's cell position
      */
-    public void UpdateAccessibleTilesList(int nbMoves)
-    {
-        nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
-        currentTileCoordinate = walkableTilemap.WorldToCell(transform.position);   //On transpose la position scène du player en position grid 
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x + nbTilesToMove, currentTileCoordinate.y, 0));   //Ajoute les 4 cases voisines
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x - nbTilesToMove, currentTileCoordinate.y, 0));   
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y + nbTilesToMove, 0));
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y - nbTilesToMove, 0));
-
-        accessibleTiles.Clear();
-        Vector3 playerPos = this.transform.position;
-        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
-        
-        //Pour toutes les tiles walkable, on regarde si elle fait partie des 4 cases (room) voisines, et si le chemin vers cette room est direct, dans ce cas on met la tile dans la liste des accessibles
-        foreach (Vector3Int tile in tilesList)
-        {
-            roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(tile.x, tile.y), 100);
-
-            bool isEnemyOnPath = false;
-
-            //Si la tile fait partie de celles voisines (room) et que le chemin est direct (moins de 5 tiles pour y accéder)
-            if (nearestTilesList.Contains(tile) && roadPath.Count < 5)
-            {
-                //On check en plus si on a un ennemi sur le chemin 
-                foreach (Spot _tile in roadPath)
-                {
-                    //Si un ennemi est sur une tile du roadPath
-                    if (null != EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(_tile.X, _tile.Y, 0)))
-                    {
-                        //Si cet ennemi est dans la room
-                        if (EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(_tile.X, _tile.Y, 0)).enemyData.inPlayersRoom)
-                            isEnemyOnPath = true;
-                    }
-                }
-
-                //Si aucun ennemi est sur le path jusqu'à cette tile, c'est une tile accessible
-                if(!isEnemyOnPath)
-                {
-                    //Si le joueur n'est pas au centre de la room actuelle car il n'était pas arrivé en premier (ennemi déjà présent)
-                    if(!isFirstInRoom)
-                    {
-                        //La tile accessible est l'avant dernière tile du path (l'index 0 étant la tile la plus éloignée, on prend celle d'avant = index 1) 
-                        //pour que le joueur arrive au milieu de la prochaine room (vu qu'il n'était pas centré dans la room)
-                        Vector3Int _newTile = new Vector3Int(roadPath[1].X, roadPath[1].Y, 0);
-                        accessibleTiles.Add(_newTile);
-
-                    }
-                    //Sinon si le joueur était bien au milieu d'une room car arrivé en premier dedans
-                    else
-                        accessibleTiles.Add(tile);
-                }
-                    
-            }
-        }
-    }
-
-    /**
-     * Montre les tiles sur lesquelles le joueur peut se déplacer
-     */
-    public void ShowAccessibleTiles()
-    {
-        //UpdateAccessibleTilesList();
-
-        for (int i = 0; i < accessibleTiles.Count; i++)
-        {
-            roadMap.SetTile(new Vector3Int(accessibleTiles[i].x, accessibleTiles[i].y, 0), accessibleTile); //On applique le sprite de tile sur les spots accessibles
-            Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleTiles[i]) + new Vector3(0, 0.2f, 0);
-            if (!effectInstantiated)
-            {
-                Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent); //on lance l'effet de drop de carte sur la map, qui sera en enfant de effectsParent
-            }
-        }
-        effectInstantiated = true;
-    }
-
-    /**
-     * Cache les tiles sur lesquelles le joueur peut se déplacer
-     */
-    public void HideAccessibleTiles()
-    {
-        roadMap.ClearAllTiles();
-        for (int i = 0; i < effectsParent.childCount; i++)
-        {
-            Destroy(effectsParent.GetChild(i).gameObject);
-        }
-        effectInstantiated = false;
-    }
-
-    //return the position of the player tile
     public Vector3Int GetPlayerPosition()
     {
-        return walkableTilemap.WorldToCell(transform.position);
+        return TilesManager.Instance.walkableTilemap.WorldToCell(transform.position);
     }
-
-    #endregion
 
     // WIP
     IEnumerator WaitForRingMasterTurn()
