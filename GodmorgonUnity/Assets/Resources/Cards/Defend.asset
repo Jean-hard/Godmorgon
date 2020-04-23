@@ -17,10 +17,13 @@ MonoBehaviour:
   name: Defend
   description: Rajoute 20 blocks
   actionCost: 1
-  template: {fileID: 0}
+  template: {fileID: 21300000, guid: c7288bf73896d76488d400998d8e2e35, type: 3}
   artwork: {fileID: 21300000, guid: 423f2ef804bf0d142843baac14a7f061, type: 3}
   effectsData:
   - currentEffect: 2
     damagePoint: 0
     nbMoves: 0
     nbBlock: 20
+    KillerInstinct: 0
+    DrawCard: 0
+    nbCardToDraw: 0

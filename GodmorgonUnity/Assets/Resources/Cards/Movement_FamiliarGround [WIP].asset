@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
-  m_Name: Mouvement
+  m_Name: Movement_FamiliarGround [WIP]
   m_EditorClassIdentifier: 
   cardType: 0
   id: 8
-  name: Mouvement
-  description: Avance d'une case
+  name: Familiar Ground
+  description: Move 1 room, this effect is doubled if you go backward.
   actionCost: 1
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
   artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}

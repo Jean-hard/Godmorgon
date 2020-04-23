@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Attack
+  m_Name: Power_SurvivorsWill [WIP]
   m_EditorClassIdentifier: 
-  cardType: 1
-  id: 9
-  name: Attack
-  description: 
+  cardType: 3
+  id: 0
+  name: Survivor's Will
+  description: Your HP can't go under 1 this turn.
   actionCost: 1
-  template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
-  artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
+  template: {fileID: 21300000, guid: 8560f9c3d24f1db488dc6cb2f358579c, type: 3}
+  artwork: {fileID: 21300000, guid: c1bee892507aa684f903cb4fb1657b9a, type: 3}
   effectsData:
-  - currentEffect: 0
-    damagePoint: 20
+  - currentEffect: 3
+    damagePoint: 0
     nbMoves: 0
     nbBlock: 0
-    KillerInstinct: 0
+    KillerInstinct: 1
     DrawCard: 0
     nbCardToDraw: 0
