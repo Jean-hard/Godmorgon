@@ -171,6 +171,7 @@ namespace GodMorgon.Enemy
                             {
                                 isOtherEnemyOnPath = true;
                                 enemyData.inOtherEnemyRoom = true; //L'ennemi sera présent dans la room
+                                //Debug.Log("L'ennemi " + this.name + " a un ennemi sur sa route : " + enemy.name);
                             }
                         }
                     }
@@ -327,12 +328,12 @@ namespace GodMorgon.Enemy
                 return;
             }
 
-            /*
+            
             foreach (Spot tile in roadPath)
             {
                 tilesList.Add(tile);
-                Debug.Log(tile.X + " : " + tile.Y);
-            }*/
+                //Debug.Log(tile.X + " : " + tile.Y);
+            }
 
             tilesList.Reverse();
             tilesList.RemoveAt(0);
@@ -352,7 +353,7 @@ namespace GodMorgon.Enemy
         
             if(transform.position == nextTilePos)
             {
-                Debug.Log("Enemy recenterd");
+                Debug.Log("Enemy recentered");
                 canRecenter = false;
                 enemyData.inPlayersRoom = false;
             }
