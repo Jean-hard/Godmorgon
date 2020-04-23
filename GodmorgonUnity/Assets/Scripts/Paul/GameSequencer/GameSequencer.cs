@@ -11,8 +11,8 @@ namespace GodMorgon.GameSequencerSpace
      */
     public class GameSequencer : MonoBehaviour
     {
-        [SerializeField]
-        public ParticleSystem enemyHitParticle;
+        //[SerializeField]
+        //public ParticleSystem enemyHitParticle;
 
         #region Singleton Pattern
         private static GameSequencer _instance;

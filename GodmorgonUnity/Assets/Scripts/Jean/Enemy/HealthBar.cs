@@ -7,9 +7,9 @@ using GodMorgon.Enemy;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField]
-    private Transform defense;
+    private Transform defense = null;
     [SerializeField]
-    private Transform health;
+    private Transform health = null;
 
     private float maxHealthPoint = 1f;
     private float maxDefensePoint = 1f;

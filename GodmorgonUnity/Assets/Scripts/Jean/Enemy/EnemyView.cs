@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 using GodMorgon.Models;
+using GodMorgon.VisualEffect;
 
 namespace GodMorgon.Enemy
 {
@@ -41,6 +42,9 @@ namespace GodMorgon.Enemy
         private bool canMove;
         [System.NonSerialized]
         public bool canRecenter = false;
+
+        [Header("Visual Effect")]
+        public ParticleSystemScript enemyHit;
 
         public void Awake()
         {
@@ -266,6 +270,14 @@ namespace GodMorgon.Enemy
         public void UpdateHealthBar(float health, float defense)
         {
             _healthBar.UpdateHealthBar(defense, health);
+        }
+
+        /**
+         * Launch hit visual effect on enemy
+         */
+        public void OnDamage()
+        {
+            enemyHit.launchParticle();
         }
 
         /**
