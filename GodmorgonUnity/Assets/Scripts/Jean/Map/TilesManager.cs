@@ -151,7 +151,7 @@ public class TilesManager : MonoBehaviour
      */
     public void ShowAccessibleTiles()
     {
-        Debug.Log("Accessible Tiles : " + accessibleTiles.Count);
+        //Debug.Log("Accessible Tiles : " + accessibleTiles.Count);
 
         for (int i = 0; i < accessibleTiles.Count; i++)
         {
