@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
-  m_Name: Mouvement
+  m_Name: Defense_BringItOn [WIP]
   m_EditorClassIdentifier: 
-  cardType: 0
+  cardType: 2
   id: 8
-  name: Mouvement
-  description: Avance d'une case
-  actionCost: 1
-  template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
-  artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}
+  name: Bring It On
+  description: Gain 3 block by cards played during this turn
+  actionCost: 0
+  template: {fileID: 21300000, guid: c7288bf73896d76488d400998d8e2e35, type: 3}
+  artwork: {fileID: 21300000, guid: 423f2ef804bf0d142843baac14a7f061, type: 3}
   effectsData:
-  - currentEffect: 1
+  - currentEffect: 2
     damagePoint: 0
     nbMoves: 0
-    nbBlock: 0
+    nbBlock: 20
     KillerInstinct: 0
     DrawCard: 0
     nbCardToDraw: 0

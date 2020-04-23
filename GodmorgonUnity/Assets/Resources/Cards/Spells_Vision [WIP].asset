@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Advantage
+  m_Name: Spells_Vision [WIP]
   m_EditorClassIdentifier: 
   cardType: 4
   id: 0
-  name: Advantage
-  description: pioche une carte
+  name: Vision
+  description: Trust 3. \end \end Remove the fog of war from 2 rooms.
   actionCost: 1
-  template: {fileID: 0}
+  template: {fileID: 21300000, guid: d49870c996ceb864694c0f6905854a0b, type: 3}
   artwork: {fileID: 21300000, guid: 44cb4f3a6a57b884ca6f0557650f01df, type: 3}
   effectsData:
   - currentEffect: 4
@@ -26,4 +26,4 @@ MonoBehaviour:
     nbBlock: 0
     KillerInstinct: 0
     DrawCard: 1
-    nbCardToDraw: 1
+    nbCardToDraw: 2

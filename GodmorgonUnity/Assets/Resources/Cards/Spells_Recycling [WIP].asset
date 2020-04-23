@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Killer_Instinct
+  m_Name: Spells_Recycling [WIP]
   m_EditorClassIdentifier: 
-  cardType: 3
+  cardType: 4
   id: 0
-  name: Killer Instinct
-  description: "Doubles les d\xE9gats inflig\xE9 et les d\xE9gats re\xE7us"
+  name: Recycling
+  description: Take 2 cards from your discard pile and put them in your hand.
   actionCost: 1
-  template: {fileID: 0}
-  artwork: {fileID: 21300000, guid: c1bee892507aa684f903cb4fb1657b9a, type: 3}
+  template: {fileID: 21300000, guid: d49870c996ceb864694c0f6905854a0b, type: 3}
+  artwork: {fileID: 21300000, guid: 44cb4f3a6a57b884ca6f0557650f01df, type: 3}
   effectsData:
-  - currentEffect: 3
+  - currentEffect: 4
     damagePoint: 0
     nbMoves: 0
     nbBlock: 0
-    KillerInstinct: 1
+    KillerInstinct: 0
+    DrawCard: 1
+    nbCardToDraw: 2

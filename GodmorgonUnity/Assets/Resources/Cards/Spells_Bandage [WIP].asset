@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Attack
+  m_Name: Spells_Bandage [WIP]
   m_EditorClassIdentifier: 
-  cardType: 1
-  id: 9
-  name: Attack
-  description: 
+  cardType: 4
+  id: 0
+  name: Bandage
+  description: Trust 4. \end \end Heals 5 HP
   actionCost: 1
-  template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
-  artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
+  template: {fileID: 21300000, guid: d49870c996ceb864694c0f6905854a0b, type: 3}
+  artwork: {fileID: 21300000, guid: 44cb4f3a6a57b884ca6f0557650f01df, type: 3}
   effectsData:
-  - currentEffect: 0
-    damagePoint: 20
+  - currentEffect: 4
+    damagePoint: 0
     nbMoves: 0
     nbBlock: 0
     KillerInstinct: 0
-    DrawCard: 0
-    nbCardToDraw: 0
+    DrawCard: 1
+    nbCardToDraw: 2
