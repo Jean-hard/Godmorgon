@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using GodMorgon.StateMachine;
 using GodMorgon.Player;
 using GodMorgon.Enemy;
+using GodMorgon.VisualEffect;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class PlayerManager : MonoBehaviour
 
     [System.NonSerialized]
     public bool isFirstInRoom = true;
+
+    //all visual effect for the player
+    [Header("Visual Effect")]
+    public ParticleSystemScript playerHit = null;
+    public ParticleSystemScript playerShield = null;
+    public ParticleSystemScript playerPowerUp = null;
 
     #region Singleton Pattern
     private static PlayerManager _instance;
@@ -240,4 +247,25 @@ public class PlayerManager : MonoBehaviour
     {
         blockText.text = PlayerData.Instance.defense.ToString();
     }
+
+    #region Visual effect
+
+    //launch player hit effect
+    public void OnDamage()
+    {
+        playerHit.launchParticle();
+    }
+
+    //launch player Shield effect
+    public void OnShield()
+    {
+        playerShield.launchParticle();
+    }
+
+    //launch player PowerUp effect
+    public void OnPowerUp()
+    {
+        playerPowerUp.launchParticle();
+    }
+    #endregion
 }

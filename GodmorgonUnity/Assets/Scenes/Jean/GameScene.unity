@@ -53610,7 +53610,7 @@ MonoBehaviour:
   walkableTilemap: {fileID: 110557413}
   roadMap: {fileID: 749101621}
   accessibleTiles: []
-  moveTileEffect: {fileID: 100004, guid: 7676f997c96af1442b54560bff6edaee, type: 3}
+  moveTileEffect: {fileID: 181232, guid: 6c16e0aec5111b74cb43674dccfa0f3d, type: 3}
   effectsParent: {fileID: 408239567}
 --- !u!4 &1187915431
 Transform:
@@ -54407,6 +54407,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2840269135183882905, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2840269135183903527, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
@@ -54417,6 +54422,16 @@ PrefabInstance:
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2840269135183903527, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840269135183916635, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2840269135183938161, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
       propertyPath: m_SortingOrder
@@ -54426,6 +54441,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840269135183964807, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840269135183973451, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2840269135185323271, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
@@ -54512,20 +54537,70 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5201497923555578806, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5201497923555582956, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
       propertyPath: m_SortingOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497923555603834, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497923555627944, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497923555639830, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497923555661674, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5201497925542884234, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
       propertyPath: m_SortingOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5201497925542894460, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5201497925542898470, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
       propertyPath: m_SortingOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497925542919600, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497925542943586, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497925542955740, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201497925542977440, guid: 653085ed10243b14cb2eae8835328137,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5201497925543576284, guid: 653085ed10243b14cb2eae8835328137,
         type: 3}
@@ -55327,6 +55402,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  playerHit: {fileID: 8138207959426972064, guid: 6522cda50e9f3684ba02a2710cdcdee4,
+    type: 3}
+  playerShield: {fileID: 8138207959426972064, guid: eb0e298752797bb42ad21b5a515f627d,
+    type: 3}
+  playerPowerUp: {fileID: 8138207959426972064, guid: 034d5f55db9ce564b8b663a628273fec,
+    type: 3}
 --- !u!212 &1363010121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61504,7 +61585,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 2471a4451e5a9954c99868505dc71e6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

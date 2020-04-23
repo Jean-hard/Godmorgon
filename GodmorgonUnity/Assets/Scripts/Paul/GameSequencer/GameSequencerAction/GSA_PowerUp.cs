@@ -13,8 +13,11 @@ namespace GodMorgon.GameSequencerSpace
          */
         public override IEnumerator ExecuteAction(GameContext context)
         {
-            //wait the time of the power up particle effect      when exist...
-            yield return new WaitForSeconds(1f);
+            //launch particle system
+            PlayerManager.Instance.OnPowerUp();
+
+            //wait the time of the power up particle effect
+            yield return new WaitForSeconds(PlayerManager.Instance.playerPowerUp.GetDuration());
         }
     }
 }
