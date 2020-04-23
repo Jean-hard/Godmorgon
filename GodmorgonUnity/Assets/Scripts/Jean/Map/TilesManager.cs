@@ -158,7 +158,9 @@ public class TilesManager : MonoBehaviour
             Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleTiles[i]) + new Vector3(0, 0.2f, 0);
             if (!effectInstantiated)
             {
-                Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent); //on lance l'effet de drop de carte sur la map, qui sera en enfant de effectsParent
+                //on lance l'effet de drop de carte sur la map, qui sera en enfant de effectsParent
+                GameObject effectObject = Instantiate(moveTileEffect, moveTileEffectPos, Quaternion.identity, effectsParent);
+                effectObject.transform.rotation = Quaternion.Euler(-60, 0, 0);
             }
         }
         effectInstantiated = true;
