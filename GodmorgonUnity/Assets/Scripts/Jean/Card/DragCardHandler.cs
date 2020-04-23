@@ -88,7 +88,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //La carte récupère sa taille normale
 
         Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
-        Vector3Int dropCellPosition = PlayerManager.Instance.walkableTilemap.WorldToCell(dropPosition);
+        Vector3Int dropCellPosition = TilesManager.Instance.walkableTilemap.WorldToCell(dropPosition);
 
 
         //Vérifie si la position du drop est valide
