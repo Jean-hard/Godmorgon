@@ -13,8 +13,11 @@ namespace GodMorgon.GameSequencerSpace
          */
         public override IEnumerator ExecuteAction(GameContext context)
         {
-            //wait the time of the defense particle effect      when exist...
-            yield return new WaitForSeconds(1f);
+            //launch particle system
+            PlayerManager.Instance.OnShield();
+
+            //wait the time of the defense particle effect
+            yield return new WaitForSeconds(PlayerManager.Instance.playerShield.GetDuration());
         }
     }
 }
