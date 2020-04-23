@@ -101,13 +101,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 19891006, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
+    - target: {fileID: 409988, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7080818
+      objectReference: {fileID: 0}
+    - target: {fileID: 409988, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7080818
+      objectReference: {fileID: 0}
+    - target: {fileID: 409988, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7080818
+      objectReference: {fileID: 0}
+    - target: {fileID: 19825070, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19891006, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19907282, guid: 589cf51c328cd07498ce27f5cd8c2da7, type: 3}
       propertyPath: m_SortingOrder

@@ -222,6 +222,9 @@ public class PlayerManager : MonoBehaviour
         UpdateHealthText();
         UpdateBlockText();
         Debug.Log("Update player's life ");
+
+        //launch player hit effect
+        OnDamage();
     }
 
     /**

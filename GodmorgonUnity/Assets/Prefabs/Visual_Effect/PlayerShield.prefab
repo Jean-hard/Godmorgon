@@ -103,15 +103,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490222, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1411494
+      value: 0.30888182
       objectReference: {fileID: 0}
     - target: {fileID: 490222, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1411494
+      value: 0.30888182
       objectReference: {fileID: 0}
     - target: {fileID: 490222, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1411494
+      value: 0.30888182
+      objectReference: {fileID: 0}
+    - target: {fileID: 19843788, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19874298, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19874298, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19962780, guid: 1bf603a56241710419e42f16a8ccebd9, type: 3}
       propertyPath: m_SortingOrder
