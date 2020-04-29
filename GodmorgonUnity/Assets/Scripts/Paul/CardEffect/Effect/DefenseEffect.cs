@@ -5,6 +5,7 @@ using UnityEngine;
 using GodMorgon.Models;
 using GodMorgon.GameSequencerSpace;
 using GodMorgon.Player;
+using GodMorgon.Timeline;
 
 namespace GodMorgon.CardEffect
 {
@@ -24,6 +25,16 @@ namespace GodMorgon.CardEffect
                 {
                     nbBlock = nbBlock * 2;
                     Debug.Log("Shiver activate");
+                }
+            }
+
+            //Trust
+            if (effectData.trust)
+            {
+                if (effectData.trustNb == TimelineManager.Instance.nbActualAction)
+                {
+                    nbBlock = nbBlock * 2;
+                    Debug.Log("Trust activate");
                 }
             }
 

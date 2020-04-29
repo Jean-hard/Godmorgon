@@ -5,6 +5,7 @@ using UnityEngine;
 using GodMorgon.Models;
 using GodMorgon.GameSequencerSpace;
 using GodMorgon.Player;
+using GodMorgon.Timeline;
 
 namespace GodMorgon.CardEffect
 {
@@ -26,6 +27,17 @@ namespace GodMorgon.CardEffect
                     Debug.Log("Shiver activate");
                 }
             }
+
+            //Trust
+            if(effectData.trust)
+            {
+                if (effectData.trustNb == TimelineManager.Instance.nbActualAction)
+                {
+                    damagePoint = damagePoint * 2;
+                    Debug.Log("Trust activate");
+                }
+            }
+
             //if player attack an enemy
             if (context.targets == null)
                 Debug.Log("il manque une target dans le contexte !");

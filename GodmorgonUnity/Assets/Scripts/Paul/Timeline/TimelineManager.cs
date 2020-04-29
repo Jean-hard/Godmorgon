@@ -47,6 +47,10 @@ namespace GodMorgon.Timeline
         //Current index of the list of action
         private int indexCurrentAction = 0;
 
+        //numéro de l'action actuel de la timeline
+        [System.NonSerialized]
+        public int nbActualAction = 0;
+
         #region Singleton Pattern
         private static TimelineManager _instance;
 
@@ -83,6 +87,8 @@ namespace GodMorgon.Timeline
          */
         public void SetTimeline()
         {
+            nbActualAction = 1;
+
             int idx = indexCurrentAction;
             idx = SetNextActions(actionLogo1, idx);
             idx = SetNextActions(actionLogo2, idx);
@@ -120,7 +126,11 @@ namespace GodMorgon.Timeline
             yield return actionlist[indexCurrentAction].Execute();
             isRunning = false;
 
+            //actualise le numéro pour l'action actuel;
+            nbActualAction++;
+
             indexCurrentAction++;
+
             //si on arrive au bout des 4 actions affichées
             if (indexCurrentAction % 4 == 0)
             {

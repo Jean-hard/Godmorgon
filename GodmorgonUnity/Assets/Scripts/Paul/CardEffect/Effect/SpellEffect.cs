@@ -5,6 +5,7 @@ using UnityEngine;
 using GodMorgon.Models;
 using GodMorgon.GameSequencerSpace;
 using GodMorgon.Player;
+using GodMorgon.Timeline;
 
 namespace GodMorgon.CardEffect
 {
@@ -15,6 +16,16 @@ namespace GodMorgon.CardEffect
          */
         public override void ApplyEffect(CardEffectData effectData, GameContext context)
         {
+            //Trust
+            if (effectData.trust)
+            {
+                if (effectData.trustNb == TimelineManager.Instance.nbActualAction)
+                {
+                    Debug.Log("Trust activate");
+                    //_____________________________________________________________________
+                }
+            }
+
             Debug.Log("Spell : ");
             //effect to draw X card
             if (effectData.DrawCard)

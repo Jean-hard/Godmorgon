@@ -56,5 +56,8 @@ namespace GodMorgon.Models
         [Header("Other")]
         //Shiver : double les valeurs si la vie est inférieurs à 50%
         public bool shiver = false;
+        //Trust : active des bonus par rapport au tour de la timeline du ringmaster
+        public bool trust = false;
+        public int trustNb = 0;
     }
 }
