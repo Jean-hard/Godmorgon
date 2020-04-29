@@ -119,5 +119,14 @@ namespace GodMorgon.Player
             doubleDamageDone = false;
             doubleDamageTaken = false;
         }
+
+        //retourne vrai si la santé actuel du player est à la moitié ou moins
+        public bool IsHealthAtHalf()
+        {
+            if (health <= healthMax / 2)
+                return true;
+            else
+                return false;
+        }
     }
 }

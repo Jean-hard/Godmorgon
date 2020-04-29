@@ -52,5 +52,9 @@ namespace GodMorgon.Models
         //effect to draw card
         public bool DrawCard = false;
         public int nbCardToDraw = 0;
+
+        [Header("Other")]
+        //Shiver : double les valeurs si la vie est inférieurs à 50%
+        public bool shiver = false;
     }
 }
