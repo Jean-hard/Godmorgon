@@ -4,6 +4,7 @@ using UnityEngine;
 
 using GodMorgon.Models;
 using GodMorgon.GameSequencerSpace;
+using GodMorgon.Player;
 
 namespace GodMorgon.CardEffect
 {
@@ -19,7 +20,9 @@ namespace GodMorgon.CardEffect
             //if player attack an enemy
             if (context.targets == null)
                 Debug.Log("il manque une target dans le contexte !");
-            context.targets.TakeDamage(damagePoint);
+            
+            //toujours passer par le playerData pour infliger les dégats correspondant au stats actuel du player
+            context.targets.TakeDamage(PlayerData.Instance.DoDamage(damagePoint));
 
             //add the attack sequence
             GSA_PlayerAttack playerAttackAction = new GSA_PlayerAttack();

@@ -15,15 +15,19 @@ namespace GodMorgon.CardEffect
          */
         public override void ApplyEffect(CardEffectData effectData, GameContext context)
         {
+            //add the Power Up sequence
+            GSA_PowerUp PowerUpAction = new GSA_PowerUp();
+            GameSequencer.Instance.AddAction(PowerUpAction);
+
             Debug.Log("add Power Up : ");
             if(effectData.KillerInstinct)
             {
                 Debug.Log(" - Killer Instinct !");
                 PlayerData.Instance.OnKillerInstinct();
 
-                //add the defense sequence
-                GSA_PowerUp PowerUpAction = new GSA_PowerUp();
-                GameSequencer.Instance.AddAction(PowerUpAction);
+                //add the Power Up sequence
+                GSA_KillerInstinct killerInstinctAction = new GSA_KillerInstinct();
+                GameSequencer.Instance.AddAction(killerInstinctAction);
             }
         }
     }

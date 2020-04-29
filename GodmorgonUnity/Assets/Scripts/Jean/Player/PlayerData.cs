@@ -60,7 +60,13 @@ namespace GodMorgon.Player
          */
         public override void TakeDamage(int damagePoint)
         {
-            Debug.Log("player health before was : " + health);
+            //si killerInstinct est activé
+            if (doubleDamageTaken)
+            {
+                damagePoint = damagePoint * 2;
+                //Debug.Log("damage reçu doublé !");
+            }
+            //Debug.Log("player health before was : " + health);
             while (damagePoint > 0 && defense > 0)
             {
                 defense--;
@@ -72,7 +78,20 @@ namespace GodMorgon.Player
                 health--;
                 damagePoint--;
             }
-            Debug.Log("player health after was : " + health);
+            //Debug.Log("player health after was : " + health);
+        }
+
+        /**
+         * retourne les dégats correspondant au bonus de stat du player
+         */
+        public override int DoDamage(int baseDamagePoint)
+        {
+            if(doubleDamageDone)
+            {
+                //Debug.Log("damage donné double !");
+                baseDamagePoint = baseDamagePoint * 2;
+            }
+            return baseDamagePoint;
         }
 
         /**
@@ -91,6 +110,14 @@ namespace GodMorgon.Player
         {
             doubleDamageDone = true;
             doubleDamageTaken = true;
+        }
+
+        //réinitialise toutes stats du player
+        public void ResetStat()
+        {
+            //on retire killer instinct
+            doubleDamageDone = false;
+            doubleDamageTaken = false;
         }
     }
 }

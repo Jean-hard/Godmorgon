@@ -41,7 +41,7 @@ namespace GodMorgon.CardContainer
         //Draw one precise card from the list.
         public BasicCard DrawCard(BasicCard toDraw)
         {
-            Debug.Log("Drawing: " + toDraw.ToString());
+            //Debug.Log("Drawing: " + toDraw.ToString());
             if (cards.Contains(toDraw))
             {
                 //Debug.Log("    Found!");

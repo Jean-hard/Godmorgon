@@ -35,7 +35,7 @@ namespace GodMorgon.Enemy
                 health--;
                 damagePoint--;
             }
-            Debug.Log("enemy health after was : " + health);
+            //Debug.Log("enemy health after was : " + health);
         }
 
         //return the position of the enemy

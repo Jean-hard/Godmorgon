@@ -13,4 +13,6 @@ public abstract class Entity {
     public virtual void OnDamage() { }
 
     public virtual float GetDamageHitDuration() { return 0; }
+
+    public virtual int DoDamage(int damagePoint) { return damagePoint; }
 }

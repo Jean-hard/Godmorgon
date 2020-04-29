@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
     public ParticleSystemScript playerHit = null;
     public ParticleSystemScript playerShield = null;
     public ParticleSystemScript playerPowerUp = null;
+    public ParticleSystemScript playerKillerInstinct = null;
 
     #region Singleton Pattern
     private static PlayerManager _instance;
@@ -206,7 +207,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator WaitForRingMasterTurn()
     {
         yield return new WaitForSeconds(3f);
-        Debug.Log("Ringmaster turn");
+        //Debug.Log("Ringmaster turn");
         //GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
         playerHasMoved = false;
     }
@@ -243,12 +244,23 @@ public class PlayerManager : MonoBehaviour
     {
         healthText.text = PlayerData.Instance.health.ToString();
     }
+
     /**
      * Update Block Text
      */
     private void UpdateBlockText()
     {
         blockText.text = PlayerData.Instance.defense.ToString();
+    }
+
+    /**
+     * annule tous les bonus de stats du player
+     * annule aussi les effets visuel de ces bonus
+     */
+    public void ResetBonus()
+    {
+        PlayerData.Instance.ResetStat();
+        StopVisualEffect();
     }
 
     #region Visual effect
@@ -269,6 +281,16 @@ public class PlayerManager : MonoBehaviour
     public void OnPowerUp()
     {
         playerPowerUp.launchParticle();
+    }
+
+    public void OnKillerInstinct()
+    {
+        playerKillerInstinct.launchParticle();
+    }
+
+    public void StopVisualEffect()
+    {
+        playerKillerInstinct.stopParticle();
     }
     #endregion
 }

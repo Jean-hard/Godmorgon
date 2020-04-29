@@ -125,7 +125,11 @@ namespace GodMorgon.Timeline
             if (indexCurrentAction % 4 == 0)
             {
                 SetTimeline();
+                //le joueur jette sa main et repioche des cartes
                 GameManager.Instance.PlayerDraw();
+
+                //le player perd ces bonus à la fin du tour
+                PlayerManager.Instance.ResetBonus();
             }
 
             //at the end of the action, we set the cursor

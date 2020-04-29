@@ -155,7 +155,7 @@ public class TilesManager : MonoBehaviour
 
         for (int i = 0; i < accessibleTiles.Count; i++)
         {
-            Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleTiles[i]) + new Vector3(0, 0.2f, 0);
+            Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleTiles[i]) + new Vector3(0, 0.25f, 0);
             if (!effectInstantiated)
             {
                 //on lance l'effet de drop de carte sur la map, qui sera en enfant de effectsParent
