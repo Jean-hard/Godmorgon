@@ -10,8 +10,10 @@ namespace GodMorgon.GameSequencerSpace
     {
         public override IEnumerator ExecuteAction(GameContext context)
         {
-            //wait the time of the killerInstinct particle effect      when exist...
-            yield return new WaitForSeconds(1f);
+            PlayerManager.Instance.OnKillerInstinct();
+
+            //wait for 1sec
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }

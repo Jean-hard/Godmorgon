@@ -52,5 +52,12 @@ namespace GodMorgon.Models
         //effect to draw card
         public bool DrawCard = false;
         public int nbCardToDraw = 0;
+
+        [Header("Other")]
+        //Shiver : double les valeurs si la vie est inférieurs à 50%
+        public bool shiver = false;
+        //Trust : active des bonus par rapport au tour de la timeline du ringmaster
+        public bool trust = false;
+        public int trustNb = 0;
     }
 }
