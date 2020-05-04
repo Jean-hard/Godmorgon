@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using UnityEngine.SceneManagement;
 
 public class RoomEffectEditor : EditorWindow
 {
@@ -16,25 +17,13 @@ public class RoomEffectEditor : EditorWindow
     */
     #endregion
 
-    private int sizeX = 0;
-    private int sizeY = 0;
-
-    public RoomEffect[,] roomsArray = new RoomEffect[0,0];
-
-    public enum RoomEffect
-    {
-        EMPTY,
-        CURSE,
-        SHOP,
-        REST,
-        REMOVE,
-        CHEST,
-        START,
-        EXIT
-    }
-
     public RoomEffect effect = RoomEffect.EMPTY;
     public RoomEffect selectedEffect;
+
+    private RoomEffectManager _roomEffectManager = null;
+
+    // The variable to control where the scrollview 'looks' into its child elements.
+    Vector2 scrollPosition;
 
     private static GUIStyle _selectedButton = null;
     private static GUIStyle selectedButton
@@ -62,12 +51,41 @@ public class RoomEffectEditor : EditorWindow
 
     //Fonction d'affichage sur la window
     void OnGUI()
-    {       
+    {
+        if (null == _roomEffectManager)
+        {
+            _roomEffectManager = GetRoomEffectManagerInScene();
+        }
+
+        if (null == _roomEffectManager)
+        {
+            //No Room Effect Manager in Scene
+            GUILayout.Label("Create a room effect manager on scene to continue.", EditorStyles.boldLabel);
+            return;
+        }
+
         GUILayout.Label("Room Grid", EditorStyles.boldLabel);
 
-        sizeX = EditorGUILayout.IntField("Size X", sizeX);  //Champ int correspondant au nombre de room en largeur
-        sizeY = EditorGUILayout.IntField("Size Y", sizeY);  //Champ int correspondant au nombre de room en longueur
-        roomsArray = new RoomEffect[sizeX, sizeY];
+        int newSizeX = EditorGUILayout.IntField("Size X", _roomEffectManager.sizeX);  //Champ int correspondant au nombre de room en largeur
+        int newSizeY = EditorGUILayout.IntField("Size Y", _roomEffectManager.sizeY);  //Champ int correspondant au nombre de room en longueur
+        if (_roomEffectManager.sizeX != newSizeX || _roomEffectManager.sizeY != newSizeY)
+        {
+            _roomEffectManager.sizeX = newSizeX;
+            _roomEffectManager.sizeY = newSizeY;
+
+            RoomData[] roomDataArr = _roomEffectManager.roomsDataArr;
+            Array.Resize(ref roomDataArr, _roomEffectManager.sizeX * _roomEffectManager.sizeY);
+            for (int i = 0; i < roomDataArr.Length; ++i)
+            {
+                if (roomDataArr[i] == null)
+                    roomDataArr[i] = new RoomData();
+
+
+                roomDataArr[i].x = i%newSizeX;
+                roomDataArr[i].y = i / newSizeX;
+            }
+            _roomEffectManager.roomsDataArr = roomDataArr;
+        }
 
         //Affiche en ligne un button par effet de room, button qu'on devra sélectionner pour set un effet à une room
         EditorGUILayout.BeginHorizontal();
@@ -81,27 +99,35 @@ public class RoomEffectEditor : EditorWindow
         }
         EditorGUILayout.EndHorizontal();
 
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         //Affiche le tableau de room avec une room = un button
-        EditorGUILayout.BeginHorizontal();
-        for (int x = 0; x < sizeX; x++)
+        EditorGUILayout.BeginHorizontal(GUILayout.Width(_roomEffectManager.sizeX*50));
+        for (int x = 0; x < _roomEffectManager.sizeX; x++)
         {
-            EditorGUILayout.BeginVertical();
-            for (int y = 0; y < sizeY; y++)
+            EditorGUILayout.BeginVertical(GUILayout.Height(_roomEffectManager.sizeY*50));
+            for (int y = 0; y < _roomEffectManager.sizeY; y++)
             {
-                // WIP : changer le nom sur le bouton
-                if (GUILayout.Button(roomsArray[x,y].ToString(), GUILayout.Width(50), GUILayout.Height(50))) //Créé le button
+                RoomData roomData = _GetRoomData(_roomEffectManager.roomsDataArr, x, y);
+                
+                if (GUILayout.Button(roomData.roomEffect.ToString(), GUILayout.Width(50), GUILayout.Height(50))) //Créé le button
                 {
-                    //Debug.Log(selectedEffect);
-                    //Debug.Log(new Vector2Int(x, y));
-                    //RoomEffectManager.Instance.SetRoomEffect(selectedEffect, new Vector2Int(x,y));
-                    roomsArray[x, y] = selectedEffect;
-                    Debug.Log(roomsArray[x,y] + " en " + x + "/" + y);
+                    _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x,y));
+                    roomData.roomEffect = selectedEffect;
+                    Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
                 }
             }
             EditorGUILayout.EndVertical();
         }
         EditorGUILayout.EndHorizontal();
-        
+
+        EditorGUILayout.EndScrollView();
+
+
+        if(GUILayout.Button("Generate map view")) //Si on clique sur un button de choix d'effet
+        {
+            _roomEffectManager.GenerateRoomsView();    //On set selectedEffect à l'effet du button cliqué
+        }
+
         #region Exemple
         //Exemples
         /*
@@ -114,4 +140,35 @@ public class RoomEffectEditor : EditorWindow
         */
         #endregion
     }
+
+    private RoomData _GetRoomData(RoomData[] datasArr, int x, int y)
+    {
+        foreach (RoomData roomData in datasArr)
+        {
+            if (roomData.x == x && roomData.y == y)
+            {
+                return roomData;
+            }
+        }
+
+        return null;
+    }
+
+    public RoomEffectManager GetRoomEffectManagerInScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        GameObject[] rootGameObjects = scene.GetRootGameObjects();
+
+        foreach (GameObject rootGameObject in rootGameObjects)
+        {
+            RoomEffectManager roomEffectManager = rootGameObject.GetComponentInChildren<RoomEffectManager>();
+            if (null != roomEffectManager)
+            {
+                return roomEffectManager;
+            }
+        }
+
+        return null;
+    }
+
 }
