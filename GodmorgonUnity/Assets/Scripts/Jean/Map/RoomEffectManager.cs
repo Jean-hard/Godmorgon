@@ -70,15 +70,19 @@ public class RoomEffectManager : MonoBehaviour
         //Debug.Log(roomEffect + " a été ajouté dans la room " + roomCoord.x + "/" + roomCoord.y);
     }
 
+    //Génère les tiles associées aux effets de room sur la tilemap RoomTilemap
     public void GenerateRoomsView()
     {
+        //Pour chaque room du tableau créé avec l'editor
         foreach(RoomData room in roomsDataArr)
         {
             TileBase currentTileBase = null;
+            
+            //On check l'effet de la room
             switch(room.roomEffect)
             {
                 case RoomEffect.EMPTY:
-                    currentTileBase = GetTileBase("Empty");
+                    currentTileBase = GetTileBase("Empty"); //On récupère le visuel de la tile correspondant à l'effet
                     break;
                 case RoomEffect.CURSE:
                     currentTileBase = GetTileBase("Curse");
@@ -103,26 +107,31 @@ public class RoomEffectManager : MonoBehaviour
                     break;
             }
 
+            //Si aucun visuel ne correspond à l'effet d'une room
             if (currentTileBase == null)
             {
                 Debug.Log("No TileBase corresponding to the room effect");
                 return;
             }
 
+            //On applique sur la tilemap des rooms le visuel de l'effet de room à la coordonnée de la room
             //On inverse car les coordonnées du tableau et de la tilemap sont inversées
             roomTilemap.SetTile(new Vector3Int(-room.y, -room.x, 0), currentTileBase);  
         }
 
-        Debug.Log("Room effect visual map generated");
+        Debug.Log("Room tilemap generated");
     }
 
+    //Renvoie le visuel de la tile en fonction de l'effet
     private TileBase GetTileBase(string effect)
     {
+        //Pour chaque visuel de la liste de tiles visuelles
         foreach(TileBase tile in effectTilesList)
         {
+            //S'il correspond à l'effet
             if(tile.name == effect)
             {
-                return tile;
+                return tile;    //On retourne le visuel
             }
         }
         return null;
