@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 4
   id: 0
   name: Advantage
-  description: Draw 2 cards
+  description: Draw [nbCardToDraw] cards
   actionCost: 1
   template: {fileID: 21300000, guid: d49870c996ceb864694c0f6905854a0b, type: 3}
   artwork: {fileID: 21300000, guid: 44cb4f3a6a57b884ca6f0557650f01df, type: 3}
@@ -27,3 +27,8 @@ MonoBehaviour:
     KillerInstinct: 0
     DrawCard: 1
     nbCardToDraw: 2
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0

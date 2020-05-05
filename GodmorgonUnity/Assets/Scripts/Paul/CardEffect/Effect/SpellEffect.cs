@@ -11,6 +11,8 @@ namespace GodMorgon.CardEffect
 {
     public class SpellEffect : CardEffect
     {
+        bool isTrustActivate = false;
+
         /**
          * apply the spell on player and create the action in the sequencer
          */
@@ -22,7 +24,7 @@ namespace GodMorgon.CardEffect
                 if (effectData.trustNb == TimelineManager.Instance.nbActualAction)
                 {
                     Debug.Log("Trust activate");
-                    //_____________________________________________________________________
+                    isTrustActivate = true;
                 }
             }
 

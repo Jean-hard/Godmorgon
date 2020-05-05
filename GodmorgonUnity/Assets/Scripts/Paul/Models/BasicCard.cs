@@ -32,5 +32,84 @@ namespace GodMorgon.Models
         public Sprite artwork;
 
         public CardEffectData[] effectsData;
+
+        #region GET_DATA
+
+        //retourne les dégats de base de la carte
+        public int GetRealDamage()
+        {
+            int damageData = 0;
+            foreach (CardEffectData effect in effectsData)
+            {
+                damageData += effect.damagePoint;
+                if (effect.shiver)
+                    damageData = damageData * 2;
+                else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
+                    damageData = damageData * 2;
+            }
+            return damageData;
+        }
+
+        //retourne les blocks de base de la carte
+        public int GetRealBlock()
+        {
+            int blockData = 0;
+            foreach (CardEffectData effect in effectsData)
+            {
+                blockData += effect.nbBlock;
+                if (effect.shiver)
+                    blockData = blockData * 2;
+                else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
+                    blockData = blockData * 2;
+            }
+            return blockData;
+        }
+
+        //retourne les mouvements de base de la carte
+        public int GetRealMove()
+        {
+            int moveData = 0;
+            foreach (CardEffectData effect in effectsData)
+            {
+                moveData += effect.nbMoves;
+                if (effect.shiver)
+                    moveData = moveData * 2;
+                else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
+                    moveData = moveData * 2;
+            }
+            return moveData;
+        }
+
+        //retourne le heal de base de la carte
+        public int GetRealHeal()
+        {
+            int healData = 0;
+            foreach (CardEffectData effect in effectsData)
+            {
+                healData += effect.nbHeal;
+                if (effect.shiver)
+                    healData = healData * 2;
+                else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
+                    healData = healData * 2;
+            }
+            return healData;
+        }
+
+        //retourne le nombre de carte à piocher de base de la carte
+        public int GetRealNbDraw()
+        {
+            int nbDrawData = 0;
+            foreach (CardEffectData effect in effectsData)
+            {
+                nbDrawData += effect.nbCardToDraw;
+                //check pour les autres effets
+                if (effect.shiver)
+                    nbDrawData = nbDrawData * 2;
+                else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
+                    nbDrawData = nbDrawData * 2;
+            }
+            return nbDrawData;
+        }
+        #endregion
     }
 }

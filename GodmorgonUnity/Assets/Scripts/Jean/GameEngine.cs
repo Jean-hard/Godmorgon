@@ -175,9 +175,9 @@ public class GameEngine
     public BasicCard DrawCard()
     {
         // Check if We Can!
-        if (hand.Count() >= settings.MaxHandCapability /*+ player.HandOverflow*/)//important pour le player
-            throw new HandIsFullException();
-        else if (playerDeck.Count() == 0)
+        //if (hand.Count() >= settings.MaxHandCapability /*+ player.HandOverflow*/)//important pour le player
+        //    throw new HandIsFullException();
+        if (playerDeck.Count() == 0)
             throw new DeckIsEmptyException();
 
         else
