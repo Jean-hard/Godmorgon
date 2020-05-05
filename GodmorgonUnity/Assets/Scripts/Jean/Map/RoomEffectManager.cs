@@ -65,7 +65,7 @@ public class RoomEffectManager : MonoBehaviour
 
     public void SetRoomEffect(RoomEffect roomEffect, Vector2Int roomCoord)
     {
-        Debug.Log(" a été ajouté dans la room ");
+        Debug.Log(roomEffect + " a été ajouté dans la room " + roomCoord.x + "/" + roomCoord.y);
     }
 
     public void GenerateRoomsView()
