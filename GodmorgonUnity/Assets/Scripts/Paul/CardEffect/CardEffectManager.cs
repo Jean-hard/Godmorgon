@@ -52,8 +52,10 @@ namespace GodMorgon.CardEffect
                 effect.ApplyEffect(effectData, context);
             }
 
-            //Une fois que les effets ont été appliqués, on lance les actions
+            //Une fois que les effets ont été appliqués, on lance les actions 
             GameSequencer.Instance.ExecuteActions(context);
+            //et on met à jour les infos des cartes affichées
+            GameManager.Instance.UpdateCardDataDisplay();
         }
 
 

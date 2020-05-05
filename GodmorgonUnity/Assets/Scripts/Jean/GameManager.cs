@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
             BasicCard cardDrawn = GameEngine.Instance.DrawCard();
             handManager.AddCard(cardDrawn);
         }
+        //on met à jour les infos dès qu'on pioche une carte
+        handManager.UpdateCardDataDisplay();
     }
 
     /**
@@ -93,5 +95,11 @@ public class GameManager : MonoBehaviour
     public void DownPanelBlock(bool isPanelBlock)
     {
         downPanelBlock.SetActive(isPanelBlock);
+    }
+
+    //Update les infos de toutes les cartes
+    public void UpdateCardDataDisplay()
+    {
+        handManager.UpdateCardDataDisplay();
     }
 }

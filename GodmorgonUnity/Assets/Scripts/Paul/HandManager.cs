@@ -86,10 +86,17 @@ public class HandManager : MonoBehaviour
 
         }
 
-        //we delete the extra cards
-        if (i >= GameEngine.Instance.GetHandCards().Count)
-        {
+        ////we delete the extra cards
+        //if (i >= GameEngine.Instance.GetHandCards().Count)
+        //{
             
-        }
+        //}
+    }
+
+    //Update les infos de toutes les cartes
+    public void UpdateCardDataDisplay()
+    {
+        foreach (CardDisplay cardDisplay in CardDisplayList)
+            cardDisplay.UpdateDescription();
     }
 }

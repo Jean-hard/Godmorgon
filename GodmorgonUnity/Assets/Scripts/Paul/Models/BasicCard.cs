@@ -42,11 +42,13 @@ namespace GodMorgon.Models
             foreach (CardEffectData effect in effectsData)
             {
                 damageData += effect.damagePoint;
+                //check pour les autres effets
                 if (effect.shiver)
                     damageData = damageData * 2;
                 else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
                     damageData = damageData * 2;
             }
+            Debug.Log("dégat après modifier de l'effet de carte : " + damageData);
             return damageData;
         }
 
@@ -102,7 +104,6 @@ namespace GodMorgon.Models
             foreach (CardEffectData effect in effectsData)
             {
                 nbDrawData += effect.nbCardToDraw;
-                //check pour les autres effets
                 if (effect.shiver)
                     nbDrawData = nbDrawData * 2;
                 else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))

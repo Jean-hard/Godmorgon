@@ -44,12 +44,6 @@ public class CardDisplay : MonoBehaviour
         UpdateDescription();
     }
 
-    //met à jour le descriptif de la carte en continue
-    public void Update()
-    {
-        UpdateDescription();
-    }
-
     /**
      * update the card gameObject using the card data
      */
@@ -76,11 +70,12 @@ public class CardDisplay : MonoBehaviour
     public void UpdateDescription()
     {
         //damage
-        //met à jour la data par rapport aux buffs du player (exemple : killer instinct...)
         int actualDamage = BuffManager.Instance.getModifiedDamage(card.GetRealDamage());
+        Debug.Log("dégat après modifier de Buff ET de l'effet de carte : " + actualDamage);
 
-        //met à jour la data par rapport aux effets de la carte(exemple : shiver, trust....)
         descriptionText.text = descriptionText.text.Replace("[nbDamage]", actualDamage.ToString());
+        Debug.Log("le texte devrait être : attaque de " + actualDamage);
+        //ALEEEEEEEEEEEEEEEEEEEEEEEDDDDDD !!!!!
 
         //block
         int actualBlock = BuffManager.Instance.getModifiedBlock(card.GetRealBlock());
