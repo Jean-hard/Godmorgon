@@ -113,7 +113,7 @@ public class RoomEffectEditor : EditorWindow
                 {
                     _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x,y));
                     roomData.roomEffect = selectedEffect;
-                    Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
+                    //Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
                 }
             }
             EditorGUILayout.EndVertical();
