@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -31,6 +32,8 @@ public class RoomEffectManager : MonoBehaviour
     public int sizeX = 0;
     public int sizeY = 0;
     public RoomData[] roomsDataArr;
+    public int offsetX = 0;
+    public int offsetY = 0;
 
     public List<TileBase> effectTilesList = new List<TileBase>();
 
@@ -74,7 +77,7 @@ public class RoomEffectManager : MonoBehaviour
     public void GenerateRoomsView()
     {
         //Pour chaque room du tableau créé avec l'editor
-        foreach(RoomData room in roomsDataArr)
+        foreach (RoomData room in roomsDataArr)
         {
             TileBase currentTileBase = null;
             
@@ -116,7 +119,7 @@ public class RoomEffectManager : MonoBehaviour
 
             //On applique sur la tilemap des rooms le visuel de l'effet de room à la coordonnée de la room
             //On inverse car les coordonnées du tableau et de la tilemap sont inversées
-            roomTilemap.SetTile(new Vector3Int(-room.y, -room.x, 0), currentTileBase);  
+            roomTilemap.SetTile(new Vector3Int(room.x, room.y, 0), currentTileBase);  
         }
 
         Debug.Log("Room tilemap generated");

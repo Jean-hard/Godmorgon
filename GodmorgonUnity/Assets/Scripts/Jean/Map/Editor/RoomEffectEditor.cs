@@ -84,6 +84,7 @@ public class RoomEffectEditor : EditorWindow
                 roomDataArr[i].x = i%newSizeX;
                 roomDataArr[i].y = i / newSizeX;
             }
+            
             _roomEffectManager.roomsDataArr = roomDataArr;
         }
 
@@ -102,16 +103,16 @@ public class RoomEffectEditor : EditorWindow
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         //Affiche le tableau de room avec une room = un button
         EditorGUILayout.BeginHorizontal(GUILayout.Width(_roomEffectManager.sizeX*50));
-        for (int x = 0; x < _roomEffectManager.sizeX; x++)
+        for (int x = _roomEffectManager.sizeX -1; x >= 0; x--)
         {
             EditorGUILayout.BeginVertical(GUILayout.Height(_roomEffectManager.sizeY*50));
-            for (int y = 0; y < _roomEffectManager.sizeY; y++)
+            for (int y = _roomEffectManager.sizeY -1; y >= 0; y--)
             {
-                RoomData roomData = _GetRoomData(_roomEffectManager.roomsDataArr, x, y);
+                RoomData roomData = _GetRoomData(_roomEffectManager.roomsDataArr, y, x);
                 
                 if (GUILayout.Button(roomData.roomEffect.ToString(), GUILayout.Width(50), GUILayout.Height(50))) //Créé le button
                 {
-                    _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x,y));
+                    _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x, y));
                     roomData.roomEffect = selectedEffect;
                     //Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
                 }
