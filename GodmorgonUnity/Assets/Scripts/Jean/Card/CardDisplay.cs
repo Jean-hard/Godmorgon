@@ -40,6 +40,8 @@ public class CardDisplay : MonoBehaviour
             artworkImage.sprite = card.artwork;
             cardId = card.id;
         }
+
+        UpdateDescription();
     }
 
     /**
@@ -56,5 +58,38 @@ public class CardDisplay : MonoBehaviour
             template.sprite = cardData.template;
         if (cardData.artwork)
             artworkImage.sprite = cardData.artwork;
+
+        UpdateDescription();
+    }
+
+    /**
+     * met les données dans la description à jour :
+     * 1)met à jour la data par rapport aux buffs du player (exemple : killer instinct...)
+     * 2)met à jour la data par rapport aux effets de la carte ( exemple : shiver, trust....)
+     */
+    public void UpdateDescription()
+    {
+        //damage
+        int actualDamage = BuffManager.Instance.getModifiedDamage(card.GetRealDamage());
+        Debug.Log("dégat après modifier de Buff ET de l'effet de carte : " + actualDamage);
+
+        descriptionText.text = descriptionText.text.Replace("[nbDamage]", actualDamage.ToString());
+        Debug.Log("le texte devrait être : attaque de " + actualDamage);
+        //ALEEEEEEEEEEEEEEEEEEEEEEEDDDDDD !!!!!
+
+        //block
+        int actualBlock = BuffManager.Instance.getModifiedBlock(card.GetRealBlock());
+        descriptionText.text = descriptionText.text.Replace("[nbBlock]", actualBlock.ToString());
+
+        //Move
+        int actualMove = BuffManager.Instance.getModifiedMove(card.GetRealMove());
+        descriptionText.text = descriptionText.text.Replace("[nbMove]", actualMove.ToString());
+
+        //Heal
+        int actualHeal = BuffManager.Instance.getModifiedHeal(card.GetRealHeal());
+        descriptionText.text = descriptionText.text.Replace("[nbHeal]", actualHeal.ToString());
+
+        //carte à piocher
+        descriptionText.text = descriptionText.text.Replace("[nbCardToDraw]", card.GetRealNbDraw().ToString());
     }
 }

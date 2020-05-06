@@ -23,7 +23,7 @@ namespace GodMorgon.CardEffect
             if(effectData.KillerInstinct)
             {
                 Debug.Log(" - Killer Instinct !");
-                PlayerData.Instance.OnKillerInstinct();
+                BuffManager.Instance.ActivateKillerInstinct();
 
                 //add the Power Up sequence
                 GSA_KillerInstinct killerInstinctAction = new GSA_KillerInstinct();

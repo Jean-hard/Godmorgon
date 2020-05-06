@@ -139,7 +139,7 @@ namespace GodMorgon.Timeline
                 GameManager.Instance.PlayerDraw();
 
                 //le player perd ces bonus à la fin du tour
-                PlayerManager.Instance.ResetBonus();
+                BuffManager.Instance.ResetAllBonus();
             }
 
             //at the end of the action, we set the cursor

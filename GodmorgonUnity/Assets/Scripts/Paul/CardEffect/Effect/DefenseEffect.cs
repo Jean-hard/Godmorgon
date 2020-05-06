@@ -21,7 +21,7 @@ namespace GodMorgon.CardEffect
             //Shiver
             if (effectData.shiver)
             {
-                if (PlayerData.Instance.IsHealthAtHalf())
+                if (BuffManager.Instance.IsShiverValidate())
                 {
                     nbBlock = nbBlock * 2;
                     Debug.Log("Shiver activate");
