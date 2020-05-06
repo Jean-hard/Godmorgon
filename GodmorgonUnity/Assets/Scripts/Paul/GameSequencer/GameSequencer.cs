@@ -63,9 +63,9 @@ namespace GodMorgon.GameSequencerSpace
             {
                 yield return action.ExecuteAction(context);
             }
+            _actionsList.Clear();
 
             GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.RINGMASTER_TURN);
-            _actionsList.Clear();
         }
     }
 }

@@ -69,27 +69,27 @@ public class CardDisplay : MonoBehaviour
      */
     public void UpdateDescription()
     {
+        string cardDescription = card.description;
+
         //damage
         int actualDamage = BuffManager.Instance.getModifiedDamage(card.GetRealDamage());
-        Debug.Log("dégat après modifier de Buff ET de l'effet de carte : " + actualDamage);
-
-        descriptionText.text = descriptionText.text.Replace("[nbDamage]", actualDamage.ToString());
-        Debug.Log("le texte devrait être : attaque de " + actualDamage);
-        //ALEEEEEEEEEEEEEEEEEEEEEEEDDDDDD !!!!!
+        cardDescription = cardDescription.Replace("[nbDamage]", "<b>"  +actualDamage.ToString() + "</b>");
 
         //block
         int actualBlock = BuffManager.Instance.getModifiedBlock(card.GetRealBlock());
-        descriptionText.text = descriptionText.text.Replace("[nbBlock]", actualBlock.ToString());
+        cardDescription = cardDescription.Replace("[nbBlock]", "<b>" + actualBlock.ToString() + "</b>");
 
         //Move
         int actualMove = BuffManager.Instance.getModifiedMove(card.GetRealMove());
-        descriptionText.text = descriptionText.text.Replace("[nbMove]", actualMove.ToString());
+        cardDescription = cardDescription.Replace("[nbMove]", "<b>" + actualMove.ToString() + "</b>");
 
         //Heal
         int actualHeal = BuffManager.Instance.getModifiedHeal(card.GetRealHeal());
-        descriptionText.text = descriptionText.text.Replace("[nbHeal]", actualHeal.ToString());
+        cardDescription = cardDescription.Replace("[nbHeal]", "<b>" + actualHeal.ToString() + "</b>");
 
         //carte à piocher
-        descriptionText.text = descriptionText.text.Replace("[nbCardToDraw]", card.GetRealNbDraw().ToString());
+        cardDescription = cardDescription.Replace("[nbCardToDraw]", "<b>" + card.GetRealNbDraw().ToString() + "</b>");
+
+        descriptionText.text = cardDescription;
     }
 }
