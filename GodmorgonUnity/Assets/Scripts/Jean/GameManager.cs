@@ -90,6 +90,15 @@ public class GameManager : MonoBehaviour
     }
 
     /**
+    * Discard a card (not from hand)
+    * Call by the RoomEffectManager
+    */
+    public void AddCardToDiscardPile(BasicCard cardDiscarded)
+    {
+        GameEngine.Instance.AddCardToDiscardPile(cardDiscarded);
+    }
+
+    /**
      * active panel to block dawn panel during the ringmaster turn
      */
     public void DownPanelBlock(bool isPanelBlock)

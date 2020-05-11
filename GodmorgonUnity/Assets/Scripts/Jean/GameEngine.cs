@@ -208,6 +208,13 @@ public class GameEngine
         }
     }
 
+    //Add a card directly to the disposal pile (Discard)
+    public void AddCardToDiscardPile(BasicCard discardedCard)
+    {
+        if (discardedCard != null)
+            disposalPile.AddCard(discardedCard);
+    }
+
     //Takes a random card from the hand and junk it to the disposal pile
     public void DiscardRandomCard()
     {

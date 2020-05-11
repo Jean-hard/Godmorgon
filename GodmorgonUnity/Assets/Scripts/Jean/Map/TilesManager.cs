@@ -9,16 +9,21 @@ using GodMorgon.Enemy;
 
 public class TilesManager : MonoBehaviour
 {
+    [Header("Tilemaps")]
     public Tilemap walkableTilemap;
     public Tilemap roadMap;
+    public Tilemap roomTilemap;
+
     public Vector3Int[,] spots;
     private List<Vector3Int> tilesList;
 
+    [System.NonSerialized]
     public List<Vector3Int> accessibleTiles = new List<Vector3Int>();
 
     private List<Vector3Int> nearestTilesList = new List<Vector3Int>();
     Vector3Int currentTileCoordinate;
 
+    [Header("Effects Settings")]
     public GameObject moveTileEffect;
     public Transform effectsParent;
     private bool effectInstantiated = false;

@@ -54,7 +54,7 @@ public class RoomEffectEditor : EditorWindow
     {
         if (null == _roomEffectManager)
         {
-            _roomEffectManager = GetRoomEffectManagerInScene();
+            _roomEffectManager = GetRoomEffectManagerInScene(); //On récupère le RoomEffectManager sur la scène
         }
 
         if (null == _roomEffectManager)
@@ -103,18 +103,20 @@ public class RoomEffectEditor : EditorWindow
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         //Affiche le tableau de room avec une room = un button
         EditorGUILayout.BeginHorizontal(GUILayout.Width(_roomEffectManager.sizeX*50));
-        for (int x = _roomEffectManager.sizeX -1; x >= 0; x--)
+        for (int x = _roomEffectManager.sizeY -1; x >= 0; x--)
         {
             EditorGUILayout.BeginVertical(GUILayout.Height(_roomEffectManager.sizeY*50));
-            for (int y = _roomEffectManager.sizeY -1; y >= 0; y--)
+            for (int y = _roomEffectManager.sizeX -1; y >= 0; y--)
             {
                 RoomData roomData = _GetRoomData(_roomEffectManager.roomsDataArr, y, x);
-                
-                if (GUILayout.Button(roomData.roomEffect.ToString(), GUILayout.Width(50), GUILayout.Height(50))) //Créé le button
+                if (null != roomData)
                 {
-                    _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x, y));
-                    roomData.roomEffect = selectedEffect;
-                    //Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
+                    if (GUILayout.Button(roomData.roomEffect.ToString(), GUILayout.Width(50), GUILayout.Height(50))) //Créé le button
+                    {
+                        _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x, y));
+                        roomData.roomEffect = selectedEffect;
+                        //Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
+                    }
                 }
             }
             EditorGUILayout.EndVertical();
@@ -124,9 +126,9 @@ public class RoomEffectEditor : EditorWindow
         EditorGUILayout.EndScrollView();
 
 
-        if(GUILayout.Button("Generate map view")) //Si on clique sur un button de choix d'effet
+        if(GUILayout.Button("Generate map view")) //Si on clique sur le bouton generate
         {
-            _roomEffectManager.GenerateRoomsView();    //On set selectedEffect à l'effet du button cliqué
+            _roomEffectManager.GenerateRoomsView();    //On affiche le nouveau tableau sur la room tilemap
         }
 
         #region Exemple
