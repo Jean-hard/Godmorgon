@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 0
   name: Killer Instinct
   description: Double every damages done and taken this turn
-  actionCost: 1
+  actionCost: 2
   template: {fileID: 21300000, guid: 8560f9c3d24f1db488dc6cb2f358579c, type: 3}
   artwork: {fileID: 21300000, guid: c1bee892507aa684f903cb4fb1657b9a, type: 3}
   effectsData:
@@ -27,3 +27,8 @@ MonoBehaviour:
     KillerInstinct: 1
     DrawCard: 0
     nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0

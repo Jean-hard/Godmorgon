@@ -35,6 +35,10 @@ namespace GodMorgon.Timeline
         [SerializeField]
         private ActionCursor cursorAction = null;
 
+        //text indiquant le nombre de d'action restantes
+        [SerializeField]
+        private Text nbRemainingActionText = null;
+
         //Tell if the current action is running
         [System.NonSerialized]
         public bool isRunning = false;
@@ -46,6 +50,10 @@ namespace GodMorgon.Timeline
 
         //Current index of the list of action
         private int indexCurrentAction = 0;
+
+        //nombre d'action restantes que le ringmaster doit executer
+        [System.NonSerialized]
+        public int nbRingmasterActionRemain = 0;
 
         //numéro de l'action actuel de la timeline
         [System.NonSerialized]
@@ -73,6 +81,7 @@ namespace GodMorgon.Timeline
         void Start()
         {
             actionlist = settings.GetActionList();
+            nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -113,6 +122,7 @@ namespace GodMorgon.Timeline
          */
         public void DoAction()
         {
+            nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
             StartCoroutine(ActionExecution());
         }
 
@@ -126,10 +136,11 @@ namespace GodMorgon.Timeline
             yield return actionlist[indexCurrentAction].Execute();
             isRunning = false;
 
-            //actualise le numéro pour l'action actuel;
+            //actualise le numéro pour l'action actuel et l'index de la list d'action;
             nbActualAction++;
-
             indexCurrentAction++;
+
+
 
             //si on arrive au bout des 4 actions affichées
             if (indexCurrentAction % 4 == 0)
@@ -145,7 +156,18 @@ namespace GodMorgon.Timeline
             //at the end of the action, we set the cursor
             cursorAction.RunCursorAnim();
 
-            GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
+            nbRingmasterActionRemain--;
+            //si il reste des action pour le ringmaster, on relance son tour
+            if (nbRingmasterActionRemain > 0)
+            {
+                //yield return new WaitForSeconds(0.5f);
+                GameEngine.Instance.RestartState();
+            }
+            //sinon on lance le tour du joueur
+            else
+                GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
+
+            nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
         }
 
 
@@ -153,6 +175,12 @@ namespace GodMorgon.Timeline
         public int GetIndexCurrentAction()
         {
             return indexCurrentAction;
+        }
+
+        //indique le nombre d'actions que le ringmaster va executer
+        public void SetRingmasterActionRemain(int nbTurn)
+        {
+            nbRingmasterActionRemain = nbTurn;
         }
     }
 }

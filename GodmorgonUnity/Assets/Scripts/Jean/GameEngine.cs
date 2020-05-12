@@ -102,6 +102,14 @@ public class GameEngine
         return stateMachine.GetCurrentState();
     }
 
+    /**
+     * Restart the current state
+     */
+    public void RestartState()
+    {
+        stateMachine.RestartState();
+    }
+
     //Set Player deck content
     public void SetPlayerDeck(DeckContent theDeckChoosed)
     {

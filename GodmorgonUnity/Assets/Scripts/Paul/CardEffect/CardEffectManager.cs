@@ -4,6 +4,7 @@ using UnityEngine;
 
 using GodMorgon.Models;
 using GodMorgon.GameSequencerSpace;
+using GodMorgon.Timeline;
 
 namespace GodMorgon.CardEffect
 {
@@ -54,8 +55,10 @@ namespace GodMorgon.CardEffect
 
             //Une fois que les effets ont été appliqués, on lance les actions 
             GameSequencer.Instance.ExecuteActions(context);
-            //et on met à jour les infos des cartes affichées
+            //on met à jour les infos des cartes affichées
             GameManager.Instance.UpdateCardDataDisplay();
+            //on indique le nombre de tour que va jouer le RingMaster
+            TimelineManager.Instance.SetRingmasterActionRemain(context.card.actionCost);
         }
 
 

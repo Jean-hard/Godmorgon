@@ -32,10 +32,14 @@ namespace GodMorgon.CardEffect
             //effect to draw X card
             if (effectData.DrawCard)
             {
-                Debug.Log(" - Draw " + effectData.nbCardToDraw + " cards");
-                GameManager.Instance.DrawCard(effectData.nbCardToDraw);
+                int nbCardToDraw = effectData.nbCardToDraw;
+                if (isTrustActivate)
+                    nbCardToDraw = nbCardToDraw * 2;
 
-                //add the defense sequence
+                GameManager.Instance.DrawCard(nbCardToDraw);
+                Debug.Log(" - Draw " + nbCardToDraw + " cards");
+
+                //add the Spell sequence
                 GSA_Spell playerSpellAction = new GSA_Spell();
                 GameSequencer.Instance.AddAction(playerSpellAction);
             }

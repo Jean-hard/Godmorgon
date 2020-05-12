@@ -48,7 +48,7 @@ namespace GodMorgon.Models
                 else if (effect.trust && BuffManager.Instance.IsTrustValidate(effect.trustNb))
                     damageData = damageData * 2;
             }
-            Debug.Log("dégat après modifier de l'effet de carte : " + damageData);
+
             return damageData;
         }
 

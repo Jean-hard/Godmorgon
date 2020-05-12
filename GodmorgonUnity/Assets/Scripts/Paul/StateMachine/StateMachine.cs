@@ -71,5 +71,12 @@ namespace GodMorgon.StateMachine
             currentActifState.OnStartState();
         }
 
+        //relance l'état
+        public void RestartState()
+        {
+            currentActifState.OnEndState();
+            Debug.Log("restart de l'état : " + currentState);
+            currentActifState.OnStartState();
+        }
     }
 }

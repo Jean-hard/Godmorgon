@@ -23,6 +23,7 @@ public class CardDisplay : MonoBehaviour
 
     public Text nameText;
     public Text descriptionText;
+    public Text costText;
 
     public Image artworkImage;
     public Image template;
@@ -39,8 +40,8 @@ public class CardDisplay : MonoBehaviour
             descriptionText.text = card.description;
             artworkImage.sprite = card.artwork;
             cardId = card.id;
+            costText.text = card.actionCost.ToString();
         }
-
         UpdateDescription();
     }
 
@@ -58,6 +59,7 @@ public class CardDisplay : MonoBehaviour
             template.sprite = cardData.template;
         if (cardData.artwork)
             artworkImage.sprite = cardData.artwork;
+        costText.text = card.actionCost.ToString();
 
         UpdateDescription();
     }
