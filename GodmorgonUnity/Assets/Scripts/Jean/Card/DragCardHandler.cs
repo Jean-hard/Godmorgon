@@ -89,12 +89,13 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
         Vector3Int dropCellPosition = TilesManager.Instance.walkableTilemap.WorldToCell(dropPosition);
-
+        Vector3Int dropRoomCellPosition = TilesManager.Instance.roomTilemap.WorldToCell(dropPosition);
 
         //Vérifie si la position du drop est valide
         dropPosManager.GetDropCardContext(_card, dropCellPosition, context);
         if (context.isDropValidate)
         {
+            context.nextRoom = RoomEffectManager.Instance.GetRoomData(dropRoomCellPosition);
             //Joue la carte
             CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card, context);
             

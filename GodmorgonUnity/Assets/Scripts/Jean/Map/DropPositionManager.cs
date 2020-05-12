@@ -29,19 +29,19 @@ namespace GodMorgon.CardEffect
                     }
                     break;
                 case BasicCard.CARDTYPE.DEFENSE:
-                    if (PlayerManager.Instance.GetPlayerPosition() == dropPosition)
+                    if (PlayerManager.Instance.GetPlayerCellPosition() == dropPosition)
                     {
                         context.isDropValidate = true;
                     }
                     break;
                 case BasicCard.CARDTYPE.POWER_UP:
-                    if (PlayerManager.Instance.GetPlayerPosition() == dropPosition)
+                    if (PlayerManager.Instance.GetPlayerCellPosition() == dropPosition)
                     {
                         context.isDropValidate = true;
                     }
                     break;
                 case BasicCard.CARDTYPE.SPELL:
-                    if (PlayerManager.Instance.GetPlayerPosition() == dropPosition)
+                    if (PlayerManager.Instance.GetPlayerCellPosition() == dropPosition)
                     {
                         context.isDropValidate = true;
                         Debug.Log("SPELL");

@@ -196,11 +196,27 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
+     * Return player's world position
+     */
+    public Vector3 GetPlayerWorldPosition()
+    {
+        return transform.position;
+    }
+
+    /**
      * Return player's cell position
      */
-    public Vector3Int GetPlayerPosition()
+    public Vector3Int GetPlayerCellPosition()
     {
         return TilesManager.Instance.walkableTilemap.WorldToCell(transform.position);
+    }
+
+    /**
+     * Return player's room position
+     */
+    public Vector3Int GetPlayerRoomPosition()
+    {
+        return TilesManager.Instance.roomTilemap.WorldToCell(transform.position);
     }
 
     // WIP

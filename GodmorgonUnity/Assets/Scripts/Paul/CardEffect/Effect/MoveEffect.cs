@@ -19,6 +19,8 @@ namespace GodMorgon.CardEffect
             //add the move sequence
             GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();
             GameSequencer.Instance.AddAction(playerMoveAction);
+
+            RoomEffectManager.Instance.AddRoomEffectToSequencer(context.nextRoom);
         }
     }
 }

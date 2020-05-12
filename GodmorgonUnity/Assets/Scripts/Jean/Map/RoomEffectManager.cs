@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GodMorgon.GameSequencerSpace;
+using GodMorgon.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,20 +24,30 @@ public class RoomData
     public int x = 0;
     public int y = 0;
     public RoomEffect roomEffect = RoomEffect.EMPTY;
+    public bool effectLaunched = false;
 }
 
 public class RoomEffectManager : MonoBehaviour
 {
+    [Header("Editor Settings")]
+    public int sizeX = 0;
+    public int sizeY = 0;
+    public List<TileBase> effectTilesList = new List<TileBase>();
+
+    [Header("General Settings")]
+    public RoomData[] roomsDataArr;
     [SerializeField]
     private Tilemap roomTilemap;
 
-    public int sizeX = 0;
-    public int sizeY = 0;
-    public RoomData[] roomsDataArr;
-    public int offsetX = 0;
-    public int offsetY = 0;
+    [Header("Effect Settings")]
+    public List<GameObject> roomFxList = new List<GameObject>();
+    [SerializeField]
+    private Transform roomEffectsParent;
+    private BasicCard cursedCard = null;
 
-    public List<TileBase> effectTilesList = new List<TileBase>();
+    private RoomData currentRoom = null;
+
+    private bool isRoomEffectDone = false;
 
     #region Singleton Pattern
     private static RoomEffectManager _instance;
@@ -59,13 +71,58 @@ public class RoomEffectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        foreach (RoomData room in roomsDataArr)
+        {
+            room.effectLaunched = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
 
+    public void AddRoomEffectToSequencer(RoomData room)
+    {
+        currentRoom = room;
+        Debug.LogWarning("found the room you entered in : " + room.roomEffect + " : " + room.x + "/" + room.y);
+
+        if (!room.effectLaunched)
+        {
+            switch (room.roomEffect) //On regarde son effet
+            {
+                case RoomEffect.EMPTY:
+
+                    break;
+                case RoomEffect.CURSE:
+                    Debug.Log(room.roomEffect + " added to sequencer");
+                    //Ajoute l'action Curse de la room au sequencer
+                    GSA_CurseRoom curseRoomAction = new GSA_CurseRoom();
+                    GameSequencer.Instance.AddAction(curseRoomAction);
+                    break;
+                case RoomEffect.SHOP:
+                    Debug.Log(room.roomEffect + " added to sequencer");
+                    break;
+                case RoomEffect.REST:
+
+                    break;
+                case RoomEffect.REMOVE:
+
+                    break;
+                case RoomEffect.CHEST:
+                    Debug.Log(room.roomEffect + " added to sequencer");
+                    break;
+                case RoomEffect.START:
+
+                    break;
+                case RoomEffect.EXIT:
+
+                    break;
+            }
+
+            room.effectLaunched = true;
+        }
     }
 
     public void SetRoomEffect(RoomEffect roomEffect, Vector2Int roomCoord)
@@ -73,6 +130,7 @@ public class RoomEffectManager : MonoBehaviour
         //Debug.Log(roomEffect + " a été ajouté dans la room " + roomCoord.x + "/" + roomCoord.y);
     }
 
+    #region Generate Room Tilemap
     //Génère les tiles associées aux effets de room sur la tilemap RoomTilemap
     public void GenerateRoomsView()
     {
@@ -137,6 +195,59 @@ public class RoomEffectManager : MonoBehaviour
                 return tile;    //On retourne le visuel
             }
         }
+        return null;
+    }
+    #endregion
+
+    /**
+     * Affiche l'effet visuel de curse et lance l'effet 
+     */
+    public void LaunchCurseRoomEffect()
+    {
+        if (null == currentRoom) return;
+        Vector3 currentRoomWorldPos = roomTilemap.CellToWorld(new Vector3Int(currentRoom.x, currentRoom.y, 0)) + new Vector3(0, 0.75f, 0);
+        
+        //On lance les particules de Curse sur la room 
+        GameObject effectObject = Instantiate(roomFxList[0], currentRoomWorldPos, Quaternion.identity, roomEffectsParent);
+        if(null != cursedCard)
+            GameManager.Instance.AddCardToDiscardPile(cursedCard);
+        StartCoroutine(TimedRoomEffect());
+    }
+
+    public void LaunchRestRoomEffect()
+    {
+
+    }
+
+    //Façon dégueulasse de timer le temps de l'effet de la room
+    IEnumerator TimedRoomEffect()
+    {
+        yield return new WaitForSeconds(3f);
+        isRoomEffectDone = true;
+        yield return new WaitForSeconds(3f);
+        foreach (Transform child in roomEffectsParent)  //On clear les effets de room instantiés sur la scène
+            DestroyImmediate(child.gameObject);
+        isRoomEffectDone = false;
+    }
+
+    public bool RoomEffectDone()
+    {
+        if (isRoomEffectDone)
+            return true;
+        else
+            return false;
+    }
+
+    public RoomData GetRoomData(Vector3Int position)
+    {
+        foreach (RoomData room in roomsDataArr)
+        {
+            if (position.x == room.x && position.y == room.y)  //Si une room correspond à la position du player
+            {
+                return room;
+            }
+        }
+
         return null;
     }
 }

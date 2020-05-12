@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e54369235d591943b898450654a476d, type: 3}
   m_Name: Game Settings Mode 1
   m_EditorClassIdentifier: 
-  decksPreconstruits:
-  - {fileID: 11400000, guid: c4ad0658fc7c43943b6e1fe5efe8a99e, type: 2}
-  - {fileID: 11400000, guid: 08e5e4e476bd77340979bc492a1cb8b4, type: 2}
-  - {fileID: 11400000, guid: 965e43151c76b4e458f491fcd92bf1cc, type: 2}
+  MaxHandCapability: 5
+  GameDeck: {fileID: 11400000, guid: 3c9d37f0746f80f4b97d3d736c25cf53, type: 2}
