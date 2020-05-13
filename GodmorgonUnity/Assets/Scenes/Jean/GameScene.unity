@@ -266,7 +266,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1264907417}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3421,7 +3421,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1264907417}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8756458, y: 0}
   m_AnchorMax: {x: 0.93616676, y: 0.57262117}
@@ -50211,733 +50211,973 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90b26366231de94ca4f2f6d557ccf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomTilemap: {fileID: 0}
   sizeX: 16
   sizeY: 15
+  effectTilesList: []
   roomsDataArr:
   - x: 0
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 0
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 1
     roomEffect: 2
+    effectLaunched: 0
   - x: 4
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 1
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 2
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 3
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 4
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 5
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 6
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 7
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 8
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 9
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 10
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 11
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 12
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 13
     roomEffect: 0
+    effectLaunched: 0
   - x: 0
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 1
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 2
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 3
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 4
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 5
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 6
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 7
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 8
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 9
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 10
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 11
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 12
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 13
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 14
     y: 14
     roomEffect: 0
+    effectLaunched: 0
   - x: 15
     y: 14
     roomEffect: 0
-  offsetX: 0
-  offsetY: 0
-  effectTilesList: []
+    effectLaunched: 0
+  roomTilemap: {fileID: 0}
+  roomFxList: []
+  roomEffectsParent: {fileID: 0}
 --- !u!4 &754354301
 Transform:
   m_ObjectHideFlags: 0
@@ -51922,7 +52162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &892392668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53663,6 +53903,134 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1068678290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068678291}
+  - component: {fileID: 1068678294}
+  - component: {fileID: 1068678293}
+  - component: {fileID: 1068678292}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1068678291
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068678290}
+  m_LocalRotation: {x: -0, y: -0, z: 0.21505946, w: 0.976601}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1264907417}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.838001}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -761.06, y: -74.2}
+  m_SizeDelta: {x: 130.43, y: 39.81}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1068678292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068678290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1068678293}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1347665778}
+        m_MethodName: SkipPlayerTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1068678293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068678290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4339623, g: 0.3827875, b: 0.3827875, a: 0.34901962}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1068678294
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068678290}
+  m_CullTransparentMesh: 0
 --- !u!1 &1108308460
 GameObject:
   m_ObjectHideFlags: 0
@@ -54491,7 +54859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkableTilemap: {fileID: 110557413}
   roadMap: {fileID: 749101621}
-  accessibleTiles: []
+  roomTilemap: {fileID: 0}
   moveTileEffect: {fileID: 181232, guid: 6c16e0aec5111b74cb43674dccfa0f3d, type: 3}
   effectsParent: {fileID: 408239567}
 --- !u!4 &1187915431
@@ -55130,12 +55498,13 @@ RectTransform:
   - {fileID: 892392668}
   - {fileID: 1717778169}
   - {fileID: 652673497}
-  - {fileID: 11742504}
   - {fileID: 1728699457}
   - {fileID: 2057936262}
   - {fileID: 1704935352}
   - {fileID: 243800491}
   - {fileID: 1268477697}
+  - {fileID: 11742504}
+  - {fileID: 1068678291}
   m_Father: {fileID: 1927699954}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55290,7 +55659,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1264907417}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8834376, y: 0.57262117}
   m_AnchorMax: {x: 0.9296042, y: 1}
@@ -55740,177 +56109,6 @@ PrefabInstance:
     - {fileID: 774034085544025075, guid: 653085ed10243b14cb2eae8835328137, type: 3}
     - {fileID: 774034084832301881, guid: 653085ed10243b14cb2eae8835328137, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 653085ed10243b14cb2eae8835328137, type: 3}
---- !u!1 &1277267233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 774034085544025074, guid: 653085ed10243b14cb2eae8835328137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1277267232}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1277267234 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 774034084832301880, guid: 653085ed10243b14cb2eae8835328137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1277267232}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1277267235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7347671794355430083, guid: 653085ed10243b14cb2eae8835328137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1277267232}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1277267236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277267233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16b79c7e5906454ca243ec50a1a9518, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 5738cfd2ce9087142bd15899da1a8302, type: 2}
-  moveSpeed: 2
-  moveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0.7
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyHit: {fileID: 1277267239}
---- !u!114 &1277267237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277267234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16b79c7e5906454ca243ec50a1a9518, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 0e60e717b31fae944a70b9b629dcd8c8, type: 2}
-  moveSpeed: 2
-  moveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0.7
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyHit: {fileID: 1277267240}
---- !u!114 &1277267238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277267235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16b79c7e5906454ca243ec50a1a9518, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: ff67af8d33284154693dba4be7b31dde, type: 2}
-  moveSpeed: 2
-  moveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0.7
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyHit: {fileID: 1277267241}
---- !u!114 &1277267239 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4382413559184607368, guid: 653085ed10243b14cb2eae8835328137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1277267232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 659981fe6e398684880a5ecedcf5827d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1277267240 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4382413559361028162, guid: 653085ed10243b14cb2eae8835328137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1277267232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 659981fe6e398684880a5ecedcf5827d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1277267241 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6022634997039428025, guid: 653085ed10243b14cb2eae8835328137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1277267232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 659981fe6e398684880a5ecedcf5827d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1303655641
 GameObject:
   m_ObjectHideFlags: 0
@@ -62020,7 +62218,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1264907417}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -62295,7 +62493,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1264907417}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.94762504, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -63692,7 +63890,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1264907417}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}

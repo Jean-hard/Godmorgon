@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject downPanelBlock = null;
 
+    //bool pour savoir si le player à passer son tour précédemment
+    private bool lastPlayerTurnPassed = false;
+
     #region Singleton Pattern
     private static GameManager _instance;
 
@@ -66,6 +69,14 @@ public class GameManager : MonoBehaviour
         else
             Debug.Log("capacité de carte maximale");
     }
+
+    //Passe le tour du player ce qui lui permettra de tirer une carte supplémentaire
+    public void SkipPlayerTurn()
+    {
+        lastPlayerTurnPassed = true;
+        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+    }
+
     #endregion
 
     //add nbCard to hand
@@ -111,4 +122,17 @@ public class GameManager : MonoBehaviour
     {
         handManager.UpdateCardDataDisplay();
     }
+
+    
+
+    //Pioche une carte supplémentaire si le tour précédent à été passé
+    public void CheckForCardToDraw()
+    {
+        if(lastPlayerTurnPassed)
+        {
+            lastPlayerTurnPassed = false;
+            DrawCard(1);
+        }
+    }
+
 }
