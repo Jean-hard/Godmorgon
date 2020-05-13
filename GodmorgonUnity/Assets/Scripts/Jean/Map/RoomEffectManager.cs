@@ -250,4 +250,11 @@ public class RoomEffectManager : MonoBehaviour
 
         return null;
     }
+
+    public void CurseRandomRoom()
+    {
+        //Afficher effet au dessus de la room
+
+        //RoomData roomToCurse = GetRoomData();
+    }
 }

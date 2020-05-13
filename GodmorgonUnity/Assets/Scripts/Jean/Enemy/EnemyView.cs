@@ -12,8 +12,6 @@ namespace GodMorgon.Enemy
     {
         [Header("Enemy Settings")]
         public Models.Enemies enemies;
-
-        //[System.NonSerialized]
         public Models.Enemy enemy;  //Scriptable object Enemy
 
         [Header("Movement Settings")]

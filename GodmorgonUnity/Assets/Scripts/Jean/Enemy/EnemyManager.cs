@@ -302,5 +302,13 @@ namespace GodMorgon.Enemy
             else
                 return false;
         }
+
+        /**
+         * 
+         */
+        public void LaunchCurseAction()
+        {
+
+        }
     }
 }

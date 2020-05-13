@@ -113,9 +113,7 @@ public class RoomEffectEditor : EditorWindow
                 {
                     if (GUILayout.Button(roomData.roomEffect.ToString(), GUILayout.Width(50), GUILayout.Height(50))) //Créé le button
                     {
-                        _roomEffectManager.SetRoomEffect(selectedEffect, new Vector2Int(x, y));
                         roomData.roomEffect = selectedEffect;
-                        //Debug.Log(roomData.roomEffect + " en " + x + "/" + y);
                     }
                 }
             }
