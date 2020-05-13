@@ -156,22 +156,16 @@ namespace GodMorgon.Timeline
             //at the end of the action, we set the cursor
             cursorAction.RunCursorAnim();
 
-            //nbRingmasterActionRemain--;
-            //s'il ne reste plus d'action à faire, on lance le tour du joueur
-            if (nbRingmasterActionRemain == 0)
-                GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
-
-            //sinon on relance le tour du ringmaster
-            else if (nbRingmasterActionRemain > 0)
+            nbRingmasterActionRemain--;
+            //si il reste des action pour le ringmaster, on relance son tour
+            if (nbRingmasterActionRemain > 0)
             {
                 //yield return new WaitForSeconds(0.5f);
-                nbRingmasterActionRemain--;
                 GameEngine.Instance.RestartState();
             }
-
-
+            //sinon on lance le tour du joueur
             else
-                Debug.LogWarning("Nombre d'action du ringmaster incorrecte !!");
+                GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
 
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
         }

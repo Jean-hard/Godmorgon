@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 using GodMorgon.Models;
 using GodMorgon.StateMachine;
+using GodMorgon.Timeline;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
     public void SkipPlayerTurn()
     {
         lastPlayerTurnPassed = true;
+        TimelineManager.Instance.SetRingmasterActionRemain(1);
         GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
     }
 
