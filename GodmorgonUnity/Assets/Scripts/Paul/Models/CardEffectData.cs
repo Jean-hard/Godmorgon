@@ -63,5 +63,8 @@ namespace GodMorgon.Models
         //Trust : active des bonus par rapport au tour de la timeline du ringmaster
         public bool trust = false;
         public int trustNb = 0;
+
+        //Discard toutes les cartes en main
+        public bool isDiscardHand = false;
     }
 }

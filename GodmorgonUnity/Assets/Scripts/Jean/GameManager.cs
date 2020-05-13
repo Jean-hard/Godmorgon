@@ -136,5 +136,4 @@ public class GameManager : MonoBehaviour
             DrawCard(1);
         }
     }
-
 }
