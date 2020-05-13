@@ -609,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16b79c7e5906454ca243ec50a1a9518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies: {fileID: 11400000, guid: 621d373489ca14e4ab1143b59be10d4e, type: 2}
   enemy: {fileID: 0}
   moveSpeed: 5
   moveCurve:

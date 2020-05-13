@@ -11,6 +11,9 @@ namespace GodMorgon.Enemy
     public class EnemyView : MonoBehaviour
     {
         [Header("Enemy Settings")]
+        public Models.Enemies enemies;
+
+        //[System.NonSerialized]
         public Models.Enemy enemy;  //Scriptable object Enemy
 
         [Header("Movement Settings")]
@@ -48,6 +51,8 @@ namespace GodMorgon.Enemy
 
         public void Awake()
         {
+            enemy = enemies.enemiesSOList[Random.Range(0, enemies.enemiesSOList.Count)];
+
             if (enemy != null && enemyData != null)
             {
                 enemyData.enemyId = enemy.enemyId;
