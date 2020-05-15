@@ -38,6 +38,14 @@ namespace GodMorgon.CardEffect
                 }
             }
 
+            //si l'effet discard les cartes en mains (pour "abnegation")
+            if(effectData.isDiscardHand)
+            {
+                nbBlock = GameEngine.Instance.GetHandCards().Count * nbBlock;
+                GSA_DiscardHand discardHandAction = new GSA_DiscardHand();
+                GameSequencer.Instance.AddAction(discardHandAction);
+            }
+
             //apply effect
             PlayerManager.Instance.AddBlock(nbBlock);
             Debug.Log("add " + nbBlock + " to player defense");

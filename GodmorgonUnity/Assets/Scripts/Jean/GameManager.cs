@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 using GodMorgon.Models;
 using GodMorgon.StateMachine;
+using GodMorgon.Timeline;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject downPanelBlock = null;
+
+    //bool pour savoir si le player à passer son tour précédemment
+    private bool lastPlayerTurnPassed = false;
 
     #region Singleton Pattern
     private static GameManager _instance;
@@ -51,6 +55,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //discard toutes les cartes dans la main
+    public void DiscardHand()
+    {
+        handManager.DiscardAllCard();
+    }
+
     #region IN-GAME BUTTON FUNCTION
     /**
      * Draw a card from the player Deck
@@ -66,6 +76,15 @@ public class GameManager : MonoBehaviour
         else
             Debug.Log("capacité de carte maximale");
     }
+
+    //Passe le tour du player ce qui lui permettra de tirer une carte supplémentaire
+    public void SkipPlayerTurn()
+    {
+        lastPlayerTurnPassed = true;
+        TimelineManager.Instance.SetRingmasterActionRemain(1);
+        GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+    }
+
     #endregion
 
     //add nbCard to hand
@@ -110,5 +129,17 @@ public class GameManager : MonoBehaviour
     public void UpdateCardDataDisplay()
     {
         handManager.UpdateCardDataDisplay();
+    }
+
+    
+
+    //Pioche une carte supplémentaire si le tour précédent à été passé
+    public void CheckForCardToDraw()
+    {
+        if(lastPlayerTurnPassed)
+        {
+            lastPlayerTurnPassed = false;
+            DrawCard(1);
+        }
     }
 }

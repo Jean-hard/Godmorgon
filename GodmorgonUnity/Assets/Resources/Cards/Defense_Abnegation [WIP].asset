@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 2
   id: 8
   name: Abnegation
-  description: Discard all your cards, gain 4 block by card discarded.
+  description: Discard all your cards, gain [nbBlock] block by card discarded.
   actionCost: 2
   template: {fileID: 21300000, guid: c7288bf73896d76488d400998d8e2e35, type: 3}
   artwork: {fileID: 21300000, guid: 423f2ef804bf0d142843baac14a7f061, type: 3}
@@ -27,3 +27,9 @@ MonoBehaviour:
     KillerInstinct: 0
     DrawCard: 0
     nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 1
