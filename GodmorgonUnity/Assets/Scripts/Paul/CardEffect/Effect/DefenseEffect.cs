@@ -42,6 +42,8 @@ namespace GodMorgon.CardEffect
             if(effectData.isDiscardHand)
             {
                 nbBlock = GameEngine.Instance.GetHandCards().Count * nbBlock;
+                GSA_DiscardHand discardHandAction = new GSA_DiscardHand();
+                GameSequencer.Instance.AddAction(discardHandAction);
             }
 
             //apply effect

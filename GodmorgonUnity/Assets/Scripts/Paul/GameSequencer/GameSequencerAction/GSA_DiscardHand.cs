@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GSA_DiscardHand : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+using GodMorgon.CardEffect;
 
-    // Update is called once per frame
-    void Update()
+namespace GodMorgon.GameSequencerSpace
+{
+    public class GSA_DiscardHand : GameSequencerAction
     {
-        
+        /**
+         * Should apply a visual defense effect
+         */
+        public override IEnumerator ExecuteAction(GameContext context)
+        {
+            //launch particle system
+            GameManager.Instance.DiscardHand();
+
+            //wait the time of the defense particle effect
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

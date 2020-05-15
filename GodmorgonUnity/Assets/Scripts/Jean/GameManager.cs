@@ -55,6 +55,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //discard toutes les cartes dans la main
+    public void DiscardHand()
+    {
+        handManager.DiscardAllCard();
+    }
+
     #region IN-GAME BUTTON FUNCTION
     /**
      * Draw a card from the player Deck
