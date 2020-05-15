@@ -44,10 +44,14 @@ public class RoomEffectManager : MonoBehaviour
     [SerializeField]
     private Transform roomEffectsParent;
     private BasicCard cursedCard = null;
-
+    private bool isRoomEffectDone = false;
     private RoomData currentRoom = null;
 
-    private bool isRoomEffectDone = false;
+    [Header("Curse Settings")]
+    [SerializeField]
+    private int distancePlayerToCurse = 0;
+
+    
 
     #region Singleton Pattern
     private static RoomEffectManager _instance;
@@ -86,7 +90,7 @@ public class RoomEffectManager : MonoBehaviour
     public void AddRoomEffectToSequencer(RoomData room)
     {
         currentRoom = room;
-        Debug.LogWarning("found the room you entered in : " + room.roomEffect + " : " + room.x + "/" + room.y);
+        //Debug.LogWarning("found the room you entered in : " + room.roomEffect + " : " + room.x + "/" + room.y);
 
         if (!room.effectLaunched)
         {
@@ -214,6 +218,11 @@ public class RoomEffectManager : MonoBehaviour
         StartCoroutine(TimedRoomEffect());
     }
 
+    public void LaunchChestRoomEffect()
+    {
+
+    }
+
     public void LaunchRestRoomEffect()
     {
 
@@ -253,8 +262,40 @@ public class RoomEffectManager : MonoBehaviour
 
     public void CurseRandomRoom()
     {
-        //Afficher effet au dessus de la room
+        Vector3Int playerRoomPos = PlayerManager.Instance.GetPlayerRoomPosition();
+        RoomData roomToCurse = null;
+        List<RoomData> cursableRooms = new List<RoomData>();
+        foreach (RoomData room in roomsDataArr)
+        {
+            if ((room.x == playerRoomPos.x + distancePlayerToCurse && room.y == playerRoomPos.y) 
+                || (room.y == playerRoomPos.y + distancePlayerToCurse && room.x == playerRoomPos.x)
+                || (room.x == playerRoomPos.x - distancePlayerToCurse && room.y == playerRoomPos.y)
+                || (room.y == playerRoomPos.y - distancePlayerToCurse && room.x == playerRoomPos.x))  //Si une room correspond à la position du player
+            {
+                if(room.roomEffect == RoomEffect.EMPTY)
+                    cursableRooms.Add(room);
+            }
+        }
 
-        //RoomData roomToCurse = GetRoomData();
+        //On réitère si aucune des rooms n'était empty
+        if (cursableRooms.Count == 0)
+        {
+            distancePlayerToCurse++;
+            CurseRandomRoom();
+            return;
+        }
+
+        roomToCurse = cursableRooms[UnityEngine.Random.Range(0, cursableRooms.Count)];  //Sélectionne une room au hasard parmi les cursable
+        for(int i = 0; i < roomsDataArr.Length; i++)
+        {
+            if (roomsDataArr[i] == roomToCurse)
+                roomsDataArr[i].roomEffect = RoomEffect.CURSE; 
+        }
+
+        GenerateRoomsView();    //Update la room tilemap
+        
+        //Afficher effet au dessus de la room
     }
+
+    
 }

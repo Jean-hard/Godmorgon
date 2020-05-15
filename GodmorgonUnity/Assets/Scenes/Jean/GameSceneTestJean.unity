@@ -55670,7 +55670,7 @@ MonoBehaviour:
     effectLaunched: 1
   - x: 6
     y: 7
-    roomEffect: 0
+    roomEffect: 2
     effectLaunched: 1
   - x: 7
     y: 7
@@ -55726,15 +55726,15 @@ MonoBehaviour:
     effectLaunched: 1
   - x: 5
     y: 8
-    roomEffect: 0
+    roomEffect: 2
     effectLaunched: 1
   - x: 6
     y: 8
-    roomEffect: 0
+    roomEffect: 2
     effectLaunched: 1
   - x: 7
     y: 8
-    roomEffect: 0
+    roomEffect: 2
     effectLaunched: 1
   - x: 8
     y: 8
@@ -55790,7 +55790,7 @@ MonoBehaviour:
     effectLaunched: 1
   - x: 6
     y: 9
-    roomEffect: 0
+    roomEffect: 2
     effectLaunched: 1
   - x: 7
     y: 9
@@ -56189,6 +56189,7 @@ MonoBehaviour:
   - {fileID: 153568, guid: cf6f9969c167ef44e8cb85c17951eddc, type: 3}
   - {fileID: 117784, guid: dcade37a634f7e548a07e69103927fcf, type: 3}
   roomEffectsParent: {fileID: 1014795556}
+  distancePlayerToCurse: 2
 --- !u!4 &754354301
 Transform:
   m_ObjectHideFlags: 0
@@ -57691,10 +57692,10 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 6, y: 7, z: 0}
     second:
-      m_TileIndex: 4
+      m_TileIndex: 3
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 3
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
@@ -57817,28 +57818,28 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 5, y: 8, z: 0}
     second:
-      m_TileIndex: 4
+      m_TileIndex: 3
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 3
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
   - first: {x: 6, y: 8, z: 0}
     second:
-      m_TileIndex: 4
+      m_TileIndex: 3
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 3
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
   - first: {x: 7, y: 8, z: 0}
     second:
-      m_TileIndex: 4
+      m_TileIndex: 3
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 3
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
@@ -57961,10 +57962,10 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 6, y: 9, z: 0}
     second:
-      m_TileIndex: 4
+      m_TileIndex: 3
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 3
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
@@ -58858,9 +58859,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 237
+  - m_RefCount: 5
+    m_Data: {fileID: 11400000, guid: 0a16b20342c150c4c918fed6564ad213, type: 2}
+  - m_RefCount: 232
     m_Data: {fileID: 11400000, guid: 74a1ac7353dbf7642a4cc1800056430d, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b1c194a52d43dee45802b0312789adc4, type: 2}
@@ -58897,9 +58898,9 @@ Tilemap:
     m_Data: {r: -2.637668e-19, g: -2.637668e-19, b: -2.637668e-19, a: -2.637668e-19}
   - m_RefCount: 0
     m_Data: {r: -2.6381023e-19, g: -2.6381023e-19, b: -2.6381023e-19, a: -2.6381023e-19}
-  - m_RefCount: 0
-    m_Data: {r: -2.6305088e-19, g: -2.6305088e-19, b: -2.6305088e-19, a: -2.6305088e-19}
-  - m_RefCount: 237
+  - m_RefCount: 5
+    m_Data: {r: 1, g: 0, b: 0.669919, a: 0.078431375}
+  - m_RefCount: 232
     m_Data: {r: 1, g: 1, b: 1, a: 0.11764706}
   - m_RefCount: 1
     m_Data: {r: 0.5245607, g: 0.0047169924, b: 1, a: 0.078431375}
@@ -63819,7 +63820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363010119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.451, y: 4.559, z: 0}
+  m_LocalPosition: {x: -4.451, y: 12.13, z: 0}
   m_LocalScale: {x: 0.5082014, y: 0.5082014, z: 0.5082014}
   m_Children:
   - {fileID: 963691712}
@@ -71977,7 +71978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.45, y: 5.11, z: -10}
+  m_LocalPosition: {x: -3.82, y: 11.79, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1409445893}
@@ -73189,6 +73190,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8808992978091051960, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 0dcff61de6330a8459d75b731c0a056c,
+        type: 2}
     - target: {fileID: 8808992978115600088, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: m_AnchoredPosition.x
