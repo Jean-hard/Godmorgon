@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     [Header("General Settings")]
     public Text healthText;
     public Text blockText;
+    public Text goldValueText;
 
     [Header("Movement Settings")]
     public float playerSpeed = 1f;
@@ -62,6 +63,7 @@ public class PlayerManager : MonoBehaviour
     {
         UpdateHealthText();
         UpdateBlockText();
+        UpdateGoldText();
     }
 
     // Update is called once per frame
@@ -254,6 +256,16 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
+     * Add Gold to player
+     */
+    public void AddGold(int goldValue)
+    {
+        PlayerData.Instance.AddGold(goldValue);
+
+        UpdateGoldText();
+    }
+
+    /**
      * Update Health Text
      */
     private void UpdateHealthText()
@@ -267,6 +279,14 @@ public class PlayerManager : MonoBehaviour
     private void UpdateBlockText()
     {
         blockText.text = PlayerData.Instance.defense.ToString();
+    }
+
+    /**
+     * Update Gold Text
+     */
+    private void UpdateGoldText()
+    {
+        goldValueText.text = PlayerData.Instance.goldValue.ToString();
     }
 
     /**

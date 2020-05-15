@@ -9,7 +9,7 @@ namespace GodMorgon.GameSequencerSpace
     {
         public override IEnumerator ExecuteAction(GameContext context)
         {
-            RoomEffectManager.Instance.LaunchCurseRoomEffect();
+            RoomEffectManager.Instance.LaunchChestRoomEffect();
             while (!RoomEffectManager.Instance.RoomEffectDone())
                 yield return null;
         }

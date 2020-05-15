@@ -8153,6 +8153,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &192702215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 192702216}
+  - component: {fileID: 192702218}
+  - component: {fileID: 192702217}
+  m_Layer: 5
+  m_Name: GoldValueText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &192702216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192702215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 243800491}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.086}
+  m_AnchorMax: {x: 1, y: 0.275}
+  m_AnchoredPosition: {x: 0.00002670288, y: 0.5}
+  m_SizeDelta: {x: 0.5999985, y: -1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &192702217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192702215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &192702218
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192702215}
+  m_CullTransparentMesh: 0
 --- !u!1 &197083030
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,7 +8473,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 192702216}
   m_Father: {fileID: 1264907417}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55670,7 +55748,7 @@ MonoBehaviour:
     effectLaunched: 1
   - x: 6
     y: 7
-    roomEffect: 2
+    roomEffect: 5
     effectLaunched: 1
   - x: 7
     y: 7
@@ -55730,7 +55808,7 @@ MonoBehaviour:
     effectLaunched: 1
   - x: 6
     y: 8
-    roomEffect: 2
+    roomEffect: 5
     effectLaunched: 1
   - x: 7
     y: 8
@@ -56187,9 +56265,11 @@ MonoBehaviour:
   roomTilemap: {fileID: 784341668}
   roomFxList:
   - {fileID: 153568, guid: cf6f9969c167ef44e8cb85c17951eddc, type: 3}
-  - {fileID: 117784, guid: dcade37a634f7e548a07e69103927fcf, type: 3}
+  - {fileID: 160900, guid: 058d03533081dfc41a3e742a1740cb31, type: 3}
+  - {fileID: 187180, guid: 022d246ee9f29ad4dbf4fdbb0a219ce3, type: 3}
   roomEffectsParent: {fileID: 1014795556}
   distancePlayerToCurse: 2
+  goldInChest: 40
 --- !u!4 &754354301
 Transform:
   m_ObjectHideFlags: 0
@@ -57692,10 +57772,10 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 6, y: 7, z: 0}
     second:
-      m_TileIndex: 3
+      m_TileIndex: 2
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 3
+      m_TileColorIndex: 2
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
@@ -57827,10 +57907,10 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 6, y: 8, z: 0}
     second:
-      m_TileIndex: 3
+      m_TileIndex: 2
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 3
+      m_TileColorIndex: 2
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
@@ -58857,9 +58937,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 5
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: b84ff7766bdc2e849b41a7028f372dfb, type: 2}
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 0a16b20342c150c4c918fed6564ad213, type: 2}
   - m_RefCount: 232
     m_Data: {fileID: 11400000, guid: 74a1ac7353dbf7642a4cc1800056430d, type: 2}
@@ -58896,9 +58976,9 @@ Tilemap:
     m_Data: {r: 0, g: 0, b: 0, a: 0}
   - m_RefCount: 0
     m_Data: {r: -2.637668e-19, g: -2.637668e-19, b: -2.637668e-19, a: -2.637668e-19}
-  - m_RefCount: 0
-    m_Data: {r: -2.6381023e-19, g: -2.6381023e-19, b: -2.6381023e-19, a: -2.6381023e-19}
-  - m_RefCount: 5
+  - m_RefCount: 2
+    m_Data: {r: 1, g: 0.93967205, b: 0, a: 0.11764706}
+  - m_RefCount: 3
     m_Data: {r: 1, g: 0, b: 0.669919, a: 0.078431375}
   - m_RefCount: 232
     m_Data: {r: 1, g: 1, b: 1, a: 0.11764706}
@@ -63707,6 +63787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 1704935353}
   blockText: {fileID: 2057936263}
+  goldValueText: {fileID: 192702217}
   playerSpeed: 1
   playerMoveCurve:
     serializedVersion: 2

@@ -51,7 +51,9 @@ public class RoomEffectManager : MonoBehaviour
     [SerializeField]
     private int distancePlayerToCurse = 0;
 
-    
+    [Header("Chest Settings")]
+    [SerializeField]
+    private int goldInChest = 40;
 
     #region Singleton Pattern
     private static RoomEffectManager _instance;
@@ -115,6 +117,8 @@ public class RoomEffectManager : MonoBehaviour
 
                     break;
                 case RoomEffect.CHEST:
+                    GSA_ChestRoom chestRoomAction = new GSA_ChestRoom();
+                    GameSequencer.Instance.AddAction(chestRoomAction);
                     Debug.Log(room.roomEffect + " added to sequencer");
                     break;
                 case RoomEffect.START:
@@ -212,15 +216,27 @@ public class RoomEffectManager : MonoBehaviour
         Vector3 currentRoomWorldPos = roomTilemap.CellToWorld(new Vector3Int(currentRoom.x, currentRoom.y, 0)) + new Vector3(0, 0.75f, 0);
         
         //On lance les particules de Curse sur la room 
-        GameObject effectObject = Instantiate(roomFxList[0], currentRoomWorldPos, Quaternion.identity, roomEffectsParent);
+        Instantiate(roomFxList[0], currentRoomWorldPos, Quaternion.identity, roomEffectsParent);
         if(null != cursedCard)
             GameManager.Instance.AddCardToDiscardPile(cursedCard);
         StartCoroutine(TimedRoomEffect());
     }
 
+    /**
+     * Affiche l'effet visuel de chest et lance l'effet 
+     */
     public void LaunchChestRoomEffect()
     {
+        if (null == currentRoom) return;
+        Vector3 currentRoomWorldPos = roomTilemap.CellToWorld(new Vector3Int(currentRoom.x, currentRoom.y, 0)) + new Vector3(0, 0.75f, 0);
 
+        //On lance les particules de Curse sur la room
+        Instantiate(roomFxList[1], currentRoomWorldPos, Quaternion.identity, roomEffectsParent);
+
+        //Ajoute la gold à la bourse du joueur
+        PlayerManager.Instance.AddGold(goldInChest);
+
+        StartCoroutine(TimedRoomEffect());
     }
 
     public void LaunchRestRoomEffect()

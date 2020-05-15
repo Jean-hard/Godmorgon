@@ -11,11 +11,12 @@ namespace GodMorgon.Player
         //set at start
         public int healthMax;
         public int defenseMax;
+        public int startGold;
 
         //--------------- player data in game ---------------------
         public int health;
         public int defense;
-
+        public int goldValue;
         
         public bool doubleDamageDone = false;
         public bool doubleDamageTaken = false;
@@ -45,8 +46,10 @@ namespace GodMorgon.Player
             //à configurer par le gameEngine
             healthMax = 100;
             defenseMax = 100;
+            startGold = 20;
 
             health = healthMax;
+            goldValue = startGold;
         }
 
         public void SetHealth(int newHealth)
@@ -127,6 +130,26 @@ namespace GodMorgon.Player
                 return true;
             else
                 return false;
+        }
+
+        //Ajoute des golds au player
+        public void AddGold(int value)
+        {
+            goldValue += value;
+        }
+
+        //Dépense de l'argent
+        public void SpendGold(int value)
+        {
+            goldValue -= value;
+        }
+
+        //Retourne true si le joueur peut dépenser tant d'argent
+        public bool HasEnoughGold(int value)
+        {
+            if (goldValue < value) return false;
+            
+            return true;
         }
     }
 }
