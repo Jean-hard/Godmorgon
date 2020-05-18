@@ -8,6 +8,7 @@ using GodMorgon.StateMachine;
 using GodMorgon.Player;
 using GodMorgon.Enemy;
 using GodMorgon.VisualEffect;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class PlayerManager : MonoBehaviour
 
     private bool playerCanMove = false;
     private bool playerHasMoved = false;
+    [NonSerialized]
+    public bool isMoving = false;
     private int spotIndex;
     private List<Spot> playerPathArray;
 
@@ -155,7 +158,7 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-
+        isMoving = true;
         //la prochaine position est le spot parmi la liste de spots
         Vector3 nextPos = TilesManager.Instance.walkableTilemap.CellToWorld(new Vector3Int(playerPathArray[spotIndex].X, playerPathArray[spotIndex].Y, 0))
             + new Vector3(0, 0.3f, 0);   //on ajoute 0.x pour que le player passe bien au milieu de la tile, la position de la tile étant en bas du losange             
@@ -166,7 +169,7 @@ public class PlayerManager : MonoBehaviour
             //si on arrive à la tile finale où le player peut se rendre
             if (spotIndex == playerPathArray.Count - 1)
             {
-
+                isMoving = false;
                 playerCanMove = false;
                 playerHasMoved = true;
                 spotIndex = 0;
@@ -187,7 +190,15 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
-    * Renvoie true si le mouvement des ennemis est terminé
+     * 
+     */
+    public bool IsPlayerMoving()
+    {
+        return isMoving;
+    }
+
+    /**
+    * Renvoie true si le mouvement du player est terminé
     */
     public bool PlayerMoveDone()
     {

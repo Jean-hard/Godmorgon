@@ -267,7 +267,7 @@ public class RoomEffectManager : MonoBehaviour
     {
         foreach (RoomData room in roomsDataArr)
         {
-            if (position.x == room.x && position.y == room.y)  //Si une room correspond à la position du player
+            if (position.x == room.x && position.y == room.y)  //Si une room correspond à la position donnée en param
             {
                 return room;
             }
