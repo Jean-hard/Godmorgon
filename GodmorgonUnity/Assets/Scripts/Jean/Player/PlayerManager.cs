@@ -267,7 +267,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
-     * Add black defense to player
+     * Affiche le shop
+     * Appelé par le bouton token
      */
     public void OpenShop()
     {
