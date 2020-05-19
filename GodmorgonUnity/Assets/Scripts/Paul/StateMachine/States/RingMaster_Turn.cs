@@ -14,7 +14,7 @@ namespace GodMorgon.StateMachine
     {
         public override void OnStartState()
         {
-            Debug.Log("On RingMaster turn State");
+            //Debug.Log("On RingMaster turn State");
             GameManager.Instance.DownPanelBlock(true);
             MusicManager.Instance.PlayRingmasterTurnTheme();
 

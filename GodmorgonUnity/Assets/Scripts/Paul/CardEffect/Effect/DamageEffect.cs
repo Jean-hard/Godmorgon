@@ -31,7 +31,7 @@ namespace GodMorgon.CardEffect
             //Trust
             if(effectData.trust)
             {
-                if (effectData.trustNb == TimelineManager.Instance.nbActualAction)
+                if (BuffManager.Instance.IsTrustValidate(effectData.trustNb))
                 {
                     damagePoint = damagePoint * 2;
                     Debug.Log("Trust activate");

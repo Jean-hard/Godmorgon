@@ -251,10 +251,18 @@ public class PlayerManager : MonoBehaviour
 
         UpdateHealthText();
         UpdateBlockText();
-        Debug.Log("Update player's life ");
+        //Debug.Log("Update player's life ");
 
         //launch player hit effect
         OnDamage();
+    }
+
+    /**
+     * Inflige des dégat à l'ennemie lorsque le player est attaqué
+     */
+    public int Counter()
+    {
+        return BuffManager.Instance.counterDamage;
     }
 
     /**

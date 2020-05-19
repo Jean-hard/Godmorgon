@@ -21,7 +21,6 @@ namespace GodMorgon.Models
         }
 
 
-
         /**
          * All the parameter for all the possible effect
          * The inspector must adapte to show only the parameter needed,
@@ -41,6 +40,9 @@ namespace GodMorgon.Models
         [Header("Defense")]
         //nb block
         public int nbBlock = 0;
+        //counter effet
+        public bool isCounter = false;
+        public int counterDamagePoint = 0;
 
 
         [Header("Power Up")]
