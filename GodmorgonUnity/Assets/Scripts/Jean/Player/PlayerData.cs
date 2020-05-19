@@ -12,11 +12,13 @@ namespace GodMorgon.Player
         public int healthMax;
         public int defenseMax;
         public int startGold;
+        public int startToken;
 
         //--------------- player data in game ---------------------
         public int health;
         public int defense;
         public int goldValue;
+        public int token;
         
         public bool doubleDamageDone = false;
         public bool doubleDamageTaken = false;
@@ -47,9 +49,11 @@ namespace GodMorgon.Player
             healthMax = 100;
             defenseMax = 100;
             startGold = 20;
+            startToken = 2;
 
             health = healthMax;
             goldValue = startGold;
+            token = startToken;
         }
 
         public void SetHealth(int newHealth)
@@ -142,6 +146,18 @@ namespace GodMorgon.Player
         public void SpendGold(int value)
         {
             goldValue -= value;
+        }
+
+        //Ajoute un token au player
+        public void AddToken()
+        {
+            token++;
+        }
+
+        //Enlève 1 token
+        public void TakeOffOneToken()
+        {
+            token--;
         }
 
         //Retourne true si le joueur peut dépenser tant d'argent

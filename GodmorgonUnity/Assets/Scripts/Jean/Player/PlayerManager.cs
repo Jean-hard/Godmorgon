@@ -12,10 +12,12 @@ using System;
 
 public class PlayerManager : MonoBehaviour
 {
-    [Header("General Settings")]
+    [Header("UI Settings")]
     public Text healthText;
     public Text blockText;
     public Text goldValueText;
+    public Text tokenText;
+    public GameObject shopPanel;
 
     [Header("Movement Settings")]
     public float playerSpeed = 1f;
@@ -67,6 +69,7 @@ public class PlayerManager : MonoBehaviour
         UpdateHealthText();
         UpdateBlockText();
         UpdateGoldText();
+        UpdateTokenText();
     }
 
     // Update is called once per frame
@@ -232,12 +235,10 @@ public class PlayerManager : MonoBehaviour
         return TilesManager.Instance.roomTilemap.WorldToCell(transform.position);
     }
 
-    // WIP
+    //Laps de temps après le move du player
     IEnumerator WaitForRingMasterTurn()
     {
         yield return new WaitForSeconds(3f);
-        //Debug.Log("Ringmaster turn");
-        //GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
         playerHasMoved = false;
     }
 
@@ -258,7 +259,21 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
-     * Add black defense to player
+     * Affiche le shop
+     * Appelé en cliquant sur le bouton token
+     */
+    public void OpenShop()
+    {
+        //Si c'est au tour du joueur et qu'il nous reste des token
+        if (GameEngine.Instance.GetState() == StateMachine.STATE.PLAYER_TURN && PlayerData.Instance.token > 0)
+        {
+            TakeOffToken(); //Retire un token au player
+            shopPanel.SetActive(true);  //Affiche le shop
+        }
+    }
+
+    /**
+     * Add block defense to player
      */
     public void AddBlock(int blockValue)
     {
@@ -274,6 +289,26 @@ public class PlayerManager : MonoBehaviour
         PlayerData.Instance.AddGold(goldValue);
 
         UpdateGoldText();
+    }
+
+    /**
+     * Add Gold to player
+     */
+    public void AddToken()
+    {
+        PlayerData.Instance.AddToken();
+
+        UpdateTokenText();
+    }
+
+    /**
+     * Remove 1 token to player
+     */
+    public void TakeOffToken()
+    {
+        PlayerData.Instance.TakeOffOneToken();
+
+        UpdateTokenText();
     }
 
     /**
@@ -298,6 +333,14 @@ public class PlayerManager : MonoBehaviour
     private void UpdateGoldText()
     {
         goldValueText.text = PlayerData.Instance.goldValue.ToString();
+    }
+
+    /**
+     * Update Token Text
+     */
+    private void UpdateTokenText()
+    {
+        tokenText.text = PlayerData.Instance.token.ToString();
     }
 
     /**
