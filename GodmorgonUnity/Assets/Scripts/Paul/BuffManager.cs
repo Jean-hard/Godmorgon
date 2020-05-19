@@ -84,7 +84,8 @@ public class BuffManager
     public int getModifiedMove(int movePoint)
     {
         int newMovePoint = movePoint;
-
+        if (isFastShoes)
+            newMovePoint = newMovePoint * 2;
 
         return newMovePoint;
     }

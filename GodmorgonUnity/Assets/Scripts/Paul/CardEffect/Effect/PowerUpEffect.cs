@@ -29,6 +29,15 @@ namespace GodMorgon.CardEffect
                 GSA_KillerInstinct killerInstinctAction = new GSA_KillerInstinct();
                 GameSequencer.Instance.AddAction(killerInstinctAction);
             }
+
+            if(effectData.FastShoes)
+            {
+                BuffManager.Instance.isFastShoes = true;
+
+                //add the Power Up sequence
+                GSA_FastShoes fastShoesAction = new GSA_FastShoes();
+                GameSequencer.Instance.AddAction(fastShoesAction);
+            }
         }
     }
 }

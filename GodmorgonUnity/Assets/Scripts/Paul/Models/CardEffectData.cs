@@ -49,6 +49,9 @@ namespace GodMorgon.Models
         //double damage done and take
         public bool KillerInstinct = false;
 
+        //double les déplacements
+        public bool FastShoes = false;
+
 
         [Header("Spell")]
         //effect to draw card
