@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
-  m_Name: Defense_Abnegation [WIP]
+  m_Name: Defense_Abnegation [a_tester]
   m_EditorClassIdentifier: 
   cardType: 2
   id: 8
@@ -24,6 +24,8 @@ MonoBehaviour:
     damagePoint: 0
     nbMoves: 0
     nbBlock: 5
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
     DrawCard: 0
     nbCardToDraw: 0

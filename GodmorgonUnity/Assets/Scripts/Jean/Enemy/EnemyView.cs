@@ -300,6 +300,9 @@ namespace GodMorgon.Enemy
             Debug.Log("Enemy is attacking");
             ShowAttackEffect();
             PlayerManager.Instance.TakeDamage(enemyData.attack);
+
+            //prend des dégats si le counter est activé
+            enemyData.TakeDamage(PlayerManager.Instance.Counter());
         }
 
         /**

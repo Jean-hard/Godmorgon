@@ -252,15 +252,22 @@ public class PlayerManager : MonoBehaviour
 
         UpdateHealthText();
         UpdateBlockText();
-        Debug.Log("Update player's life ");
+        //Debug.Log("Update player's life ");
 
         //launch player hit effect
         OnDamage();
     }
 
     /**
-     * Affiche le shop
-     * Appelé en cliquant sur le bouton token
+     * Inflige des dégat à l'ennemie lorsque le player est attaqué
+     */
+    public int Counter()
+    {
+        return BuffManager.Instance.counterDamage;
+    }
+
+    /**
+     * Add black defense to player
      */
     public void OpenShop()
     {

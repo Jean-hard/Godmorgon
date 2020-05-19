@@ -51184,6 +51184,8 @@ MonoBehaviour:
   roomTilemap: {fileID: 0}
   roomFxList: []
   roomEffectsParent: {fileID: 0}
+  distancePlayerToCurse: 0
+  goldInChest: 40
 --- !u!4 &754354301
 Transform:
   m_ObjectHideFlags: 0
@@ -56581,6 +56583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 1704935353}
   blockText: {fileID: 2057936263}
+  goldValueText: {fileID: 0}
   playerSpeed: 1
   playerMoveCurve:
     serializedVersion: 2
@@ -64133,7 +64136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070149612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d46b76c8e40169a41b659f6a1271e943, type: 3}
   m_Name: 

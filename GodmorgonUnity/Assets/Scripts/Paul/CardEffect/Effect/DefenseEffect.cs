@@ -31,7 +31,7 @@ namespace GodMorgon.CardEffect
             //Trust
             if (effectData.trust)
             {
-                if (effectData.trustNb == TimelineManager.Instance.nbActualAction)
+                if (BuffManager.Instance.IsTrustValidate(effectData.trustNb))
                 {
                     nbBlock = nbBlock * 2;
                     Debug.Log("Trust activate");
@@ -44,6 +44,15 @@ namespace GodMorgon.CardEffect
                 nbBlock = GameEngine.Instance.GetHandCards().Count * nbBlock;
                 GSA_DiscardHand discardHandAction = new GSA_DiscardHand();
                 GameSequencer.Instance.AddAction(discardHandAction);
+            }
+
+            //si l'effet active le counter
+            if(effectData.isCounter)
+            {
+                BuffManager.Instance.isCounterActive = true;
+                BuffManager.Instance.counterDamage = effectData.counterDamagePoint;
+                GSA_PlayerCounter counterAction = new GSA_PlayerCounter();
+                GameSequencer.Instance.AddAction(counterAction);
             }
 
             //apply effect

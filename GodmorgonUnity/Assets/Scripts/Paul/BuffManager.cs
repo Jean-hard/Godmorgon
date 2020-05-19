@@ -33,6 +33,10 @@ public class BuffManager
     public bool isFastShoes = false;
     public bool isHardHead = false;
 
+    //defense effet
+    public bool isCounterActive = false;
+    public int counterDamage = 0;
+
     //effet de player
     public bool isHalfLife = false;
 
@@ -50,6 +54,9 @@ public class BuffManager
         isSurvivor = false;
         isFastShoes = false;
         isHardHead = false;
+
+        isCounterActive = false;
+        counterDamage = 0;
 
         PlayerManager.Instance.ResetBonus();
     }
@@ -77,7 +84,8 @@ public class BuffManager
     public int getModifiedMove(int movePoint)
     {
         int newMovePoint = movePoint;
-
+        if (isFastShoes)
+            newMovePoint = newMovePoint * 2;
 
         return newMovePoint;
     }
