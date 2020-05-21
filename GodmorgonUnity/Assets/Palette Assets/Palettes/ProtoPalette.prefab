@@ -211,6 +211,24 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -11, y: -28, z: 0}
+    second:
+      m_TileIndex: 38
+      m_TileSpriteIndex: 46
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -9, y: -28, z: 0}
+    second:
+      m_TileIndex: 39
+      m_TileSpriteIndex: 47
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -3, y: -27, z: 0}
     second:
       m_TileIndex: 77
@@ -838,10 +856,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f27836f9ec4e17a4d8bc219e67f4882f, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 29a3764fe7430234a8533e3e0e19b3e6, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 810892a4aac4f274f8fb2c510bc1f1f9, type: 2}
   - m_RefCount: 1
@@ -1085,10 +1103,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: e308f0d51c3a1724cb30a58ed78e9aff, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: a9d9d3a5b6777ea458c05f72f64227fd, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 61d514fbe13585645b06bb96ff7cabf6, type: 3}
   - m_RefCount: 1
@@ -1224,7 +1242,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 7494d06dcfd2bc040bea3f155ac57358, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 75
+  - m_RefCount: 77
     m_Data:
       e00: 1
       e01: 0
@@ -1243,7 +1261,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 65
+  - m_RefCount: 67
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 1.9120714e+26, g: 1.9120714e+26, b: 1.9120714e+26, a: 1.9120714e+26}
