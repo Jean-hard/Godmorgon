@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraDrag : MonoBehaviour
 {
@@ -26,15 +27,21 @@ public class CameraDrag : MonoBehaviour
     public float outerDown = -10f;
     public float outerUp = 10f;
 
+    private bool isDragging = false;
+
     void Update()
     {
-        /**
-         * Mouse camera drag n move.
-         * not good system
-         */
-        //MoveCameraByMove();
 
-        MoveCameraByDraging();
+        if (Input.GetMouseButtonDown(0) && Input.mousePosition.y > 285)
+            isDragging = true;
+
+        //Input.GetMouseButtonDown(0)
+
+        if (Input.GetMouseButtonUp(0))
+            isDragging = false;
+
+        if (isDragging)
+            MoveCameraByDraging();
 
         //Keyboard commands
         float f = 0.0f;
@@ -67,58 +74,6 @@ public class CameraDrag : MonoBehaviour
         return p_Velocity;
     }
 
-    //mauvaise méthode
-    private void MoveCameraByMove()
-    {
-        Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-        float left = Screen.width * 0.2f;
-        float right = Screen.width - (Screen.width * 0.2f);
-
-        if (mousePosition.x < left)
-            cameraDragging = true;
-
-        else if (mousePosition.x > right)
-            cameraDragging = true;
-
-
-        if (cameraDragging)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                dragOrigin = Input.mousePosition;
-                return;
-            }
-            if (!Input.GetMouseButton(0))
-                return;
-
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-            Vector3 move = new Vector3(pos.x * dragSpeed, pos.y * dragSpeed, 0);
-
-            if (move.x > 0f)
-            {
-                if (this.transform.position.x < outerRight)
-                    transform.Translate(move, Space.World);
-            }
-            else
-            {
-                if (this.transform.position.x > outerLeft)
-                    transform.Translate(move, Space.World);
-            }
-
-            if (move.y > 0f)
-            {
-                if (this.transform.position.y < outerUp)
-                    transform.Translate(move, Space.World);
-            }
-            else
-            {
-                if (this.transform.position.y > outerDown)
-                    transform.Translate(move, Space.World);
-            }
-        }
-    }
-
     private void MoveCameraByDraging()
     {
         if (Input.GetMouseButtonDown(0))
@@ -127,14 +82,13 @@ public class CameraDrag : MonoBehaviour
             return;
         }
 
-        if (!Input.GetMouseButton(0)) return;
-
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
             Vector3 pos = Camera.main.ScreenToViewportPoint(dragOrigin - Input.mousePosition);
             Vector3 move = new Vector3(pos.x * dragSpeed, pos.y * dragSpeed, 0);
 
             transform.Translate(move, Space.World);
+            dragOrigin = Input.mousePosition;
             return;
         }
     }
