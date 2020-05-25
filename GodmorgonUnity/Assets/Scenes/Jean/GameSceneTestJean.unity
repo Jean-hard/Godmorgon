@@ -72729,7 +72729,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1363010120}
+      - m_Target: {fileID: 1347665778}
         m_MethodName: OpenShop
         m_Mode: 1
         m_Arguments:
@@ -73443,6 +73443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handManager: {fileID: 652673499}
   downPanelBlock: {fileID: 11742501}
+  shopPanel: {fileID: 464061274}
 --- !u!1 &1360088473
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using GodMorgon.Models;
 using GodMorgon.StateMachine;
 using GodMorgon.Timeline;
+using GodMorgon.Player;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject downPanelBlock = null;
+
+    [SerializeField]
+    private GameObject shopPanel;
+
 
     //bool pour savoir si le player à passer son tour précédemment
     private bool lastPlayerTurnPassed = false;
@@ -83,6 +88,20 @@ public class GameManager : MonoBehaviour
         lastPlayerTurnPassed = true;
         TimelineManager.Instance.SetRingmasterActionRemain(1);
         GameEngine.Instance.SetState(StateMachine.STATE.RINGMASTER_TURN);
+    }
+
+    /**
+     * Affiche le shop
+     * Appelé par le bouton token
+     */
+    public void OpenShop()
+    {
+        //Si c'est au tour du joueur et qu'il nous reste des token
+        if (GameEngine.Instance.GetState() == StateMachine.STATE.PLAYER_TURN && PlayerData.Instance.token > 0)
+        {
+            PlayerManager.Instance.TakeOffToken(); //Retire un token au player
+            shopPanel.SetActive(true);  //Affiche le shop
+        }
     }
 
     #endregion
