@@ -17,7 +17,6 @@ public class PlayerManager : MonoBehaviour
     public Text blockText;
     public Text goldValueText;
     public Text tokenText;
-    public GameObject shopPanel;
 
     [Header("Movement Settings")]
     public float playerSpeed = 1f;
@@ -264,20 +263,6 @@ public class PlayerManager : MonoBehaviour
     public int Counter()
     {
         return BuffManager.Instance.counterDamage;
-    }
-
-    /**
-     * Affiche le shop
-     * Appelé par le bouton token
-     */
-    public void OpenShop()
-    {
-        //Si c'est au tour du joueur et qu'il nous reste des token
-        if (GameEngine.Instance.GetState() == StateMachine.STATE.PLAYER_TURN && PlayerData.Instance.token > 0)
-        {
-            TakeOffToken(); //Retire un token au player
-            shopPanel.SetActive(true);  //Affiche le shop
-        }
     }
 
     /**
