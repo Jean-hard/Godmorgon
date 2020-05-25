@@ -47,6 +47,19 @@ namespace GodMorgon.CardEffect
                         Debug.Log("SPELL");
                     }
                     break;
+                case BasicCard.CARDTYPE.SIGHT:
+                    Vector3 dropWorldPos = TilesManager.Instance.walkableTilemap.CellToWorld(dropPosition);
+                    Vector3Int dropRoomPos = TilesManager.Instance.roomTilemap.WorldToCell(dropWorldPos);
+                    foreach (RoomData room in RoomEffectManager.Instance.roomsDataArr)
+                    {
+                        if (room.x == dropRoomPos.x && room.y == dropRoomPos.y)
+                        {
+                            context.targetRoom = room;
+                            context.isDropValidate = true;
+                            Debug.Log("SIGHT");
+                        } 
+                    }
+                    break;
             }
 
             return context;

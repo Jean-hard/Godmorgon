@@ -21,7 +21,7 @@ namespace GodMorgon.CardEffect
             GameSequencer.Instance.AddAction(playerMoveAction);
 
             if(null != TilesManager.Instance.roomTilemap)
-                RoomEffectManager.Instance.AddRoomEffectToSequencer(context.nextRoom);
+                RoomEffectManager.Instance.AddRoomEffectToSequencer(context.targetRoom);
         }
     }
 }

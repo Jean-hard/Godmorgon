@@ -99,9 +99,9 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (context.isDropValidate)
         {
             if (null != TilesManager.Instance.roomTilemap)
-                context.nextRoom = RoomEffectManager.Instance.GetRoomData(dropRoomCellPosition);
+                context.targetRoom = RoomEffectManager.Instance.GetRoomData(dropRoomCellPosition);
             else
-                context.nextRoom = null;
+                context.targetRoom = null;
 
             //Joue la carte
             CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card, context);

@@ -17,11 +17,11 @@ MonoBehaviour:
   description: 
   artwork: {fileID: 0}
   cards:
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
   - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
-  - {fileID: 11400000, guid: fa113bd248518fd4e833c1cfa789978e, type: 2}
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}

@@ -43,6 +43,15 @@ namespace GodMorgon.CardEffect
                 GSA_Spell playerSpellAction = new GSA_Spell();
                 GameSequencer.Instance.AddAction(playerSpellAction);
             }
+
+            //add the sight sequence
+            if(effectData.Sight)
+            {
+                Debug.Log("Sight");
+                FogMgr.Instance.SetRevealRange(effectData.sightRange);
+                GSA_Sight sightAction = new GSA_Sight();
+                GameSequencer.Instance.AddAction(sightAction);
+            }
         }
     }
 }

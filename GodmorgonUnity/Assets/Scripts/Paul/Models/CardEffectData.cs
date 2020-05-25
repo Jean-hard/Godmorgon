@@ -52,6 +52,10 @@ namespace GodMorgon.Models
         //double les déplacements
         public bool FastShoes = false;
 
+        [Header("Sight")]
+        //effect to sight card
+        public bool Sight = false;
+        public int sightRange = 1;
 
         [Header("Spell")]
         //effect to draw card
@@ -71,5 +75,7 @@ namespace GodMorgon.Models
 
         //Discard toutes les cartes en main
         public bool isDiscardHand = false;
+
+        
     }
 }

@@ -16,6 +16,6 @@ namespace GodMorgon.CardEffect
         public BasicCard card;
         public Entity owner;
         public Entity targets;
-        public RoomData nextRoom;
+        public RoomData targetRoom;
     }
 }

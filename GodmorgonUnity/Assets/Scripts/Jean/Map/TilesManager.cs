@@ -112,9 +112,19 @@ public class TilesManager : MonoBehaviour
 
         if (null != tilesList)
         {
-            //Pour toutes les tiles walkable, on regarde si elle fait partie des 4 cases (room) voisines, et si le chemin vers cette room est direct, dans ce cas on met la tile dans la liste des accessibles
-            foreach (Vector3Int tile in tilesList)
+            //On regarde si les cases proches sont walkable, si non : on les retire de la liste
+            List<Vector3Int> tempNearTilesList = new List<Vector3Int>();            
+            foreach (Vector3Int tile in nearestTilesList)
             {
+                if (tilesList.Contains(tile))
+                    tempNearTilesList.Add(tile);
+            }
+            nearestTilesList = tempNearTilesList;
+
+
+            //Si le chemin vers les rooms proches est direct, dans ce cas on met la tile dans la liste des accessibles
+            foreach (Vector3Int tile in nearestTilesList)
+            { 
                 roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(tile.x, tile.y), 100);
 
                 bool isEnemyOnPath = false;
