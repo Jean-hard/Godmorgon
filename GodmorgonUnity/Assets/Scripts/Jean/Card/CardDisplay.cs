@@ -50,6 +50,7 @@ public class CardDisplay : MonoBehaviour
      */
     public void UpdateCard(BasicCard cardData)
     {
+        Debug.Log("on lolololol : " + cardData.name);
         //Save the scriptableObject used by this card gameObject
         card = cardData;
 
@@ -71,27 +72,30 @@ public class CardDisplay : MonoBehaviour
      */
     public void UpdateDescription()
     {
-        string cardDescription = card.description;
+        if (card != null)
+        {
+            string cardDescription = card.description;
 
-        //damage
-        int actualDamage = BuffManager.Instance.getModifiedDamage(card.GetRealDamage());
-        cardDescription = cardDescription.Replace("[nbDamage]", "<b>"  +actualDamage.ToString() + "</b>");
+            //damage
+            int actualDamage = BuffManager.Instance.getModifiedDamage(card.GetRealDamage());
+            cardDescription = cardDescription.Replace("[nbDamage]", "<b>" + actualDamage.ToString() + "</b>");
 
-        //block
-        int actualBlock = BuffManager.Instance.getModifiedBlock(card.GetRealBlock());
-        cardDescription = cardDescription.Replace("[nbBlock]", "<b>" + actualBlock.ToString() + "</b>");
+            //block
+            int actualBlock = BuffManager.Instance.getModifiedBlock(card.GetRealBlock());
+            cardDescription = cardDescription.Replace("[nbBlock]", "<b>" + actualBlock.ToString() + "</b>");
 
-        //Move
-        int actualMove = BuffManager.Instance.getModifiedMove(card.GetRealMove());
-        cardDescription = cardDescription.Replace("[nbMove]", "<b>" + actualMove.ToString() + "</b>");
+            //Move
+            int actualMove = BuffManager.Instance.getModifiedMove(card.GetRealMove());
+            cardDescription = cardDescription.Replace("[nbMove]", "<b>" + actualMove.ToString() + "</b>");
 
-        //Heal
-        int actualHeal = BuffManager.Instance.getModifiedHeal(card.GetRealHeal());
-        cardDescription = cardDescription.Replace("[nbHeal]", "<b>" + actualHeal.ToString() + "</b>");
+            //Heal
+            int actualHeal = BuffManager.Instance.getModifiedHeal(card.GetRealHeal());
+            cardDescription = cardDescription.Replace("[nbHeal]", "<b>" + actualHeal.ToString() + "</b>");
 
-        //carte à piocher
-        cardDescription = cardDescription.Replace("[nbCardToDraw]", "<b>" + card.GetRealNbDraw().ToString() + "</b>");
+            //carte à piocher
+            cardDescription = cardDescription.Replace("[nbCardToDraw]", "<b>" + card.GetRealNbDraw().ToString() + "</b>");
 
-        descriptionText.text = cardDescription;
+            descriptionText.text = cardDescription;
+        }
     }
 }
