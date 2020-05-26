@@ -28,6 +28,7 @@ namespace GodMorgon.Models
         public new string name;
         public string description;
         public int actionCost = 1;
+        public int price = 0;
 
         public Sprite template;
         public Sprite artwork;

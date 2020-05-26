@@ -50,7 +50,7 @@ public class CardDisplay : MonoBehaviour
      */
     public void UpdateCard(BasicCard cardData)
     {
-        Debug.Log("on lolololol : " + cardData.name);
+        //Debug.Log("on lolololol : " + cardData.name);
         //Save the scriptableObject used by this card gameObject
         card = cardData;
 
