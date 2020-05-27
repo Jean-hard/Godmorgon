@@ -13,15 +13,20 @@ namespace GodMorgon.CardEffect
         * Apply the move effect by creating the sequence in the gameSequencer
         */
         public override void ApplyEffect(CardEffectData effectData, GameContext context)
-        {
-            Debug.Log("Move To " + effectData.nbMoves + " Tiles");
-            
+        {  
+            //Trust
+            if (effectData.trust)
+            {
+                if (BuffManager.Instance.IsTrustValidate(effectData.trustNb))
+                {
+                    effectData.nbMoves *= 2;
+                    Debug.Log("Trust activate");
+                }
+            }
+
             //add the move sequence
             GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();
             GameSequencer.Instance.AddAction(playerMoveAction);
-
-            if(null != TilesManager.Instance.roomTilemap)
-                RoomEffectManager.Instance.AddRoomEffectToSequencer(context.targetRoom);
         }
     }
 }

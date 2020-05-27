@@ -9,6 +9,7 @@ using GodMorgon.Player;
 using GodMorgon.Enemy;
 using GodMorgon.VisualEffect;
 using System;
+using GodMorgon.Models;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -29,7 +30,15 @@ public class PlayerManager : MonoBehaviour
     private int spotIndex;
     private List<Spot> playerPathArray;
 
-    Vector3Int endPos;
+    //DONNEES RECUP DE LA CARTE MOVE
+    private CardEffectData[] _cardEffectDatas;
+
+    private int nbMoveIterationCounter = 0; //nb d'iterations de move effectuées
+    private bool accessibleShown = false;
+    private bool canLaunchOtherMove = false;
+
+    private Vector3Int endPos;
+    private Vector3Int supposedPos; //Position supposée du joueur = centre room lorsqu'il est dans la room d'un ennemi (utilisée pour les déplacements suite à ce cas)
 
     // nombre de tiles parcourues pour 1 move
     private int nbTilesToMove = 3;
@@ -69,12 +78,45 @@ public class PlayerManager : MonoBehaviour
         UpdateBlockText();
         UpdateGoldText();
         UpdateTokenText();
+
+        nbMoveIterationCounter = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         LaunchMoveMechanic();
+
+        if(null != _cardEffectDatas)    //Si on a un card effect data
+        {
+            if (nbMoveIterationCounter < _cardEffectDatas[0].nbMoves && canLaunchOtherMove) //S'il nous reste des moves à faire et qu'on est autorisé à le faire
+            {
+                ShowNewAccessible();    //On affiche les effets sur les nouvelles tiles disponibles
+
+                if (Input.GetMouseButtonDown(0))    //Lors du click
+                {
+                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+                    Vector3Int dropCellPosition = TilesManager.Instance.walkableTilemap.WorldToCell(mousePos);      //Recup la position de la souris au moment du click
+
+                    if (TilesManager.Instance.accessibleTiles.Contains(dropCellPosition))   //Si la tile clickée fait partie de celles accessibles
+                    {
+                        canLaunchOtherMove = false; //On ne peut pas relancer un move
+                        accessibleShown = false;    
+                        TilesManager.Instance.HideAccessibleTiles();    //Cache les effets de tiles accessibles
+                        
+                        MovePlayer(_cardEffectDatas[0].nbMoves);    //Lance le move du joueur                        
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Récup les données de la carte de type MOVE
+     */
+    public void UpdateMoveDatas(CardEffectData[] cardEffectData)
+    {
+        _cardEffectDatas = cardEffectData;
     }
 
     /**
@@ -82,9 +124,15 @@ public class PlayerManager : MonoBehaviour
      */
     public void MovePlayer(int nbMoves)
     {
+        _cardEffectDatas[0].nbMoves = nbMoves;
+
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
         endPos = TilesManager.Instance.walkableTilemap.WorldToCell(mouseWorldPos);
+
+        Vector3Int dropRoomCellPosition = new Vector3Int(0, 0, 0);
+        if (null != TilesManager.Instance.roomTilemap)  //Si le TilesManager possède bien la roomTilemap
+            dropRoomCellPosition = TilesManager.Instance.roomTilemap.WorldToCell(endPos);
 
         List<Spot> _roadPath = TilesManager.Instance.roadPath;
 
@@ -98,11 +146,14 @@ public class PlayerManager : MonoBehaviour
         if (_roadPath != null && _roadPath.Count > 0) //reset le roadpath
             _roadPath.Clear();
 
+
         //création du path, prenant en compte la position des tiles, le point de départ, le point d'arrivée, et la longueur en tiles du path
         //roadPath est une liste de spots = une liste de positions de tiles
-        _roadPath = TilesManager.Instance.astar.CreatePath(TilesManager.Instance.spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), nbTilesToMove); //* nbMoves
+        _roadPath = TilesManager.Instance.astar.CreatePath(TilesManager.Instance.spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(endPos.x, endPos.y), 5); //* nbMoves
 
         bool isEnemyOnPath = false;
+
+        if (_roadPath == null) return;
 
         foreach (Spot tile in _roadPath)
         {
@@ -148,7 +199,9 @@ public class PlayerManager : MonoBehaviour
 
         playerCanMove = true;  //on autorise le player à bouger
 
-        spotIndex = 0;    
+        spotIndex = 0;
+
+        nbMoveIterationCounter++;   //On ajoute un move au compteur
     }
 
     /**
@@ -160,7 +213,9 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
+
         isMoving = true;
+
         //la prochaine position est le spot parmi la liste de spots
         Vector3 nextPos = TilesManager.Instance.walkableTilemap.CellToWorld(new Vector3Int(playerPathArray[spotIndex].X, playerPathArray[spotIndex].Y, 0))
             + new Vector3(0, 0.3f, 0);   //on ajoute 0.x pour que le player passe bien au milieu de la tile, la position de la tile étant en bas du losange             
@@ -171,11 +226,14 @@ public class PlayerManager : MonoBehaviour
             //si on arrive à la tile finale où le player peut se rendre
             if (spotIndex == playerPathArray.Count - 1)
             {
-                isMoving = false;
                 playerCanMove = false;
-                playerHasMoved = true;
+                isMoving = false;
                 spotIndex = 0;
-                StartCoroutine(WaitForRingMasterTurn());
+                
+                RoomEffectManager.Instance.LaunchRoomEffect(GetPlayerRoomPosition());   //Lance l'effet de room sur laquelle on vient d'arriver
+                
+                StartCoroutine(WaitAfterRoomEffect());  //Attends avant de permettre un autre move (pour ralentir le rythme)
+                
             }
             else if (spotIndex < playerPathArray.Count - 1)
             {
@@ -192,7 +250,22 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
-     * 
+     * Une fois arrivé à destination, active la suite des évènements après qq secondes
+     */
+    IEnumerator WaitAfterRoomEffect()
+    {
+        yield return new WaitForSeconds(2f);
+        canLaunchOtherMove = true;  //On permet le lancement d'un autre move
+        if (nbMoveIterationCounter >= _cardEffectDatas[0].nbMoves)  //Si on a atteint le nombre de moves possibles de la carte
+        {
+            canLaunchOtherMove = false;
+            nbMoveIterationCounter = 0;
+            playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
+        }
+    }
+
+    /**
+     * Renvoie true lorsque le joueur est en mouvement
      */
     public bool IsPlayerMoving()
     {
@@ -204,10 +277,20 @@ public class PlayerManager : MonoBehaviour
     */
     public bool PlayerMoveDone()
     {
-        if (playerHasMoved)
-            return true;
-        else
-            return false;
+        if (!playerHasMoved) return false;
+
+        playerHasMoved = false;
+        return true;
+    }
+
+    private void ShowNewAccessible()
+    {
+        if(!accessibleShown)
+        {
+            accessibleShown = true;
+            TilesManager.Instance.UpdateAccessibleTilesList();
+            TilesManager.Instance.ShowAccessibleTiles();            
+        }
     }
 
     /**
@@ -232,13 +315,6 @@ public class PlayerManager : MonoBehaviour
     public Vector3Int GetPlayerRoomPosition()
     {
         return TilesManager.Instance.roomTilemap.WorldToCell(transform.position);
-    }
-
-    //Laps de temps après le move du player
-    IEnumerator WaitForRingMasterTurn()
-    {
-        yield return new WaitForSeconds(3f);
-        playerHasMoved = false;
     }
 
     /**

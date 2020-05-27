@@ -58,9 +58,7 @@ public class FogMgr : MonoBehaviour
 
         List<Vector3Int> nearRoomsTiles = UpdateNearRooms(currentPlayerPos, 1);
         TilesManager.Instance.CreateGrid();
-        TilesManager.Instance.UpdateAccessibleTilesList(1);
-
-        Debug.Log("is Updating fog");
+        TilesManager.Instance.UpdateAccessibleTilesList();
 
         foreach (Vector3Int room in nearRoomsTiles)   //Pour toutes les rooms à coté du player
         {
