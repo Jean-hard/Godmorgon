@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Curse_Obstruction[WIP]
+  m_Name: Curse_Obstruction[a_tester]
   m_EditorClassIdentifier: 
   cardType: 6
   id: 100
@@ -24,6 +24,10 @@ MonoBehaviour:
   - currentEffect: 5
     damagePoint: 0
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    arrivingDamages: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
