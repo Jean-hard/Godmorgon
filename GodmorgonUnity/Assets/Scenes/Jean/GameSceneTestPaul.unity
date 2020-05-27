@@ -81069,7 +81069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 514388b7edc64bd499781eb632db43bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettings: {fileID: 11400000, guid: 94264bb68903fd44b8fce201d4986865, type: 2}
+  gameSettings: {fileID: 11400000, guid: 5beb8f97f66c4b344b7f9d80618b4f8d, type: 2}
   gameSceneName: 
 --- !u!4 &2049775135
 Transform:

@@ -20,7 +20,8 @@ namespace GodMorgon.Models
             DEFENSE,
             POWER_UP,
             SPELL,
-            SIGHT
+            SIGHT,
+            CURSE,
         }
 
         public CARDTYPE cardType = CARDTYPE.MOVE;

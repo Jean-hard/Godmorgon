@@ -53,11 +53,14 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     //fonction lancée au drag d'une carte
     public void OnBeginDrag(PointerEventData eventData)
     {
+
         //onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
 
-        startPosition = this.transform.position;
-        this.transform.SetParent(movingCardParent);
-
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.cardType != BasicCard.CARDTYPE.CURSE)
+        {
+            startPosition = this.transform.position;
+            this.transform.SetParent(movingCardParent);
+        }
         _card = eventData.pointerDrag.GetComponent<CardDisplay>().card;
 
         context = new GameContext
@@ -67,16 +70,19 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         //On montre les positions disponibles pour le drop de la carte
         dropPosManager.ShowPositionsToDrop(_card);
+        
     }
 
     //fonction lancée lorsqu'on a une carte en main
     public void OnDrag(PointerEventData eventData)
     {
-        //onCardDragDelegate?.Invoke(this.gameObject, eventData);
+        if (eventData.pointerDrag.GetComponent<CardDisplay>().card.cardType != BasicCard.CARDTYPE.CURSE)
+        {
+            //onCardDragDelegate?.Invoke(this.gameObject, eventData);
 
-        this.transform.position = eventData.position;   //La carte prend la position de la souris
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);  //On réduit la taille de la carte lors du drag
-      
+            this.transform.position = eventData.position;   //La carte prend la position de la souris
+            this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth / 3, cardHeight / 3);  //On réduit la taille de la carte lors du drag
+        }
     }
 
     //fonction lancée au drop d'une carte
@@ -90,7 +96,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
         Vector3Int dropCellPosition = TilesManager.Instance.walkableTilemap.WorldToCell(dropPosition);
 
-        Vector3Int dropRoomCellPosition = new Vector3Int(0,0,0);
+        Vector3Int dropRoomCellPosition = new Vector3Int(0, 0, 0);
         if (null != TilesManager.Instance.roomTilemap)  //Si le TilesManager possède bien la roomTilemap
             dropRoomCellPosition = TilesManager.Instance.roomTilemap.WorldToCell(dropPosition);
 
@@ -105,14 +111,14 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             //Joue la carte
             CardEffectManager.Instance.PlayCard(eventData.pointerDrag.GetComponent<CardDisplay>().card, context);
-            
+
             //Effect + delete card
             //Instantiate(dropEffect, dropPosition, Quaternion.identity, effectsParent);
             this.gameObject.SetActive(false);
 
             //Cache les positions accessibles
             dropPosManager.HidePositionsToDrop(_card);
-            
+
             //sound
             MusicManager.Instance.PlayDropCard();
             //MusicManager.Instance.PlayRollingKart();  //pas ici qu'il doit être activé
@@ -123,11 +129,9 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         else
         {
             this.transform.SetParent(hand);
-            
+
             //Cache les positions accessibles
             dropPosManager.HidePositionsToDrop(_card);
         }
-
-        
     }
 }
