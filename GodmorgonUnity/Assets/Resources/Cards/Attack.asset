@@ -17,6 +17,7 @@ MonoBehaviour:
   name: Attack
   description: attaque de [nbDamage]
   actionCost: 1
+  price: 60
   template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
   artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
   effectsData:
@@ -24,7 +25,12 @@ MonoBehaviour:
     damagePoint: 20
     nbMoves: 0
     nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
     DrawCard: 0
     nbCardToDraw: 0
     isHeal: 0
@@ -32,3 +38,4 @@ MonoBehaviour:
     shiver: 0
     trust: 0
     trustNb: 0
+    isDiscardHand: 0

@@ -9,6 +9,7 @@ using GodMorgon.Models;
 using GodMorgon.StateMachine;
 using GodMorgon.Timeline;
 using GodMorgon.Player;
+using GodMorgon.Shop;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     private GameObject downPanelBlock = null;
 
     [SerializeField]
-    private GameObject shopPanel;
+    private ShopManager shopManager;
 
 
     //bool pour savoir si le player à passer son tour précédemment
@@ -100,7 +101,8 @@ public class GameManager : MonoBehaviour
         if (GameEngine.Instance.GetState() == StateMachine.STATE.PLAYER_TURN && PlayerData.Instance.token > 0)
         {
             PlayerManager.Instance.TakeOffToken(); //Retire un token au player
-            shopPanel.SetActive(true);  //Affiche le shop
+            shopManager.gameObject.SetActive(true);  //Affiche le shop
+            shopManager.ShopOpening();//on prépare les cartes pour le magasin
         }
     }
 
@@ -115,6 +117,14 @@ public class GameManager : MonoBehaviour
             handManager.AddCard(cardDrawn);
         }
         //on met à jour les infos dès qu'on pioche une carte
+        handManager.UpdateCardDataDisplay();
+    }
+
+    //add card to hand from shop
+    public void AddCardInHand(BasicCard card)
+    {
+        GameEngine.Instance.hand.AddCard(card);
+        handManager.AddCard(card);
         handManager.UpdateCardDataDisplay();
     }
 

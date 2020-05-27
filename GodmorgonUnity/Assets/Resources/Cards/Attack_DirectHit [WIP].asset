@@ -15,8 +15,9 @@ MonoBehaviour:
   cardType: 1
   id: 9
   name: Direct Hit
-  description: Ranged 1.\end \end Inflict 6 damages.
+  description: Ranged 1.\end \end Inflict [nbDamage] damages.
   actionCost: 1
+  price: 0
   template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
   artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
   effectsData:
@@ -24,13 +25,35 @@ MonoBehaviour:
     damagePoint: 8
     nbMoves: 0
     nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
     DrawCard: 0
     nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 0
   - currentEffect: 0
     damagePoint: 8
     nbMoves: 0
     nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
     DrawCard: 0
     nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 0

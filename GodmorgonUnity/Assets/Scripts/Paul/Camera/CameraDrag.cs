@@ -9,34 +9,36 @@ public class CameraDrag : MonoBehaviour
     /*
     Made simple to use (drag and drop, done) for regular keyboard layout  
     wasd : basic movement
-    shift : Makes camera accelerate
-    space : Moves camera on X and Z axis only.  So camera doesn't gain any height*/
+    */
+    public float minScroll = 2;
+    public float maxScroll = 4;
+
 
     [Header("keyboard parameter")]
     public float mainSpeed = 100.0f; //regular speed
-    public float camSens = 0.25f; //How sensitive it with mouse
-    private Vector3 lastMouse = new Vector3(255, 255, 255); //kind of in the middle of the screen, rather than at the top (play)
-    private float totalRun = 1.0f;
 
     [Header("mouse parameter")]
     public float dragSpeed = 2;
     private Vector3 dragOrigin;
     public bool cameraDragging = true;
-    public float outerLeft = -10f;
-    public float outerRight = 10f;
-    public float outerDown = -10f;
-    public float outerUp = 10f;
 
     private bool isDragging = false;
+    private Camera gameCamera = null;
+
+    private void Start()
+    {
+        gameCamera = GetComponent<Camera>();
+    }
 
     void Update()
     {
+        //deal with the mouse scroll to zoom
+        if(Input.mouseScrollDelta.y != 0)
+            ZoomCam();
+
 
         if (Input.GetMouseButtonDown(0) && Input.mousePosition.y > 285)
             isDragging = true;
-
-        //Input.GetMouseButtonDown(0)
-
         if (Input.GetMouseButtonUp(0))
             isDragging = false;
 
@@ -90,6 +92,20 @@ public class CameraDrag : MonoBehaviour
             transform.Translate(move, Space.World);
             dragOrigin = Input.mousePosition;
             return;
+        }
+    }
+
+    //DeZoom and zoom between 2 and 4
+    private void ZoomCam()
+    {
+        if (gameCamera.orthographicSize >= minScroll && gameCamera.orthographicSize <= maxScroll)
+        {
+            gameCamera.orthographicSize -= Input.mouseScrollDelta.y * 0.2f;
+            //security
+            if (gameCamera.orthographicSize < minScroll)
+                gameCamera.orthographicSize = minScroll;
+            if (gameCamera.orthographicSize > maxScroll)
+                gameCamera.orthographicSize = maxScroll;
         }
     }
 }
