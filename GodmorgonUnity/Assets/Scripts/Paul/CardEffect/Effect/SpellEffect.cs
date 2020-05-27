@@ -47,7 +47,6 @@ namespace GodMorgon.CardEffect
             //add the sight sequence
             if(effectData.Sight)
             {
-                Debug.Log("Sight");
                 FogMgr.Instance.SetRevealRange(effectData.sightRange);
                 GSA_Sight sightAction = new GSA_Sight();
                 GameSequencer.Instance.AddAction(sightAction);

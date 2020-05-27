@@ -89,26 +89,35 @@ public class RoomEffectManager : MonoBehaviour
         
     }
 
-    public void AddRoomEffectToSequencer(RoomData room)
+    public void LaunchRoomEffect(Vector3Int roomPos)
     {
-        currentRoom = room;
+        foreach(RoomData room in roomsDataArr)
+        {
+            if(roomPos.x == room.x && roomPos.y == room.y)
+            {
+                currentRoom = room;
+            }
+        }
+        
         //Debug.LogWarning("found the room you entered in : " + room.roomEffect + " : " + room.x + "/" + room.y);
 
-        if (!room.effectLaunched)
+        if (!currentRoom.effectLaunched)
         {
-            switch (room.roomEffect) //On regarde son effet
+            switch (currentRoom.roomEffect) //On regarde son effet
             {
                 case RoomEffect.EMPTY:
 
                     break;
                 case RoomEffect.CURSE:
-                    Debug.Log(room.roomEffect + " added to sequencer");
+                    LaunchCurseRoomEffect();
+                    
+                    Debug.Log(currentRoom.roomEffect + " added to sequencer");
                     //Ajoute l'action Curse de la room au sequencer
-                    GSA_CurseRoom curseRoomAction = new GSA_CurseRoom();
-                    GameSequencer.Instance.AddAction(curseRoomAction);
+                    //GSA_CurseRoom curseRoomAction = new GSA_CurseRoom();
+                    //GameSequencer.Instance.AddAction(curseRoomAction);
                     break;
                 case RoomEffect.SHOP:
-                    Debug.Log(room.roomEffect + " added to sequencer");
+                    Debug.Log(currentRoom.roomEffect + " added to sequencer");
                     break;
                 case RoomEffect.REST:
 
@@ -117,9 +126,10 @@ public class RoomEffectManager : MonoBehaviour
 
                     break;
                 case RoomEffect.CHEST:
-                    GSA_ChestRoom chestRoomAction = new GSA_ChestRoom();
-                    GameSequencer.Instance.AddAction(chestRoomAction);
-                    Debug.Log(room.roomEffect + " added to sequencer");
+                    LaunchChestRoomEffect();
+                    //GSA_ChestRoom chestRoomAction = new GSA_ChestRoom();
+                    //GameSequencer.Instance.AddAction(chestRoomAction);
+                    Debug.Log(currentRoom.roomEffect + " added to sequencer");
                     break;
                 case RoomEffect.START:
 
@@ -129,7 +139,7 @@ public class RoomEffectManager : MonoBehaviour
                     break;
             }
 
-            room.effectLaunched = true;
+            currentRoom.effectLaunched = true;
         }
     }
 

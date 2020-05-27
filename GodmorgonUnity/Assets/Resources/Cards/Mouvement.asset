@@ -23,7 +23,11 @@ MonoBehaviour:
   effectsData:
   - currentEffect: 1
     damagePoint: 0
-    nbMoves: 1
+    nbMoves: 6
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    arrivingDamages: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0

@@ -28,7 +28,6 @@ public class TilesManager : MonoBehaviour
     public Transform effectsParent;
     private bool effectInstantiated = false;
 
-
     // nombre de tiles parcourues pour 1 move
     private int nbTilesToMove = 3;
 
@@ -64,7 +63,7 @@ public class TilesManager : MonoBehaviour
         CreateGrid();
         astar = new Astar(spots, bounds.size.x, bounds.size.y);
 
-        UpdateAccessibleTilesList(1);
+        UpdateAccessibleTilesList();
     }
 
     // Update is called once per frame
@@ -97,7 +96,7 @@ public class TilesManager : MonoBehaviour
     /**
      * Donne les cases les plus proches du joueur vers lesquelles il peut se déplacer
      */
-    public void UpdateAccessibleTilesList(int nbMoves)
+    public void UpdateAccessibleTilesList()
     {
         nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
         currentTileCoordinate = walkableTilemap.WorldToCell(PlayerManager.Instance.transform.position);   //On transpose la position scène du player en position grid 
@@ -160,7 +159,6 @@ public class TilesManager : MonoBehaviour
                         else
                             accessibleTiles.Add(tile);
                     }
-
                 }
             }
         }
@@ -171,8 +169,6 @@ public class TilesManager : MonoBehaviour
      */
     public void ShowAccessibleTiles()
     {
-        //Debug.Log("Accessible Tiles : " + accessibleTiles.Count);
-
         for (int i = 0; i < accessibleTiles.Count; i++)
         {
             Vector2 moveTileEffectPos = walkableTilemap.CellToWorld(accessibleTiles[i]) + new Vector3(0, 0.25f, 0);

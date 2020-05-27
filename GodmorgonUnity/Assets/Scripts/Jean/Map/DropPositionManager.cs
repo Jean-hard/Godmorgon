@@ -56,7 +56,6 @@ namespace GodMorgon.CardEffect
                         {
                             context.targetRoom = room;
                             context.isDropValidate = true;
-                            Debug.Log("SIGHT");
                         } 
                     }
                     break;
@@ -72,7 +71,7 @@ namespace GodMorgon.CardEffect
             switch (draggedCard.cardType)
             {
                 case BasicCard.CARDTYPE.MOVE:
-                    TilesManager.Instance.UpdateAccessibleTilesList(draggedCard.effectsData[0].nbMoves);
+                    TilesManager.Instance.UpdateAccessibleTilesList();
                     TilesManager.Instance.ShowAccessibleTiles();
                     break;
                 case BasicCard.CARDTYPE.ATTACK:
