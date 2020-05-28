@@ -82,6 +82,10 @@ namespace GodMorgon.Models
         //Discard toutes les cartes en main
         public bool isDiscardHand = false;
 
+        [Header("Curse")]
+        //pour la carte obstruction
+        public bool isUseless = true;
+
         
     }
 }

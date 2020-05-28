@@ -5039,7 +5039,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5092,7 +5092,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9526,7 +9526,7 @@ GameObject:
   - component: {fileID: 19864098}
   - component: {fileID: 19901468}
   m_Layer: 0
-  m_Name: MagicNovaBlue
+  m_Name: MagicNovaBlue 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

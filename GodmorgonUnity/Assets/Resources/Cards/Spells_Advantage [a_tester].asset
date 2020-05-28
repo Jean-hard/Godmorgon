@@ -10,21 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Spells_Advantage [WIP]
+  m_Name: Spells_Advantage [a_tester]
   m_EditorClassIdentifier: 
   cardType: 4
   id: 0
   name: Advantage
   description: Draw [nbCardToDraw] cards
   actionCost: 1
+  price: 0
   template: {fileID: 21300000, guid: d49870c996ceb864694c0f6905854a0b, type: 3}
   artwork: {fileID: 21300000, guid: 44cb4f3a6a57b884ca6f0557650f01df, type: 3}
   effectsData:
   - currentEffect: 4
     damagePoint: 0
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    arrivingDamages: 0
     nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
     DrawCard: 1
     nbCardToDraw: 2
     isHeal: 0
@@ -32,3 +42,5 @@ MonoBehaviour:
     shiver: 0
     trust: 0
     trustNb: 0
+    isDiscardHand: 0
+    isUseless: 1

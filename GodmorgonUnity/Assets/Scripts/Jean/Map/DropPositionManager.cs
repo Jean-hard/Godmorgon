@@ -59,6 +59,8 @@ namespace GodMorgon.CardEffect
                         } 
                     }
                     break;
+                default:
+                    break;
             }
 
             return context;
