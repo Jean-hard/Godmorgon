@@ -68,6 +68,11 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             card = _card
         };
 
+        if(_card.cardType == BasicCard.CARDTYPE.MOVE)
+        {
+            PlayerManager.Instance.UpdateMoveDatas(context.card.effectsData);   //On envoie les datas de la carte au playerMgr pour gérer les cas d'accessibilités des tiles voisines
+        }
+
         //On montre les positions disponibles pour le drop de la carte
         dropPosManager.ShowPositionsToDrop(_card);
         

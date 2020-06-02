@@ -19,10 +19,10 @@ namespace GodMorgon.CardEffect
             {
                 if (BuffManager.Instance.IsTrustValidate(effectData.trustNb))
                 {
-                    PlayerManager.Instance.UpdateMoveMultiplier(2);
+                    PlayerManager.Instance.UpdateMultiplier(2);
                 }
             }
-            else PlayerManager.Instance.UpdateMoveMultiplier(1);
+            else PlayerManager.Instance.UpdateMultiplier(1);
 
             //add the move sequence
             GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();

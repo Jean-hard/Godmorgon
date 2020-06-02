@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 0
   id: 8
   name: Rolling
-  description: Move to 1 Room
+  description: Move to [nbMove] Room
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
@@ -23,11 +23,10 @@ MonoBehaviour:
   effectsData:
   - currentEffect: 1
     damagePoint: 0
-    nbMoves: 2
+    nbMoves: 1
     rolling: 1
     swift: 0
     noBrakes: 0
-    arrivingDamages: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
@@ -40,7 +39,7 @@ MonoBehaviour:
     isHeal: 0
     nbHeal: 0
     shiver: 0
-    trust: 0
+    trust: 1
     trustNb: 1
     isDiscardHand: 0
     isUseless: 1

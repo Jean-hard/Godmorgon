@@ -39,8 +39,6 @@ namespace GodMorgon.Models
         public bool rolling = false;
         public bool swift = false;
         public bool noBrakes = false;
-        //damage when coming in a room
-        public int arrivingDamages = 0;
 
 
         [Header("Defense")]
