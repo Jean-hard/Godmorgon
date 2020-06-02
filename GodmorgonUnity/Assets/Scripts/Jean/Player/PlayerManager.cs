@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     [NonSerialized]
     public bool isMoving = false;
     private int spotIndex;
-    private List<Spot> playerPathArray;
+    private List<Spot> playerPathList;
 
     //DONNEES RECUP DE LA CARTE MOVE
     private CardEffectData[] _cardEffectDatas;
@@ -131,6 +131,17 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
+     * Renvoie les données de la carte move jouée
+     */
+    public CardEffectData[] GetCardEffectData()
+    {
+        if (_cardEffectDatas != null)
+            return _cardEffectDatas;
+        else
+            return null;
+    }
+
+    /**
      * Update le multiplier si le trust de la carte move est activé
      */
     public void UpdateMoveMultiplier(int multiplierValue)
@@ -143,6 +154,8 @@ public class PlayerManager : MonoBehaviour
      */
     public void MovePlayer()
     {
+        GameManager.Instance.DownPanelBlock(true);  //Block le down panel pour que le joueur ne puisse pas jouer de carte pendant le mouvement
+
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
         endPos = TilesManager.Instance.walkableTilemap.WorldToCell(mouseWorldPos);
@@ -156,7 +169,7 @@ public class PlayerManager : MonoBehaviour
         Vector3 playerPos = this.transform.position;
         Vector3Int playerCellPos = TilesManager.Instance.walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
 
-        playerPathArray = new List<Spot>();
+        playerPathList = new List<Spot>();
 
         spotIndex = 0;
 
@@ -172,39 +185,31 @@ public class PlayerManager : MonoBehaviour
 
         if (_roadPath == null) return;
 
-        foreach (Spot tile in _roadPath)
+        //on ajoute les tiles par lesquelles il va devoir passer sauf celle où il y a un enemy
+        if (null != EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(_roadPath[0].X, _roadPath[0].Y, 0)))
         {
-            bool isEnemyOnTile = false;
+            EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(_roadPath[0].X, _roadPath[0].Y, 0)).enemyData.inPlayersRoom = true;
+            isEnemyOnPath = true;
+            isFirstInRoom = false;
 
-            //on ajoute les tiles par lesquelles il va devoir passer sauf celle où il y a un enemy
-            if (null != EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(tile.X, tile.Y, 0)))
-            {
-                EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(tile.X, tile.Y, 0)).enemyData.inPlayersRoom = true;
-                isEnemyOnTile = true;
-                isEnemyOnPath = true;
-                isFirstInRoom = false;
-
-                supposedPos = new Vector3Int(tile.X, tile.Y, 0);    //La position supposée est celle de l'ennemi sur le path
-            }
-
-            if(!isEnemyOnTile)
-                playerPathArray.Add(tile);     //on ajoute les spots par lesquels le player va devoir passer sauf celui où il est
-
-            spotIndex++;
+            supposedPos = new Vector3Int(_roadPath[0].X, _roadPath[0].Y, 0);    //La position supposée est celle de l'ennemi sur le path
+            _roadPath.Remove(_roadPath[0]);
         }
+
+        playerPathList = _roadPath;
 
         //Si on ETAIT le premier arrivé dans la room, alors un ennemi présent dans la room doit se recentrer au milieu de la room
         if (isFirstInRoom)
             EnemyManager.Instance.RecenterEnemiesAfterPlayerMove();
 
         
-        playerPathArray.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
-        playerPathArray.RemoveAt(0);    
+        playerPathList.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
+        playerPathList.RemoveAt(0);    
 
         //Si on n'a pas d'ennemi sur le chemin, on est le premier arrivé dans la room
         if (!isEnemyOnPath)
         {
-            supposedPos = new Vector3Int(playerPathArray[playerPathArray.Count - 1].X, playerPathArray[playerPathArray.Count - 1].Y, 0); //position supposée = dernière tile du path
+            supposedPos = new Vector3Int(playerPathList[playerPathList.Count - 1].X, playerPathList[playerPathList.Count - 1].Y, 0); //position supposée = dernière tile du path
 
             isFirstInRoom = true;
             foreach (EnemyView enemy in EnemyManager.Instance.GetEnemiesInPlayersRoom())
@@ -239,14 +244,14 @@ public class PlayerManager : MonoBehaviour
         isMoving = true;
 
         //la prochaine position est le spot parmi la liste de spots
-        Vector3 nextPos = TilesManager.Instance.walkableTilemap.CellToWorld(new Vector3Int(playerPathArray[spotIndex].X, playerPathArray[spotIndex].Y, 0))
+        Vector3 nextPos = TilesManager.Instance.walkableTilemap.CellToWorld(new Vector3Int(playerPathList[spotIndex].X, playerPathList[spotIndex].Y, 0))
             + new Vector3(0, 0.3f, 0);   //on ajoute 0.x pour que le player passe bien au milieu de la tile, la position de la tile étant en bas du losange             
 
 
         if (Vector3.Distance(this.transform.position, nextPos) < 0.001f)
         {
             //si on arrive à la tile finale où le player peut se rendre
-            if (spotIndex == playerPathArray.Count - 1)
+            if (spotIndex == playerPathList.Count - 1)
             {
                 playerCanMove = false;
                 isMoving = false;
@@ -255,14 +260,14 @@ public class PlayerManager : MonoBehaviour
                 StartCoroutine(LaunchActionsInNewRoom());  //Attends avant de permettre un autre move (pour ralentir le rythme)
                 
             }
-            else if (spotIndex < playerPathArray.Count - 1)
+            else if (spotIndex < playerPathList.Count - 1)
             {
                 spotIndex++;    //on passe à la tile suivante tant qu'on a pas atteint la dernière
             }
         }
         else
         {
-            float ratio = (float)spotIndex / (playerPathArray.Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
+            float ratio = (float)spotIndex / (playerPathList.Count - 1);   //ratio varie entre 0 et 1, 0 pour le spot le plus proche et 1 pour le spot final
             ratio = playerMoveCurve.Evaluate(ratio);     //on le lie à notre curve pour le modifier dans l'inspector à notre guise
             float speed = playerSpeed * ratio;   //on le lie à la vitesse pour que la curve ait un impact sur la vitesse du player
             this.transform.position = Vector2.MoveTowards(this.transform.position, nextPos, speed * Time.deltaTime);
