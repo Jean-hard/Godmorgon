@@ -13,16 +13,16 @@ namespace GodMorgon.CardEffect
         * Apply the move effect by creating the sequence in the gameSequencer
         */
         public override void ApplyEffect(CardEffectData effectData, GameContext context)
-        {  
+        {
             //Trust
             if (effectData.trust)
             {
                 if (BuffManager.Instance.IsTrustValidate(effectData.trustNb))
                 {
-                    effectData.nbMoves *= 2;
-                    Debug.Log("Trust activate");
+                    PlayerManager.Instance.UpdateMoveMultiplier(2);
                 }
             }
+            else PlayerManager.Instance.UpdateMoveMultiplier(1);
 
             //add the move sequence
             GSA_PlayerMove playerMoveAction = new GSA_PlayerMove();

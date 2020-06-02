@@ -33,6 +33,7 @@ public class TilesManager : MonoBehaviour
 
     public Astar astar;
     public List<Spot> roadPath = new List<Spot>();
+    public List<Spot> tempRoadPath = new List<Spot>();
     BoundsInt bounds;
 
     #region Singleton Pattern
@@ -66,12 +67,6 @@ public class TilesManager : MonoBehaviour
         UpdateAccessibleTilesList();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CreateGrid()
     {
         spots = new Vector3Int[bounds.size.x, bounds.size.y];
@@ -98,16 +93,16 @@ public class TilesManager : MonoBehaviour
      */
     public void UpdateAccessibleTilesList()
     {
+        Vector3Int supposedPlayerCellPos = PlayerManager.Instance.supposedPos;  //Position du player en format cell
         nearestTilesList.Clear();   //Clear la liste de tiles avant de placer les nouvelles
-        currentTileCoordinate = walkableTilemap.WorldToCell(PlayerManager.Instance.transform.position);   //On transpose la position scène du player en position grid 
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x + nbTilesToMove, currentTileCoordinate.y, 0));   //Ajoute les 4 cases voisines
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x - nbTilesToMove, currentTileCoordinate.y, 0));
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y + nbTilesToMove, 0));
-        nearestTilesList.Add(new Vector3Int(currentTileCoordinate.x, currentTileCoordinate.y - nbTilesToMove, 0));
+        nearestTilesList.Add(new Vector3Int(supposedPlayerCellPos.x + nbTilesToMove, supposedPlayerCellPos.y, 0));   //Ajoute les 4 cases voisines
+        nearestTilesList.Add(new Vector3Int(supposedPlayerCellPos.x - nbTilesToMove, supposedPlayerCellPos.y, 0));
+        nearestTilesList.Add(new Vector3Int(supposedPlayerCellPos.x, supposedPlayerCellPos.y + nbTilesToMove, 0));
+        nearestTilesList.Add(new Vector3Int(supposedPlayerCellPos.x, supposedPlayerCellPos.y - nbTilesToMove, 0));
 
         accessibleTiles.Clear();
-        Vector3 playerPos = PlayerManager.Instance.transform.position;
-        Vector3Int playerCellPos = walkableTilemap.WorldToCell(playerPos);  //Position du player en format cell
+
+        Vector3Int currentCellPos = PlayerManager.Instance.GetPlayerCellPosition();
 
         if (null != tilesList)
         {
@@ -124,7 +119,11 @@ public class TilesManager : MonoBehaviour
             //Si le chemin vers les rooms proches est direct, dans ce cas on met la tile dans la liste des accessibles
             foreach (Vector3Int tile in nearestTilesList)
             { 
-                roadPath = astar.CreatePath(spots, new Vector2Int(playerCellPos.x, playerCellPos.y), new Vector2Int(tile.x, tile.y), 100);
+                //Roadpath partant du centre de la room, qu'il y ait un ennemi ou pas, pour calculer les tiles accessibles, et qu'il n'y ait pas de décalage si le player n'est pas au centre de la room
+                roadPath = astar.CreatePath(spots, new Vector2Int(supposedPlayerCellPos.x, supposedPlayerCellPos.y), new Vector2Int(tile.x, tile.y), 100);
+
+                //Roadpath partant de la tile actuelle du player, dans le cas où il n'est pas au centre de la room, va permettre de regarder si l'ennemi est sur le path
+                tempRoadPath = astar.CreatePath(spots, new Vector2Int(currentCellPos.x, currentCellPos.y), new Vector2Int(tile.x, tile.y), 100);
 
                 bool isEnemyOnPath = false;
 
@@ -132,15 +131,23 @@ public class TilesManager : MonoBehaviour
                 if (nearestTilesList.Contains(tile) && roadPath.Count < 5)
                 {
                     //On check en plus si on a un ennemi sur le chemin 
-                    foreach (Spot _tile in roadPath)
+                    foreach (Spot _tile in tempRoadPath)
                     {
                         //Si un ennemi est sur une tile du roadPath
                         if (null != EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(_tile.X, _tile.Y, 0)))
                         {
                             //Si cet ennemi est dans la room
                             if (EnemyManager.Instance.GetEnemyViewByPosition(new Vector3Int(_tile.X, _tile.Y, 0)).enemyData.inPlayersRoom)
+                            {
                                 isEnemyOnPath = true;
+                            }
                         }
+                    }
+
+                    //Si on a un ennemi sur le chemin et que c'est une carte swift
+                    if(isEnemyOnPath && PlayerManager.Instance.GetCardEffectData()[0].swift && !PlayerManager.Instance.isFirstInRoom)
+                    {
+                        accessibleTiles.Add(tile);
                     }
 
                     //Si aucun ennemi est sur le path jusqu'à cette tile, c'est une tile accessible
@@ -151,9 +158,8 @@ public class TilesManager : MonoBehaviour
                         {
                             //La tile accessible est l'avant dernière tile du path (l'index 0 étant la tile la plus éloignée, on prend celle d'avant = index 1) 
                             //pour que le joueur arrive au milieu de la prochaine room (vu qu'il n'était pas centré dans la room)
-                            Vector3Int _newTile = new Vector3Int(roadPath[1].X, roadPath[1].Y, 0);
+                            Vector3Int _newTile = new Vector3Int(roadPath[0].X, roadPath[0].Y, 0);
                             accessibleTiles.Add(_newTile);
-
                         }
                         //Sinon si le joueur était bien au milieu d'une room car arrivé en premier dedans
                         else
@@ -161,7 +167,7 @@ public class TilesManager : MonoBehaviour
                     }
                 }
             }
-        }
+        }else Debug.Log("TilesList is null !");
     }
 
     /**

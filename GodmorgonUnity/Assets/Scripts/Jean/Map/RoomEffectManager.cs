@@ -70,7 +70,6 @@ public class RoomEffectManager : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(_instance);
         }
     }
 
@@ -111,13 +110,9 @@ public class RoomEffectManager : MonoBehaviour
                 case RoomEffect.CURSE:
                     LaunchCurseRoomEffect();
                     
-                    Debug.Log(currentRoom.roomEffect + " added to sequencer");
-                    //Ajoute l'action Curse de la room au sequencer
-                    //GSA_CurseRoom curseRoomAction = new GSA_CurseRoom();
-                    //GameSequencer.Instance.AddAction(curseRoomAction);
                     break;
                 case RoomEffect.SHOP:
-                    Debug.Log(currentRoom.roomEffect + " added to sequencer");
+
                     break;
                 case RoomEffect.REST:
 
@@ -127,9 +122,7 @@ public class RoomEffectManager : MonoBehaviour
                     break;
                 case RoomEffect.CHEST:
                     LaunchChestRoomEffect();
-                    //GSA_ChestRoom chestRoomAction = new GSA_ChestRoom();
-                    //GameSequencer.Instance.AddAction(chestRoomAction);
-                    Debug.Log(currentRoom.roomEffect + " added to sequencer");
+
                     break;
                 case RoomEffect.START:
 
@@ -197,8 +190,6 @@ public class RoomEffectManager : MonoBehaviour
             //On inverse car les coordonnées du tableau et de la tilemap sont inversées
             roomTilemap.SetTile(new Vector3Int(room.x, room.y, 0), currentTileBase);  
         }
-
-        Debug.Log("Room tilemap generated");
     }
 
     //Renvoie le visuel de la tile en fonction de l'effet
