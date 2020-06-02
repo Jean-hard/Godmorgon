@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
-  m_Name: Movement_SwiftMove [WIP]
+  m_Name: Movement_SwiftMove
   m_EditorClassIdentifier: 
   cardType: 0
   id: 8
   name: Swift Move
   description: Move 2 Rooms, you can move through enemies.
   actionCost: 2
+  price: 0
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
   artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}
   effectsData:
@@ -40,5 +41,6 @@ MonoBehaviour:
     nbHeal: 0
     shiver: 0
     trust: 0
-    trustNb: 0
+    trustNb: 1
     isDiscardHand: 0
+    isUseless: 1

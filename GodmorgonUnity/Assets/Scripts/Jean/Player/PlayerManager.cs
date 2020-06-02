@@ -279,6 +279,12 @@ public class PlayerManager : MonoBehaviour
      */
     IEnumerator LaunchActionsInNewRoom()
     {
+        if(_cardEffectDatas[0].noBrakes)    //Si la carte était une No brakes, on lance l'attaque sur les ennemis avant le reste des actions
+        {
+            RoomAttack();
+            yield return new WaitForSeconds(1f);
+        }
+
         RoomEffectManager.Instance.LaunchRoomEffect(GetPlayerRoomPosition());   //Lance l'effet de room sur laquelle on vient d'arriver
         
         yield return new WaitForSeconds(2f);
@@ -310,6 +316,9 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
 
+    /**
+     * Affiche les nouvelles tiles accessibles lorsqu'il reste des move à utiliser de la carte "mouvement" jouée
+     */
     private void ShowNewAccessible()
     {
         if(!accessibleShown)
@@ -342,6 +351,19 @@ public class PlayerManager : MonoBehaviour
     public Vector3Int GetPlayerRoomPosition()
     {
         return TilesManager.Instance.roomTilemap.WorldToCell(transform.position);
+    }
+
+    /**
+     * Attaque les ennemis dans la room avec les damages de la carte jouée
+     */
+    public void RoomAttack()
+    {
+        List<EnemyView> closeEnemiesList = EnemyManager.Instance.GetEnemiesInPlayersRoom(); //On récup la list des ennemis présents dans la nouvelle room du player
+        foreach(EnemyView enemy in closeEnemiesList)    //Pour chaque ennemi de cette room
+        {
+            enemy.OnDamage();   //On lance l'effet visuel du hit sur les ennemis
+            enemy.enemyData.TakeDamage(_cardEffectDatas[0].arrivingDamages);    //On applique les damages de la carte sur les ennemis
+        }
     }
 
     /**

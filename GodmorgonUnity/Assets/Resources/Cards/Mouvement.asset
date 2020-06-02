@@ -23,7 +23,7 @@ MonoBehaviour:
   effectsData:
   - currentEffect: 1
     damagePoint: 0
-    nbMoves: 6
+    nbMoves: 2
     rolling: 0
     swift: 0
     noBrakes: 0
@@ -41,5 +41,6 @@ MonoBehaviour:
     nbHeal: 0
     shiver: 0
     trust: 0
-    trustNb: 0
+    trustNb: 1
     isDiscardHand: 0
+    isUseless: 1
