@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     public Vector3Int supposedPos; //Position supposée du joueur = centre room lorsqu'il est dans la room d'un ennemi (utilisée pour les déplacements suite à ce cas)
 
     // nombre de tiles parcourues pour 1 move
-    //private int nbTilesToMove = 3;
+    private int nbRoomsToMove = 1;
 
     [NonSerialized]
     public bool isFirstInRoom = true;
@@ -100,7 +100,7 @@ public class PlayerManager : MonoBehaviour
 
         if(null != _cardEffectDatas)    //Si on a un card effect data
         {
-            if (nbMoveIterationCounter < _cardEffectDatas[0].nbMoves*multiplier && canLaunchOtherMove) //S'il nous reste des moves à faire et qu'on est autorisé à le faire
+            if (nbMoveIterationCounter < nbRoomsToMove * multiplier && canLaunchOtherMove) //S'il nous reste des moves à faire et qu'on est autorisé à le faire
             {
                 ShowNewAccessible();    //On affiche les effets sur les nouvelles tiles disponibles
 
@@ -144,9 +144,16 @@ public class PlayerManager : MonoBehaviour
     /**
      * Update le multiplier si le trust de la carte move est activé
      */
-    public void UpdateMoveMultiplier(int multiplierValue)
+    public void UpdateMultiplier(int valueToAddToMultiplier)
     {
-        multiplier = multiplierValue;
+        /*
+        if(multiplier == 1)
+            multiplier = valueToAddToMultiplier;    //Si le multiplier est à 1, alors on passe directement à la valeur (car le multiplier commence à 1 et pas à 0)
+        else
+            multiplier += valueToAddToMultiplier;  //Sinon on ajoute la valeur 
+            */
+        multiplier = valueToAddToMultiplier;
+        Debug.Log("multiplier : " + multiplier);
     }
 
     /**
@@ -154,6 +161,9 @@ public class PlayerManager : MonoBehaviour
      */
     public void MovePlayer()
     {
+        nbRoomsToMove = BuffManager.Instance.getModifiedMove(_cardEffectDatas[0].nbMoves);  //Update le nombre de rooms à parcourir, qui changera en fct du nb sur la carte et si un fast shoes a été joué
+        Debug.Log("nbroom : " + nbRoomsToMove);
+
         GameManager.Instance.DownPanelBlock(true);  //Block le down panel pour que le joueur ne puisse pas jouer de carte pendant le mouvement
 
         //Transpose la position de la souris au moment du drop de carte en position sur la grid, ce qui donne donc la tile sur laquelle on a droppé la carte
@@ -289,11 +299,12 @@ public class PlayerManager : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
         canLaunchOtherMove = true;  //On permet le lancement d'un autre move
-        if (nbMoveIterationCounter >= _cardEffectDatas[0].nbMoves * multiplier)  //Si on a atteint le nombre de moves possibles de la carte
+        if (nbMoveIterationCounter >= nbRoomsToMove * multiplier)  //Si on a atteint le nombre de moves possibles de la carte
         {
             canLaunchOtherMove = false;
             nbMoveIterationCounter = 0;
             playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
+            multiplier = 1;
         }
     }
 
@@ -362,7 +373,7 @@ public class PlayerManager : MonoBehaviour
         foreach(EnemyView enemy in closeEnemiesList)    //Pour chaque ennemi de cette room
         {
             enemy.OnDamage();   //On lance l'effet visuel du hit sur les ennemis
-            enemy.enemyData.TakeDamage(_cardEffectDatas[0].arrivingDamages);    //On applique les damages de la carte sur les ennemis
+            enemy.enemyData.TakeDamage(_cardEffectDatas[0].damagePoint);    //On applique les damages de la carte sur les ennemis
         }
     }
 

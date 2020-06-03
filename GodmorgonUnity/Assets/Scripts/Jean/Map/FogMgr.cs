@@ -62,7 +62,7 @@ public class FogMgr : MonoBehaviour
 
         foreach (Vector3Int room in nearRoomsTiles)   //Pour toutes les rooms à coté du player
         {
-            foreach (Vector3Int tile in TilesManager.Instance.accessibleTiles)
+            foreach (Vector3Int tile in TilesManager.Instance.showableTilesList)
             {
                 Vector3 worldPos = TilesManager.Instance.walkableTilemap.CellToWorld(tile);
                 Vector3Int tempRoomPos = fogTilemap.WorldToCell(worldPos);
