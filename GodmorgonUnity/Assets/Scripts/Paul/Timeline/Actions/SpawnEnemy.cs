@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using GodMorgon.Enemy;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace GodMorgon.Timeline
         public override IEnumerator Execute()
         {
             Debug.Log("ACTION spawn enemy");
+            EnemyManager.Instance.SpawnEnemiesList();
             yield return null;
         }
 
