@@ -40,6 +40,6 @@ MonoBehaviour:
     nbHeal: 0
     shiver: 0
     trust: 1
-    trustNb: 1
+    trustNb: 3
     isDiscardHand: 0
     isUseless: 1
