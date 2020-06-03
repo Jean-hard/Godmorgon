@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00796b083ad86774dabfe11e1ddb69ef, type: 3}
   m_Name: Timeline Settings Test Curse
   m_EditorClassIdentifier: 
-  ActionInTimeline: 0200000002000000020000000200000002000000020000000200000002000000
+  ActionInTimeline: 0400000004000000040000000400000002000000020000000200000002000000
   attackLogo: {fileID: 21300000, guid: ba1c4e701bf38624ca86489dc6807c11, type: 3}
   defendLogo: {fileID: 21300000, guid: d0fca696d2d0ff140a9228eac718e64f, type: 3}
   curseLogo: {fileID: 21300000, guid: 2a14bdff8a4fb224797de1148b5c2b73, type: 3}
