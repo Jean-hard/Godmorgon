@@ -15,7 +15,7 @@ using GodMorgon.StateMachine;
  * Gère aussi le drag and drop de la carte, et les effets qui en découlent
  * On peut déclencher des évènements liés au drag and drop dans les autres scripts grâce aux delegate
  */
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public BasicCard card;
 
@@ -27,7 +27,11 @@ public class CardDisplay : MonoBehaviour
 
     public Image artworkImage;
     public Image template;
-    
+
+    public bool isHover = false;
+    public float timeHover = 1.0f;
+
+    public GameObject display = null;
 
     /**
      * Load the data of the card in the gameObject at start, if the card exist.
@@ -43,6 +47,55 @@ public class CardDisplay : MonoBehaviour
             costText.text = card.actionCost.ToString();
         }
         UpdateDescription();
+    }
+
+    private void Update()
+    {
+        if(isHover)
+        {
+            if(display.transform.localPosition.x <= 115 || display.transform.localPosition.y >= 275)
+            {
+
+            }
+        }
+    }
+
+    public IEnumerator ScaleCardIn()
+    {
+        Vector3 originalScale = display.transform.localScale;
+        Vector3 destinationScale = new Vector3(2.0f, 2.0f, 0);
+
+        Vector3 originalPosition = display.transform.localPosition;
+        Vector3 destinationPosition = new Vector3(115, 215, -100);
+
+        float currentTime = 0.0f;
+
+        while (currentTime <= timeHover && isHover)
+        {
+            display.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
+            display.transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
+            currentTime += Time.deltaTime * 4;
+            yield return null;
+        } 
+    }
+
+    public IEnumerator ScaleCardOut()
+    {
+        Vector3 originalScale = display.transform.localScale;
+        Vector3 destinationScale = new Vector3(1, 1, 1);
+
+        Vector3 originalPosition = display.transform.localPosition;
+        Vector3 destinationPosition = new Vector3(0, 0, 0);
+
+        float currentTime = 0.0f;
+
+        while (currentTime <= timeHover && !isHover)
+        {
+            display.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
+            display.transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
+            currentTime += Time.deltaTime * 4;
+            yield return null;
+        }
     }
 
     /**
@@ -97,5 +150,21 @@ public class CardDisplay : MonoBehaviour
 
             descriptionText.text = cardDescription;
         }
+    }
+
+    /**
+     * doit activer l'animation de l'agrandissement de la carte
+     */
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        isHover = true;
+        StartCoroutine(ScaleCardIn());
+    }
+
+    
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isHover = false;
+        StartCoroutine(ScaleCardOut());
     }
 }

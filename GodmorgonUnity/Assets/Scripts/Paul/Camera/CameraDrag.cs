@@ -46,7 +46,7 @@ public class CameraDrag : MonoBehaviour
             MoveCameraByDraging();
 
         //Keyboard commands
-        float f = 0.0f;
+        //float f = 0.0f;
         Vector3 p = GetBaseInput();
 
         p = p * Time.deltaTime;

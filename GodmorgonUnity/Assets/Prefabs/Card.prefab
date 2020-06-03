@@ -57,6 +57,8 @@ MonoBehaviour:
   costText: {fileID: 3291726375716446442}
   artworkImage: {fileID: 2277794922001364697}
   template: {fileID: 5387282604749307338}
+  canBeHover: 1
+  display: {fileID: 5593500282200823629}
 --- !u!114 &8142491009890245540
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ namespace GodMorgon.Models
      */
     public class ShopContent : ScriptableObject
     {
-        public string name;
+        public string _name;
 
         public List<BasicCard> cards;
     }
