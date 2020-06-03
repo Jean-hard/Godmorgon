@@ -59,6 +59,9 @@ namespace GodMorgon.Timeline
         [System.NonSerialized]
         public int nbActualAction = 0;
 
+        //valeur du block gagné pour l'action defend
+        public int nbBlockGain = 5;
+
         #region Singleton Pattern
         private static TimelineManager _instance;
 

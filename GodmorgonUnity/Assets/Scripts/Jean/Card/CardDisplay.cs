@@ -30,6 +30,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public bool isHover = false;
     public float timeHover = 1.0f;
+    private bool cardIsDragging = false;
 
     public GameObject display = null;
 
@@ -47,55 +48,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             costText.text = card.actionCost.ToString();
         }
         UpdateDescription();
-    }
-
-    private void Update()
-    {
-        if(isHover)
-        {
-            if(display.transform.localPosition.x <= 115 || display.transform.localPosition.y >= 275)
-            {
-
-            }
-        }
-    }
-
-    public IEnumerator ScaleCardIn()
-    {
-        Vector3 originalScale = display.transform.localScale;
-        Vector3 destinationScale = new Vector3(2.0f, 2.0f, 0);
-
-        Vector3 originalPosition = display.transform.localPosition;
-        Vector3 destinationPosition = new Vector3(115, 215, -100);
-
-        float currentTime = 0.0f;
-
-        while (currentTime <= timeHover && isHover)
-        {
-            display.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
-            display.transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
-            currentTime += Time.deltaTime * 4;
-            yield return null;
-        } 
-    }
-
-    public IEnumerator ScaleCardOut()
-    {
-        Vector3 originalScale = display.transform.localScale;
-        Vector3 destinationScale = new Vector3(1, 1, 1);
-
-        Vector3 originalPosition = display.transform.localPosition;
-        Vector3 destinationPosition = new Vector3(0, 0, 0);
-
-        float currentTime = 0.0f;
-
-        while (currentTime <= timeHover && !isHover)
-        {
-            display.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
-            display.transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
-            currentTime += Time.deltaTime * 4;
-            yield return null;
-        }
     }
 
     /**
@@ -157,14 +109,79 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
      */
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        isHover = true;
-        StartCoroutine(ScaleCardIn());
+        if(!cardIsDragging)
+        {
+            isHover = true;
+            StartCoroutine(ScaleCardIn());
+        }
     }
 
     
     public void OnPointerExit(PointerEventData eventData)
     {
-        isHover = false;
-        StartCoroutine(ScaleCardOut());
+        if (!cardIsDragging)
+        {
+            isHover = false;
+            StartCoroutine(ScaleCardOut());
+        }
+    }
+
+    public IEnumerator ScaleCardIn()
+    {
+        Vector3 originalScale = display.transform.localScale;
+        Vector3 destinationScale = new Vector3(2.0f, 2.0f, 0);
+
+        Vector3 originalPosition = display.transform.localPosition;
+        Vector3 destinationPosition = new Vector3(0, 215, -100);
+
+        float currentTime = 0.0f;
+
+        while (currentTime <= timeHover && isHover)
+        {
+            display.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
+            display.transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
+            currentTime += Time.deltaTime * 4;
+            yield return null;
+        }
+    }
+
+    public IEnumerator ScaleCardOut()
+    {
+        Vector3 originalScale = display.transform.localScale;
+        Vector3 destinationScale = new Vector3(1, 1, 1);
+
+        Vector3 originalPosition = display.transform.localPosition;
+        Vector3 destinationPosition = new Vector3(0, 0, 0);
+
+        float currentTime = 0.0f;
+
+        while (currentTime <= timeHover && !isHover)
+        {
+            display.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
+            display.transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
+            currentTime += Time.deltaTime * 4;
+            yield return null;
+        }
+    }
+
+    //quand la carte est drag, elle reprend sa taille normale
+    public void OnCardDrag(bool isCardDrag)
+    {
+        if (isCardDrag)
+        {
+            Debug.Log("carte est prise");
+            isCardDrag = true;
+            isHover = false;
+            StopCoroutine(ScaleCardIn());
+            StopCoroutine(ScaleCardOut());
+
+            display.transform.localScale = new Vector3(1, 1, 1);
+            display.transform.localPosition = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            isCardDrag = false;
+            Debug.Log("carte est laché");
+        }
     }
 }

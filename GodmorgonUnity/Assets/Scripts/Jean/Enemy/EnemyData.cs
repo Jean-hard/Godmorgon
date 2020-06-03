@@ -57,6 +57,12 @@ namespace GodMorgon.Enemy
             enemyView.OnDamage();
         }
 
+        public void AddBlock(int nbBlock)
+        {
+            defense += nbBlock;
+            UpdateHealthBar();
+        }
+
         //return the duration a the enemy hit visual effect
         public override float GetDamageHitDuration()
         {

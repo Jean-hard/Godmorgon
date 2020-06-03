@@ -60,6 +60,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             startPosition = this.transform.position;
             this.transform.SetParent(movingCardParent);
+
+            eventData.pointerDrag.GetComponent<CardDisplay>().OnCardDrag(true);
         }
         _card = eventData.pointerDrag.GetComponent<CardDisplay>().card;
 
@@ -97,6 +99,8 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         this.transform.position = startPosition;    //Par défaut, la carte retourne dans la main
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(cardWidth, cardHeight);  //La carte récupère sa taille normale
+
+        eventData.pointerDrag.GetComponent<CardDisplay>().OnCardDrag(false);
 
         Vector3 dropPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
         Vector3Int dropCellPosition = TilesManager.Instance.walkableTilemap.WorldToCell(dropPosition);

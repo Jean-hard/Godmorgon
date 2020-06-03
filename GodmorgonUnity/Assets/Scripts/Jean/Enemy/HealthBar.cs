@@ -29,6 +29,9 @@ public class HealthBar : MonoBehaviour
      */
     public void UpdateHealthBar(float currentDefense, float currentHealth)
     {
+        if (maxDefensePoint < currentDefense)
+            maxDefensePoint = currentDefense;
+
         if(currentDefense == 0)
             defense.localScale = new Vector2(0, defense.localScale.y);
         else
