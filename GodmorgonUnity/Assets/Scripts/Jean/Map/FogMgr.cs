@@ -1,7 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
+[Serializable]
+public class Bounds
+{
+    public int x = 10;
+    public int y = 10;
+}
 
 public class FogMgr : MonoBehaviour
 {
@@ -11,9 +19,14 @@ public class FogMgr : MonoBehaviour
     [SerializeField]
     private float timeAfterAction = 2f;
 
+    [Header("Sight Action Settings")]
+    public Bounds fogBounds;
+    public TileBase fogTile;
+
     private Tilemap fogTilemap = null;
 
     private Color transparentColor = new Color(1, 1, 1, 0);
+    private Color opaqueColor = new Color(1, 1, 1, 1);
 
     private bool hasUpdatedFog = false;
     private bool hasBeenRevealed = false;
@@ -165,5 +178,27 @@ public class FogMgr : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToWait);
         hasBeenRevealed = true;
+    }
+
+    /**
+     * Recouvre toute la map de Fog sauf où il y a le player et des cases voisines
+     */
+    public void CoverEntireMap()
+    {
+        hasUpdatedFog = false;  //Le fog n'a pas encore été updaté
+
+        //On parcourt toutes les tiles du fog (gérer les bounds dans l'inspector)
+        for(int x = 0; x < fogBounds.x; ++x)
+        {
+            for(int y = 0; y < fogBounds.y; ++y)
+            {
+                Vector3Int fogTilePos = new Vector3Int(x, y, 0);   //Récup la coordonnée de la tile actuelle
+                fogTilemap.SetTile(fogTilePos, fogTile);    //On applique la tile fog sur toutes les cases
+                fogTilemap.SetTileFlags(fogTilePos, TileFlags.None);   //Autorise le changement de color
+                fogTilemap.SetColor(fogTilePos, opaqueColor);  //Applique l'alpha au max
+            }
+        }
+
+        UpdateFogToPlayer();    //On clear la tile du player et autour
     }
 }
