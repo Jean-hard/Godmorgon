@@ -63245,6 +63245,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAfterAction: 2
+  fogBounds:
+    x: 10
+    y: 10
+  fogTile: {fileID: 0}
 --- !u!1 &652673496
 GameObject:
   m_ObjectHideFlags: 0
