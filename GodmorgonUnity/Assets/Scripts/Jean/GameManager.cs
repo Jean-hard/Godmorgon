@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private GameObject downPanelBlock = null;
 
     [SerializeField]
-    private ShopManager shopManager;
+    private ShopManager shopManager = null;
 
 
     //bool pour savoir si le player à passer son tour précédemment

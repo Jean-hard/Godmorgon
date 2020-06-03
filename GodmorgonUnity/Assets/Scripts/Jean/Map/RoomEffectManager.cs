@@ -37,12 +37,12 @@ public class RoomEffectManager : MonoBehaviour
     [Header("General Settings")]
     public RoomData[] roomsDataArr;
     [SerializeField]
-    private Tilemap roomTilemap;
+    private Tilemap roomTilemap = null;
 
     [Header("Effect Settings")]
     public List<GameObject> roomFxList = new List<GameObject>();
     [SerializeField]
-    private Transform roomEffectsParent;
+    private Transform roomEffectsParent = null;
     private BasicCard cursedCard = null;
     private bool isRoomEffectDone = false;
     private RoomData currentRoom = null;
