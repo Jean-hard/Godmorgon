@@ -21,6 +21,7 @@ namespace GodMorgon.Enemy
         private int tileIndex;  //Index des tiles utilisé lors du parcours de la liste des tiles
         private int nbTilesPerMove = 3;  //Nombre de tiles pour 1 move
         private bool isMoveFinished = false;
+        private List<EnemyView> enemiesInRoom = new List<EnemyView>();
 
         private bool isAttackFinished = false;
 
@@ -123,6 +124,11 @@ namespace GodMorgon.Enemy
         #endregion
 
         
+        public Vector3Int GetRoomPosition()
+        {
+            return TilesManager.Instance.roomTilemap.WorldToCell(this.transform.position);
+        }
+
         public void MoveToPlayer()
         {
             tilesList = new List<Spot>();
@@ -191,6 +197,22 @@ namespace GodMorgon.Enemy
                     tileIndex++;
                 }
 
+                enemiesInRoom.Clear();  //Clear la liste d'ennemis présents dans la future room
+
+                Vector3 targetTilePos = TilesManager.Instance.walkableTilemap.CellToWorld(new Vector3Int(roadPath[0].X, roadPath[0].Y, 0));
+                Vector3Int targetRoom = TilesManager.Instance.roomTilemap.WorldToCell(targetTilePos);   //Récup la room future en prenant la position de la tile la plus éloignée du path
+                
+                foreach (EnemyView enemy in EnemyManager.Instance.GetAllEnemies())  //Pour chaque ennemi de la map
+                {
+                    if (enemy != this)  //Si c'est un autre que celui actuel
+                    {
+                        if(enemy.GetRoomPosition() == targetRoom)   //On check si l'autre ennemi est dans la future room
+                        {
+                            enemiesInRoom.Add(enemy);   //On ajoute donc l'ennemi dans la liste
+                        }
+                    }
+                }
+
                 tilesList.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
                 tilesList.RemoveAt(0);
 
@@ -224,6 +246,11 @@ namespace GodMorgon.Enemy
                     canMove = false;    //On arrête d'autoriser le mouvement
                     isMoveFinished = true;  //Le mouvement est terminé (pour la fonction qui retourne ce bool)
                     tilesList = new List<Spot>();   //Reset de la liste
+
+                    if(enemyData.inPlayersRoom || enemiesInRoom.Count > 0)
+                    {
+                        Attack();   //L'ennemi attaque s'il y a qqun dans la room d'arrivée
+                    }
                 }
                 //Sinon, s'il reste des tiles à parcourir
                 else if (tileIndex < tilesList.Count - 1)
@@ -305,8 +332,15 @@ namespace GodMorgon.Enemy
         {          
             Debug.Log("Enemy is attacking");
             ShowAttackEffect();
-            PlayerManager.Instance.TakeDamage(enemyData.attack);
-
+            if(enemyData.inPlayersRoom) //Si le player est dans la room
+                PlayerManager.Instance.TakeDamage(enemyData.attack);
+            if(enemiesInRoom.Count > 0) //S'il y a des ennemis dans la room
+            {
+                foreach(EnemyView enemy in enemiesInRoom)
+                {
+                    enemy.enemyData.TakeDamage(enemyData.attack);
+                }
+            }
             //prend des dégats si le counter est activé
             enemyData.TakeDamage(PlayerManager.Instance.Counter());
         }
