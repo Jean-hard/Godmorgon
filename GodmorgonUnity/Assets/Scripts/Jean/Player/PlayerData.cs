@@ -48,8 +48,8 @@ namespace GodMorgon.Player
             //à configurer par le gameEngine
             healthMax = 100;
             defenseMax = 100;
-            startGold = 400;
-            startToken = 2;
+            startGold = 80;
+            startToken = 3;
 
             health = healthMax;
             goldValue = startGold;
