@@ -19,11 +19,14 @@ MonoBehaviour:
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
-  artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
+  artwork: {fileID: 21300000, guid: cc9f60758272a134ea7eaf4f2b501994, type: 3}
   effectsData:
   - currentEffect: 0
     damagePoint: 8
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
@@ -36,12 +39,16 @@ MonoBehaviour:
     isHeal: 0
     nbHeal: 0
     shiver: 0
-    trust: 0
-    trustNb: 0
+    trust: 1
+    trustNb: 3
     isDiscardHand: 0
+    isUseless: 1
   - currentEffect: 0
     damagePoint: 8
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
@@ -57,3 +64,4 @@ MonoBehaviour:
     trust: 0
     trustNb: 0
     isDiscardHand: 0
+    isUseless: 1
