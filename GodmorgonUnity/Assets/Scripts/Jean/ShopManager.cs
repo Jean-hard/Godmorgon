@@ -72,6 +72,7 @@ namespace GodMorgon.Shop
         {
             this.gameObject.SetActive(false);   //Désactive le shop
             isPlayerGoldTextUpdated = false;    //Reset le bool de la misa à jour du nb de gold du player pour la prochaine ouverture
+            GameManager.Instance.OnCloseShop();
 
             //si le joueur a acheté quelque chose, on lance le tour du ringmaster en quittant le shop
             if(hasPlayerBuy)
