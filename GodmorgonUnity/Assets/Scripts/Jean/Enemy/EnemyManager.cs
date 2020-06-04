@@ -315,7 +315,7 @@ namespace GodMorgon.Enemy
          */
         public void SpawnEnemy(EnemyView enemy, Vector3Int spawnRoomPos)
         {
-            Vector3 spawnPos = TilesManager.Instance.roomTilemap.CellToWorld(spawnRoomPos) + new Vector3(0, 0.9f, 0); //Transform la position room cell en position monde pour l'instantiate avec un petit offset pour centrer
+            Vector3 spawnPos = TilesManager.Instance.roomTilemap.CellToWorld(spawnRoomPos) + new Vector3(0, 0.7f, 0); //Transform la position room cell en position monde pour l'instantiate avec un petit offset pour centrer
 
             Instantiate(enemy, spawnPos, Quaternion.identity, this.transform);  //Instantie l'ennemi à la position donnée, et en enfant de l'EnemyManager
         }
