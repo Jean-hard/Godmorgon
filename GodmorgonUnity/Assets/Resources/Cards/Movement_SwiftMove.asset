@@ -19,7 +19,7 @@ MonoBehaviour:
   actionCost: 2
   price: 0
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
-  artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}
+  artwork: {fileID: 21300000, guid: f250b1c784f58a7409adf2114f9104fb, type: 3}
   effectsData:
   - currentEffect: 1
     damagePoint: 0
@@ -27,7 +27,6 @@ MonoBehaviour:
     rolling: 0
     swift: 1
     noBrakes: 0
-    arrivingDamages: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0

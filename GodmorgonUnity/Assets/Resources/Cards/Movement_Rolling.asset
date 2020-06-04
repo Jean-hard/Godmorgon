@@ -19,7 +19,7 @@ MonoBehaviour:
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
-  artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}
+  artwork: {fileID: 21300000, guid: 2d1b924de35c9d24ab6049eb5034becc, type: 3}
   effectsData:
   - currentEffect: 1
     damagePoint: 0
@@ -40,6 +40,6 @@ MonoBehaviour:
     nbHeal: 0
     shiver: 0
     trust: 1
-    trustNb: 3
+    trustNb: 2
     isDiscardHand: 0
     isUseless: 1
