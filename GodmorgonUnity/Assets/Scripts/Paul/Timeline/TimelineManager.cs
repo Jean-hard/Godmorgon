@@ -62,6 +62,9 @@ namespace GodMorgon.Timeline
         //valeur du block gagné pour l'action defend
         public int nbBlockGain = 5;
 
+        //liste de tous les engrenages de la timeline pour les animations
+        public List<Animation> actionGearAnimations = new List<Animation>();
+
         #region Singleton Pattern
         private static TimelineManager _instance;
 
@@ -85,6 +88,8 @@ namespace GodMorgon.Timeline
         {
             actionlist = settings.GetActionList();
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
+
+            actionGearAnimations[0].Play();
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -100,6 +105,9 @@ namespace GodMorgon.Timeline
         public void SetTimeline()
         {
             nbActualAction = 1;
+
+            actionGearAnimations[3].Stop();
+            actionGearAnimations[0].Play();
 
             int idx = indexCurrentAction;
             idx = SetNextActions(actionLogo1, idx);
@@ -154,6 +162,11 @@ namespace GodMorgon.Timeline
 
                 //le player perd ces bonus à la fin du tour
                 BuffManager.Instance.ResetAllBonus();
+            }
+            else
+            {
+                actionGearAnimations[nbActualAction - 1].Play();
+                actionGearAnimations[nbActualAction - 2].Stop();
             }
 
             //at the end of the action, we set the cursor
