@@ -281,7 +281,13 @@ namespace GodMorgon.Enemy
          */
         public void OnDamage()
         {
-            enemyHit.launchParticle();
+            enemyHit.launchParticle();  //Lance la particule de hit
+            
+            float duration = enemyHit.GetDuration();    //Récup la durée de la particule
+            if(enemyData.health <= 0)   //Si l'ennemi n'a plus de vie
+            {
+                StartCoroutine(EnemyManager.Instance.KillEnemy(duration, this));    //On le tue
+            }
         }
 
         /**
@@ -376,5 +382,6 @@ namespace GodMorgon.Enemy
                 enemyData.inPlayersRoom = false;
             }
         }
+
     }
 }

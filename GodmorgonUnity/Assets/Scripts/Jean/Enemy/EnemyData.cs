@@ -37,6 +37,11 @@ namespace GodMorgon.Enemy
             }
             Debug.Log("enemy health after was : " + health);
             UpdateHealthBar();
+
+            //if(health <= 0)
+            //{
+            //    EnemyManager.Instance.KillEnemy(enemyView);
+            //}
         }
 
         //return the position of the enemy

@@ -340,5 +340,15 @@ namespace GodMorgon.Enemy
                 SpawnEnemy(enemiesToSpawn[randomIndex], spawns[i]);     //Spawn un ennemi random à telle position
             }
         }
+
+        /**
+         * Tue un ennemi donné après une durée correspondant à la durée de la particule du hit
+         */
+        public IEnumerator KillEnemy(float hitAnimDuration,EnemyView enemyToKill)
+        {
+            yield return new WaitForSeconds(hitAnimDuration);   //On attend que la particule de hit soit terminée
+            Destroy(enemyToKill.gameObject);    //Détruit le gameobject de l'ennemi
+            UpdateEnemiesList();    //Update la liste des ennemis sur la map
+        }
     }
 }
