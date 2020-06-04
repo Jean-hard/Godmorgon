@@ -27,7 +27,10 @@ namespace GodMorgon.Models
         public CARDTYPE cardType = CARDTYPE.MOVE;
         public int id;
         public new string name;
+
+        [TextArea]
         public string description;
+        
         public int actionCost = 1;
         public int price = 0;
 

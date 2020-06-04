@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Power_Denial [WIP]
+  m_Name: Attack_DirectHitT2 [WIP]
   m_EditorClassIdentifier: 
-  cardType: 3
-  id: 0
-  name: Denial
-  description: "Time Out 1 \nThe 2 next cards you play are not discared this turn."
+  cardType: 1
+  id: 9
+  name: Direct Hit
+  description: 'Ranged 1.
+
+    Inflict [nbDamage] damages.'
   actionCost: 1
   price: 0
-  template: {fileID: 21300000, guid: 8560f9c3d24f1db488dc6cb2f358579c, type: 3}
-  artwork: {fileID: 21300000, guid: c1bee892507aa684f903cb4fb1657b9a, type: 3}
+  template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
+  artwork: {fileID: 21300000, guid: cc9f60758272a134ea7eaf4f2b501994, type: 3}
   effectsData:
-  - currentEffect: 3
-    damagePoint: 0
+  - currentEffect: 0
+    damagePoint: 8
     nbMoves: 0
     rolling: 0
     swift: 0
@@ -30,7 +32,29 @@ MonoBehaviour:
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
-    KillerInstinct: 1
+    KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
+    DrawCard: 0
+    nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 1
+    trustNb: 3
+    isDiscardHand: 0
+    isUseless: 1
+  - currentEffect: 0
+    damagePoint: 8
+    nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
+    KillerInstinct: 0
     FastShoes: 0
     Sight: 0
     sightRange: 1

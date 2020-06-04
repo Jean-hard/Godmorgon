@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Attack_DirectHit [WIP]
+  m_Name: Attack_DirectHitT3 [WIP]
   m_EditorClassIdentifier: 
   cardType: 1
   id: 9
   name: Direct Hit
-  description: Ranged 1.\end \end Inflict [nbDamage] damages.
+  description: "Ranged 1. \nInflict [nbDamage] damages."
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}

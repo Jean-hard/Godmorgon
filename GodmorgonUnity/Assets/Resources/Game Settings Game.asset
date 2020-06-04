@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Game Settings Game
   m_EditorClassIdentifier: 
   MaxHandCapability: 5
-  GameDeck: {fileID: 11400000, guid: c7a6e41edc655644e8bc0c57ca4c8d8f, type: 2}
+  GameDeck: {fileID: 11400000, guid: 252069bdbb0f6e44f9013ea128c9eafe, type: 2}

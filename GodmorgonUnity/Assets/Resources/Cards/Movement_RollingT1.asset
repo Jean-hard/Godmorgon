@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
-  m_Name: Movement_Rolling
+  m_Name: Movement_RollingT1
   m_EditorClassIdentifier: 
   cardType: 0
   id: 8
@@ -40,6 +40,6 @@ MonoBehaviour:
     nbHeal: 0
     shiver: 0
     trust: 1
-    trustNb: 2
+    trustNb: 1
     isDiscardHand: 0
     isUseless: 1

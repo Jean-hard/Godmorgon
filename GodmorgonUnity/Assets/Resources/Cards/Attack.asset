@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 1
   id: 9
   name: Attack
-  description: attaque de [nbDamage]
+  description: Attaque de [nbDamage]
   actionCost: 1
   price: 60
   template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
@@ -24,6 +24,9 @@ MonoBehaviour:
   - currentEffect: 0
     damagePoint: 20
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
@@ -39,3 +42,4 @@ MonoBehaviour:
     trust: 0
     trustNb: 0
     isDiscardHand: 0
+    isUseless: 1

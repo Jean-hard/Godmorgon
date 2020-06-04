@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 0
   id: 8
   name: Run for your life !
-  description: Shiver \end \end Move 2 room.
+  description: "Shiver \nMove 2 room."
   actionCost: 2
   price: 0
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
@@ -27,7 +27,6 @@ MonoBehaviour:
     rolling: 0
     swift: 0
     noBrakes: 0
-    arrivingDamages: 0
     nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
