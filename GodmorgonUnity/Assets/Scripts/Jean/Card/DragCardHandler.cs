@@ -55,10 +55,11 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
 
         //onCardDragBeginDelegate?.Invoke(this.gameObject, eventData);
+        
+        startPosition = this.transform.position;
 
         if (eventData.pointerDrag.GetComponent<CardDisplay>().card.cardType != BasicCard.CARDTYPE.CURSE)
         {
-            startPosition = this.transform.position;
             this.transform.SetParent(movingCardParent);
 
             eventData.pointerDrag.GetComponent<CardDisplay>().OnCardDrag(true);
