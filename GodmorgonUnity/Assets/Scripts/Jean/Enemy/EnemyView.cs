@@ -16,7 +16,7 @@ namespace GodMorgon.Enemy
 
         [Header("Enemy Settings")]
         public Models.Enemies enemies;
-        public Models.Enemy enemy;  //Scriptable object Enemy
+        public Models.Enemy _enemy;  //Scriptable object Enemy
 
         [Header("Movement Settings")]
         public float moveSpeed = 5f;    //Vitesse de l'ennemi
@@ -54,17 +54,17 @@ namespace GodMorgon.Enemy
 
         public void Awake()
         {
-            enemy = enemies.enemiesSOList[Random.Range(0, enemies.enemiesSOList.Count)];
+            //_enemy = enemies.enemiesSOList[Random.Range(0, enemies.enemiesSOList.Count)];
 
-            if (enemy != null && enemyData != null)
+            if (_enemy != null && enemyData != null)
             {
-                enemyData.enemyId = enemy.enemyId;
-                enemyData.health = enemy.health;
-                enemyData.attack = enemy.attack;
-                enemyData.defense = enemy.defense;
-                enemyData.nbMoves = enemy.nbMoves;
-                enemyData.speed = enemy.speed;
-                enemyData.skin = enemy.skin; 
+                enemyData.enemyId = _enemy.enemyId;
+                enemyData.health = _enemy.health;
+                enemyData.attack = _enemy.attack;
+                enemyData.defense = _enemy.defense;
+                enemyData.nbMoves = _enemy.nbMoves;
+                enemyData.speed = _enemy.speed;
+                enemyData.skin = _enemy.skin; 
                 enemyData.inPlayersRoom = false;
                 enemyData.inOtherEnemyRoom = false;
                 enemyData.enemyView = this;

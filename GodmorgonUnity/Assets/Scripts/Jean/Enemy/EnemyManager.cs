@@ -19,6 +19,7 @@ namespace GodMorgon.Enemy
         [Header("Proto Settings")]
         public List<Vector3Int> spawns = new List<Vector3Int>();    //Liste des spawns des ennemis
         public List<EnemyView> enemiesToSpawn = new List<EnemyView>();    //Liste des prefabs d'ennemis à spawn
+        private int spawnCounter = 0;
         //-----------------------------------------------------
 
         private List<EnemyView> enemiesList;
@@ -318,14 +319,17 @@ namespace GodMorgon.Enemy
             Vector3 spawnPos = TilesManager.Instance.roomTilemap.CellToWorld(spawnRoomPos) + new Vector3(0, 0.7f, 0); //Transform la position room cell en position monde pour l'instantiate avec un petit offset pour centrer
 
             Instantiate(enemy, spawnPos, Quaternion.identity, this.transform);  //Instantie l'ennemi à la position donnée, et en enfant de l'EnemyManager
+
+            spawnCounter++;
         }
 
         /**
+         * SPECIAL PROTO
          * Spawn tous les ennemis de la liste enemiesToSpawn
          */
         public void SpawnEnemiesList()
         {
-            //Si on a pas le même nombre d'éléments dans les listes de spawns et de prefab d'ennemis
+            //Si une des 2 listes est vide
             if(enemiesToSpawn.Count == 0 || spawns.Count == 0)
             {
                 Debug.Log("Not enough prefabs or spawns");
@@ -333,11 +337,13 @@ namespace GodMorgon.Enemy
             }
 
             //Fait spawn chaque ennemi de la liste à une position de la liste
-            for (int i = 0; i < spawns.Count; ++i)
+            for (int i = 0; i < 2; ++i)
             {
-                int randomIndex = Random.Range(0, enemiesToSpawn.Count);
+                //int randomIndex = Random.Range(0, enemiesToSpawn.Count);
+                int index = 0;
+                if (spawnCounter == 1) index = 1;
 
-                SpawnEnemy(enemiesToSpawn[randomIndex], spawns[i]);     //Spawn un ennemi random à telle position
+                SpawnEnemy(enemiesToSpawn[index], spawns[i + spawnCounter]);     //Spawn un ennemi random à telle position
             }
         }
 
