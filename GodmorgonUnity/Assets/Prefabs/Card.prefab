@@ -148,8 +148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23, y: 0.52941185}
   m_AnchorMax: {x: 0.8, y: 0.6175296}
-  m_AnchoredPosition: {x: 0.3922119, y: -1.800003}
-  m_SizeDelta: {x: -0.7599983, y: -0.80999756}
+  m_AnchoredPosition: {x: -1.75, y: -1.800003}
+  m_SizeDelta: {x: -5.05, y: -0.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2277794921791027399
 CanvasRenderer:
@@ -183,14 +183,14 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 5
-    m_MaxSize: 20
+    m_MaxSize: 25
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Killer instinct
+  m_Text: killer Instinct
 --- !u!1 &2277794922001364699
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 5
-    m_MaxSize: 16
+    m_MaxSize: 25
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -531,7 +531,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 7
-    m_MaxSize: 161
+    m_MaxSize: 30
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

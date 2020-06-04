@@ -681,6 +681,111 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8018034026694979798}
     m_Modifications:
+    - target: {fileID: 292349290028885218, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1273547291
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028885218, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028885218, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028887326, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1273547291
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028887326, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028887326, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028972862, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1273547291
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028972862, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290028972862, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030576446, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030576446, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030576446, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.009995077
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030622274, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030633668, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1273547291
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030633668, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030633668, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030637726, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030637726, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030647912, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030679122, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 292349290030679122, guid: 548431880f919534584f0dd19c1375e3,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2191165944483333164, guid: 548431880f919534584f0dd19c1375e3,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,5 +1,6 @@
 ﻿using GodMorgon.Models;
 using GodMorgon.Player;
+using GodMorgon.Timeline;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,8 +76,11 @@ namespace GodMorgon.Shop
             GameManager.Instance.OnCloseShop();
 
             //si le joueur a acheté quelque chose, on lance le tour du ringmaster en quittant le shop
-            if(hasPlayerBuy)
+            if (hasPlayerBuy)
+            {
+                TimelineManager.Instance.SetRingmasterActionRemain(1);
                 GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.RINGMASTER_TURN);
+            }
         }
 
         //à l'ouverture du magasin, on affiche toutes les cartes
