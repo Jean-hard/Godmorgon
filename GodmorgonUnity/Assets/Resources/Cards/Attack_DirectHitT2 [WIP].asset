@@ -15,9 +15,9 @@ MonoBehaviour:
   cardType: 1
   id: 9
   name: Direct Hit
-  description: 'Trust [nbTrust]
+  description: 'Trust 2
 
-    Ranged 1.
+    Ranged 1
 
 
     Inflict [nbDamage] damages.'
