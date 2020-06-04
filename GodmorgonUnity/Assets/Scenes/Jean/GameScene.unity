@@ -50773,6 +50773,7 @@ MonoBehaviour:
   roomFxList: []
   roomEffectsParent: {fileID: 0}
   distancePlayerToCurse: 0
+  cursedRoom: {x: 0, y: 0, z: 0}
   goldInChest: 40
 --- !u!4 &754354301
 Transform:
@@ -56059,6 +56060,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handManager: {fileID: 652673499}
   downPanelBlock: {fileID: 11742501}
+  shopManager: {fileID: 0}
+  playerTurnAnimation: {fileID: 0}
+  ringmasterTurnAnimation: {fileID: 0}
 --- !u!1 &1360088473
 GameObject:
   m_ObjectHideFlags: 0
@@ -56169,11 +56173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506dd18d0cdaf884882a56b554f71e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteList: []
   healthText: {fileID: 1704935353}
   blockText: {fileID: 2057936263}
   goldValueText: {fileID: 0}
   tokenText: {fileID: 0}
-  shopPanel: {fileID: 0}
   playerSpeed: 1
   playerMoveCurve:
     serializedVersion: 2
@@ -63729,14 +63733,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46b76c8e40169a41b659f6a1271e943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minScroll: 2
+  maxScroll: 4
   mainSpeed: 5
-  camSens: 0.1
   dragSpeed: 2.5
   cameraDragging: 1
-  outerLeft: -10
-  outerRight: 10
-  outerDown: -10
-  outerUp: 10
 --- !u!1001 &2072334986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64675,6 +64676,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1927699954}
     m_Modifications:
+    - target: {fileID: 2144616853030352545, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8808992978091051908, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: m_Name
