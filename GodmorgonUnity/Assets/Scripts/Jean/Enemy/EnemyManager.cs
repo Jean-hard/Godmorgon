@@ -349,6 +349,8 @@ namespace GodMorgon.Enemy
             yield return new WaitForSeconds(hitAnimDuration);   //On attend que la particule de hit soit terminée
             Destroy(enemyToKill.gameObject);    //Détruit le gameobject de l'ennemi
             UpdateEnemiesList();    //Update la liste des ennemis sur la map
+
+            PlayerManager.Instance.AddGold(15); //Add gold to player
         }
     }
 }
