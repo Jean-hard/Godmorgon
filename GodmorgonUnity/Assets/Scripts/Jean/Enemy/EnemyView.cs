@@ -10,6 +10,10 @@ namespace GodMorgon.Enemy
 {
     public class EnemyView : MonoBehaviour
     {
+        [Header("Enemy View")]
+        public List<Sprite> spriteList = new List<Sprite>();
+        private SpriteRenderer spriteRenderer;
+
         [Header("Enemy Settings")]
         public Models.Enemies enemies;
         public Models.Enemy enemy;  //Scriptable object Enemy
@@ -80,6 +84,10 @@ namespace GodMorgon.Enemy
 
             _healthBar = this.GetComponentInChildren<HealthBar>();
             _healthBar.SetBarPoints(enemyData.health, enemyData.defense);
+
+            if (this.gameObject.GetComponentInChildren<SpriteRenderer>() != null)
+                spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+            else Debug.Log("Sprite of player not found");
 
             #region Astar Start Setup
             walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
@@ -174,13 +182,13 @@ namespace GodMorgon.Enemy
                     foreach(EnemyView enemy in EnemyManager.Instance.GetAllEnemies())
                     {
                         //Position cellule de l'ennemi
-                        Vector3Int enemyCellPos = walkableTilemap.WorldToCell(enemy.transform.position);
+                        Vector3Int _enemyCellPos = walkableTilemap.WorldToCell(enemy.transform.position);
 
                         //On check seulement les ennemis autres que celui qu'on veut bouger (qui porte ce script)
                         if(enemy != this)
                         {
                             //Si l'ennemi est sur une tile
-                            if (enemyCellPos.x == tile.X && enemyCellPos.y == tile.Y)
+                            if (_enemyCellPos.x == tile.X && _enemyCellPos.y == tile.Y)
                             {
                                 isOtherEnemyOnPath = true;
                                 enemyData.inOtherEnemyRoom = true; //L'ennemi sera présent dans la room
@@ -216,6 +224,27 @@ namespace GodMorgon.Enemy
                 tilesList.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
                 tilesList.RemoveAt(0);
 
+                Vector3Int enemyCellPos = TilesManager.Instance.walkableTilemap.WorldToCell(this.transform.position);
+                
+
+                //On update le sprite du player en fonction de sa direction
+                if (tilesList[0].Y > enemyCellPos.y)
+                {
+                    UpdateEnemySprite("haut_gauche");
+                }
+                else if (tilesList[0].X > enemyCellPos.x)
+                {
+                    UpdateEnemySprite("haut_droite");
+                }
+                else if (tilesList[0].X < enemyCellPos.x)
+                {
+                    UpdateEnemySprite("bas_gauche");
+                }
+                else if (tilesList[0].Y < enemyCellPos.y)
+                {
+                    UpdateEnemySprite("bas_droite");
+                }
+
                 //Affiche les coordonnées de tiles des paths que l'ennemi doit parcourir
                 /*foreach(Spot spot in tilesList)
                 {
@@ -232,7 +261,7 @@ namespace GodMorgon.Enemy
         {
             //La prochaine position est la tile suivante
             Vector3 nextTilePos = walkableTilemap.CellToWorld(new Vector3Int(tilesList[tileIndex].X, tilesList[tileIndex].Y, 0))
-                + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
+                + new Vector3(0, 0.2f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange             
 
             //Si on atteint la tile
             if (Vector3.Distance(transform.position, nextTilePos) < 0.001f)
@@ -293,6 +322,28 @@ namespace GodMorgon.Enemy
             }
 
             return false;
+        }
+
+        /**
+        * Actualise le sprite de l'ennemi en fonction de sa direction
+        */
+        public void UpdateEnemySprite(string direction)
+        {
+            switch (direction)
+            {
+                case "haut_gauche":
+                    spriteRenderer.sprite = spriteList[0];
+                    break;
+                case "haut_droite":
+                    spriteRenderer.sprite = spriteList[1];
+                    break;
+                case "bas_gauche":
+                    spriteRenderer.sprite = spriteList[2];
+                    break;
+                case "bas_droite":
+                    spriteRenderer.sprite = spriteList[3];
+                    break;
+            }
         }
 
         /**

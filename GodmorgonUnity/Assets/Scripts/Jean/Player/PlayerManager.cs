@@ -13,6 +13,10 @@ using GodMorgon.Models;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Player View")]
+    public List<Sprite> spriteList = new List<Sprite>();
+    private SpriteRenderer spriteRenderer;
+
     [Header("UI Settings")]
     public Text healthText;
     public Text blockText;
@@ -85,6 +89,9 @@ public class PlayerManager : MonoBehaviour
 
         nbMoveIterationCounter = 0;
         supposedPos = GetPlayerCellPosition();
+        if (this.gameObject.GetComponentInChildren<SpriteRenderer>() != null)
+            spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+        else Debug.Log("Sprite of player not found");
     }
 
     // Update is called once per frame
@@ -212,7 +219,7 @@ public class PlayerManager : MonoBehaviour
         if (isFirstInRoom)
             EnemyManager.Instance.RecenterEnemiesAfterPlayerMove();
 
-        
+
         playerPathList.Reverse(); //on inverse la liste pour la parcourir de la tile la plus proche à la plus éloignée
         playerPathList.RemoveAt(0);    
 
@@ -226,6 +233,24 @@ public class PlayerManager : MonoBehaviour
             {
                 enemy.enemyData.inPlayersRoom = false;
             }
+        }
+
+        //On update le sprite du player en fonction de sa direction
+        if (playerPathList[0].Y > playerCellPos.y)
+        {
+            UpdatePlayerSprite("haut_gauche");
+        } 
+        else if (playerPathList[0].X > playerCellPos.x)
+        {
+            UpdatePlayerSprite("haut_droite");
+        }
+        else if (playerPathList[0].X < playerCellPos.x)
+        {
+            UpdatePlayerSprite("bas_gauche");
+        }
+        else if (playerPathList[0].Y < playerCellPos.y)
+        {
+            UpdatePlayerSprite("bas_droite");
         }
 
         /*    
@@ -481,6 +506,29 @@ public class PlayerManager : MonoBehaviour
         PlayerData.Instance.ResetStat();
         StopVisualEffect();
     }
+
+    /**
+     * Actualise le sprite du player en fonction de sa direction
+     */
+    public void UpdatePlayerSprite(string direction)
+    {
+        switch(direction)
+        {
+            case "haut_gauche":
+                spriteRenderer.sprite = spriteList[0];
+                break;
+            case "haut_droite":
+                spriteRenderer.sprite = spriteList[1];
+                break;
+            case "bas_gauche":
+                spriteRenderer.sprite = spriteList[2];
+                break;
+            case "bas_droite":
+                spriteRenderer.sprite = spriteList[3];
+                break;
+        }
+    }
+
 
     #region Visual effect
 

@@ -33,7 +33,7 @@ MonoBehaviour:
     KillerInstinct: 0
     FastShoes: 0
     Sight: 1
-    sightRange: 2
+    sightRange: 1
     DrawCard: 0
     nbCardToDraw: 2
     isHeal: 0
