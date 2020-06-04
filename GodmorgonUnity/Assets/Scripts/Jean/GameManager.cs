@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ShopManager shopManager = null;
 
+    //Animations signalant les différents tours
+    public Animation playerTurnAnimation = null;
+    public Animation ringmasterTurnAnimation = null;
 
     //bool pour savoir si le player à passer son tour précédemment
     private bool lastPlayerTurnPassed = false;
@@ -177,5 +180,17 @@ public class GameManager : MonoBehaviour
             lastPlayerTurnPassed = false;
             DrawCard(1);
         }
+    }
+
+    //affiche le texte signalant le tour du Player
+    public void ShowPlayerTurnImage()
+    {
+        playerTurnAnimation.Play();
+    }
+
+    //affiche le texte signalant le tour du Ringmaster
+    public void ShowRingmasterTurnImage()
+    {
+        ringmasterTurnAnimation.Play();
     }
 }

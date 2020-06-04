@@ -17,6 +17,7 @@ namespace GodMorgon.StateMachine
             //Debug.Log("On RingMaster turn State");
             GameManager.Instance.DownPanelBlock(true);
             MusicManager.Instance.PlayRingmasterTurnTheme();
+            GameManager.Instance.ShowRingmasterTurnImage();
 
             TimelineManager.Instance.DoAction();
         }
