@@ -173,7 +173,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (isCardDrag)
         {
-            Debug.Log("carte est prise");
             cardIsDragging = true;
             isHover = false;
             StopCoroutine(ScaleCardIn());
@@ -183,9 +182,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             display.transform.localPosition = new Vector3(0, 0, 0);
         }
         else
-        {
             cardIsDragging = false;
-            Debug.Log("carte est laché");
-        }
     }
 }
