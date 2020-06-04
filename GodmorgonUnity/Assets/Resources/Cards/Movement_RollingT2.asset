@@ -15,7 +15,10 @@ MonoBehaviour:
   cardType: 0
   id: 8
   name: Rolling
-  description: Move to [nbMove] Room
+  description: 'Trust [nbTrust]
+
+
+    Move to [nbMove] Room'
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
