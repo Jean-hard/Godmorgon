@@ -25,7 +25,7 @@ namespace GodMorgon.Enemy
         private int tileIndex;  //Index des tiles utilisé lors du parcours de la liste des tiles
         private int nbTilesPerMove = 3;  //Nombre de tiles pour 1 move
         private bool isMoveFinished = false;
-        private List<EnemyView> enemiesInRoom = new List<EnemyView>();
+        public List<EnemyView> enemiesInRoom = new List<EnemyView>();
 
         private bool isAttackFinished = false;
 
@@ -360,12 +360,6 @@ namespace GodMorgon.Enemy
         public void OnDamage()
         {
             enemyHit.launchParticle();  //Lance la particule de hit
-            
-            float duration = enemyHit.GetDuration();    //Récup la durée de la particule
-            if(enemyData.health <= 0)   //Si l'ennemi n'a plus de vie
-            {
-                StartCoroutine(EnemyManager.Instance.KillEnemy(duration, this));    //On le tue
-            }
         }
 
         /**
@@ -455,7 +449,7 @@ namespace GodMorgon.Enemy
         private void LaunchRecenterMechanic()
         {
             Vector3 nextTilePos = walkableTilemap.CellToWorld(new Vector3Int(tilesList[tileIndex].X, tilesList[tileIndex].Y, 0))
-                + new Vector3(0, 0.4f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange
+                + new Vector3(0, 0.2f, 0);   //on ajoute 0.4 pour que l'enemy passe bien au milieu de la tile, la position de la tile étant en bas du losange
 
             float speed = 0.5f;
             transform.position = Vector2.MoveTowards(transform.position, nextTilePos, speed * Time.deltaTime);   //on avance jusqu'à la prochaine tile

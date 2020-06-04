@@ -38,10 +38,11 @@ namespace GodMorgon.Enemy
             Debug.Log("enemy health after was : " + health);
             UpdateHealthBar();
 
-            //if(health <= 0)
-            //{
-            //    EnemyManager.Instance.KillEnemy(enemyView);
-            //}
+            float duration = enemyView.enemyHit.GetDuration();    //Récup la durée de la particule
+            if (health <= 0)   //Si l'ennemi n'a plus de vie
+            {
+                EnemyManager.Instance.KillEnemy(duration, enemyView);    //On le tue
+            }
         }
 
         //return the position of the enemy

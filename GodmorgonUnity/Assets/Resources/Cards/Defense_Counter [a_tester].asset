@@ -29,7 +29,7 @@ MonoBehaviour:
     noBrakes: 0
     nbBlock: 10
     isCounter: 1
-    counterDamagePoint: 25
+    counterDamagePoint: 4
     KillerInstinct: 0
     FastShoes: 0
     Sight: 0
