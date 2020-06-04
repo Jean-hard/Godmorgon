@@ -30,7 +30,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public bool isHover = false;
     public float timeHover = 1.0f;
-    private bool cardIsDragging = false;
+    private static bool cardIsDragging = false;
 
     public GameObject display = null;
 
@@ -128,6 +128,8 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public IEnumerator ScaleCardIn()
     {
+        GetComponent<Canvas>().sortingOrder = 1;
+
         Vector3 originalScale = display.transform.localScale;
         Vector3 destinationScale = new Vector3(2.0f, 2.0f, 0);
 
@@ -147,6 +149,8 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public IEnumerator ScaleCardOut()
     {
+        GetComponent<Canvas>().sortingOrder = 0;
+
         Vector3 originalScale = display.transform.localScale;
         Vector3 destinationScale = new Vector3(1, 1, 1);
 
@@ -169,8 +173,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (isCardDrag)
         {
-            Debug.Log("carte est prise");
-            isCardDrag = true;
+            cardIsDragging = true;
             isHover = false;
             StopCoroutine(ScaleCardIn());
             StopCoroutine(ScaleCardOut());
@@ -179,9 +182,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             display.transform.localPosition = new Vector3(0, 0, 0);
         }
         else
-        {
-            isCardDrag = false;
-            Debug.Log("carte est laché");
-        }
+            cardIsDragging = false;
     }
 }
