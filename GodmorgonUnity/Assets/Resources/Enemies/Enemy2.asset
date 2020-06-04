@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Enemy2
   m_EditorClassIdentifier: 
   enemyId: Killer
-  health: 100
+  health: 20
   skin: {fileID: 0}
-  nbMoves: 1
+  nbMoves: 2
   speed: 5
   attack: 20
   defense: 0

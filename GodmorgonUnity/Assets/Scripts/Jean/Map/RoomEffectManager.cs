@@ -50,6 +50,7 @@ public class RoomEffectManager : MonoBehaviour
     [Header("Curse Settings")]
     [SerializeField]
     private int distancePlayerToCurse = 0;
+    public Vector3Int cursedRoom = new Vector3Int();
 
     [Header("Chest Settings")]
     [SerializeField]
@@ -231,7 +232,7 @@ public class RoomEffectManager : MonoBehaviour
         if (null == currentRoom) return;
         Vector3 currentRoomWorldPos = roomTilemap.CellToWorld(new Vector3Int(currentRoom.x, currentRoom.y, 0)) + new Vector3(0, 0.75f, 0);
 
-        //On lance les particules de Curse sur la room
+        //On lance les particules de CHest sur la room
         Instantiate(roomFxList[1], currentRoomWorldPos, Quaternion.identity, roomEffectsParent);
 
         //Ajoute la gold à la bourse du joueur
@@ -280,7 +281,6 @@ public class RoomEffectManager : MonoBehaviour
     public void CurseRandomRoom()
     {
         Vector3Int playerRoomPos = PlayerManager.Instance.GetPlayerRoomPosition();
-        RoomData roomToCurse = null;
         List<RoomData> cursableRooms = new List<RoomData>();
         foreach (RoomData room in roomsDataArr)
         {
@@ -302,7 +302,7 @@ public class RoomEffectManager : MonoBehaviour
             return;
         }
 
-        roomToCurse = cursableRooms[UnityEngine.Random.Range(0, cursableRooms.Count)];  //Sélectionne une room au hasard parmi les cursable
+        RoomData roomToCurse = cursableRooms[UnityEngine.Random.Range(0, cursableRooms.Count)];  //Sélectionne une room au hasard parmi les cursable
         for(int i = 0; i < roomsDataArr.Length; i++)
         {
             if (roomsDataArr[i] == roomToCurse)
@@ -314,5 +314,23 @@ public class RoomEffectManager : MonoBehaviour
         //Afficher effet au dessus de la room
     }
 
-    
+    //Curse une room dont on aura renseigné les coordonnées dans l'inspector
+    public void CurseSpecificRoom()
+    {
+        if (cursedRoom.x == 0 && cursedRoom.y == 0) return;
+
+        
+        //On parcourt toutes les rooms jusqu'à trouver celle renseignée dans l'inspector
+        for (int i = 0; i < roomsDataArr.Length; i++)
+        {
+            if (roomsDataArr[i].x == cursedRoom.x && roomsDataArr[i].y == cursedRoom.y)
+                roomsDataArr[i].roomEffect = RoomEffect.CURSE;
+        }
+
+        Vector3 cursedRoomWorldPos = roomTilemap.CellToWorld(cursedRoom) + new Vector3(0, 0.75f, 0);
+        
+        //On lance les particules de Curse sur la room 
+        Instantiate(roomFxList[0], cursedRoomWorldPos, Quaternion.identity, roomEffectsParent);
+        GenerateRoomsView();    //Update la room tilemap
+    }
 }
