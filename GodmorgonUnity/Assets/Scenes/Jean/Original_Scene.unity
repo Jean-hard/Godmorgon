@@ -6480,7 +6480,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 601464038}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &67137500
+--- !u!111 &67137503
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7245,7 +7245,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 601464038}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &76792882
+--- !u!111 &76792885
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50401,10 +50401,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 15861897}
     m_Modifications:
+    - target: {fileID: 94621678514618339, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -350
+      objectReference: {fileID: 0}
+    - target: {fileID: 94621678514618339, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1799284273853582330, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144616853030352545, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144616853045809733, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144616853045809733, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: ShapeModule.arc.speed.scalar
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4684216733501913852, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
@@ -50726,17 +50751,22 @@ PrefabInstance:
         type: 3}
       propertyPath: actionGearAnimations.Array.data[1]
       value: 
-      objectReference: {fileID: 76792882}
+      objectReference: {fileID: 76792885}
     - target: {fileID: 8808992978091051960, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: actionGearAnimations.Array.data[2]
       value: 
-      objectReference: {fileID: 2139884623}
+      objectReference: {fileID: 2139884626}
     - target: {fileID: 8808992978091051960, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: actionGearAnimations.Array.data[3]
       value: 
-      objectReference: {fileID: 67137500}
+      objectReference: {fileID: 67137503}
+    - target: {fileID: 8808992978091051960, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+        type: 3}
+      propertyPath: gearParticle
+      value: 
+      objectReference: {fileID: 660138710}
     - target: {fileID: 8808992978115600088, guid: fd4a0e69f81ca77439c40e2e4e01df39,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -56312,6 +56342,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &660138710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2144616853030352545, guid: fd4a0e69f81ca77439c40e2e4e01df39,
+    type: 3}
+  m_PrefabInstance: {fileID: 601464038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &661631651
 GameObject:
   m_ObjectHideFlags: 0
@@ -137628,7 +137664,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 601464038}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &2139884623
+--- !u!111 &2139884626
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
