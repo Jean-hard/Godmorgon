@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 8018034026694979796}
   - component: {fileID: -2118509950651315761}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4c6066b0b01df3a40bca9514fecb6a32, type: 3}
   - {fileID: 21300000, guid: fb24107e2ca6e9e44ac42c8636523fa2, type: 3}
   enemies: {fileID: 11400000, guid: 621d373489ca14e4ab1143b59be10d4e, type: 2}
-  _enemy: {fileID: 11400000, guid: ff67af8d33284154693dba4be7b31dde, type: 2}
+  _enemy: {fileID: 11400000, guid: 0e60e717b31fae944a70b9b629dcd8c8, type: 2}
   moveSpeed: 1
   moveCurve:
     serializedVersion: 2
