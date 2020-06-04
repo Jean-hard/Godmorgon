@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Move [nbMove] room, inflict [nbDamage] damages to every enemies in
     the room where you arrive.
   actionCost: 1
-  price: 0
+  price: 100
   template: {fileID: 21300000, guid: 8877a5d4b1543cf468b141a604a1f40d, type: 3}
   artwork: {fileID: 21300000, guid: 59001d0df1212994987d7b44954b7b83, type: 3}
   effectsData:
