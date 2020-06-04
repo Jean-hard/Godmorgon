@@ -22,7 +22,7 @@ MonoBehaviour:
 
     Inflict [nbDamage] damages.'
   actionCost: 1
-  price: 0
+  price: 200
   template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
   artwork: {fileID: 21300000, guid: cc9f60758272a134ea7eaf4f2b501994, type: 3}
   effectsData:
