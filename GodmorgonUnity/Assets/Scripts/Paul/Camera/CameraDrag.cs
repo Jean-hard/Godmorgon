@@ -37,7 +37,7 @@ public class CameraDrag : MonoBehaviour
             ZoomCam();
 
 
-        if (Input.GetMouseButtonDown(0) && Input.mousePosition.y > 285)
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             isDragging = true;
         if (Input.GetMouseButtonUp(0))
             isDragging = false;
