@@ -188,7 +188,9 @@ namespace GodMorgon.Enemy
             enemiesHaveMoved = false;
 
             UpdateMovableEnemiesList();   //Recup les ennemis présents sur la map qui sont déplaçables
-            StartCoroutine(TimedEnemiesMove());   //Lance la coroutine qui applique un par un le mouvement de chaque ennemi
+            if (movableEnemiesList.Count > 0)
+                StartCoroutine(TimedEnemiesMove());   //Lance la coroutine qui applique un par un le mouvement de chaque ennemi
+            else enemiesHaveMoved = true;
         }
 
         /**

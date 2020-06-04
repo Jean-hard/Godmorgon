@@ -103,7 +103,14 @@ public class GameManager : MonoBehaviour
             PlayerManager.Instance.TakeOffToken(); //Retire un token au player
             shopManager.gameObject.SetActive(true);  //Affiche le shop
             shopManager.ShopOpening();//on prépare les cartes pour le magasin
+            handManager.gameObject.SetActive(false);
         }
+    }
+
+    //on réactive l'affichage de la main quand on ferme le shop
+    public void OnCloseShop()
+    {
+        handManager.gameObject.SetActive(true);
     }
 
     #endregion
