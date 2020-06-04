@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Attack_DirectHit [WIP]
+  m_Name: Attack_DirectHitT4 [WIP]
   m_EditorClassIdentifier: 
   cardType: 1
   id: 9
