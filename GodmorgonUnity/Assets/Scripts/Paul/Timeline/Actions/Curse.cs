@@ -8,7 +8,8 @@ namespace GodMorgon.Timeline
     {
         public override IEnumerator Execute()
         {
-            RoomEffectManager.Instance.CurseRandomRoom();
+            RoomEffectManager.Instance.CurseSpecificRoom(); //Curse une room spécifiée dans l'inspector
+            //RoomEffectManager.Instance.CurseRandomRoom(); //Curse une room random autour du player (comportement normal)
             Debug.Log("ACTION Curse");
             yield return null;
         }

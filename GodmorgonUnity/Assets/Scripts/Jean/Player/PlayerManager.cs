@@ -160,7 +160,6 @@ public class PlayerManager : MonoBehaviour
             multiplier += valueToAddToMultiplier;  //Sinon on ajoute la valeur 
             */
         multiplier = valueToAddToMultiplier;
-        Debug.Log("multiplier : " + multiplier);
     }
 
     /**
@@ -169,7 +168,6 @@ public class PlayerManager : MonoBehaviour
     public void MovePlayer()
     {
         nbRoomsToMove = BuffManager.Instance.getModifiedMove(_cardEffectDatas[0].nbMoves);  //Update le nombre de rooms à parcourir, qui changera en fct du nb sur la carte et si un fast shoes a été joué
-        Debug.Log("nbroom : " + nbRoomsToMove);
 
         GameManager.Instance.DownPanelBlock(true);  //Block le down panel pour que le joueur ne puisse pas jouer de carte pendant le mouvement
 
