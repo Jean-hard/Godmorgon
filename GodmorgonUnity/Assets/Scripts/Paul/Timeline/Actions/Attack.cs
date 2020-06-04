@@ -16,6 +16,7 @@ namespace GodMorgon.Timeline
                 yield return null;
             }
             Debug.Log("Action Attack Done : next");
+            yield return new WaitForSeconds(2f);
         }
 
         public override void Finish()

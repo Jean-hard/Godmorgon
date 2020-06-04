@@ -17,7 +17,10 @@ namespace GodMorgon.Timeline
                     enemy.enemyData.AddBlock(TimelineManager.Instance.nbBlockGain);
 
             Debug.Log("ACTION defend");
-            yield return null;
+
+            yield return new WaitForSeconds(2f);
+
+            //yield return null;
         }
 
         public override void Finish()
