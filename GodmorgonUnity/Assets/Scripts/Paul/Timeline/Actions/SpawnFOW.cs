@@ -11,7 +11,10 @@ namespace GodMorgon.Timeline
             Debug.Log("ACTION Spawn FOW");
 
             FogMgr.Instance.CoverEntireMap();
-            yield return null;
+
+            yield return new WaitForSeconds(2f);
+
+            //yield return null;
         }
 
         public override void Finish()

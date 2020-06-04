@@ -13,6 +13,8 @@ namespace GodMorgon.StateMachine
             //Debug.Log("On Player turn State");
             GameManager.Instance.DownPanelBlock(false);
             GameManager.Instance.UpdateCardDataDisplay();
+            GameManager.Instance.ShowPlayerTurnImage();
+
             MusicManager.Instance.PlayPlayerTurnTheme();
         }
     }

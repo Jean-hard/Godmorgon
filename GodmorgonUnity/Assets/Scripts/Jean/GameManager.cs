@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ShopManager shopManager = null;
 
+    //Animations signalant les différents tours
+    public Animation playerTurnAnimation = null;
+    public Animation ringmasterTurnAnimation = null;
+
+    //color advertising by default
+    private Color advertisingDefaultColor;
 
     //bool pour savoir si le player à passer son tour précédemment
     private bool lastPlayerTurnPassed = false;
@@ -45,6 +51,12 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    public void Start()
+    {
+        //on sauvegarde l'alpha des images pour les animations, si on doit les stopper
+        advertisingDefaultColor = playerTurnAnimation.gameObject.GetComponent<Image>().color;
     }
 
     /**
@@ -73,14 +85,8 @@ public class GameManager : MonoBehaviour
      */
     public void DrawCardButton()
     {
-        //Check if the max hand capability is not reach yet.
-        if (GameEngine.Instance.hand.Count() < GameEngine.Instance.GetSettings().MaxHandCapability)
-        {
-            BasicCard cardDrawn = GameEngine.Instance.DrawCard();
-            handManager.AddCard(cardDrawn);
-        }
-        else
-            Debug.Log("capacité de carte maximale");
+        BasicCard cardDrawn = GameEngine.Instance.DrawCard();
+        handManager.AddCard(cardDrawn);
     }
 
     //Passe le tour du player ce qui lui permettra de tirer une carte supplémentaire
@@ -107,13 +113,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+
     //on réactive l'affichage de la main quand on ferme le shop
     public void OnCloseShop()
     {
         handManager.gameObject.SetActive(true);
     }
-
-    #endregion
 
     //add nbCard to hand
     public void DrawCard(int nbCard)
@@ -177,5 +184,27 @@ public class GameManager : MonoBehaviour
             lastPlayerTurnPassed = false;
             DrawCard(1);
         }
+    }
+
+    //affiche le texte signalant le tour du Player
+    public void ShowPlayerTurnImage()
+    {
+        if (ringmasterTurnAnimation.isPlaying)
+        {
+            ringmasterTurnAnimation.Stop();
+            ringmasterTurnAnimation.gameObject.GetComponent<Image>().color = advertisingDefaultColor;
+        }
+        playerTurnAnimation.Play();
+    }
+
+    //affiche le texte signalant le tour du Ringmaster
+    public void ShowRingmasterTurnImage()
+    {
+        if (playerTurnAnimation.isPlaying)
+        {
+            playerTurnAnimation.Stop();
+            playerTurnAnimation.gameObject.GetComponent<Image>().color = advertisingDefaultColor;
+        }
+        ringmasterTurnAnimation.Play();
     }
 }

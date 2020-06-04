@@ -65,6 +65,9 @@ namespace GodMorgon.Timeline
         //liste de tous les engrenages de la timeline pour les animations
         public List<Animation> actionGearAnimations = new List<Animation>();
 
+        //particule pour l'engrenage de l'action en cour
+        public GameObject gearParticle = null;
+
         #region Singleton Pattern
         private static TimelineManager _instance;
 
@@ -90,6 +93,7 @@ namespace GodMorgon.Timeline
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
 
             actionGearAnimations[0].Play();
+            gearParticle.transform.position = actionGearAnimations[0].transform.position;
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -108,6 +112,7 @@ namespace GodMorgon.Timeline
 
             actionGearAnimations[3].Stop();
             actionGearAnimations[0].Play();
+            gearParticle.transform.position = actionGearAnimations[0].transform.position;
 
             int idx = indexCurrentAction;
             idx = SetNextActions(actionLogo1, idx);
@@ -166,6 +171,7 @@ namespace GodMorgon.Timeline
             else
             {
                 actionGearAnimations[nbActualAction - 1].Play();
+                gearParticle.transform.position = actionGearAnimations[nbActualAction - 1].transform.position;
                 actionGearAnimations[nbActualAction - 2].Stop();
             }
 

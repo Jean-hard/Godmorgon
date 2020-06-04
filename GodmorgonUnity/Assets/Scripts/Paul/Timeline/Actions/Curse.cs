@@ -11,7 +11,10 @@ namespace GodMorgon.Timeline
             RoomEffectManager.Instance.CurseSpecificRoom(); //Curse une room spécifiée dans l'inspector
             //RoomEffectManager.Instance.CurseRandomRoom(); //Curse une room random autour du player (comportement normal)
             Debug.Log("ACTION Curse");
-            yield return null;
+
+            yield return new WaitForSeconds(2f);
+
+            //yield return null;
         }
 
         public override void Finish()
