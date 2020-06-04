@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 5
   id: 10
   name: Vision
-  description: Trust 3. \end \end Remove the fog of war from 2 rooms.
+  description: "Trust 3. \nRemove the fog of war from 2 rooms."
   actionCost: 1
   price: 90
   template: {fileID: 21300000, guid: d49870c996ceb864694c0f6905854a0b, type: 3}
