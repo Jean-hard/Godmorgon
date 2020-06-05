@@ -81,22 +81,16 @@ public class FogMgr : MonoBehaviour
                 Vector3Int tempRoomPos = fogTilemap.WorldToCell(worldPos);
                 if (room == tempRoomPos)
                 {
-                    if (fogTilemap.GetColor(room).a > 0.5f)   //Si la tile n'est pas transparente
+                    if (fogTilemap.GetColor(room).a > 0.99f)   //Si la tile n'est pas transparente
                     {
-                        //fogTilemap.SetTileFlags(room, TileFlags.None);   //On rend possible le changement de couleur
-                        //fogTilemap.SetColor(room, transparentColor);     //On la rend transparente
-
                         StartCoroutine(FadeFog(true, room));
                     }
                 }
             }
         }
 
-        if (fogTilemap.GetColor(currentRoomDataPos).a > 0.5f)
+        if (fogTilemap.GetColor(currentRoomDataPos).a > 0.99f)
         {
-            //fogTilemap.SetTileFlags(currentRoomDataPos, TileFlags.None);   //On rend possible le changement de couleur
-            //fogTilemap.SetColor(currentRoomDataPos, transparentColor);     //On la rend transparente
-
             StartCoroutine(FadeFog(true, currentRoomDataPos));
         }
 
@@ -115,7 +109,6 @@ public class FogMgr : MonoBehaviour
         // fade from opaque to transparent
         if (fadeAway)
         {
-            Debug.Log("FADE to transparent");
             // loop over 1 second backwards
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
@@ -187,9 +180,6 @@ public class FogMgr : MonoBehaviour
         
         foreach(Vector3Int roomPos in nearRoomsTiles)
         {
-            //fogTilemap.SetTileFlags(roomPos, TileFlags.None);
-            //fogTilemap.SetColor(roomPos, transparentColor);
-
             StartCoroutine(FadeFog(true, roomPos));
         }
 
@@ -205,7 +195,7 @@ public class FogMgr : MonoBehaviour
     }
 
     /**
-     * Chech si les positions ont été reveal
+     * Check si les positions ont été reveal
      */
     public bool RevealDone()
     {
@@ -231,18 +221,26 @@ public class FogMgr : MonoBehaviour
     {
         hasUpdatedFog = false;  //Le fog n'a pas encore été updaté
 
+        Vector3Int currentPlayerPos = PlayerManager.Instance.GetPlayerRoomPosition();
+        RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(currentPlayerPos);
+        Vector3Int currentRoomDataPos = new Vector3Int(currentRoomData.x, currentRoomData.y, 0);
+
+        List<Vector3Int> nearRoomsTiles = UpdateNearRooms(currentPlayerPos, 1);
+
         //On parcourt toutes les tiles du fog (gérer les bounds dans l'inspector)
-        for(int x = 0; x < fogBounds.x; ++x)
+        for (int x = 0; x < fogBounds.x; ++x)
         {
             for(int y = 0; y < fogBounds.y; ++y)
             {
                 Vector3Int fogTilePos = new Vector3Int(x, y, 0);   //Récup la coordonnée de la tile actuelle
-                fogTilemap.SetTile(fogTilePos, fogTile);    //On applique la tile fog sur toutes les cases
-                fogTilemap.SetTileFlags(fogTilePos, TileFlags.None);   //Autorise le changement de color
-                fogTilemap.SetColor(fogTilePos, opaqueColor);  //Applique l'alpha au max
+                if(fogTilePos != currentRoomDataPos && !nearRoomsTiles.Contains(fogTilePos))
+                {
+                    fogTilemap.SetTile(fogTilePos, fogTile);    //On applique la tile fog sur toutes les cases
+
+                    StartCoroutine(FadeFog(false, fogTilePos));
+                }
+                    
             }
         }
-
-        UpdateFogToPlayer();    //On clear la tile du player et autour
     }
 }
