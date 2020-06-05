@@ -127,7 +127,7 @@ namespace GodMorgon.Timeline
         private int SetNextActions(Image image, int initIdx)
         {
             //si initIdx > actionlist.Count, alors idx = 0
-            int idx = (initIdx > actionlist.Count) ? 0 : initIdx;
+            int idx = (initIdx >= actionlist.Count) ? 0 : initIdx;
             image.sprite = actionlist[idx++].actionLogo;//ici idx = idx;
             //ici idx = idx + 1; 
             return idx;
