@@ -84,12 +84,14 @@ namespace GodMorgon.Timeline
             {
                 _instance = this;
             }
+
+            actionlist = settings.GetActionList();
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            actionlist = settings.GetActionList();
+            
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
 
             actionGearAnimations[0].Play();
