@@ -336,6 +336,7 @@ namespace GodMorgon.Enemy
                 return;
             }
 
+            if(spawnCounter < 4)
             //Fait spawn chaque ennemi de la liste à une position de la liste
             for (int i = 0; i < 2; ++i)
             {
@@ -343,20 +344,35 @@ namespace GodMorgon.Enemy
                 int index = 0;
                 if (spawnCounter == 1) index = 1;
 
-                SpawnEnemy(enemiesToSpawn[index], spawns[i + spawnCounter]);     //Spawn un ennemi random à telle position
+                SpawnEnemy(enemiesToSpawn[index], spawns[spawnCounter]);     //Spawn un ennemi random à telle position
+            }
+            else
+            {
+                //Fait spawn chaque ennemi de la liste à une position de la liste
+                for (int i = 0; i < 3; ++i)
+                {
+                    //int randomIndex = Random.Range(0, enemiesToSpawn.Count);
+                    
+                    SpawnEnemy(enemiesToSpawn[0], spawns[spawnCounter]);     //Spawn un ennemi random à telle position
+                }
             }
         }
 
         /**
          * Tue un ennemi donné après une durée correspondant à la durée de la particule du hit
          */
-        public IEnumerator KillEnemy(float hitAnimDuration,EnemyView enemyToKill)
+        public void KillEnemy(float hitAnimDuration,EnemyView enemyToKill)
         {
-            yield return new WaitForSeconds(hitAnimDuration);   //On attend que la particule de hit soit terminée
-            Destroy(enemyToKill.gameObject);    //Détruit le gameobject de l'ennemi
+            StartCoroutine(TimedDeath(hitAnimDuration, enemyToKill));
             UpdateEnemiesList();    //Update la liste des ennemis sur la map
-
             PlayerManager.Instance.AddGold(15); //Add gold to player
+        }
+
+        IEnumerator TimedDeath(float duration, EnemyView enemyToKill)
+        {
+            yield return new WaitForSeconds(duration);   //On attend que la particule de hit soit terminée
+            Destroy(enemyToKill.gameObject);    //Détruit le gameobject de l'ennemi
+            
         }
     }
 }
