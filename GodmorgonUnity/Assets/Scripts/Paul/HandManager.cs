@@ -99,4 +99,13 @@ public class HandManager : MonoBehaviour
         foreach (CardDisplay cardDisplay in CardDisplayList)
             cardDisplay.UpdateDescription();
     }
+
+    //lock or unlock the dragging of all the card 
+    public void UnlockCard(bool cardUnlock)
+    {
+        foreach(CardDisplay card in CardDisplayList)
+        {
+            card.GetComponent<DragCardHandler>().enabled = cardUnlock;
+        }
+    }
 }

@@ -34,8 +34,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public GameObject display = null;
 
-    private Canvas cardCanvas = null;
-
     /**
      * Load the data of the card in the gameObject at start, if the card exist.
      */

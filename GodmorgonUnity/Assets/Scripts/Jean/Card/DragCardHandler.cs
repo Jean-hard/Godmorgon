@@ -140,6 +140,10 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             //on lance la particle de card drop
             GameObject dropEffect = Instantiate(dropEffectPrefab, dropPosition, Quaternion.identity);
             dropEffect.GetComponent<ParticleSystemScript>().PlayNDestroy();
+
+            //on lock toutes les cartes en main
+            GameManager.Instance.UnlockDragCardHandler(false);
+
         }
         else
         {

@@ -20,6 +20,7 @@ namespace GodMorgon.StateMachine
             MusicManager.Instance.PlayRingmasterTurnTheme();
             GameManager.Instance.ShowRingmasterTurnImage();
             EnemyManager.Instance.UpdateEnemiesInSameRoom();
+            GameManager.Instance.UnlockDragCardHandler(false);
 
             TimelineManager.Instance.DoAction();
         }

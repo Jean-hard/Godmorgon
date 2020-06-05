@@ -207,4 +207,10 @@ public class GameManager : MonoBehaviour
         }
         ringmasterTurnAnimation.Play();
     }
+
+    //lock or unlock the dragging of all the card in hand
+    public void UnlockDragCardHandler(bool cardUnlock)
+    {
+        handManager.UnlockCard(cardUnlock);
+    }
 }
