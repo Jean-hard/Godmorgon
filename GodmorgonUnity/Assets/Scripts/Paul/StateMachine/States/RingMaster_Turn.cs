@@ -4,6 +4,7 @@ using UnityEngine;
 
 using GodMorgon.Timeline;
 using GodMorgon.Sound;
+using GodMorgon.Enemy;
 
 namespace GodMorgon.StateMachine
 {
@@ -18,6 +19,7 @@ namespace GodMorgon.StateMachine
             GameManager.Instance.DownPanelBlock(true);
             MusicManager.Instance.PlayRingmasterTurnTheme();
             GameManager.Instance.ShowRingmasterTurnImage();
+            EnemyManager.Instance.UpdateEnemiesInSameRoom();
 
             TimelineManager.Instance.DoAction();
         }

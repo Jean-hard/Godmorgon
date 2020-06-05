@@ -283,7 +283,7 @@ namespace GodMorgon.Enemy
         {
             foreach (EnemyView enemy in enemiesList)
             {
-                if(enemy.enemyData.inPlayersRoom)
+                if(enemy.enemyData.inPlayersRoom || enemy.enemiesInRoom.Count > 0)
                 {
                     //Lance anim d'attack
                     enemy.Attack();
@@ -373,6 +373,30 @@ namespace GodMorgon.Enemy
             yield return new WaitForSeconds(duration);   //On attend que la particule de hit soit terminée
             Destroy(enemyToKill.gameObject);    //Détruit le gameobject de l'ennemi
             
+        }
+
+        /**
+         * Update pour chaque ennemi sa liste d'ennemis dans sa room (pour l'attack)
+         */
+        public void UpdateEnemiesInSameRoom()
+        {
+            UpdateEnemiesList();
+
+            foreach(EnemyView enemy in enemiesList)
+            {
+                foreach(EnemyView otherEnemy in enemiesList)
+                {
+                    if(enemy != otherEnemy)
+                    {
+                        Vector3Int enemyPos = enemy.GetRoomPosition();
+                        Vector3Int otherEnemyPos = otherEnemy.GetRoomPosition();
+                        if(enemyPos == otherEnemyPos)
+                        {
+                            enemy.enemiesInRoom.Add(otherEnemy);
+                        }
+                    }
+                }
+            }
         }
     }
 }
