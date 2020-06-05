@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad9c89485b93da4d8c6366f575bff17, type: 3}
   m_Name: VS_Deck
   m_EditorClassIdentifier: 
-  id: 0
+  id: 5
   name: Vs_Deck
   description: Deck used for VS
   artwork: {fileID: 0}
