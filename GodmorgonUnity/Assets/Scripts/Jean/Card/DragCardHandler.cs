@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using GodMorgon.Sound;
 using GodMorgon.CardEffect;
 using GodMorgon.Models;
+using GodMorgon.VisualEffect;
 
 public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -25,7 +26,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public CardDragDelegate onCardDragDelegate;
     public CardDragDelegate onCardDragEndDelegate;
 
-    public GameObject dropEffect;
+    public GameObject dropEffectPrefab;
 
     private DropPositionManager dropPosManager = new DropPositionManager();
 
@@ -135,6 +136,10 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             //discard the used card
             GameManager.Instance.DiscardHandCard(_card);
+
+            //on lance la particle de card drop
+            GameObject dropEffect = Instantiate(dropEffectPrefab, dropPosition, Quaternion.identity);
+            dropEffect.GetComponent<ParticleSystemScript>().PlayNDestroy();
         }
         else
         {
