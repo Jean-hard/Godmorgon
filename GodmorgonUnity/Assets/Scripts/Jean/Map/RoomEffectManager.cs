@@ -330,7 +330,7 @@ public class RoomEffectManager : MonoBehaviour
         Vector3 cursedRoomWorldPos = roomTilemap.CellToWorld(cursedRoom) + new Vector3(0, 0.75f, 0);
         
         //On lance les particules de Curse sur la room 
-        Instantiate(roomFxList[0], cursedRoomWorldPos, Quaternion.identity, roomEffectsParent);
+        Instantiate(roomFxList[3], cursedRoomWorldPos, Quaternion.identity, roomEffectsParent);
         GenerateRoomsView();    //Update la room tilemap
     }
 }

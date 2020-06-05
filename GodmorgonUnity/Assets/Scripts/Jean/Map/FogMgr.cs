@@ -38,7 +38,7 @@ public class FogMgr : MonoBehaviour
         if (Instance == null) Instance = this;
         if (Instance != this) Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -82,9 +82,11 @@ public class FogMgr : MonoBehaviour
                 if (room == tempRoomPos)
                 {
                     if (fogTilemap.GetColor(room).a > 0.5f)   //Si la tile n'est pas transparente
-                    {                     
-                        fogTilemap.SetTileFlags(room, TileFlags.None);   //On rend possible le changement de couleur
-                        fogTilemap.SetColor(room, transparentColor);     //On la rend transparente
+                    {
+                        //fogTilemap.SetTileFlags(room, TileFlags.None);   //On rend possible le changement de couleur
+                        //fogTilemap.SetColor(room, transparentColor);     //On la rend transparente
+
+                        StartCoroutine(FadeFog(true, room));
                     }
                 }
             }
@@ -92,11 +94,51 @@ public class FogMgr : MonoBehaviour
 
         if (fogTilemap.GetColor(currentRoomDataPos).a > 0.5f)
         {
-            fogTilemap.SetTileFlags(currentRoomDataPos, TileFlags.None);   //On rend possible le changement de couleur
-            fogTilemap.SetColor(currentRoomDataPos, transparentColor);     //On la rend transparente
+            //fogTilemap.SetTileFlags(currentRoomDataPos, TileFlags.None);   //On rend possible le changement de couleur
+            //fogTilemap.SetColor(currentRoomDataPos, transparentColor);     //On la rend transparente
+
+            StartCoroutine(FadeFog(true, currentRoomDataPos));
         }
 
         hasUpdatedFog = true;
+    }
+
+    /**
+     * Clear le fog ou rajoute du fog en fade 
+     * TRUE pour aller au transparent
+     * FALSE pour aller à l'opaque
+     */
+    IEnumerator FadeFog(bool fadeAway, Vector3Int originPos)
+    {
+        fogTilemap.SetTileFlags(originPos, TileFlags.None);   //On rend possible le changement de couleur
+
+        // fade from opaque to transparent
+        if (fadeAway)
+        {
+            Debug.Log("FADE to transparent");
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                Color color = new Color(1, 1, 1, i);
+                
+                fogTilemap.SetColor(originPos, color);
+                yield return null;
+            }
+        }
+        // fade from transparent to opaque
+        else
+        {
+            // loop over 1 second
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                // set color with i as alpha
+                Color color = new Color(1, 1, 1, i);
+
+                fogTilemap.SetColor(originPos, color);
+                yield return null;
+            }
+        }
     }
 
     /**
@@ -145,8 +187,10 @@ public class FogMgr : MonoBehaviour
         
         foreach(Vector3Int roomPos in nearRoomsTiles)
         {
-            fogTilemap.SetTileFlags(roomPos, TileFlags.None);
-            fogTilemap.SetColor(roomPos, transparentColor);
+            //fogTilemap.SetTileFlags(roomPos, TileFlags.None);
+            //fogTilemap.SetColor(roomPos, transparentColor);
+
+            StartCoroutine(FadeFog(true, roomPos));
         }
 
         StartCoroutine(TimedAction(timeAfterAction));
