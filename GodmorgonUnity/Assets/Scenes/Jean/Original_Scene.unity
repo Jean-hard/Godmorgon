@@ -133043,7 +133043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: ab241ee98bdc8f34bae4a03c003def74, type: 2}
-  gameSceneName: 
+  gameSceneName: Original_Scene
 --- !u!4 &2049775135
 Transform:
   m_ObjectHideFlags: 0
