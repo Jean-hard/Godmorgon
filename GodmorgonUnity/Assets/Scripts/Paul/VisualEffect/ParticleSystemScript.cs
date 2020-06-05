@@ -42,5 +42,22 @@ namespace GodMorgon.VisualEffect
 
             return duration;
         }
+
+        //play the particle once and destroy gameObject at the end
+        public void PlayNDestroy()
+        {
+            StartCoroutine(PlayNDestroyCoroutine());
+        }
+
+        public IEnumerator PlayNDestroyCoroutine()
+        {
+            foreach (ParticleSystem particle in particleSystemList)
+            {
+                particle.Play();
+            }
+            yield return new WaitForSeconds(GetDuration());
+
+            Destroy(this);
+        }
     }
 }
