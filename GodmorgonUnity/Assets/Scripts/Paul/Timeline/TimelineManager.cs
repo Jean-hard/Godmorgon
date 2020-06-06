@@ -21,13 +21,7 @@ namespace GodMorgon.Timeline
          * The action image on the timeline;
          */
         [SerializeField]
-        private Image actionLogo1 = null;
-        [SerializeField]
-        private Image actionLogo2 = null;
-        [SerializeField]
-        private Image actionLogo3 = null;
-        [SerializeField]
-        private Image actionLogo4 = null;
+        private List<Image> actionLogoList = null;
 
         /**
          * ActionCursor script manage the animation of the cursor
@@ -68,6 +62,18 @@ namespace GodMorgon.Timeline
         //particule pour l'engrenage de l'action en cour
         public GameObject gearParticle = null;
 
+        //actionLogo destination position
+        public Transform logoDestination = null;
+
+        //temps de l'animation
+        public float actionLogoTime = 2;
+
+        //position de tout les logos (pour pouvoir les remettres à leur places après l'animation)
+        //private List<Transform> actionLogoBasePos = null;
+
+        //particule actuel
+        public Transform particulePos = null;
+
         #region Singleton Pattern
         private static TimelineManager _instance;
 
@@ -91,11 +97,21 @@ namespace GodMorgon.Timeline
         // Start is called before the first frame update
         void Start()
         {
-            
+            //set the nb remaining action text
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
 
+            //launche the first gear anmation
             actionGearAnimations[0].Play();
             gearParticle.transform.position = actionGearAnimations[0].transform.position;
+
+            particulePos.localPosition = actionGearAnimations[0].transform.localPosition;
+
+            //on save les positions de base
+            //actionLogoBasePos = new List<Transform>();
+            //for (int i = 0; i < actionLogoList.Count; i++)
+            //{
+            //    actionLogoBasePos.Add(actionLogoList[i].transform);
+            //}
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -107,6 +123,8 @@ namespace GodMorgon.Timeline
         /**
          * Set the display of the Timeline
          * We take the picture of the 4 next actions in the timeline
+         * On réactive les logos
+         * -------------TODO : peut en coroutine pour faire une animation---------------------------
          */
         public void SetTimeline()
         {
@@ -117,10 +135,17 @@ namespace GodMorgon.Timeline
             gearParticle.transform.position = actionGearAnimations[0].transform.position;
 
             int idx = indexCurrentAction;
-            idx = SetNextActions(actionLogo1, idx);
-            idx = SetNextActions(actionLogo2, idx);
-            idx = SetNextActions(actionLogo3, idx);
-            idx = SetNextActions(actionLogo4, idx);
+            idx = SetNextActions(actionLogoList[0], idx);
+            actionLogoList[0].gameObject.SetActive(true);
+
+            idx = SetNextActions(actionLogoList[1], idx);
+            actionLogoList[1].gameObject.SetActive(true);
+
+            idx = SetNextActions(actionLogoList[2], idx);
+            actionLogoList[2].gameObject.SetActive(true);
+
+            idx = SetNextActions(actionLogoList[3], idx);
+            actionLogoList[3].gameObject.SetActive(true);
         }
 
         /**
@@ -149,6 +174,9 @@ namespace GodMorgon.Timeline
          */
         public IEnumerator ActionExecution()
         {
+            //on lance l'animation du logo
+            StartCoroutine(ActionLogoAnimation());
+
             isRunning = true;
             //wait for the action to finish
             yield return actionlist[indexCurrentAction].Execute();
@@ -175,6 +203,8 @@ namespace GodMorgon.Timeline
                 actionGearAnimations[nbActualAction - 1].Play();
                 gearParticle.transform.position = actionGearAnimations[nbActualAction - 1].transform.position;
                 actionGearAnimations[nbActualAction - 2].Stop();
+
+                particulePos.localPosition = actionGearAnimations[nbActualAction - 1].transform.localPosition;
             }
 
             //at the end of the action, we set the cursor
@@ -205,6 +235,38 @@ namespace GodMorgon.Timeline
         public void SetRingmasterActionRemain(int nbTurn)
         {
             nbRingmasterActionRemain = nbTurn;
+        }
+
+        /**
+         * Animation à chaque tour du ringmaster
+         * le logo se déplace vers le centre de l'écran et et s'agrandit
+         */
+        public IEnumerator ActionLogoAnimation()
+        {
+            Vector3 originalScale = actionLogoList[nbActualAction - 1].transform.localScale;
+            Vector3 destinationScale = new Vector3(2f, 2f, 0);
+
+            //Vector3 originalPosition = actionLogoList[nbActualAction - 1].transform.localPosition;
+            //Vector3 destinationPosition = logoDestination.localPosition;
+
+            float currentTime = 0.0f;
+
+            while (currentTime <= actionLogoTime)
+            {
+                actionLogoList[nbActualAction - 1].transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
+                //actionLogoList[nbActualAction - 1].transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
+                currentTime += Time.deltaTime * 4;
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.5f);
+            actionLogoList[nbActualAction - 1].gameObject.SetActive(false);
+            actionLogoList[nbActualAction - 1].transform.localScale = new Vector3(1f, 1f, 1f);
+
+            //on redonne leur postion et scale de base
+            //actionLogoList[nbActualAction - 1].transform.position = actionLogoBasePos[nbActualAction - 1].position;
+            //Debug.Log("logo bas pos = " + actionLogoBasePos[nbActualAction - 1].localPosition + "logo actual pos = " + actionLogoList[nbActualAction - 1].transform.localPosition);
+            //actionLogoList[nbActualAction - 1].transform.localScale = actionLogoBasePos[nbActualAction - 1].localScale;
+
         }
     }
 }
