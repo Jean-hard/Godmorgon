@@ -9,9 +9,22 @@ namespace GodMorgon.Sound
      */
     public class MusicManager : MonoBehaviour
     {
-        public AK.Wwise.Event musicEvent;
-        public AK.Wwise.Event dropCardEvent;
-        public AK.Wwise.Event rollingKartEvent;
+        
+
+        public AK.Wwise.Event Player_Move;
+        public AK.Wwise.Event Enemy_Death;
+        public AK.Wwise.Event Feedback_Chest;
+        public AK.Wwise.Event Cards_Play;
+        public AK.Wwise.Event Cards_Buy;
+        public AK.Wwise.Event Mechanical;
+        public AK.Wwise.Event Park_Theme;
+        public AK.Wwise.Event Enemy_Hit;
+        public AK.Wwise.Event Player_Hit;
+        public AK.Wwise.Event Cursor_EndofTurn;
+        public AK.Wwise.Event Ringmaster_EndofTurn;
+        public AK.Wwise.Event Fog_Clear;
+        public AK.Wwise.Event Title_Screen;
+        public AK.Wwise.Event Enemy_Moving;
 
         public AK.Wwise.State PlayerState;
         public AK.Wwise.State RingmasterState;
@@ -49,6 +62,11 @@ namespace GodMorgon.Sound
                 RingmasterState.SetValue();
         }
 
+
+        #region TEST
+        public AK.Wwise.Event musicEvent;
+        public AK.Wwise.Event dropCardEvent;
+        public AK.Wwise.Event rollingKartEvent;
         public void PlayPlayerTurnTheme()
         {
             PlayerState.SetValue();
@@ -67,6 +85,65 @@ namespace GodMorgon.Sound
         public void PlayRollingKart()
         {
             rollingKartEvent.Post(gameObject);
+        }
+
+        #endregion
+
+        public void PlayPlayerMove()
+        {
+            Player_Move.Post(gameObject);
+        }
+        public void PlayEnemyDeath()
+        {
+            Enemy_Death.Post(gameObject);
+        }
+        public void PlayFeedbackChest()
+        {
+            Feedback_Chest.Post(gameObject);
+        }
+        public void PlayCardsPlay()
+        {
+            Cards_Play.Post(gameObject);
+        }
+        public void PlayCardsBuy()
+        {
+            Cards_Buy.Post(gameObject);
+        }
+        public void PlayMechanical()
+        {
+            Mechanical.Post(gameObject);
+        }
+        public void PlayParkTheme()
+        {
+            Park_Theme.Post(gameObject);
+        }
+        public void PlayEnemyHit()
+        {
+            Enemy_Hit.Post(gameObject);
+        }
+        public void PlayPlayerHit()
+        {
+            Player_Hit.Post(gameObject);
+        }
+        public void PlayCursorEndOfTurn()
+        {
+            Cursor_EndofTurn.Post(gameObject);
+        }
+        public void PlayRingMasterEndTurn()
+        {
+            Ringmaster_EndofTurn.Post(gameObject);
+        }
+        public void PlayFogClear()
+        {
+            Fog_Clear.Post(gameObject);
+        }
+        public void PlayTitleScreen()
+        {
+            Title_Screen.Post(gameObject);
+        }
+        public void PlayEnemyMoving()
+        {
+            Enemy_Moving.Post(gameObject);
         }
     }
 }
