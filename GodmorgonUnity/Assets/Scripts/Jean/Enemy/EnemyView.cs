@@ -37,6 +37,9 @@ namespace GodMorgon.Enemy
         #endregion
 
         [Header("World Settings")]
+        public CameraShaker shaker;     //Script du shake posé sur la cam
+        public float shakeDuration = 0.1f;
+        private Camera mainCamera;
         private Grid grid;   //Grid du jeu
         private Tilemap walkableTilemap;    //Tilemap contenant tous les chemins de tiles walkable
         //private Tilemap roadMap;
@@ -80,14 +83,18 @@ namespace GodMorgon.Enemy
             player = FindObjectOfType<PlayerManager>();
             grid = EnemyManager.Instance.grid;
             walkableTilemap = EnemyManager.Instance.walkableTilemap;
-            _animator = this.GetComponent<Animator>();
+            _animator = this.transform.GetComponentInChildren<Animator>();
 
             _healthBar = this.GetComponentInChildren<HealthBar>();
             _healthBar.SetBarPoints(enemyData.health, enemyData.defense);
 
-            if (this.gameObject.GetComponentInChildren<SpriteRenderer>() != null)
+            if (this.gameObject.GetComponentInChildren<SpriteRenderer>().gameObject.name == "EnemySprite")
                 spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
             else Debug.Log("Sprite of player not found");
+
+            mainCamera = Camera.main;
+            if (mainCamera)
+                shaker = mainCamera.GetComponent<CameraShaker>();
 
             #region Astar Start Setup
             walkableTilemap.CompressBounds();   // réduit la taille de la tilemap à là où des tiles existent
@@ -374,8 +381,9 @@ namespace GodMorgon.Enemy
          * Lance l'attaque (effet visuel + calcul)
          */
         public void Attack()
-        {          
+        {
             //ShowAttackEffect(); //Décommenter qd on aura l'anim d'attaque
+            StartCoroutine(AttackEffect());
 
             if(enemyData.inPlayersRoom) //Si le player est dans la room
                 PlayerManager.Instance.TakeDamage(enemyData.attack);
@@ -395,16 +403,48 @@ namespace GodMorgon.Enemy
          */
         public void ShowAttackEffect()
         {
-            PlayAnim("Attack");
+            //_animator.SetTrigger("LaunchAttack");
+            Animation anim = this.transform.GetComponentInChildren<Animation>();
+            
+            foreach (AnimationState state in anim)
+            {
+                if (state.name == "Enemy_Attack")
+                {
+                    anim.Play(state.name);
+                    
+                    //Debug.Log("anim played");
+                }
+            }
+        }
+
+        /**
+         * Anim d'attaque
+         */
+        public IEnumerator AttackEffect()
+        {
+            shaker.Shake(shakeDuration);
+            yield return new WaitForSeconds(1f);
+            isAttackFinished = true;
         }
 
         public bool IsAttackFinished()
         {
+            /*
             if (IsAnimFinished())
+            {
                 isAttackFinished = true;
+            }
             else isAttackFinished = false;
             
-            return isAttackFinished;
+            return isAttackFinished;*/
+
+            if (isAttackFinished)
+            {
+                isAttackFinished = false;
+                return true;
+            }
+            
+            return false;
         }
 
         /**

@@ -23,7 +23,7 @@ namespace GodMorgon.Enemy
          */
         public override void TakeDamage(int damagePoint)
         {
-            Debug.Log("enemy health before was : " + health);
+            //Debug.Log("enemy health before was : " + health);
             while(damagePoint > 0 && defense > 0)
             {
                 defense--;
@@ -35,7 +35,7 @@ namespace GodMorgon.Enemy
                 health--;
                 damagePoint--;
             }
-            Debug.Log("enemy health after was : " + health);
+            //Debug.Log("enemy health after was : " + health);
             UpdateHealthBar();
 
             float duration = enemyView.enemyHit.GetDuration();    //Récup la durée de la particule
