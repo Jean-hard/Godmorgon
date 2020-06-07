@@ -108,4 +108,10 @@ public class HandManager : MonoBehaviour
             card.GetComponent<DragCardHandler>().enabled = cardUnlock;
         }
     }
+
+    //Return a list of current cards in hand
+    public List<CardDisplay> GetCardsInHand()
+    {
+        return CardDisplayList;
+    }
 }

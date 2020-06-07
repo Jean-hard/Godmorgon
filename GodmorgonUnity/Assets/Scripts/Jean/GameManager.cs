@@ -166,6 +166,31 @@ public class GameManager : MonoBehaviour
     public void DownPanelBlock(bool isPanelBlock)
     {
         downPanelBlock.SetActive(isPanelBlock);
+
+        //Cards in hand become darker if the block is activated, normal if not
+        if(isPanelBlock)
+        {
+            Color blockColor = new Color(0.5f, 0.5f, 0.5f, 1);
+            foreach(CardDisplay card in handManager.GetCardsInHand())
+            {
+                Transform _cardTemplate = card.transform.GetChild(0).GetChild(0);
+                if (_cardTemplate.name == "Template")
+                {
+                    _cardTemplate.GetComponent<Image>().color = blockColor;
+                }
+            }
+        } else
+        {
+            Color normalColor = new Color(1, 1, 1, 1);
+            foreach (CardDisplay card in handManager.GetCardsInHand())
+            {
+                Transform _cardTemplate = card.transform.GetChild(0).GetChild(0);
+                if (_cardTemplate.name == "Template")
+                {
+                    _cardTemplate.GetComponent<Image>().color = normalColor;
+                }
+            }
+        }
     }
 
     //Update les infos de toutes les cartes
