@@ -482,7 +482,7 @@ public class PlayerManager : MonoBehaviour
     /**
      * Update Gold Text
      */
-    private void UpdateGoldText()
+    public void UpdateGoldText()
     {
         goldValueText.text = PlayerData.Instance.goldValue.ToString();
     }

@@ -375,8 +375,8 @@ namespace GodMorgon.Enemy
          */
         public void Attack()
         {          
-            Debug.Log("Enemy is attacking");
-            ShowAttackEffect();
+            //ShowAttackEffect(); //Décommenter qd on aura l'anim d'attaque
+
             if(enemyData.inPlayersRoom) //Si le player est dans la room
                 PlayerManager.Instance.TakeDamage(enemyData.attack);
             if(enemiesInRoom.Count > 0) //S'il y a des ennemis dans la room
