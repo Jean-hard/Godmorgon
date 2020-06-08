@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     private GameObject downPanelBlock = null;
 
     [SerializeField]
+    public DraftPanel draftPanel = null;
+
+    [SerializeField]
     private ShopManager shopManager = null;
 
     //Animations signalant les différents tours
@@ -34,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     //bool pour savoir si le player à passer son tour précédemment
     private bool lastPlayerTurnPassed = false;
+
+    //Booleen utilisé pour faire attendre le séquenceur
+    [NonSerialized]
+    public bool draftPanelActivated = false;
 
     #region Singleton Pattern
     private static GameManager _instance;
@@ -237,5 +244,19 @@ public class GameManager : MonoBehaviour
     public void UnlockDragCardHandler(bool cardUnlock)
     {
         handManager.UnlockCard(cardUnlock);
+    }
+
+    public void DraftPanelActivation(bool activate)
+    {
+        if (activate)
+        {
+            draftPanel.gameObject.SetActive(true);
+            draftPanel.UpdateDraft();
+        }
+        else
+        {
+            draftPanel.gameObject.SetActive(false);
+            draftPanelActivated = false;
+        }
     }
 }

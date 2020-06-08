@@ -15,13 +15,14 @@ namespace GodMorgon.Enemy
         public Sprite skin = null;
         public bool inPlayersRoom = false;
         public bool inOtherEnemyRoom = false;
+        public bool killedByPlayer = false;
         public EnemyView enemyView = null;
 
         /**
          * call when enemy is attacked
          * the damage are first applied to the armor and after to the health
          */
-        public override void TakeDamage(int damagePoint)
+        public override void TakeDamage(int damagePoint, bool isPlayerAttacking)
         {
             //Debug.Log("enemy health before was : " + health);
             while(damagePoint > 0 && defense > 0)
@@ -41,7 +42,12 @@ namespace GodMorgon.Enemy
             float duration = enemyView.enemyHit.GetDuration();    //Récup la durée de la particule
             if (health <= 0)   //Si l'ennemi n'a plus de vie
             {
-                EnemyManager.Instance.KillEnemy(duration, enemyView);    //On le tue
+                if (isPlayerAttacking)
+                {
+                    killedByPlayer = true;
+                    GameManager.Instance.draftPanelActivated = true;    //Met un booleen à true pour faire attendre le séquenceur
+                }
+                enemyView.KillEnemy(duration);    //On le tue
             }
         }
 
@@ -61,6 +67,16 @@ namespace GodMorgon.Enemy
         public override void OnDamage()
         {
             enemyView.OnDamage();
+        }
+
+        /**
+         * Retourne true si l'ennemi n'a plus de vie
+         */
+        public override bool IsDead()
+        {
+            if (health <= 0) return true;
+
+            return false;
         }
 
         public void AddBlock(int nbBlock)

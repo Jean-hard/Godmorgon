@@ -17,7 +17,7 @@ namespace GodMorgon.VisualEffect
         {
             foreach(ParticleSystem particle in particleSystemList)
             {
-                particle.Play();
+                if(particle != null) particle.Play();
             }
         }
 

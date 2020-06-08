@@ -14,7 +14,6 @@ public class CameraShaker : MonoBehaviour
     {
         _target = GetComponent<Transform>();
         _initialPos = _target.localPosition;
-        Debug.Log(_initialPos);
     }
 
     float _shakingDuration = 0f;

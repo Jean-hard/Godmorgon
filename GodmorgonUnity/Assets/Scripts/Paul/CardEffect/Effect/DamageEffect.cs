@@ -43,7 +43,7 @@ namespace GodMorgon.CardEffect
                 Debug.Log("il manque une target dans le contexte !");
             
             //toujours passer par le playerData pour infliger les dégats correspondant au stats actuel du player
-            context.targets.TakeDamage(PlayerData.Instance.DoDamage(damagePoint));
+            context.targets.TakeDamage(PlayerData.Instance.DoDamage(damagePoint), true);
 
             //add the attack sequence
             GSA_PlayerAttack playerAttackAction = new GSA_PlayerAttack();

@@ -52,7 +52,7 @@ namespace GodMorgon.Enemy
         /**
          * Mets dans un tableau TOUS les enemies enfant du gameobject EnemyManager sur la map
          */
-        private void UpdateEnemiesList()
+        public void UpdateEnemiesList()
         {
             enemiesList = new List<EnemyView>();
             for (int i = 0; i < transform.childCount; i++)
@@ -358,22 +358,7 @@ namespace GodMorgon.Enemy
             }
         }
 
-        /**
-         * Tue un ennemi donné après une durée correspondant à la durée de la particule du hit
-         */
-        public void KillEnemy(float hitAnimDuration,EnemyView enemyToKill)
-        {
-            StartCoroutine(TimedDeath(hitAnimDuration, enemyToKill));
-            UpdateEnemiesList();    //Update la liste des ennemis sur la map
-            PlayerManager.Instance.AddGold(15); //Add gold to player
-        }
-
-        IEnumerator TimedDeath(float duration, EnemyView enemyToKill)
-        {
-            yield return new WaitForSeconds(duration);   //On attend que la particule de hit soit terminée
-            Destroy(enemyToKill.gameObject);    //Détruit le gameobject de l'ennemi
-            
-        }
+        
 
         /**
          * Update pour chaque ennemi sa liste d'ennemis dans sa room (pour l'attack)

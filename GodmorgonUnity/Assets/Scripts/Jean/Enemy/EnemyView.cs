@@ -391,11 +391,11 @@ namespace GodMorgon.Enemy
             {
                 foreach(EnemyView enemy in enemiesInRoom)
                 {
-                    enemy.enemyData.TakeDamage(enemyData.attack);
+                    enemy.enemyData.TakeDamage(enemyData.attack, false);
                 }
             }
             //prend des dégats si le counter est activé
-            enemyData.TakeDamage(PlayerManager.Instance.Counter());
+            enemyData.TakeDamage(PlayerManager.Instance.Counter(), false);
         }
 
         /**
@@ -502,5 +502,25 @@ namespace GodMorgon.Enemy
             }
         }
 
+        /**
+         * Tue un ennemi donné après une durée correspondant à la durée de la particule du hit
+         */
+        public void KillEnemy(float hitAnimDuration)
+        {
+            StartCoroutine(TimedDeath(hitAnimDuration));
+            EnemyManager.Instance.UpdateEnemiesList();    //Update la liste des ennemis sur la map
+            PlayerManager.Instance.AddGold(15); //Add gold to player
+        }
+
+        IEnumerator TimedDeath(float duration)
+        {
+            yield return new WaitForSeconds(duration);   //On attend que la particule de hit soit terminée
+            
+            if(enemyData.killedByPlayer)
+                GameManager.Instance.DraftPanelActivation(true);
+            
+            Destroy(this.gameObject);    //Détruit le gameobject de l'ennemi
+
+        }
     }
 }

@@ -406,7 +406,7 @@ public class PlayerManager : MonoBehaviour
         foreach(EnemyView enemy in closeEnemiesList)    //Pour chaque ennemi de cette room
         {
             enemy.OnDamage();   //On lance l'effet visuel du hit sur les ennemis
-            enemy.enemyData.TakeDamage(_cardEffectDatas[0].damagePoint);    //On applique les damages de la carte sur les ennemis
+            enemy.enemyData.TakeDamage(_cardEffectDatas[0].damagePoint, true);    //On applique les damages de la carte sur les ennemis
         }
     }
 
@@ -416,7 +416,7 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         //considérer le shield du player
-        PlayerData.Instance.TakeDamage(damage);
+        PlayerData.Instance.TakeDamage(damage, false);
 
         UpdateHealthText();
         UpdateBlockText();

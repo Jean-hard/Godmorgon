@@ -65,7 +65,7 @@ namespace GodMorgon.Player
          * Update health and defense player data
          * must be called from player manager !!
          */
-        public override void TakeDamage(int damagePoint)
+        public override void TakeDamage(int damagePoint, bool isPlayerAttacking)
         {
             //si killerInstinct est activé
             if (doubleDamageTaken)
@@ -99,6 +99,16 @@ namespace GodMorgon.Player
                 baseDamagePoint = baseDamagePoint * 2;
             }
             return baseDamagePoint;
+        }
+
+        /**
+         * Retourne true si le joueur n'a plus de vie
+         */
+        public override bool IsDead()
+        {
+            if (health <= 0) return true;
+
+            return false;
         }
 
         /**

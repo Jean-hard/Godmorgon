@@ -13,11 +13,16 @@ namespace GodMorgon.GameSequencerSpace
             //show damage effect
             context.targets.OnDamage();
 
-            //update the healthbar of the target
-            context.targets.UpdateHealthBar();
 
-            //wait the time of the hit particle effect
-            yield return new WaitForSeconds(context.targets.GetDamageHitDuration());
+            if(!context.targets.IsDead())
+                yield return new WaitForSeconds(context.targets.GetDamageHitDuration());    //wait the time of the hit particle effect
+            else
+            {
+                while (GameManager.Instance.draftPanelActivated)    //Wait the player to choose a card in draft panel
+                {
+                    yield return null;
+                }
+            }
         }
     }
 }
