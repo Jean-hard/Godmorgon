@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Gain [nbBlock] block, enemies that attack you this turn take 4 damages.
   actionCost: 2
   price: 96
-  template: {fileID: 21300000, guid: c7288bf73896d76488d400998d8e2e35, type: 3}
+  template: {fileID: 21300000, guid: 2688f6c8c155ed349bd0fdd508d1a066, type: 3}
   artwork: {fileID: 21300000, guid: 36e35ffc0f239a04ebaec6a0c8954620, type: 3}
   effectsData:
   - currentEffect: 2
