@@ -3,49 +3,19 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="PlayMusic" ID="{C7E7F265-9C48-4128-80FD-0B94F23798CB}">
-					<ChildrenList>
-						<Action Name="" ID="{BF184FC4-DC46-40BA-B948-5971B78CD74B}" ShortID="254669356">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="22"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Player" ID="{BCFEC34A-32B5-4B83-B516-000D4E65B916}" WorkUnitID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{D001AB20-A11E-4842-B31F-F29DA8A17B45}" ShortID="90117961">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="TurnTheme" ID="{9F7DA552-2058-483C-B91C-D8D78CA48C89}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="DropCardEvent" ID="{884A5B5C-A46E-4F35-A101-82DCA93E4EDA}">
-					<ChildrenList>
-						<Action Name="" ID="{1CFA8D70-7EAA-4D60-A5BA-E199B1A50851}" ShortID="151249241">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="dropCard" ID="{F4A85750-8407-4A6E-BEA0-4268B020824D}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="RollingKartEvent" ID="{73BB6B66-829B-4018-90CB-20E409A553C1}">
-					<ChildrenList>
-						<Action Name="" ID="{9F3F155B-D2B6-46EA-A05F-D0B26E4A0341}" ShortID="918484056">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="wheel" ID="{CFC90A4D-C18B-4AD6-A9B7-E1372206050E}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
+				<Event Name="Player_Move" ID="{5D074021-DF2B-4B4C-A410-DD8D9B651568}"/>
+				<Event Name="Enemy_Death" ID="{71E958E0-ED60-41E3-A055-A4665C28FD7B}"/>
+				<Event Name="Feedback_Check" ID="{FFFA16E1-7C0C-485E-84D1-F18AE92599C6}"/>
+				<Event Name="Cards_Play" ID="{AA19E4E7-C5AE-48FC-A736-127727D89A9F}"/>
+				<Event Name="Cards_Buy" ID="{F847DD0D-9EE6-481B-8BC6-74BA8D0EAB9F}"/>
+				<Event Name="Mechanical" ID="{BCE6EBEE-AE30-4A33-8AA5-6363608EACCA}"/>
+				<Event Name="Park_Theme" ID="{358C4FE9-55ED-49EE-9F1E-2EAB55424CA6}"/>
+				<Event Name="Enemy_Hit" ID="{86A15A22-8775-4110-90BF-D8D9EC132356}"/>
+				<Event Name="Cursor_EndofTurn" ID="{3C6B17C8-4AF3-47D2-A9DE-24B37C5EA4DE}"/>
+				<Event Name="Ringmaster_EndofTurn" ID="{88BEFBD5-2D81-4196-879B-1DBBFC914996}"/>
+				<Event Name="Fog_Clear" ID="{A12F69FF-0C09-4AF3-BB9C-810D3A22F17E}"/>
+				<Event Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}"/>
+				<Event Name="Enemy_Moving" ID="{9F52D0A8-BA82-4714-A4D5-E1534B767317}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
