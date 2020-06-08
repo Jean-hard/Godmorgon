@@ -3,19 +3,177 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Player_Move" ID="{5D074021-DF2B-4B4C-A410-DD8D9B651568}"/>
-				<Event Name="Enemy_Death" ID="{71E958E0-ED60-41E3-A055-A4665C28FD7B}"/>
-				<Event Name="Feedback_Check" ID="{FFFA16E1-7C0C-485E-84D1-F18AE92599C6}"/>
-				<Event Name="Cards_Play" ID="{AA19E4E7-C5AE-48FC-A736-127727D89A9F}"/>
-				<Event Name="Cards_Buy" ID="{F847DD0D-9EE6-481B-8BC6-74BA8D0EAB9F}"/>
 				<Event Name="Mechanical" ID="{BCE6EBEE-AE30-4A33-8AA5-6363608EACCA}"/>
 				<Event Name="Park_Theme" ID="{358C4FE9-55ED-49EE-9F1E-2EAB55424CA6}"/>
-				<Event Name="Enemy_Hit" ID="{86A15A22-8775-4110-90BF-D8D9EC132356}"/>
 				<Event Name="Cursor_EndofTurn" ID="{3C6B17C8-4AF3-47D2-A9DE-24B37C5EA4DE}"/>
 				<Event Name="Ringmaster_EndofTurn" ID="{88BEFBD5-2D81-4196-879B-1DBBFC914996}"/>
 				<Event Name="Fog_Clear" ID="{A12F69FF-0C09-4AF3-BB9C-810D3A22F17E}"/>
 				<Event Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}"/>
-				<Event Name="Enemy_Moving" ID="{9F52D0A8-BA82-4714-A4D5-E1534B767317}"/>
+				<Folder Name="Cards" ID="{53D7B75A-65D6-4DB6-BF72-AD2A9E233BE6}" ShortID="68679455">
+					<ChildrenList>
+						<Event Name="Cards_Buy" ID="{F847DD0D-9EE6-481B-8BC6-74BA8D0EAB9F}">
+							<ChildrenList>
+								<Action Name="" ID="{5D43F312-2777-470A-B639-031F2ED0C800}" ShortID="816346881">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Cards_Buy" ID="{5D908727-FCDD-450D-B387-16B5087E7E6C}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Cards_Play" ID="{AA19E4E7-C5AE-48FC-A736-127727D89A9F}">
+							<ChildrenList>
+								<Action Name="" ID="{D235CB56-044C-4859-8350-E909A1EF3E37}" ShortID="740020076">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Cards_Play" ID="{41401BAE-5178-43C7-B366-C1B21C3AB930}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Cards_Draw" ID="{9D3ADF38-2B12-4259-B9CA-08358E17065C}">
+							<ChildrenList>
+								<Action Name="" ID="{69A7B398-22E4-4057-8D16-85B051F10EAC}" ShortID="84069180">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Cards_Draw" ID="{AED66977-41F5-459C-AE7F-A15B8B214FF7}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Cards_Remove" ID="{32674C27-8231-438A-BE9A-0E61EDBDC203}">
+							<ChildrenList>
+								<Action Name="" ID="{4EFF0ADB-DFCA-4262-8CE4-9A96811CF266}" ShortID="863742848">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Cards_Remove" ID="{6939553A-A272-412F-93C3-81159EDF5A55}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Folder Name="Cards_Specials" ID="{79D3413D-9A86-41E2-AD00-11546D5832DD}" ShortID="274759813">
+							<ChildrenList>
+								<Event Name="Cards_Specials_Attack" ID="{CF26BC42-F80D-46E9-B351-7210D39B0BEC}">
+									<ChildrenList>
+										<Action Name="" ID="{A40A0540-1BE4-4E9F-8C7D-B5E33A6B5F40}" ShortID="898055402">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Cards_Specials_Attack" ID="{1352E81C-5900-4A7C-A172-290D1AC8BDD4}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Cards_Specials_Defense" ID="{BEEFF235-E6D6-4083-A339-7F3422E43B5D}">
+									<ChildrenList>
+										<Action Name="" ID="{5FA5DE80-1BC4-4EEE-85DB-0A84DA5FDBD8}" ShortID="231866171">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Cards_Specials_Defense" ID="{4BA02A54-EF7B-489A-8BFD-92064A334A02}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Cards_Specials_Spell" ID="{738776AB-5B84-45D3-9147-FDCBACA0081A}">
+									<ChildrenList>
+										<Action Name="" ID="{7D55BAC9-7DC8-42CB-A719-CF15BA560177}" ShortID="468983233">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Cards_Specials_Spell" ID="{13C97E5F-D1B0-4EE4-83BD-0F4ABF7FD3D2}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Cards_Specials_Movement" ID="{F15924A4-A2F2-4B1F-945B-562111097042}">
+									<ChildrenList>
+										<Action Name="" ID="{A0D2F8A0-294D-486A-A16B-9EC5A6B2F3A1}" ShortID="839053480">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Cards_Specials_Movement" ID="{48D26B15-9CA2-4A9F-BEA3-F9A6E24447EA}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Cards_Specials_Power_Up" ID="{FF414CB4-4A3D-4460-8649-AE20D6C9B454}">
+									<ChildrenList>
+										<Action Name="" ID="{9E4F49FA-E05D-425B-9FD8-5E7C965E8C67}" ShortID="573362657">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SFX_Cards_Specials_Power_Up" ID="{B1DB0795-6E3E-435E-B05D-C202353EEF97}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Enemy" ID="{3D51E2DE-4691-4A73-A17C-C61353884E3B}" ShortID="266076159">
+					<ChildrenList>
+						<Event Name="Enemy_Moving" ID="{9F52D0A8-BA82-4714-A4D5-E1534B767317}"/>
+						<Event Name="Enemy_Death" ID="{71E958E0-ED60-41E3-A055-A4665C28FD7B}">
+							<ChildrenList>
+								<Action Name="" ID="{36DDAD87-6686-4912-9C7B-0C3C399A1B1A}" ShortID="740017100">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Enemy_Death" ID="{C5187418-A184-4D7F-B0A0-FDB2722EC64B}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Hit" ID="{86A15A22-8775-4110-90BF-D8D9EC132356}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Feedback" ID="{97CCAD5D-1A20-4F16-8618-FAF7A0620E44}" ShortID="700552779">
+					<ChildrenList>
+						<Event Name="Feedback_Chest" ID="{FFFA16E1-7C0C-485E-84D1-F18AE92599C6}">
+							<ChildrenList>
+								<Action Name="" ID="{CB9C1164-F2A7-4143-A28B-D310E78B05F9}" ShortID="735693412">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Feedback_Chest" ID="{9CD454F3-B3F7-491C-AD4E-54D987791922}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Feeback_Gold" ID="{B83FF93E-70F7-474C-A6DE-178CBC2723A2}">
+							<ChildrenList>
+								<Action Name="" ID="{5358D757-F0AE-489A-8D9D-6B2A572BA609}" ShortID="575777837">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Feedback_Gold" ID="{2757AB1B-7A9D-4425-BE6B-E6E4A0923C9A}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Player" ID="{7D0DA2F7-5493-47C5-9586-59EA48215D29}" ShortID="985409967">
+					<ChildrenList>
+						<Event Name="Player_Move" ID="{5D074021-DF2B-4B4C-A410-DD8D9B651568}">
+							<ChildrenList>
+								<Action Name="" ID="{7F968992-0821-4C99-B14D-5BB12B941C65}" ShortID="478715791">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Player_Move" ID="{6136D6CF-5D86-403E-8BB7-D293AD152FD6}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
