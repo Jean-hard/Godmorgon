@@ -21,7 +21,9 @@ public class CameraShaker : MonoBehaviour
 
     public void Shake(float duration)
     {
-        if(duration > 0)
+        _initialPos = _target.localPosition;
+
+        if (duration > 0)
         {
             _shakingDuration += duration;
         }
