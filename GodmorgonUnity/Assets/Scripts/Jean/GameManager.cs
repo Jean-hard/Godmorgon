@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     public DraftPanel draftPanel = null;
+    private bool draftUpdated = false;
 
     [SerializeField]
     private ShopManager shopManager = null;
@@ -250,11 +251,17 @@ public class GameManager : MonoBehaviour
     {
         if (activate)
         {
-            draftPanel.gameObject.SetActive(true);
-            draftPanel.UpdateDraft();
+            if (!draftUpdated)  //Si on a toujours pas updated le draft
+            {
+                draftPanel.UpdateDraft();   //On update le draft
+                draftUpdated = true;
+            }
+            draftPanel.gameObject.SetActive(true);  //Affiche le draft panel
+            draftPanelActivated = true;
         }
         else
         {
+            draftUpdated = false;
             draftPanel.gameObject.SetActive(false);
             draftPanelActivated = false;
         }

@@ -45,7 +45,9 @@ public class RoomEffectManager : MonoBehaviour
     private Transform roomEffectsParent = null;
     private BasicCard cursedCard = null;
     private bool isRoomEffectDone = false;
-    private RoomData currentRoom = null;
+    
+    [NonSerialized]
+    public RoomData currentRoom = null;
 
     [Header("Curse Settings")]
     [SerializeField]

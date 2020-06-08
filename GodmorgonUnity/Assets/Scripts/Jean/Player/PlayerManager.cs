@@ -317,23 +317,54 @@ public class PlayerManager : MonoBehaviour
      */
     IEnumerator LaunchActionsInNewRoom()
     {
+        bool enemySlayed = false;
+
         if(_cardEffectDatas[0].noBrakes)    //Si la carte était une No brakes, on lance l'attaque sur les ennemis avant le reste des actions
         {
-            RoomAttack();
+            enemySlayed = RoomAttack(); //Lance l'attaque de room et renvoie true si un ennemi est mort lors de cette attaque
             yield return new WaitForSeconds(1f);
         }
 
         RoomEffectManager.Instance.LaunchRoomEffect(GetPlayerRoomPosition());   //Lance l'effet de room sur laquelle on vient d'arriver
         
+        
+
         yield return new WaitForSeconds(2f);
         canLaunchOtherMove = true;  //On permet le lancement d'un autre move
-        if (nbMoveIterationCounter >= nbRoomsToMove * multiplier)  //Si on a atteint le nombre de moves possibles de la carte
+        if (nbMoveIterationCounter >= nbRoomsToMove * multiplier && !enemySlayed)  //Si on a atteint le nombre de moves possibles de la carte
         {
             canLaunchOtherMove = false;
             nbMoveIterationCounter = 0;
-            playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
             multiplier = 1;
+            if (RoomEffectManager.Instance.currentRoom.roomEffect == RoomEffect.CHEST)
+            {
+                StartCoroutine(LaunchDraft());
+            }
+            else playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
         }
+        else if (nbMoveIterationCounter >= nbRoomsToMove * multiplier && enemySlayed)   //Si c'est notre dernier move et qu'un enemy a été tué
+        {
+            canLaunchOtherMove = false;
+            nbMoveIterationCounter = 0;
+            multiplier = 1;
+            StartCoroutine(LaunchDraft());  //Lance le draft d'après No Brakes car enemy tué
+        }
+    }
+
+    /**
+     * Ouvre le draft si un ennemi est buté avec le no brakes
+     */
+    IEnumerator LaunchDraft()
+    {
+        GameManager.Instance.DraftPanelActivation(true);
+
+        while(GameManager.Instance.draftPanelActivated)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1f);
+        playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
     }
 
     /**
@@ -400,14 +431,20 @@ public class PlayerManager : MonoBehaviour
     /**
      * Attaque les ennemis dans la room avec les damages de la carte jouée
      */
-    public void RoomAttack()
+    public bool RoomAttack()
     {
+        bool enemySlayed = false;
+
         List<EnemyView> closeEnemiesList = EnemyManager.Instance.GetEnemiesInPlayersRoom(); //On récup la list des ennemis présents dans la nouvelle room du player
         foreach(EnemyView enemy in closeEnemiesList)    //Pour chaque ennemi de cette room
         {
             enemy.OnDamage();   //On lance l'effet visuel du hit sur les ennemis
             enemy.enemyData.TakeDamage(_cardEffectDatas[0].damagePoint, true);    //On applique les damages de la carte sur les ennemis
+            if (enemy.enemyData.killedByPlayer)
+                enemySlayed = true;
         }
+
+        return enemySlayed;
     }
 
     /**

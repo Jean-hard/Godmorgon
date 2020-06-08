@@ -9,27 +9,31 @@ public class DraftPanel : MonoBehaviour
 
     public List<BasicCard> draftCards = new List<BasicCard>();
 
-    private int draftNb = 1;
+    public int draftNb = 0;
 
     public void UpdateDraft()
     {
+        
+
         int index = 0;
 
-        if (draftNb == 3) draftNb = 1;
+        if (draftNb > 2) draftNb = 0;
 
         //Choisit à partir de quel index de la liste on choisit les 3 cartes
         switch(draftNb)
         {
-            case 1:
+            case 0:
                 index = 0;
                 break;
-            case 2:
+            case 1:
                 index = 3;
                 break;
-            case 3:
+            case 2:
                 index = 6;
                 break;
         }
+
+        ++draftNb;
 
         //On applique à chacune des trois cartes les SO de la liste suivant l'index
         foreach (CardDisplay card in cardObjects)
@@ -38,7 +42,6 @@ public class DraftPanel : MonoBehaviour
             index++;
         }
 
-        draftNb++;
     }
 
     /**
