@@ -18,12 +18,15 @@ MonoBehaviour:
   description: Discard all your cards, gain [nbBlock] block by card discarded.
   actionCost: 2
   price: 72
-  template: {fileID: 21300000, guid: c7288bf73896d76488d400998d8e2e35, type: 3}
+  template: {fileID: 21300000, guid: 2688f6c8c155ed349bd0fdd508d1a066, type: 3}
   artwork: {fileID: 21300000, guid: 423f2ef804bf0d142843baac14a7f061, type: 3}
   effectsData:
   - currentEffect: 2
     damagePoint: 0
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
     nbBlock: 5
     isCounter: 0
     counterDamagePoint: 0
@@ -39,3 +42,4 @@ MonoBehaviour:
     trust: 0
     trustNb: 0
     isDiscardHand: 1
+    isUseless: 1

@@ -60,6 +60,7 @@ public class PlayerManager : MonoBehaviour
     public ParticleSystemScript playerShield = null;
     public ParticleSystemScript playerPowerUp = null;
     public ParticleSystemScript playerKillerInstinct = null;
+    public List<ParticleSystemScript> wheelParticules = new List<ParticleSystemScript>();
 
     #region Singleton Pattern
     private static PlayerManager _instance;
@@ -237,18 +238,22 @@ public class PlayerManager : MonoBehaviour
         if (playerPathList[0].Y > playerCellPos.y)
         {
             UpdatePlayerSprite("haut_gauche");
+            wheelParticules[1].launchParticle();
         } 
         else if (playerPathList[0].X > playerCellPos.x)
         {
             UpdatePlayerSprite("haut_droite");
+            wheelParticules[2].launchParticle();
         }
         else if (playerPathList[0].X < playerCellPos.x)
         {
             UpdatePlayerSprite("bas_gauche");
+            wheelParticules[3].launchParticle();
         }
         else if (playerPathList[0].Y < playerCellPos.y)
         {
             UpdatePlayerSprite("bas_droite");
+            wheelParticules[0].launchParticle();
         }
 
         /*    
@@ -345,6 +350,11 @@ public class PlayerManager : MonoBehaviour
     public bool PlayerMoveDone()
     {
         if (!playerHasMoved) return false;
+
+        foreach(ParticleSystemScript particule in wheelParticules)
+        {
+            particule.stopParticle();
+        }
 
         playerHasMoved = false;
         return true;
