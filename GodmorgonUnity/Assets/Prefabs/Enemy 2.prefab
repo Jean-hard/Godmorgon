@@ -707,7 +707,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   enemiesInRoom: []
+  shaker: {fileID: 0}
+  shakeDuration: 0.1
   enemyHit: {fileID: 6424764718049567663}
+  spawnParticule: {fileID: 9136583168879077326, guid: e8bb3298d1ff4a44baa4bbd063c83b95,
+    type: 3}
+  deathParticule: {fileID: 2276265420486272721, guid: 3f022bcb977633b4db6849d87ebde4db,
+    type: 3}
 --- !u!1001 &3015688256217422351
 PrefabInstance:
   m_ObjectHideFlags: 0

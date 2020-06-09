@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>T:\Projets IIM\A4\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
-	<StreamedFiles/>
+	<StreamedFiles>
+		<File Id="997381264" Language="SFX">
+			<ShortName>AMB_GENERAL_V0_2.wav</ShortName>
+			<Path>SFX\AMB_GENERAL_V0_2_D79FB2B7.wem</Path>
+		</File>
+	</StreamedFiles>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
 		<SoundBank Id="1355168291" Language="SFX">
@@ -21,56 +26,466 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3799801636" Name="DropCardEvent" ObjectPath="\Events\Default Work Unit\DropCardEvent" DurationType="OneShot" DurationMin="0.731429" DurationMax="0.731429">
+				<Event Id="577725723" Name="Cards_Buy" ObjectPath="\Events\Default Work Unit\Cards\Cards_Buy" DurationType="OneShot" DurationMin="0.620249" DurationMax="0.726848">
 					<IncludedMemoryFiles>
-						<File Id="391925900" Language="SFX">
-							<ShortName>dropCard.wav</ShortName>
-							<Path>SFX\dropCard_10C4C929.wem</Path>
+						<File Id="119649773" Language="SFX">
+							<ShortName>SFX_Cards_Buy_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Buy_1_10C4C929.wem</Path>
+						</File>
+						<File Id="264814496" Language="SFX">
+							<ShortName>SFX_Cards_Buy_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Buy_3_10C4C929.wem</Path>
+						</File>
+						<File Id="753200097" Language="SFX">
+							<ShortName>SFX_Cards_Buy_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Buy_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="417627684" Name="PlayMusic" ObjectPath="\Events\Default Work Unit\PlayMusic" DurationType="Infinite">
+				<Event Id="3390165243" Name="Cards_Draw" ObjectPath="\Events\Default Work Unit\Cards\Cards_Draw" DurationType="OneShot" DurationMin="1.175193" DurationMax="1.500000">
 					<IncludedMemoryFiles>
-						<File Id="782884905" Language="SFX">
-							<ShortName>MUS_Main_Theme_2_V2.wav</ShortName>
-							<Path>SFX\MUS_Main_Theme_2_V2_D79FB2B7.wem</Path>
+						<File Id="184662733" Language="SFX">
+							<ShortName>SFX_Cards_Draw_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Draw_1_10C4C929.wem</Path>
 						</File>
-						<File Id="832796481" Language="SFX">
-							<ShortName>MUS_Main_Theme_1_V2.wav</ShortName>
-							<Path>SFX\MUS_Main_Theme_1_V2_D79FB2B7.wem</Path>
+						<File Id="783213697" Language="SFX">
+							<ShortName>SFX_Cards_Draw_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Draw_3_10C4C929.wem</Path>
+						</File>
+						<File Id="816304199" Language="SFX">
+							<ShortName>SFX_Cards_Draw_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Draw_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
-					<SwitchContainers>
-						<SwitchContainer SwitchValue="{BCFEC34A-32B5-4B83-B516-000D4E65B916}">
-							<Media>
-								<File Id="832796481"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A}">
-							<Media>
-								<File Id="782884905"/>
-							</Media>
-						</SwitchContainer>
-					</SwitchContainers>
 				</Event>
-				<Event Id="2348184254" Name="RollingKartEvent" ObjectPath="\Events\Default Work Unit\RollingKartEvent" DurationType="OneShot" DurationMin="9.000000" DurationMax="9.000000">
+				<Event Id="1545901747" Name="Cards_Play" ObjectPath="\Events\Default Work Unit\Cards\Cards_Play" DurationType="OneShot" DurationMin="0.603651" DurationMax="0.701383">
 					<IncludedMemoryFiles>
-						<File Id="582225710" Language="SFX">
-							<ShortName>wheel.wav</ShortName>
-							<Path>SFX\wheel_10C4C929.wem</Path>
+						<File Id="16849678" Language="SFX">
+							<ShortName>SFX_Cards_Play_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Play_1_10C4C929.wem</Path>
+						</File>
+						<File Id="881163488" Language="SFX">
+							<ShortName>SFX_Cards_Play_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Play_2_10C4C929.wem</Path>
+						</File>
+						<File Id="1045365319" Language="SFX">
+							<ShortName>SFX_Cards_Play_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Play_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4284303397" Name="Cards_Remove" ObjectPath="\Events\Default Work Unit\Cards\Cards_Remove" DurationType="OneShot" DurationMin="0.288345" DurationMax="0.445714">
+					<IncludedMemoryFiles>
+						<File Id="219658929" Language="SFX">
+							<ShortName>SFX_Cards_Remove_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Remove_2_10C4C929.wem</Path>
+						</File>
+						<File Id="370292652" Language="SFX">
+							<ShortName>SFX_Cards_Remove_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Remove_1_10C4C929.wem</Path>
+						</File>
+						<File Id="377336699" Language="SFX">
+							<ShortName>SFX_Cards_Remove_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Remove_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1823055960" Name="Cards_Specials_Attack" ObjectPath="\Events\Default Work Unit\Cards\Cards_Specials\Cards_Specials_Attack" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000">
+					<IncludedMemoryFiles>
+						<File Id="146736285" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Attack_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Attack_1_10C4C929.wem</Path>
+						</File>
+						<File Id="286524526" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Attack_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Attack_3_10C4C929.wem</Path>
+						</File>
+						<File Id="652284725" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Attack_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Attack_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1772719216" Name="Cards_Specials_Defense" ObjectPath="\Events\Default Work Unit\Cards\Cards_Specials\Cards_Specials_Defense" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000">
+					<IncludedMemoryFiles>
+						<File Id="107355285" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Defense_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Defense_1_10C4C929.wem</Path>
+						</File>
+						<File Id="218258154" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Defense_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Defense_3_10C4C929.wem</Path>
+						</File>
+						<File Id="573478929" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Defense_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Defense_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2367690171" Name="Cards_Specials_Movement" ObjectPath="\Events\Default Work Unit\Cards\Cards_Specials\Cards_Specials_Movement" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.619116">
+					<IncludedMemoryFiles>
+						<File Id="132326809" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Movement_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Movement_3_10C4C929.wem</Path>
+						</File>
+						<File Id="595606668" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Movement_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Movement_1_10C4C929.wem</Path>
+						</File>
+						<File Id="1037019256" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Movement_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Movement_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="22477185" Name="Cards_Specials_Power_Up" ObjectPath="\Events\Default Work Unit\Cards\Cards_Specials\Cards_Specials_Power_Up" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000">
+					<IncludedMemoryFiles>
+						<File Id="286386611" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Power_Up_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Power_Up_1_10C4C929.wem</Path>
+						</File>
+						<File Id="464802300" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Power_Up_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Power_Up_3_10C4C929.wem</Path>
+						</File>
+						<File Id="467449303" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Power_Up_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Power_Up_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2777435730" Name="Cards_Specials_Spell" ObjectPath="\Events\Default Work Unit\Cards\Cards_Specials\Cards_Specials_Spell" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000">
+					<IncludedMemoryFiles>
+						<File Id="307478699" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Spell_3.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Spell_3_10C4C929.wem</Path>
+						</File>
+						<File Id="384555327" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Spell_1.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Spell_1_10C4C929.wem</Path>
+						</File>
+						<File Id="908172956" Language="SFX">
+							<ShortName>SFX_Cards_Specials_Spell_2.wav</ShortName>
+							<Path>SFX\SFX_Cards_Specials_Spell_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="626715967" Name="Cursor_EndofTurn" ObjectPath="\Events\Default Work Unit\Cursor_EndofTurn" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1205999388" Name="Enemy_Death" ObjectPath="\Events\Default Work Unit\Enemy\Enemy_Death" DurationType="OneShot" DurationMin="2.000000" DurationMax="2.000000">
+					<IncludedMemoryFiles>
+						<File Id="2763717" Language="SFX">
+							<ShortName>SFX_Enemy_Death_2.wav</ShortName>
+							<Path>SFX\SFX_Enemy_Death_2_10C4C929.wem</Path>
+						</File>
+						<File Id="687632908" Language="SFX">
+							<ShortName>SFX_Enemy_Death_1.wav</ShortName>
+							<Path>SFX\SFX_Enemy_Death_1_10C4C929.wem</Path>
+						</File>
+						<File Id="1035846876" Language="SFX">
+							<ShortName>SFX_Enemy_Death_3.wav</ShortName>
+							<Path>SFX\SFX_Enemy_Death_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1010055213" Name="Enemy_Hit" ObjectPath="\Events\Default Work Unit\Enemy\Enemy_Hit" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3438446492" Name="Enemy_Moving" ObjectPath="\Events\Default Work Unit\Enemy\Enemy_Moving" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1737977583" Name="Feeback_Gold" ObjectPath="\Events\Default Work Unit\Feedback\Feeback_Gold" DurationType="OneShot" DurationMin="2.500000" DurationMax="2.500000">
+					<IncludedMemoryFiles>
+						<File Id="709627367" Language="SFX">
+							<ShortName>SFX_Feedback_Gold_3.wav</ShortName>
+							<Path>SFX\SFX_Feedback_Gold_3_10C4C929.wem</Path>
+						</File>
+						<File Id="920055364" Language="SFX">
+							<ShortName>SFX_Feedback_Gold_1.wav</ShortName>
+							<Path>SFX\SFX_Feedback_Gold_1_10C4C929.wem</Path>
+						</File>
+						<File Id="938375302" Language="SFX">
+							<ShortName>SFX_Feedback_Gold_2.wav</ShortName>
+							<Path>SFX\SFX_Feedback_Gold_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="365110558" Name="Feedback_Chest" ObjectPath="\Events\Default Work Unit\Feedback\Feedback_Chest" DurationType="OneShot" DurationMin="2.500000" DurationMax="3.000000">
+					<IncludedMemoryFiles>
+						<File Id="735988544" Language="SFX">
+							<ShortName>SFX_Feedback_Chest_1.wav</ShortName>
+							<Path>SFX\SFX_Feedback_Chest_1_10C4C929.wem</Path>
+						</File>
+						<File Id="766909026" Language="SFX">
+							<ShortName>SFX_Feedback_Chest_3.wav</ShortName>
+							<Path>SFX\SFX_Feedback_Chest_3_10C4C929.wem</Path>
+						</File>
+						<File Id="859489350" Language="SFX">
+							<ShortName>SFX_Feedback_Chest_2.wav</ShortName>
+							<Path>SFX\SFX_Feedback_Chest_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3349601745" Name="Fog_Clear" ObjectPath="\Events\Default Work Unit\Fog_Clear" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="192460720" Name="Mechanical" ObjectPath="\Events\Default Work Unit\Mechanical" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1752074195" Name="Park_Theme" ObjectPath="\Events\Default Work Unit\Park_Theme" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1006941571" Name="Play_Amb_General_BC" ObjectPath="\Events\Default Work Unit\Ambiances\Play_Amb_General_BC" DurationType="Infinite">
+					<ReferencedStreamedFiles>
+						<File Id="997381264" Language="SFX">
+							<ShortName>AMB_GENERAL_V0_2.wav</ShortName>
+							<Path>SFX\AMB_GENERAL_V0_2_D79FB2B7.wem</Path>
+						</File>
+					</ReferencedStreamedFiles>
+					<IncludedMemoryFiles>
+						<File Id="36386810" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-007.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-007_10C4C929.wem</Path>
+						</File>
+						<File Id="44567089" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-012.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-012_10C4C929.wem</Path>
+						</File>
+						<File Id="71566153" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-002.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-002_10C4C929.wem</Path>
+						</File>
+						<File Id="174515180" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-004.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-004_10C4C929.wem</Path>
+						</File>
+						<File Id="311127058" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-010.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-010_10C4C929.wem</Path>
+						</File>
+						<File Id="328723199" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-008.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-008_10C4C929.wem</Path>
+						</File>
+						<File Id="424210029" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-001.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-001_10C4C929.wem</Path>
+						</File>
+						<File Id="519494520" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-011.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-011_10C4C929.wem</Path>
+						</File>
+						<File Id="581947388" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-003.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-003_10C4C929.wem</Path>
+						</File>
+						<File Id="703848188" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-009.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-009_10C4C929.wem</Path>
+						</File>
+						<File Id="719027881" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-013.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-013_10C4C929.wem</Path>
+						</File>
+						<File Id="845640922" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-014.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-014_10C4C929.wem</Path>
+						</File>
+						<File Id="889776440" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-015.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-015_10C4C929.wem</Path>
+						</File>
+						<File Id="920881333" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-005.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-005_10C4C929.wem</Path>
+						</File>
+						<File Id="957506920" Language="SFX">
+							<ShortName>Amb_RFX_Mechanical\AMB_RFX_Mechanical-006.wav</ShortName>
+							<Path>SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-006_10C4C929.wem</Path>
+						</File>
+						<File Id="997381264" Language="SFX">
+							<ShortName>AMB_GENERAL_V0_2.wav</ShortName>
+							<Path>SFX\AMB_GENERAL_V0_2_D79FB2B7.wem</Path>
+							<PrefetchSize>19264</PrefetchSize>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2248092158" Name="Player_Move" ObjectPath="\Events\Default Work Unit\Player\Player_Move" DurationType="OneShot" DurationMin="3.500000" DurationMax="3.500000">
+					<IncludedMemoryFiles>
+						<File Id="443993637" Language="SFX">
+							<ShortName>SFX_Player_Move_1.wav</ShortName>
+							<Path>SFX\SFX_Player_Move_1_10C4C929.wem</Path>
+						</File>
+						<File Id="687752073" Language="SFX">
+							<ShortName>SFX_Player_Move_3.wav</ShortName>
+							<Path>SFX\SFX_Player_Move_3_10C4C929.wem</Path>
+						</File>
+						<File Id="933345129" Language="SFX">
+							<ShortName>SFX_Player_Move_2.wav</ShortName>
+							<Path>SFX\SFX_Player_Move_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4061952277" Name="Ringmaster_EndofTurn" ObjectPath="\Events\Default Work Unit\Ringmaster_EndofTurn" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2677054925" Name="SFX_Feedback_Cursor_Comeback" ObjectPath="\Events\Default Work Unit\Player\SFX_Feedback_Cursor_Comeback" DurationType="OneShot" DurationMin="3.035063" DurationMax="4.560104">
+					<IncludedMemoryFiles>
+						<File Id="15299191" Language="SFX">
+							<ShortName>UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-001.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-001_10C4C929.wem</Path>
+						</File>
+						<File Id="32853348" Language="SFX">
+							<ShortName>UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-003.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-003_10C4C929.wem</Path>
+						</File>
+						<File Id="86142675" Language="SFX">
+							<ShortName>UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-006.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-006_10C4C929.wem</Path>
+						</File>
+						<File Id="527147373" Language="SFX">
+							<ShortName>UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-005.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-005_10C4C929.wem</Path>
+						</File>
+						<File Id="769440268" Language="SFX">
+							<ShortName>UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-004.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-004_10C4C929.wem</Path>
+						</File>
+						<File Id="779731409" Language="SFX">
+							<ShortName>UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-002.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-002_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3654010921" Name="SFX_Feedback_Cursor_EndofTurn" ObjectPath="\Events\Default Work Unit\Player\SFX_Feedback_Cursor_EndofTurn" DurationType="OneShot" DurationMin="1.076729" DurationMax="1.540792">
+					<IncludedMemoryFiles>
+						<File Id="42211158" Language="SFX">
+							<ShortName>UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-005.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-005_10C4C929.wem</Path>
+						</File>
+						<File Id="109057280" Language="SFX">
+							<ShortName>UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-004.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-004_10C4C929.wem</Path>
+						</File>
+						<File Id="312464275" Language="SFX">
+							<ShortName>UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-006.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-006_10C4C929.wem</Path>
+						</File>
+						<File Id="734258189" Language="SFX">
+							<ShortName>UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-001.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-001_10C4C929.wem</Path>
+						</File>
+						<File Id="747614485" Language="SFX">
+							<ShortName>UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-003.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-003_10C4C929.wem</Path>
+						</File>
+						<File Id="859363770" Language="SFX">
+							<ShortName>UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-002.wav</ShortName>
+							<Path>SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-002_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3853285476" Name="Title_Screen" ObjectPath="\Events\Default Work Unit\Title_Screen" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1264447162" Name="VX_Player_Death" ObjectPath="\Events\Default Work Unit\Player\VX_Player_Death" DurationType="OneShot" DurationMin="2.820812" DurationMax="3.950500">
+					<IncludedMemoryFiles>
+						<File Id="396074084" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-006.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-006_10C4C929.wem</Path>
+						</File>
+						<File Id="408566783" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-002.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-002_10C4C929.wem</Path>
+						</File>
+						<File Id="466394559" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-001.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-001_10C4C929.wem</Path>
+						</File>
+						<File Id="477824718" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-008.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-008_10C4C929.wem</Path>
+						</File>
+						<File Id="594392282" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-004.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-004_10C4C929.wem</Path>
+						</File>
+						<File Id="1017890594" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-007.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-007_10C4C929.wem</Path>
+						</File>
+						<File Id="1034047607" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-005.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-005_10C4C929.wem</Path>
+						</File>
+						<File Id="1044072315" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Death\VX_Player_Death-003.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Death\VX_Player_Death-003_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3734767061" Name="VX_Player_Hit_Block" ObjectPath="\Events\Default Work Unit\Player\VX_Player_Hit_Block" DurationType="OneShot" DurationMin="0.516917" DurationMax="0.941750">
+					<IncludedMemoryFiles>
+						<File Id="61827974" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-008.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-008_10C4C929.wem</Path>
+						</File>
+						<File Id="62343996" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-002.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-002_10C4C929.wem</Path>
+						</File>
+						<File Id="124473880" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-006.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-006_10C4C929.wem</Path>
+						</File>
+						<File Id="389242058" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-005.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-005_10C4C929.wem</Path>
+						</File>
+						<File Id="395644763" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-001.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-001_10C4C929.wem</Path>
+						</File>
+						<File Id="500400877" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-007.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-007_10C4C929.wem</Path>
+						</File>
+						<File Id="504966191" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-003.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-003_10C4C929.wem</Path>
+						</File>
+						<File Id="571930222" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-009.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-009_10C4C929.wem</Path>
+						</File>
+						<File Id="945140294" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-004.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_Block\VX_Player_Hit_Block-004_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="27316982" Name="VX_Player_Hit_HP" ObjectPath="\Events\Default Work Unit\Player\VX_Player_Hit_HP" DurationType="OneShot" DurationMin="0.693479" DurationMax="3.165667">
+					<IncludedMemoryFiles>
+						<File Id="236488860" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-008.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-008_10C4C929.wem</Path>
+						</File>
+						<File Id="295529488" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-001.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-001_10C4C929.wem</Path>
+						</File>
+						<File Id="389774189" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-005.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-005_10C4C929.wem</Path>
+						</File>
+						<File Id="448724000" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-007.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-007_10C4C929.wem</Path>
+						</File>
+						<File Id="507955056" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-004.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-004_10C4C929.wem</Path>
+						</File>
+						<File Id="869228766" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-003.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-003_10C4C929.wem</Path>
+						</File>
+						<File Id="992998450" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-006.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-006_10C4C929.wem</Path>
+						</File>
+						<File Id="1010590247" Language="SFX">
+							<ShortName>Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-002.wav</ShortName>
+							<Path>SFX\Player_Voice\VX_Player_Hit_HP\VX_Player_Hit_HP-002_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
 			</IncludedEvents>
-			<StateGroups>
-				<StateGroup Id="3653852827" Name="TurnState" ObjectPath="\States\Default Work Unit\TurnState">
-					<States>
-						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\TurnState\None"/>
-						<State Id="1069431850" Name="Player" ObjectPath="\States\Default Work Unit\TurnState\Player"/>
-						<State Id="1506151517" Name="Ringmaster" ObjectPath="\States\Default Work Unit\TurnState\Ringmaster"/>
-					</States>
-				</StateGroup>
-			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

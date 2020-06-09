@@ -20,6 +20,7 @@ namespace GodMorgon.Enemy
         public List<Vector3Int> spawns = new List<Vector3Int>();    //Liste des spawns des ennemis
         public List<EnemyView> enemiesToSpawn = new List<EnemyView>();    //Liste des prefabs d'ennemis à spawn
         private int spawnCounter = 0;
+        public Transform effectParent;
         //-----------------------------------------------------
 
         private List<EnemyView> enemiesList;

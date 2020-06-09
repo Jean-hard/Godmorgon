@@ -54,6 +54,8 @@ namespace GodMorgon.Enemy
 
         [Header("Visual Effect")]
         public ParticleSystemScript enemyHit;
+        public GameObject spawnParticule;
+        public GameObject deathParticule;
 
         public void Awake()
         {
@@ -515,13 +517,27 @@ namespace GodMorgon.Enemy
         IEnumerator TimedDeath(float duration)
         {
             yield return new WaitForSeconds(duration);   //On attend que la particule de hit soit terminée
-            
-            if(enemyData.killedByPlayer)
+
+
+            foreach(Transform child in this.transform)
             {
+                if(child.gameObject.GetComponent<SpriteRenderer>() != null)
+                {
+                    child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                }
+            }
+
+            Instantiate(deathParticule, this.transform.position, Quaternion.identity, EnemyManager.Instance.effectParent);
+
+            if (enemyData.killedByPlayer)
+            {
+                yield return new WaitForSeconds(1f);
                 GameManager.Instance.DraftPanelActivation(true);
                 Debug.Log("Tué directement par le player, donc lance le draft");
             }
+
             
+
             Destroy(this.gameObject);    //Détruit le gameobject de l'ennemi
         }
     }

@@ -10,6 +10,7 @@ using GodMorgon.StateMachine;
 using GodMorgon.Timeline;
 using GodMorgon.Player;
 using GodMorgon.Shop;
+using GodMorgon.Sound;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,6 +66,9 @@ public class GameManager : MonoBehaviour
     {
         //on sauvegarde l'alpha des images pour les animations, si on doit les stopper
         advertisingDefaultColor = playerTurnAnimation.gameObject.GetComponent<Image>().color;
+
+        MusicManager.Instance.PlayMechanical();
+        //MusicManager.Instance.PlayCardsPlay();
     }
 
     /**
