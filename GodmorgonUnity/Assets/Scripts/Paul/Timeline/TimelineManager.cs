@@ -201,6 +201,8 @@ namespace GodMorgon.Timeline
 
                 //le player perd ces bonus à la fin du tour
                 BuffManager.Instance.ResetAllBonus();
+
+                actionGearAnimations[3].Stop();
             }
             else
             {
@@ -208,6 +210,8 @@ namespace GodMorgon.Timeline
                 gearParticle.transform.position = actionGearAnimations[nbActualAction - 1].transform.position;
 
                 particulePos.localPosition = actionGearAnimations[nbActualAction - 1].transform.localPosition;
+
+                actionGearAnimations[nbActualAction - 2].Stop();
             }
 
             //at the end of the action, we set the cursor
@@ -224,8 +228,8 @@ namespace GodMorgon.Timeline
             else
                 GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
 
-            actionGearAnimations[nbActualAction - 2].Stop();
-            //particulePos.gameObject.SetActive(false);
+            //actionGearAnimations[nbActualAction - 2].Stop();
+
             particulePos.gameObject.GetComponent<ParticleSystem>().Stop();
 
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
