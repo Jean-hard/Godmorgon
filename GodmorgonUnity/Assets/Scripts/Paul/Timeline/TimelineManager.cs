@@ -182,6 +182,9 @@ namespace GodMorgon.Timeline
             yield return actionlist[indexCurrentAction].Execute();
             isRunning = false;
 
+            //on désactive le logo de l'action actuel
+            actionLogoList[nbActualAction - 1].gameObject.SetActive(false);
+
             //actualise le numéro pour l'action actuel et l'index de la list d'action;
             nbActualAction++;
             indexCurrentAction++;
@@ -258,15 +261,18 @@ namespace GodMorgon.Timeline
                 currentTime += Time.deltaTime * 4;
                 yield return null;
             }
-            yield return new WaitForSeconds(0.5f);
-            actionLogoList[nbActualAction - 1].gameObject.SetActive(false);
-            actionLogoList[nbActualAction - 1].transform.localScale = new Vector3(1f, 1f, 1f);
+            yield return new WaitForSeconds(1f);
 
-            //on redonne leur postion et scale de base
-            //actionLogoList[nbActualAction - 1].transform.position = actionLogoBasePos[nbActualAction - 1].position;
-            //Debug.Log("logo bas pos = " + actionLogoBasePos[nbActualAction - 1].localPosition + "logo actual pos = " + actionLogoList[nbActualAction - 1].transform.localPosition);
-            //actionLogoList[nbActualAction - 1].transform.localScale = actionLogoBasePos[nbActualAction - 1].localScale;
-
+            currentTime = 0;
+            while (currentTime <= actionLogoTime)
+            {
+                actionLogoList[nbActualAction - 1].transform.localScale = Vector3.Lerp(destinationScale, originalScale, currentTime);
+                //actionLogoList[nbActualAction - 1].transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
+                currentTime += Time.deltaTime * 4;
+                yield return null;
+            }
+            //actionLogoList[nbActualAction - 1].gameObject.SetActive(false);
+            //actionLogoList[nbActualAction - 1].transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }

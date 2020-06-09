@@ -13,9 +13,33 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID DROPCARDEVENT = 3799801636U;
-        static const AkUniqueID PLAYMUSIC = 417627684U;
-        static const AkUniqueID ROLLINGKARTEVENT = 2348184254U;
+        static const AkUniqueID CARDS_BUY = 577725723U;
+        static const AkUniqueID CARDS_DRAW = 3390165243U;
+        static const AkUniqueID CARDS_PLAY = 1545901747U;
+        static const AkUniqueID CARDS_REMOVE = 4284303397U;
+        static const AkUniqueID CARDS_SPECIALS_ATTACK = 1823055960U;
+        static const AkUniqueID CARDS_SPECIALS_DEFENSE = 1772719216U;
+        static const AkUniqueID CARDS_SPECIALS_MOVEMENT = 2367690171U;
+        static const AkUniqueID CARDS_SPECIALS_POWER_UP = 22477185U;
+        static const AkUniqueID CARDS_SPECIALS_SPELL = 2777435730U;
+        static const AkUniqueID CURSOR_ENDOFTURN = 626715967U;
+        static const AkUniqueID ENEMY_DEATH = 1205999388U;
+        static const AkUniqueID ENEMY_HIT = 1010055213U;
+        static const AkUniqueID ENEMY_MOVING = 3438446492U;
+        static const AkUniqueID FEEBACK_GOLD = 1737977583U;
+        static const AkUniqueID FEEDBACK_CHEST = 365110558U;
+        static const AkUniqueID FOG_CLEAR = 3349601745U;
+        static const AkUniqueID MECHANICAL = 192460720U;
+        static const AkUniqueID PARK_THEME = 1752074195U;
+        static const AkUniqueID PLAY_AMB_GENERAL_BC = 1006941571U;
+        static const AkUniqueID PLAYER_MOVE = 2248092158U;
+        static const AkUniqueID RINGMASTER_ENDOFTURN = 4061952277U;
+        static const AkUniqueID SFX_FEEDBACK_CURSOR_COMEBACK = 2677054925U;
+        static const AkUniqueID SFX_FEEDBACK_CURSOR_ENDOFTURN = 3654010921U;
+        static const AkUniqueID TITLE_SCREEN = 3853285476U;
+        static const AkUniqueID VX_PLAYER_DEATH = 1264447162U;
+        static const AkUniqueID VX_PLAYER_HIT_BLOCK = 3734767061U;
+        static const AkUniqueID VX_PLAYER_HIT_HP = 27316982U;
     } // namespace EVENTS
 
     namespace STATES
