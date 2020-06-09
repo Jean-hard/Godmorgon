@@ -84,7 +84,7 @@ public class FogMgr : MonoBehaviour
 
         int random = UnityEngine.Random.Range(0, 3);
 
-        room.fogParticule = Instantiate(fogParticulePrefabs[random], worldSpawnPos, Quaternion.identity, fogParent);
+        room.fogParticule = Instantiate(fogParticulePrefabs[0], worldSpawnPos, Quaternion.identity, fogParent);
         room.isRoomCleared = false;
     }
 
