@@ -115,6 +115,12 @@ public class PlayerManager : MonoBehaviour
             {
                 ShowNewAccessible();    //On affiche les effets sur les nouvelles tiles disponibles
 
+                //On reset les particules avant d'attribuer les nouvelles
+                foreach (ParticleSystemScript particule in wheelParticules)
+                {
+                    particule.stopParticle();
+                }
+
                 if (Input.GetMouseButtonDown(0))    //Lors du click
                 {
                     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
