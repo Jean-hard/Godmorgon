@@ -58541,13 +58541,13 @@ MonoBehaviour:
   draftCards:
   - {fileID: 11400000, guid: 5e9371a1cf287a14891efde596badc7d, type: 2}
   - {fileID: 11400000, guid: 06e2ee03369fa7140b6d1928da50e340, type: 2}
-  - {fileID: 11400000, guid: 08b68b2415b2bfe458162fd5ae819b48, type: 2}
-  - {fileID: 11400000, guid: 3b7e10571c9a6cd49bb3d3299cfa78e1, type: 2}
+  - {fileID: 11400000, guid: 4927819fdade8f94ca883c795c053952, type: 2}
+  - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
   - {fileID: 11400000, guid: 2bacdde6c57475b479e86a81fd627380, type: 2}
-  - {fileID: 11400000, guid: 650e999eb4c6b4645aa49211612605f3, type: 2}
+  - {fileID: 11400000, guid: 89c72975e0cd20d4cafd072b0e7a03cc, type: 2}
   - {fileID: 11400000, guid: bf6ccb3df9eaf6e4b9473456c3e30157, type: 2}
   - {fileID: 11400000, guid: 99196cd774eba144e9b914b8eaa16e8d, type: 2}
-  - {fileID: 11400000, guid: 177f81cdf98615742ba191a4f1c2def9, type: 2}
+  - {fileID: 11400000, guid: fbe3e48121328a04288b6ebf6f4e6a61, type: 2}
   draftNb: 0
 --- !u!222 &669152551
 CanvasRenderer:

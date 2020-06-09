@@ -331,24 +331,39 @@ public class PlayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         canLaunchOtherMove = true;  //On permet le lancement d'un autre move
-        if (nbMoveIterationCounter >= nbRoomsToMove * multiplier && !enemySlayed)  //Si on a atteint le nombre de moves possibles de la carte
+        if (nbMoveIterationCounter >= nbRoomsToMove * multiplier)  //Si on a atteint le nombre de moves possibles de la carte
         {
             canLaunchOtherMove = false;
             nbMoveIterationCounter = 0;
             multiplier = 1;
             if (RoomEffectManager.Instance.currentRoom.roomEffect == RoomEffect.CHEST)
             {
+                Debug.Log("dans chest room alors lance draft");
                 StartCoroutine(LaunchDraft());
             }
-            else playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
+            else
+            {
+                if(enemySlayed)
+                {
+                    while (GameManager.Instance.draftPanelActivated)
+                        yield return null;
+
+                    playerHasMoved = true;
+                }
+                else
+                    playerHasMoved = true;  //Le joueur a terminé l'effet de la carte move
+            
+            }
         }
-        else if (nbMoveIterationCounter >= nbRoomsToMove * multiplier && enemySlayed)   //Si c'est notre dernier move et qu'un enemy a été tué
+        /*
+        else if (nbMoveIterationCounter >= nbRoomsToMove * multiplier)   //Si c'est notre dernier move et qu'un enemy a été tué
         {
             canLaunchOtherMove = false;
             nbMoveIterationCounter = 0;
             multiplier = 1;
-            StartCoroutine(LaunchDraft());  //Lance le draft d'après No Brakes car enemy tué
-        }
+            Debug.Log("dans on a tué un ennemy avec brakes alors lance draft");
+            //StartCoroutine(LaunchDraft());  //Lance le draft d'après No Brakes car enemy tué
+        }*/
     }
 
     /**
