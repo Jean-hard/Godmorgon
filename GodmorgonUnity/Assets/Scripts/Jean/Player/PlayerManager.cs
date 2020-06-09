@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [Header("UI Settings")]
+    public Image healthBar;
     public Text healthText;
     public Text blockText;
     public Text goldValueText;
@@ -87,6 +88,8 @@ public class PlayerManager : MonoBehaviour
         UpdateBlockText();
         UpdateGoldText();
         UpdateTokenText();
+
+        SetHealthMax(PlayerData.Instance.health + PlayerData.Instance.defense);
 
         nbMoveIterationCounter = 0;
         supposedPos = GetPlayerCellPosition();
@@ -493,6 +496,7 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerData.Instance.AddBlock(blockValue);
         UpdateBlockText();
+        UpdateHealthBar(PlayerData.Instance.health + PlayerData.Instance.defense);
     }
 
     /**
@@ -523,6 +527,22 @@ public class PlayerManager : MonoBehaviour
         PlayerData.Instance.TakeOffOneToken();
 
         UpdateTokenText();
+    }
+
+    /**
+     * Update Health Text
+     */
+    public void UpdateHealthBar(int currentHealthPoints)
+    {
+        healthBar.GetComponent<PlayerHealthBar>().UpdateHealthBar(currentHealthPoints);
+    }
+
+    /**
+     * 
+     */
+    public void SetHealthMax(int value)
+    {
+        healthBar.GetComponent<PlayerHealthBar>().SetMaxHealth(value);
     }
 
     /**

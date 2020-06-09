@@ -1,18 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    private Image health = null;
+
+    float maxHealthPoint = 100;
+
+
+    private void Start()
     {
-        
+        health = this.GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+    /**
+     * Called in Start of PlayerManager
+     */
+    public void SetMaxHealth(float maxHealth)
     {
-        
+        maxHealthPoint = maxHealth;
+    }
+
+    /**
+     * update the health bar of player
+     */
+    public void UpdateHealthBar(float currentHealth)
+    {
+        health.fillAmount = currentHealth / maxHealthPoint;
     }
 }
