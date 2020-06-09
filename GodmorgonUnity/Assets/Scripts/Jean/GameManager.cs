@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         advertisingDefaultColor = playerTurnAnimation.gameObject.GetComponent<Image>().color;
 
         MusicManager.Instance.PlayMechanical();
-        MusicManager.Instance.PlayCardsPlay();
+        //MusicManager.Instance.PlayCardsPlay();
     }
 
     /**
