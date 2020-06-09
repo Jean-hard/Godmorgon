@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Double every movement this turn.
   actionCost: 2
   price: 0
-  template: {fileID: 21300000, guid: 8560f9c3d24f1db488dc6cb2f358579c, type: 3}
+  template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}
   artwork: {fileID: 21300000, guid: 351a3923a8602514b8bae3b1e71d081c, type: 3}
   effectsData:
   - currentEffect: 3
