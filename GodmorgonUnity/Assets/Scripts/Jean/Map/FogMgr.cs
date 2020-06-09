@@ -126,10 +126,8 @@ public class FogMgr : MonoBehaviour
                 
                 if (room == accessibleRoom)
                 {
-                    Debug.Log("Room is showable");
                     if (!room.isRoomCleared)   //Si la tile n'est pas transparente
                     {
-                        Debug.Log("Stop fog on near rooms");
                         StopFogParticuleOnRoom(room);
                     }
                 }
