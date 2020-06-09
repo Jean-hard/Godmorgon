@@ -157,12 +157,6 @@ public class PlayerManager : MonoBehaviour
      */
     public void UpdateMultiplier(int valueToAddToMultiplier)
     {
-        /*
-        if(multiplier == 1)
-            multiplier = valueToAddToMultiplier;    //Si le multiplier est à 1, alors on passe directement à la valeur (car le multiplier commence à 1 et pas à 0)
-        else
-            multiplier += valueToAddToMultiplier;  //Sinon on ajoute la valeur 
-            */
         multiplier = valueToAddToMultiplier;
     }
 
@@ -235,6 +229,12 @@ public class PlayerManager : MonoBehaviour
             {
                 enemy.enemyData.inPlayersRoom = false;
             }
+        }
+
+        //On reset les particules avant d'attribuer les nouvelles
+        foreach(ParticleSystemScript particule in wheelParticules)
+        {
+            particule.stopParticle();
         }
 
         //On update le sprite du player en fonction de sa direction
@@ -538,7 +538,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     /**
-     * 
+     * Set la valeur max pour la health bar
      */
     public void SetHealthMax(int value)
     {

@@ -47595,12 +47595,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!4 &506634965 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 416260, guid: 24575fa2c4069ac4d86602e03d8fba29,
-    type: 3}
-  m_PrefabInstance: {fileID: 108701114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510229156
 GameObject:
   m_ObjectHideFlags: 0
@@ -104720,6 +104714,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a0564927d58d7f4408b9ec576078de9e, type: 3}
   - {fileID: 21300000, guid: 26e97bc0c9245d248ae9c0718605aa6f, type: 3}
   - {fileID: 21300000, guid: 727fc9331ca1c0b4dbcd52b3852720f7, type: 3}
+  healthBar: {fileID: 782066581}
   healthText: {fileID: 1314809308}
   blockText: {fileID: 1355956090}
   goldValueText: {fileID: 977340959}
@@ -147198,12 +147193,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!4 &2101243174 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 416260, guid: 24575fa2c4069ac4d86602e03d8fba29,
-    type: 3}
-  m_PrefabInstance: {fileID: 108701114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2101318128
 GameObject:
   m_ObjectHideFlags: 0
