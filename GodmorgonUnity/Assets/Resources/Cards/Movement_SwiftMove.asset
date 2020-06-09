@@ -19,7 +19,7 @@ MonoBehaviour:
   actionCost: 2
   price: 90
   template: {fileID: 21300000, guid: b99b620a93aea9d48b0b0d97254a95df, type: 3}
-  artwork: {fileID: 21300000, guid: f250b1c784f58a7409adf2114f9104fb, type: 3}
+  artwork: {fileID: 21300000, guid: ee6b10d9a0ef38246b9ee71953865c66, type: 3}
   effectsData:
   - currentEffect: 1
     damagePoint: 0
