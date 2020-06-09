@@ -18,7 +18,7 @@ MonoBehaviour:
   description: 'Gain 5 block for each enemies in '
   actionCost: 1
   price: 0
-  template: {fileID: 21300000, guid: 2688f6c8c155ed349bd0fdd508d1a066, type: 3}
+  template: {fileID: 21300000, guid: fc1c7338e24c63749a3b728afadd2de4, type: 3}
   artwork: {fileID: 21300000, guid: 9a239aa739ace534f871bae45295920b, type: 3}
   effectsData:
   - currentEffect: 2

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
+  m_Name: Attack_ViciousBite
+  m_EditorClassIdentifier: 
+  cardType: 1
+  id: 9
+  name: Vicious Bite
+  description: Inflict 7 damages, gain 4 block.
+  actionCost: 2
+  price: 90
+  template: {fileID: 21300000, guid: 1d745d74e1df57a4f8c364824a22661f, type: 3}
+  artwork: {fileID: 21300000, guid: 08dd46b4f340bb8469fcd607e8f97969, type: 3}
+  effectsData:
+  - currentEffect: 0
+    damagePoint: 7
+    nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
+    KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
+    DrawCard: 0
+    nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 0
+    isUseless: 1
+  - currentEffect: 2
+    damagePoint: 0
+    nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    nbBlock: 4
+    isCounter: 0
+    counterDamagePoint: 0
+    KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
+    DrawCard: 0
+    nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 0
+    isUseless: 1

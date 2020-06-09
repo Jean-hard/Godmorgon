@@ -19,8 +19,8 @@ MonoBehaviour:
     the room where you arrive.
   actionCost: 3
   price: 100
-  template: {fileID: 21300000, guid: b99b620a93aea9d48b0b0d97254a95df, type: 3}
-  artwork: {fileID: 21300000, guid: 59001d0df1212994987d7b44954b7b83, type: 3}
+  template: {fileID: 21300000, guid: 7a7169731c2bd1948ab804f1d95e6230, type: 3}
+  artwork: {fileID: 21300000, guid: 7315c79ded31fc24cb5b49d348118fe3, type: 3}
   effectsData:
   - currentEffect: 1
     damagePoint: 20

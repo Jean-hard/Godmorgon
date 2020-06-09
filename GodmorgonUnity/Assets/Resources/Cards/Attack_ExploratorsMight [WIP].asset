@@ -17,20 +17,51 @@ MonoBehaviour:
   name: Explorator's Might
   description: Inflict 1 damages for each explored rooms.
   actionCost: 1
-  template: {fileID: 21300000, guid: 6d9598a698dc8cf488cc45fe156ebcaa, type: 3}
+  price: 0
+  template: {fileID: 21300000, guid: 1d745d74e1df57a4f8c364824a22661f, type: 3}
   artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
   effectsData:
   - currentEffect: 0
     damagePoint: 1
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
     nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
     DrawCard: 0
     nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 0
+    isUseless: 1
   - currentEffect: 0
     damagePoint: 8
     nbMoves: 0
+    rolling: 0
+    swift: 0
+    noBrakes: 0
     nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
     KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
     DrawCard: 0
     nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 0
+    isDiscardHand: 0
+    isUseless: 1

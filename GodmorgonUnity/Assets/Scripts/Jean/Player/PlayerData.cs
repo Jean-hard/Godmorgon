@@ -119,9 +119,9 @@ namespace GodMorgon.Player
          */
         public void AddBlock(int blockValue)
         {
-            defense += blockValue;
-            if (defense > defenseMax)
-                defense = defenseMax;
+            health += blockValue;
+            if (health > healthMax)
+                health = healthMax;
         }
 
         //Set the damage done and taken for the killer instinct effect

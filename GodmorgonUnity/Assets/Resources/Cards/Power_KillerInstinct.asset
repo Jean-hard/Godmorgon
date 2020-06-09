@@ -18,8 +18,8 @@ MonoBehaviour:
   description: Double every damages done and taken this turn
   actionCost: 2
   price: 180
-  template: {fileID: 21300000, guid: 8560f9c3d24f1db488dc6cb2f358579c, type: 3}
-  artwork: {fileID: 21300000, guid: ad5faa5dc98efd54faa27efbf66c29e1, type: 3}
+  template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}
+  artwork: {fileID: 21300000, guid: 001e82ab95cd4664aac4285450e29f1c, type: 3}
   effectsData:
   - currentEffect: 3
     damagePoint: 0

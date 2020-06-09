@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Move 1 room, this effect is doubled if you go backward.
   actionCost: 1
   price: 0
-  template: {fileID: 21300000, guid: b99b620a93aea9d48b0b0d97254a95df, type: 3}
+  template: {fileID: 21300000, guid: 7a7169731c2bd1948ab804f1d95e6230, type: 3}
   artwork: {fileID: 21300000, guid: a54140b76ef0d5d4cbaa73218f631e46, type: 3}
   effectsData:
   - currentEffect: 1

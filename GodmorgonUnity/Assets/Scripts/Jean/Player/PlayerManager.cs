@@ -85,7 +85,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         UpdateHealthText();
-        UpdateBlockText();
+        //UpdateBlockText();
         UpdateGoldText();
         UpdateTokenText();
 
@@ -474,7 +474,7 @@ public class PlayerManager : MonoBehaviour
         PlayerData.Instance.TakeDamage(damage, false);
 
         UpdateHealthText();
-        UpdateBlockText();
+        //UpdateBlockText();
         //Debug.Log("Update player's life ");
 
         //launch player hit effect
@@ -495,8 +495,9 @@ public class PlayerManager : MonoBehaviour
     public void AddBlock(int blockValue)
     {
         PlayerData.Instance.AddBlock(blockValue);
-        UpdateBlockText();
+        //UpdateBlockText();
         UpdateHealthBar(PlayerData.Instance.health + PlayerData.Instance.defense);
+        UpdateHealthText();
     }
 
     /**

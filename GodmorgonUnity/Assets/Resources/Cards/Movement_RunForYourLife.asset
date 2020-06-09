@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
+  m_Name: Movement_RunForYourLife
+  m_EditorClassIdentifier: 
+  cardType: 0
+  id: 8
+  name: Run for your life !
+  description: "Shiver \nMove 2 room."
+  actionCost: 2
+  price: 0
+  template: {fileID: 21300000, guid: 7a7169731c2bd1948ab804f1d95e6230, type: 3}
+  artwork: {fileID: 21300000, guid: a7311059004c45f4fb8157e2e5acd217, type: 3}
+  effectsData:
+  - currentEffect: 1
+    damagePoint: 0
+    nbMoves: 2
+    rolling: 0
+    swift: 0
+    noBrakes: 0
+    nbBlock: 0
+    isCounter: 0
+    counterDamagePoint: 0
+    KillerInstinct: 0
+    FastShoes: 0
+    Sight: 0
+    sightRange: 1
+    DrawCard: 0
+    nbCardToDraw: 0
+    isHeal: 0
+    nbHeal: 0
+    shiver: 0
+    trust: 0
+    trustNb: 1
+    isDiscardHand: 0
+    isUseless: 1
