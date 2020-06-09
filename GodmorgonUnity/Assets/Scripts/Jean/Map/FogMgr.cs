@@ -41,9 +41,11 @@ public class FogMgr : MonoBehaviour
     private int revealRange = 1;
 
     [Header("Version with particules")]
-    public GameObject fogParticulePrefab;
-    public List<Vector3Int> positionsToSpawn = new List<Vector3Int>();
+    public List<GameObject> fogParticulePrefabs = new List<GameObject>();
     public Transform fogParent;
+
+    public List<Vector3Int> positionsToSpawn = new List<Vector3Int>();
+    
 
 
     private void Awake()
@@ -79,7 +81,10 @@ public class FogMgr : MonoBehaviour
     {
         Vector3Int roomCellPos = new Vector3Int(room.x, room.y, 0);
         Vector3 worldSpawnPos = TilesManager.Instance.roomTilemap.CellToWorld(roomCellPos) + new Vector3(0f, 1f, 0f);
-        room.fogParticule = Instantiate(fogParticulePrefab, worldSpawnPos, Quaternion.identity, fogParent);
+
+        int random = UnityEngine.Random.Range(0, 3);
+
+        room.fogParticule = Instantiate(fogParticulePrefabs[random], worldSpawnPos, Quaternion.identity, fogParent);
         room.isRoomCleared = false;
     }
 
