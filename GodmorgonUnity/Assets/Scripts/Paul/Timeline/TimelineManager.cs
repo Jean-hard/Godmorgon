@@ -101,17 +101,13 @@ namespace GodMorgon.Timeline
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
 
             //launche the first gear anmation
-            actionGearAnimations[0].Play();
+            //actionGearAnimations[0].Play();
             gearParticle.transform.position = actionGearAnimations[0].transform.position;
 
             particulePos.localPosition = actionGearAnimations[0].transform.localPosition;
 
-            //on save les positions de base
-            //actionLogoBasePos = new List<Transform>();
-            //for (int i = 0; i < actionLogoList.Count; i++)
-            //{
-            //    actionLogoBasePos.Add(actionLogoList[i].transform);
-            //}
+            //particulePos.gameObject.SetActive(false);
+            particulePos.gameObject.GetComponent<ParticleSystem>().Stop();
         }
 
         //Init the Timeline, function call in Initialization_Maze state
@@ -130,8 +126,8 @@ namespace GodMorgon.Timeline
         {
             nbActualAction = 1;
 
-            actionGearAnimations[3].Stop();
-            actionGearAnimations[0].Play();
+            //actionGearAnimations[3].Stop();
+            //actionGearAnimations[0].Play();
             gearParticle.transform.position = actionGearAnimations[0].transform.position;
 
             int idx = indexCurrentAction;
@@ -176,6 +172,11 @@ namespace GodMorgon.Timeline
         {
             //on lance l'animation du logo
             StartCoroutine(ActionLogoAnimation());
+            //particulePos.gameObject.SetActive(true);
+            particulePos.gameObject.GetComponent<ParticleSystem>().Play();
+
+            actionGearAnimations[nbActualAction - 1].Play();
+
 
             isRunning = true;
             //wait for the action to finish
@@ -203,9 +204,8 @@ namespace GodMorgon.Timeline
             }
             else
             {
-                actionGearAnimations[nbActualAction - 1].Play();
+                //actionGearAnimations[nbActualAction - 1].Play();
                 gearParticle.transform.position = actionGearAnimations[nbActualAction - 1].transform.position;
-                actionGearAnimations[nbActualAction - 2].Stop();
 
                 particulePos.localPosition = actionGearAnimations[nbActualAction - 1].transform.localPosition;
             }
@@ -223,6 +223,10 @@ namespace GodMorgon.Timeline
             //sinon on lance le tour du joueur
             else
                 GameEngine.Instance.SetState(StateMachine.StateMachine.STATE.PLAYER_TURN);
+
+            actionGearAnimations[nbActualAction - 2].Stop();
+            //particulePos.gameObject.SetActive(false);
+            particulePos.gameObject.GetComponent<ParticleSystem>().Stop();
 
             nbRemainingActionText.text = nbRingmasterActionRemain.ToString();
         }
@@ -249,15 +253,11 @@ namespace GodMorgon.Timeline
             Vector3 originalScale = actionLogoList[nbActualAction - 1].transform.localScale;
             Vector3 destinationScale = new Vector3(2f, 2f, 0);
 
-            //Vector3 originalPosition = actionLogoList[nbActualAction - 1].transform.localPosition;
-            //Vector3 destinationPosition = logoDestination.localPosition;
-
             float currentTime = 0.0f;
 
             while (currentTime <= actionLogoTime)
             {
                 actionLogoList[nbActualAction - 1].transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime);
-                //actionLogoList[nbActualAction - 1].transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
                 currentTime += Time.deltaTime * 4;
                 yield return null;
             }
@@ -267,12 +267,9 @@ namespace GodMorgon.Timeline
             while (currentTime <= actionLogoTime)
             {
                 actionLogoList[nbActualAction - 1].transform.localScale = Vector3.Lerp(destinationScale, originalScale, currentTime);
-                //actionLogoList[nbActualAction - 1].transform.localPosition = Vector3.Lerp(originalPosition, destinationPosition, currentTime);
                 currentTime += Time.deltaTime * 4;
                 yield return null;
             }
-            //actionLogoList[nbActualAction - 1].gameObject.SetActive(false);
-            //actionLogoList[nbActualAction - 1].transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }
