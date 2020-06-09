@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 2
   id: 8
   name: Last stand
-  description: "Shiver \nGain 5 Block"
+  description: "Shiver \n\nGain [nbBlock] Block"
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: fc1c7338e24c63749a3b728afadd2de4, type: 3}

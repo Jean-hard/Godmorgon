@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 3
   id: 0
   name: Denial
-  description: "Time Out 1 \nThe 2 next cards you play are not discared this turn."
+  description: "Time Out 1 \n\nThe 2 next cards you play are not discared this turn"
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}

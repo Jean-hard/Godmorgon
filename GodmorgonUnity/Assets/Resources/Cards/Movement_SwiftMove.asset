@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 0
   id: 8
   name: Swift Move
-  description: Move [nbMove] Rooms, you can move through enemies.
+  description: Move [nbMove] Rooms, you can move through enemies
   actionCost: 2
   price: 90
   template: {fileID: 21300000, guid: 7a7169731c2bd1948ab804f1d95e6230, type: 3}

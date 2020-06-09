@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 4
   id: 0
   name: Trap Door
-  description: Teleport an enemy target to a random location.
+  description: Teleport an enemy target to a random location
   actionCost: 2
   price: 0
   template: {fileID: 21300000, guid: ef8b16cd33af8d94d86809e8423d0733, type: 3}

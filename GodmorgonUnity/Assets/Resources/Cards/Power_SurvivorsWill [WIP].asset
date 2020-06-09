@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 3
   id: 0
   name: Survivor's Will
-  description: Your HP can't go under 1 this turn.
+  description: Your HP can't go under 1 this turn
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}

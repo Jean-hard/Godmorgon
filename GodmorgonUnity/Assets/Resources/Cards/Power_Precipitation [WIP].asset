@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 3
   id: 0
   name: Precipitation
-  description: Every attack you play this turn cost 0 but gain Time Out 1.
+  description: Every attack you play this turn cost 0 but gain Time Out 1
   actionCost: 2
   price: 0
   template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 1
   id: 9
   name: Karate Punch
-  description: "Retain, Ranged 1 \nInflict 10"
+  description: "Retain\nRanged 1 \n\nInflict [Nbdmg]"
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: 1d745d74e1df57a4f8c364824a22661f, type: 3}

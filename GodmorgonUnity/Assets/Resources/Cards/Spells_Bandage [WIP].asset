@@ -15,7 +15,10 @@ MonoBehaviour:
   cardType: 4
   id: 0
   name: Bandage
-  description: "Trust 4. \nHeals 5 HP"
+  description: 'Trust 4
+
+
+    Heals 5 HP'
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: ef8b16cd33af8d94d86809e8423d0733, type: 3}

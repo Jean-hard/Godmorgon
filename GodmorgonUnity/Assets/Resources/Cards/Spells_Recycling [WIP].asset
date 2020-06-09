@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 4
   id: 0
   name: Recycling
-  description: Take 2 cards from your discard pile and put them in your hand.
+  description: Take 2 cards from your discard pile and put them in your hand
   actionCost: 1
   price: 0
   template: {fileID: 21300000, guid: ef8b16cd33af8d94d86809e8423d0733, type: 3}

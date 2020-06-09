@@ -15,7 +15,7 @@ MonoBehaviour:
   cardType: 2
   id: 8
   name: Defend
-  description: Rajoute [nbBlock] blocks
+  description: Add [nbBlock] blocks
   actionCost: 1
   price: 200
   template: {fileID: 21300000, guid: fc1c7338e24c63749a3b728afadd2de4, type: 3}
