@@ -9,21 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Power_FastShoes [WIP]
+  m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
+  m_Name: Movement_RunForYourLife
   m_EditorClassIdentifier: 
-  cardType: 3
-  id: 0
-  name: Fast shoes
-  description: Double every movement this turn.
+  cardType: 0
+  id: 8
+  name: Run for your life !
+  description: "Shiver \nMove 2 room."
   actionCost: 2
   price: 0
-  template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}
-  artwork: {fileID: 21300000, guid: 351a3923a8602514b8bae3b1e71d081c, type: 3}
+  template: {fileID: 21300000, guid: 7a7169731c2bd1948ab804f1d95e6230, type: 3}
+  artwork: {fileID: 21300000, guid: a7311059004c45f4fb8157e2e5acd217, type: 3}
   effectsData:
-  - currentEffect: 3
+  - currentEffect: 1
     damagePoint: 0
-    nbMoves: 0
+    nbMoves: 2
     rolling: 0
     swift: 0
     noBrakes: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
     isCounter: 0
     counterDamagePoint: 0
     KillerInstinct: 0
-    FastShoes: 1
+    FastShoes: 0
     Sight: 0
     sightRange: 1
     DrawCard: 0
@@ -40,6 +40,6 @@ MonoBehaviour:
     nbHeal: 0
     shiver: 0
     trust: 0
-    trustNb: 0
+    trustNb: 1
     isDiscardHand: 0
     isUseless: 1

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
-  m_Name: Attack_DirectHitT1 [WIP]
+  m_Name: Attack_DirectHitT2
   m_EditorClassIdentifier: 
   cardType: 1
   id: 9
   name: Direct Hit
-  description: 'Trust 1
+  description: 'Trust 2
 
     Ranged 1
 

@@ -9,31 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88563952eb0d6ad47ba4270090c7de02, type: 3}
-  m_Name: Defense_Defend [WIP]
+  m_Script: {fileID: 11500000, guid: ae75bc8cd6c062e4eaa6498915338cdc, type: 3}
+  m_Name: Curse_Obstruction
   m_EditorClassIdentifier: 
-  cardType: 2
-  id: 8
-  name: Precautious
-  description: "Trust 2 \nGain 5 block."
-  actionCost: 0
-  price: 200
-  template: {fileID: 21300000, guid: fc1c7338e24c63749a3b728afadd2de4, type: 3}
-  artwork: {fileID: 21300000, guid: 9a239aa739ace534f871bae45295920b, type: 3}
+  cardType: 6
+  id: 100
+  name: Obstruction
+  description: Useless
+  actionCost: -1
+  price: 0
+  template: {fileID: 21300000, guid: 765c25476ee81c84383e6580ff8fd230, type: 3}
+  artwork: {fileID: 21300000, guid: 6f538b18525db2c44a15935ef668cf5f, type: 3}
   effectsData:
-  - currentEffect: 2
+  - currentEffect: 5
     damagePoint: 0
     nbMoves: 0
     rolling: 0
     swift: 0
     noBrakes: 0
-    nbBlock: 5
+    nbBlock: 0
     isCounter: 0
     counterDamagePoint: 0
     KillerInstinct: 0
     FastShoes: 0
     Sight: 0
-    sightRange: 1
+    sightRange: 0
     DrawCard: 0
     nbCardToDraw: 0
     isHeal: 0
