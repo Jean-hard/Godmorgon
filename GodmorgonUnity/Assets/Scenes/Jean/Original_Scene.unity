@@ -11264,6 +11264,13 @@ MonoBehaviour:
     x: 15
     y: 16
   fogTile: {fileID: 11400000, guid: 07bff8e1d1c09844d834ef4d38390fba, type: 2}
+  fogParticulePrefab: {fileID: 842729588732238885, guid: 1d7fd3c3480f67049bc194efef14525f,
+    type: 3}
+  positionsToSpawn:
+  - {x: 4, y: 6, z: 0}
+  - {x: 4, y: 7, z: 0}
+  - {x: 4, y: 8, z: 0}
+  fogParent: {fileID: 1270780194}
 --- !u!483693784 &145525789
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -11271,7 +11278,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145525786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -14496,33 +14503,6 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: 3, y: 5, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 4, y: 5, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 5, y: 5, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 6, y: 5, z: 0}
     second:
       m_TileIndex: 7
@@ -14766,24 +14746,6 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: 4, y: 6, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 5, y: 6, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 6, y: 6, z: 0}
     second:
       m_TileIndex: 7
@@ -15010,24 +14972,6 @@ Tilemap:
       m_TileFlags: 1
       m_ColliderType: 1
   - first: {x: 0, y: 7, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 4, y: 7, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 5, y: 7, z: 0}
     second:
       m_TileIndex: 7
       m_TileSpriteIndex: 1
@@ -15271,24 +15215,6 @@ Tilemap:
       m_TileFlags: 1
       m_ColliderType: 1
   - first: {x: 1, y: 8, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 3, y: 8, z: 0}
-    second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 7
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 4, y: 8, z: 0}
     second:
       m_TileIndex: 7
       m_TileSpriteIndex: 1
@@ -20488,15 +20414,15 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1017
+  - m_RefCount: 1008
     m_Data: {fileID: 11400000, guid: 07bff8e1d1c09844d834ef4d38390fba, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1017
+  - m_RefCount: 1008
     m_Data: {fileID: 21300000, guid: 5817271e57e351442a20c4df5ee0c7fd, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1017
+  - m_RefCount: 1008
     m_Data:
       e00: 1
       e01: 0
@@ -20529,7 +20455,7 @@ Tilemap:
     m_Data: {r: 0, g: 0, b: 0, a: 0}
   - m_RefCount: 0
     m_Data: {r: 0, g: 0, b: 0, a: 0}
-  - m_RefCount: 1017
+  - m_RefCount: 1008
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -58543,7 +58469,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 06e2ee03369fa7140b6d1928da50e340, type: 2}
   - {fileID: 11400000, guid: 4927819fdade8f94ca883c795c053952, type: 2}
   - {fileID: 11400000, guid: fb8bda0e1d686014b99131ccf151a1e7, type: 2}
-  - {fileID: 11400000, guid: 2bacdde6c57475b479e86a81fd627380, type: 2}
+  - {fileID: 11400000, guid: 5b551602b56c5944198862458fb53010, type: 2}
   - {fileID: 11400000, guid: 89c72975e0cd20d4cafd072b0e7a03cc, type: 2}
   - {fileID: 11400000, guid: bf6ccb3df9eaf6e4b9473456c3e30157, type: 2}
   - {fileID: 11400000, guid: 99196cd774eba144e9b914b8eaa16e8d, type: 2}
@@ -69761,7 +69687,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1763003296}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876206958
 GameObject:
@@ -85939,7 +85865,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1763003296}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157379654
 GameObject:
@@ -85986,7 +85912,7 @@ Transform:
   - {fileID: 1396355912}
   - {fileID: 256285469}
   m_Father: {fileID: 1763003296}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159461401
 GameObject:
@@ -87889,962 +87815,1442 @@ MonoBehaviour:
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 0
     roomEffect: 0
     effectLaunched: 1
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 1
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 2
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 3
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 4
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 5
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 6
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 7
     roomEffect: 6
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 7
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 8
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 9
     roomEffect: 1
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 9
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 10
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 11
     roomEffect: 5
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 11
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 12
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 13
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 14
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 0
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 1
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 2
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 3
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 4
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 5
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 6
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 7
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 8
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 9
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 10
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 11
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 12
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 13
     y: 15
     roomEffect: 0
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   - x: 14
     y: 15
     roomEffect: 1
     effectLaunched: 0
+    fogParticule: {fileID: 0}
+    isRoomCleared: 0
   roomTilemap: {fileID: 2287232}
   roomFxList:
   - {fileID: 153568, guid: cf6f9969c167ef44e8cb85c17951eddc, type: 3}
@@ -88867,7 +89273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1763003296}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1184153325
 GameObject:
@@ -93933,6 +94339,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &1270780193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270780194}
+  m_Layer: 0
+  m_Name: FogParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1270780194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270780193}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1763003296}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275918338
 GameObject:
   m_ObjectHideFlags: 0
@@ -96175,7 +96611,7 @@ Transform:
   - {fileID: 2287229}
   - {fileID: 145525787}
   m_Father: {fileID: 1763003296}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1309970027
 GameObject:
@@ -121541,6 +121977,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1270780194}
   - {fileID: 1157325409}
   - {fileID: 1157379656}
   - {fileID: 1309739024}
@@ -139370,7 +139807,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.22352943, g: 0.73333335, b: 0.44705886, a: 1}
+  m_BackGroundColor: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

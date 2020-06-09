@@ -25,6 +25,9 @@ public class RoomData
     public int y = 0;
     public RoomEffect roomEffect = RoomEffect.EMPTY;
     public bool effectLaunched = false;
+
+    public GameObject fogParticule;
+    public bool isRoomCleared = false;
 }
 
 public class RoomEffectManager : MonoBehaviour
@@ -83,6 +86,8 @@ public class RoomEffectManager : MonoBehaviour
         {
             room.effectLaunched = false;
         }
+        currentRoom = GetRoomData(PlayerManager.Instance.GetPlayerRoomPosition());
+        FogMgr.Instance.InitFog();   //Initialise le tableau room du FogMgr
     }
 
     // Update is called once per frame
@@ -268,6 +273,9 @@ public class RoomEffectManager : MonoBehaviour
             return false;
     }
 
+    /**
+     * Renvoie la roomData correspondant à une position cellule
+     */
     public RoomData GetRoomData(Vector3Int position)
     {
         foreach (RoomData room in roomsDataArr)

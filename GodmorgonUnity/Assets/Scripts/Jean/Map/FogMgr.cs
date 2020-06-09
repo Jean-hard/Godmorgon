@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Numerics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,6 +10,12 @@ public class Bounds
 {
     public int x = 10;
     public int y = 10;
+}
+
+public class FogTile
+{
+    public Vector3Int roomPos = new Vector3Int();
+    public GameObject fogParticule;
 }
 
 public class FogMgr : MonoBehaviour
@@ -33,12 +40,16 @@ public class FogMgr : MonoBehaviour
     
     private int revealRange = 1;
 
+    [Header("Version with particules")]
+    public GameObject fogParticulePrefab;
+    public List<Vector3Int> positionsToSpawn = new List<Vector3Int>();
+    public Transform fogParent;
+
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         if (Instance != this) Destroy(gameObject);
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -46,9 +57,208 @@ public class FogMgr : MonoBehaviour
         fogTilemap = this.GetComponent<Tilemap>();
     }
 
+    public void InitFog()
+    {
+        //Créé du fog sur toutes les rooms
+        foreach(RoomData room in RoomEffectManager.Instance.roomsDataArr)
+        {
+            AddFogParticuleOnRoom(room);
+        }
+
+        hasUpdatedFog = false;
+    }
+
     private void Update()
     {
-        UpdateFogToPlayer();
+        //UpdateFogToPlayer();
+
+        UpdateFogParticules();
+    }
+
+    private void AddFogParticuleOnRoom(RoomData room)
+    {
+        Vector3Int roomCellPos = new Vector3Int(room.x, room.y, 0);
+        Vector3 worldSpawnPos = TilesManager.Instance.roomTilemap.CellToWorld(roomCellPos) + new Vector3(0f, 1f, 0f);
+        room.fogParticule = Instantiate(fogParticulePrefab, worldSpawnPos, Quaternion.identity, fogParent);
+        room.isRoomCleared = false;
+    }
+
+    private void PlayFogParticuleOnRoom(RoomData room)
+    {
+        room.fogParticule.GetComponent<ParticleSystem>().Play();
+        room.isRoomCleared = false;
+    }
+
+    private void StopFogParticuleOnRoom(RoomData room)
+    {
+        room.fogParticule.GetComponent<ParticleSystem>().Stop();
+        room.isRoomCleared = true;
+    }
+
+    /**
+     * Clear les rooms autour du player
+     * Appelée lorsque le joueur est en mouvement
+     */
+    private void UpdateFogParticules()
+    {
+        if (PlayerManager.Instance.IsPlayerMoving())
+        {
+            hasUpdatedFog = false;
+            return;
+        }
+
+        if (hasUpdatedFog) return;
+        
+        Vector3Int currentPlayerPos = PlayerManager.Instance.GetPlayerRoomPosition();
+
+        RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(currentPlayerPos);
+
+        List<RoomData> nearRoomDatas = GetNearRoomData(currentPlayerPos, 1);
+
+        TilesManager.Instance.CreateGrid();
+        TilesManager.Instance.UpdateAccessibleTilesList();
+
+        foreach (RoomData room in nearRoomDatas)   //Pour toutes les rooms à coté du player
+        {
+            foreach (RoomData accessibleRoom in TilesManager.Instance.GetAccessibleRooms())
+            {
+                //Debug.Log(room.x + "/" + room.y + " contre " + showableRoom.x + "/" + showableRoom.y);
+                
+                if (room == accessibleRoom)
+                {
+                    Debug.Log("Room is showable");
+                    if (!room.isRoomCleared)   //Si la tile n'est pas transparente
+                    {
+                        Debug.Log("Stop fog on near rooms");
+                        StopFogParticuleOnRoom(room);
+                    }
+                }
+            }
+        }
+
+        StopFogParticuleOnRoom(currentRoomData);
+
+        hasUpdatedFog = true;
+    }
+
+    
+    /**
+     * Renvoie la liste des rooms à côté d'une position room donnée
+     */
+    private List<RoomData> GetNearRoomData(Vector3Int roomPos, int revealRange)
+    {
+        if (null == PlayerManager.Instance) return null;
+
+        List<RoomData> nearRooms = new List<RoomData>();
+
+        RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(roomPos);
+
+        for (int i = 0; i < revealRange; ++i)
+        {
+            //On parcours les room data car on veut se contenter seulement des rooms du jeu, et pas au-delà (sinon on ajouterait directement les positions dans la liste)
+            foreach (RoomData room in RoomEffectManager.Instance.roomsDataArr)
+            {
+                if ((room.x == currentRoomData.x + i + 1 && room.y == currentRoomData.y)     //Si on a une room à + ou - 1 en x et y de la room actuelle
+                    || (room.x == currentRoomData.x && room.y == currentRoomData.y + i + 1)
+                    || (room.x == currentRoomData.x -i - 1 && room.y == currentRoomData.y)
+                    || (room.x == currentRoomData.x && room.y == currentRoomData.y - i - 1))
+                {
+                    nearRooms.Add(room);
+                }
+            }
+        }
+
+        return nearRooms;
+    }
+
+    
+    /**
+     * Clear les rooms autour d'une position donnée, avec une certaine range
+     * Penser à faire un SetRevealRange avant d'appeler la GSA Sight pour que la valeur de la carte soit prise en compte
+     */
+    public void RevealRoomAtPosition(Vector3Int baseRoomPosition, int cardRevealRange)
+    {
+        List<RoomData> nearRooms = GetNearRoomData(baseRoomPosition, cardRevealRange);
+
+        nearRooms.Add(RoomEffectManager.Instance.GetRoomData(baseRoomPosition));
+
+
+        foreach (RoomData roomPos in nearRooms)
+        {
+            StopFogParticuleOnRoom(roomPos);
+        }
+
+        StartCoroutine(TimedAction(timeAfterAction));
+    }
+
+    
+
+    /**
+     * Check si les positions ont été reveal
+     */
+    public bool RevealDone()
+    {
+        if (!hasBeenRevealed) return false;
+
+        hasBeenRevealed = false;
+        return true;
+    }
+
+    /**
+     * On attend un peu avant de terminer l'action
+     */
+    IEnumerator TimedAction(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        hasBeenRevealed = true;
+    }
+
+    /**
+    * Recouvre toute la map de Fog sauf où il y a le player et des cases voisines
+    */
+    public void CoverEntireMapWithParticules()
+    {
+        hasUpdatedFog = false;  //Le fog n'a pas encore été updaté
+
+        foreach(RoomData room in RoomEffectManager.Instance.roomsDataArr)
+        {
+            if(!TilesManager.Instance.GetAccessibleRooms().Contains(room))
+            {
+                PlayFogParticuleOnRoom(room);
+            }
+        }
+    }
+
+    #region Old Version with tiles instead of particules
+
+    /**
+     * Recouvre toute la map de Fog sauf où il y a le player et des cases voisines
+     */
+    public void CoverEntireMap()
+    {
+        hasUpdatedFog = false;  //Le fog n'a pas encore été updaté
+
+        Vector3Int currentPlayerPos = PlayerManager.Instance.GetPlayerRoomPosition();
+        RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(currentPlayerPos);
+        Vector3Int currentRoomDataPos = new Vector3Int(currentRoomData.x, currentRoomData.y, 0);
+
+        List<Vector3Int> nearRoomsTiles = UpdateNearRooms(currentPlayerPos, 1);
+
+        //On parcourt toutes les tiles du fog (gérer les bounds dans l'inspector)
+        for (int x = 0; x < fogBounds.x; ++x)
+        {
+            for(int y = 0; y < fogBounds.y; ++y)
+            {
+                Vector3Int fogTilePos = new Vector3Int(x, y, 0);   //Récup la coordonnée de la tile actuelle
+                if(fogTilePos != currentRoomDataPos && !nearRoomsTiles.Contains(fogTilePos))
+                {
+                    fogTilemap.SetTile(fogTilePos, fogTile);    //On applique la tile fog sur toutes les cases
+
+                    StartCoroutine(FadeFog(false, fogTilePos));
+                }
+                    
+            }
+        }
     }
 
     /**
@@ -114,7 +324,7 @@ public class FogMgr : MonoBehaviour
             {
                 // set color with i as alpha
                 Color color = new Color(1, 1, 1, i);
-                
+
                 fogTilemap.SetColor(originPos, color);
                 yield return null;
             }
@@ -147,7 +357,7 @@ public class FogMgr : MonoBehaviour
 
         Vector3Int currentRoomDataPos = new Vector3Int(currentRoomData.x, currentRoomData.y, 0);
 
-        for(int i = 0; i < revealRange; ++i)
+        for (int i = 0; i < revealRange; ++i)
         {
             //On parcours les room data car on veut se contenter seulement des rooms du jeu, et pas au-delà (sinon on ajouterait directement les positions dans la liste)
             foreach (RoomData room in RoomEffectManager.Instance.roomsDataArr)
@@ -173,12 +383,11 @@ public class FogMgr : MonoBehaviour
     public void RevealAtPosition(Vector3Int baseRoomPosition)
     {
         List<Vector3Int> nearRoomsTiles = UpdateNearRooms(baseRoomPosition, revealRange);
-        
+
         nearRoomsTiles.Add(baseRoomPosition);
-        
-        //---------- WIP ------------- Gérer le cas où on dépose la carte sur une case déjà clear
-        
-        foreach(Vector3Int roomPos in nearRoomsTiles)
+
+
+        foreach (Vector3Int roomPos in nearRoomsTiles)
         {
             StartCoroutine(FadeFog(true, roomPos));
         }
@@ -194,53 +403,5 @@ public class FogMgr : MonoBehaviour
         revealRange = rangeValue;
     }
 
-    /**
-     * Check si les positions ont été reveal
-     */
-    public bool RevealDone()
-    {
-        if (!hasBeenRevealed) return false;
-
-        hasBeenRevealed = false;
-        return true;
-    }
-
-    /**
-     * On attend un peu avant de terminer l'action
-     */
-    IEnumerator TimedAction(float timeToWait)
-    {
-        yield return new WaitForSeconds(timeToWait);
-        hasBeenRevealed = true;
-    }
-
-    /**
-     * Recouvre toute la map de Fog sauf où il y a le player et des cases voisines
-     */
-    public void CoverEntireMap()
-    {
-        hasUpdatedFog = false;  //Le fog n'a pas encore été updaté
-
-        Vector3Int currentPlayerPos = PlayerManager.Instance.GetPlayerRoomPosition();
-        RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(currentPlayerPos);
-        Vector3Int currentRoomDataPos = new Vector3Int(currentRoomData.x, currentRoomData.y, 0);
-
-        List<Vector3Int> nearRoomsTiles = UpdateNearRooms(currentPlayerPos, 1);
-
-        //On parcourt toutes les tiles du fog (gérer les bounds dans l'inspector)
-        for (int x = 0; x < fogBounds.x; ++x)
-        {
-            for(int y = 0; y < fogBounds.y; ++y)
-            {
-                Vector3Int fogTilePos = new Vector3Int(x, y, 0);   //Récup la coordonnée de la tile actuelle
-                if(fogTilePos != currentRoomDataPos && !nearRoomsTiles.Contains(fogTilePos))
-                {
-                    fogTilemap.SetTile(fogTilePos, fogTile);    //On applique la tile fog sur toutes les cases
-
-                    StartCoroutine(FadeFog(false, fogTilePos));
-                }
-                    
-            }
-        }
-    }
+    #endregion
 }

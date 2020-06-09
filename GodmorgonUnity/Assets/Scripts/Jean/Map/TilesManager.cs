@@ -212,4 +212,24 @@ public class TilesManager : MonoBehaviour
         }
         effectInstantiated = false;
     }
+
+    /**
+     * Renvoie une liste de roomData accessibles 
+     */
+    public List<RoomData> GetAccessibleRooms()
+    {
+        List<RoomData> accessibleRooms = new List<RoomData>();
+
+        foreach(Vector3Int tile in showableTilesList)
+        {
+            Vector3 worldPos = walkableTilemap.CellToWorld(tile);
+            Vector3Int roomPos = roomTilemap.WorldToCell(worldPos);
+
+            RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(roomPos);
+
+            accessibleRooms.Add(currentRoomData);
+        }
+
+        return accessibleRooms;
+    }
 }

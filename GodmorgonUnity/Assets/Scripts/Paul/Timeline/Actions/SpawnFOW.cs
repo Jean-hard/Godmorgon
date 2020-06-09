@@ -8,9 +8,9 @@ namespace GodMorgon.Timeline
     {
         public override IEnumerator Execute()
         {
-            Debug.Log("ACTION Spawn FOW");
+            //Debug.Log("ACTION Spawn FOW");
 
-            FogMgr.Instance.CoverEntireMap();
+            FogMgr.Instance.CoverEntireMapWithParticules();
 
             yield return new WaitForSeconds(2f);
 
