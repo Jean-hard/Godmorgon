@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using GodMorgon.Models;
 using GodMorgon.StateMachine;
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public bool draftPanelActivated = false;
 
+    public Image finalFade = null;
+    public Image ThankYouImage = null;
+    public float timeFade = 2;
+
     #region Singleton Pattern
     private static GameManager _instance;
 
@@ -70,8 +75,15 @@ public class GameManager : MonoBehaviour
 
         MusicManager.Instance.PlayMechanical();
         MusicManager.Instance.PlayParkTheme();
-
         //MusicManager.Instance.PlayCardsPlay();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown("n"))
+        {
+            StartCoroutine(LaunchFinalFade());
+        }
     }
 
     /**
@@ -282,6 +294,36 @@ public class GameManager : MonoBehaviour
             draftUpdated = false;
             draftPanel.gameObject.SetActive(false);
             draftPanelActivated = false;
+        }
+    }
+
+    public IEnumerator LaunchFinalFade()
+    {
+        handManager.gameObject.SetActive(false);
+
+        Color originalColorFade = finalFade.color;
+        Color targetColorFade = finalFade.color;
+        targetColorFade.a = 1;
+
+        Color originalColorThanks = ThankYouImage.color;
+        Color targetColorThanks = ThankYouImage.color;
+        targetColorThanks.a = 1;
+
+        float currentTime = 0.0f;
+
+        while (currentTime <= timeFade)
+        {
+            finalFade.color = Color.Lerp(originalColorFade, targetColorFade, currentTime);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+
+        currentTime = 0;
+        while (currentTime <= timeFade)
+        {
+            ThankYouImage.color = Color.Lerp(originalColorThanks, targetColorThanks, currentTime);
+            currentTime += Time.deltaTime;
+            yield return null;
         }
     }
 }
