@@ -130,8 +130,11 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             //Cache les positions accessibles
             dropPosManager.HidePositionsToDrop(_card);
 
-            //sound
+            //======================sound=========================
             MusicManager.Instance.PlayCardsPlay();
+            PlayTypeCardSFX(_card.cardType);
+
+
             //MusicManager.Instance.PlayRollingKart();  //pas ici qu'il doit être activé
 
             //discard the used card
@@ -151,6 +154,28 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             //Cache les positions accessibles
             dropPosManager.HidePositionsToDrop(_card);
+        }
+    }
+
+    public void PlayTypeCardSFX(BasicCard.CARDTYPE type)
+    {
+        switch(type)
+        {
+            case BasicCard.CARDTYPE.ATTACK:
+                MusicManager.Instance.PlayCardsAttack();
+                break;
+            case BasicCard.CARDTYPE.DEFENSE:
+                MusicManager.Instance.PlayCardsDefens();
+                break;
+            case BasicCard.CARDTYPE.MOVE:
+                MusicManager.Instance.PlayCardsMove();
+                break;
+            case BasicCard.CARDTYPE.POWER_UP:
+                MusicManager.Instance.PlayCardsPowerUp();
+                break;
+            case BasicCard.CARDTYPE.SPELL:
+                MusicManager.Instance.PlayCardsSpell();
+                break;
         }
     }
 }

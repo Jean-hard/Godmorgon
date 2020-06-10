@@ -10,6 +10,7 @@ using GodMorgon.Enemy;
 using GodMorgon.VisualEffect;
 using System;
 using GodMorgon.Models;
+using GodMorgon.Sound;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -276,6 +277,9 @@ public class PlayerManager : MonoBehaviour
         spotIndex = 0;
 
         nbMoveIterationCounter++;   //On ajoute un move au compteur
+
+        //SFX player  move
+        MusicManager.Instance.PlayPlayerMove();
     }
 
     /**
@@ -623,6 +627,9 @@ public class PlayerManager : MonoBehaviour
     public void OnDamage()
     {
         playerHit.launchParticle();
+
+        //SFX player hit
+        MusicManager.Instance.PlayPlayerHit();
     }
 
     //launch player Shield effect

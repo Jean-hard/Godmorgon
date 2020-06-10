@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using GodMorgon.Models;
 
 using GodMorgon.StateMachine;
+using GodMorgon.Sound;
 
 namespace GodMorgon.Timeline
 {
@@ -205,6 +206,9 @@ namespace GodMorgon.Timeline
                 actionGearAnimations[3].Stop();
 
                 GameManager.Instance.ShowNewTurnImage();
+
+                //SFX end ringmaster Turn
+                MusicManager.Instance.PlayRingMasterEndTurn();
             }
             else
             {

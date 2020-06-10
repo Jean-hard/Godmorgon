@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 using GodMorgon.Models;
 using GodMorgon.VisualEffect;
+using GodMorgon.Sound;
 
 namespace GodMorgon.Enemy
 {
@@ -369,6 +370,8 @@ namespace GodMorgon.Enemy
         public void OnDamage()
         {
             enemyHit.launchParticle();  //Lance la particule de hit
+            //SFX enemy hit
+            MusicManager.Instance.PlayEnemyHit();
         }
 
         /**
@@ -512,6 +515,9 @@ namespace GodMorgon.Enemy
             StartCoroutine(TimedDeath(hitAnimDuration));
             EnemyManager.Instance.UpdateEnemiesList();    //Update la liste des ennemis sur la map
             PlayerManager.Instance.AddGold(15); //Add gold to player
+
+            //SFX enemy death
+            MusicManager.Instance.PlayEnemyDeath();
         }
 
         IEnumerator TimedDeath(float duration)
