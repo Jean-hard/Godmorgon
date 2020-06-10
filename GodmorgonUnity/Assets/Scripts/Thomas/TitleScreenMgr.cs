@@ -27,6 +27,8 @@ public class TitleScreenMgr : MonoBehaviour
         playButton.SetActive(false);
         yield return new WaitForSeconds(waitTime);
         Destroy(musicManagerObject);
+        Destroy(GameObject.Find("WwiseGlobal"));
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Original_Scene");
     }
 }
