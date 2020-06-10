@@ -1047,6 +1047,132 @@
 										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="SFX_Enemy_Move" ID="{3E506F4E-F1BC-4198-BE77-8A036E0C2B6A}" ShortID="1054116604">
+									<PropertyList>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="SFX_Enemy_Cart_Move_20" ID="{B5AAF94D-5919-469A-B1EE-B56DB5A5406A}" ShortID="865230981">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SFX_Enemy_Cart_Move_20" ID="{62417A68-DBE6-4004-87B0-731552D38333}">
+													<Language>SFX</Language>
+													<AudioFile>wetransfer-501fc2\SFX_Enemy_Cart_Move\SFX_Enemy_Cart_Move_20.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="861212459"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SFX_Enemy_Cart_Move_20" ID="{62417A68-DBE6-4004-87B0-731552D38333}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SFX_Enemy_Cart_Move_21" ID="{610F3C3E-44C7-4ACB-A8D9-0DA4CB1C9E4D}" ShortID="223979097">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SFX_Enemy_Cart_Move_21" ID="{94AE7760-426A-45E9-8857-D4D886CC0FD8}">
+													<Language>SFX</Language>
+													<AudioFile>wetransfer-501fc2\SFX_Enemy_Cart_Move\SFX_Enemy_Cart_Move_21.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1035168204"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SFX_Enemy_Cart_Move_21" ID="{94AE7760-426A-45E9-8857-D4D886CC0FD8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SFX_Enemy_Cart_Move_22" ID="{677C7F0D-4657-4A3B-B06F-54DC25AF7476}" ShortID="785445357">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SFX_Enemy_Cart_Move_22" ID="{ACE0C136-440E-42BC-9670-90B25F8CD8B2}">
+													<Language>SFX</Language>
+													<AudioFile>wetransfer-501fc2\SFX_Enemy_Cart_Move\SFX_Enemy_Cart_Move_22.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1526819"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SFX_Enemy_Cart_Move_22" ID="{ACE0C136-440E-42BC-9670-90B25F8CD8B2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SFX_Enemy_Cart_Move_23" ID="{26D08BFE-D1A5-48CD-8BF0-785949D49430}" ShortID="2534399">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SFX_Enemy_Cart_Move_23" ID="{A8FA060F-C82E-4E2D-B73B-CEAEEB92F0E9}">
+													<Language>SFX</Language>
+													<AudioFile>wetransfer-501fc2\SFX_Enemy_Cart_Move\SFX_Enemy_Cart_Move_23.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="177462654"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SFX_Enemy_Cart_Move_23" ID="{A8FA060F-C82E-4E2D-B73B-CEAEEB92F0E9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SFX_Enemy_Cart_Move_24" ID="{54BA9F43-336A-4E33-ADA0-564313783D0D}" ShortID="986381581">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SFX_Enemy_Cart_Move_24" ID="{22685BDF-6E4B-497B-9AF3-7F7ED8A10A3D}">
+													<Language>SFX</Language>
+													<AudioFile>wetransfer-501fc2\SFX_Enemy_Cart_Move\SFX_Enemy_Cart_Move_24.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="683361735"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SFX_Enemy_Cart_Move_24" ID="{22685BDF-6E4B-497B-9AF3-7F7ED8A10A3D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="SFX_Feedback_AM" ID="{FE698A26-CC3B-499D-A14C-F4F37D858973}" ShortID="186799458">
@@ -2711,6 +2837,742 @@
 								</Sound>
 							</ChildrenList>
 						</BlendContainer>
+						<RandomSequenceContainer Name="Amb_Mecha_RFX" ID="{F390C1D1-C2DC-4CDF-8F3E-672CEB2C4864}" ShortID="346545908">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{2F85923F-3CEF-4236-B9F4-C84978A5CEBF}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+													<Property Name="Min" Type="Real64" Value="-3"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{695F2F27-50D4-48DB-A8E4-60217E9924B5}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="12"/>
+													<Property Name="Min" Type="Real64" Value="-3"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_RFX_Mechanical-001" ID="{321E8ED4-2BB1-4A81-A114-54746E978C03}" ShortID="954945279">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-001" ID="{D2945346-83DA-4D1A-A2C7-C14C61A4864B}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-001.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="424210029"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-001" ID="{D2945346-83DA-4D1A-A2C7-C14C61A4864B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-002" ID="{508F191D-ABCB-4D08-8B54-C786001E868E}" ShortID="920422734">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-002" ID="{B75EE35B-187B-4E4C-8990-313F229C25B0}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="71566153"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-002" ID="{B75EE35B-187B-4E4C-8990-313F229C25B0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-003" ID="{944D5EE1-0551-4F2C-BD2C-EC4FE4453CE5}" ShortID="1042703901">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-003" ID="{16461BFC-2D4D-486B-93D6-CE2ED31428E3}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="581947388"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-003" ID="{16461BFC-2D4D-486B-93D6-CE2ED31428E3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-004" ID="{2426F04C-F2D6-4AC8-82D2-1B62B44E8291}" ShortID="693105112">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-004" ID="{80F4A877-A81B-43F0-9E9C-464BBE64E481}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="174515180"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-004" ID="{80F4A877-A81B-43F0-9E9C-464BBE64E481}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-005" ID="{1A3AFBB2-838B-4D46-9130-E20CE8D3B282}" ShortID="365455497">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-005" ID="{6EE46435-604D-4838-8E39-9E4D8AF6BEAA}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-005.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="920881333"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-005" ID="{6EE46435-604D-4838-8E39-9E4D8AF6BEAA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-006" ID="{49B3760F-B7E4-455F-BEBE-715C9E00DF93}" ShortID="678965167">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-006" ID="{EDB097C8-5ED1-4EE7-9B6F-798CE6E15D4C}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-006.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="957506920"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-006" ID="{EDB097C8-5ED1-4EE7-9B6F-798CE6E15D4C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-007" ID="{67EFE6EF-65FD-4668-8B39-BC9DF984BC24}" ShortID="449296693">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-007" ID="{D418134D-AA13-4712-9750-C46B36859172}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-007.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="36386810"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-007" ID="{D418134D-AA13-4712-9750-C46B36859172}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-008" ID="{8FC8B150-74AF-449B-BEA7-85351B6DCB84}" ShortID="462198779">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-008" ID="{7C2E15F3-920B-44F3-8743-29988869E097}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-008.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="328723199"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-008" ID="{7C2E15F3-920B-44F3-8743-29988869E097}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-009" ID="{2CC979AB-A1FF-4F5B-BA4A-580B6A0A726F}" ShortID="1045373294">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-009" ID="{908488DF-CA48-424A-82FD-EBC179A06917}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-009.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="703848188"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-009" ID="{908488DF-CA48-424A-82FD-EBC179A06917}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-010" ID="{DCD81597-0649-4FEF-ACDC-51EF31427C9A}" ShortID="183940594">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-010" ID="{AC02051C-B311-4E77-9D91-72AA367774D6}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-010.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="311127058"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-010" ID="{AC02051C-B311-4E77-9D91-72AA367774D6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-011" ID="{29B8085E-349A-470B-A069-D709F98BDF35}" ShortID="375595747">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-011" ID="{59882170-8177-4CB3-8473-68B5E6796A6A}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-011.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="519494520"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-011" ID="{59882170-8177-4CB3-8473-68B5E6796A6A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-012" ID="{925E632E-E8BE-4D3E-A5A3-9634A9A8D22A}" ShortID="266274673">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-012" ID="{950DFDE1-0525-44DA-AA8A-84BD2D76C78B}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-012.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="44567089"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-012" ID="{950DFDE1-0525-44DA-AA8A-84BD2D76C78B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-013" ID="{698D335E-0449-44D0-B0AC-DA26A6F19C49}" ShortID="15542498">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-013" ID="{58185E7B-90E6-4892-B51F-91BE150D0731}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-013.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="719027881"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-013" ID="{58185E7B-90E6-4892-B51F-91BE150D0731}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-014" ID="{6BE34291-A60B-400D-94B4-501D0C1E5CA2}" ShortID="404330722">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-014" ID="{E8BF73E4-0D76-4D87-AE9B-EAE87DB7F0CE}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-014.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="845640922"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-014" ID="{E8BF73E4-0D76-4D87-AE9B-EAE87DB7F0CE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Mechanical-015" ID="{7CA2F275-8397-4793-B594-4E20A0242FC6}" ShortID="88985795">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Mechanical-015" ID="{87EE3B1C-688F-4B64-B236-47CB32DC87AD}">
+											<Language>SFX</Language>
+											<AudioFile>Amb_RFX_Mechanical\AMB_RFX_Mechanical-015.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="889776440"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Mechanical-015" ID="{87EE3B1C-688F-4B64-B236-47CB32DC87AD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Amb_Park_Theme" ID="{D0F5A6AA-C419-4E0C-B88B-DA65200D16A4}" ShortID="944648968">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_RFX_Park_Theme_08" ID="{DE2FC36B-4F4D-4487-9832-ABF9DD7CA3BE}" ShortID="673795546">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Park_Theme_08" ID="{DD58410E-60D6-4DD9-A853-63653E6D45D8}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Park_Theme\AMB_RFX_Park_Theme_08.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1036534596"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Park_Theme_08" ID="{DD58410E-60D6-4DD9-A853-63653E6D45D8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Park_Theme_09" ID="{DB5D27EA-2DA7-4079-82B1-307DAD1A35A5}" ShortID="6507827">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-14</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Park_Theme_09" ID="{79994861-82ED-4ECE-8E32-2E455190AEC1}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Park_Theme\AMB_RFX_Park_Theme_09.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="269865782"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Park_Theme_09" ID="{79994861-82ED-4ECE-8E32-2E455190AEC1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Park_Theme_10" ID="{C0A32CEB-6CEA-425F-8003-499AE5AB857C}" ShortID="504327736">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Park_Theme_10" ID="{F659DB86-99B3-4BA2-8AFE-148C4EDA273F}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Park_Theme\AMB_RFX_Park_Theme_10.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="768158005"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Park_Theme_10" ID="{F659DB86-99B3-4BA2-8AFE-148C4EDA273F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Amb_Fog_RFX" ID="{D8703AF8-3E47-4F35-8C84-7B46657BC268}" ShortID="92336691">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_RFX_Fog_16" ID="{5A548A28-84D1-448D-B0BB-ACCD8A806A0F}" ShortID="908913081">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Fog_16" ID="{D97A7950-C449-422D-BE45-03675717C895}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Fog\AMB_RFX_Fog_16.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="960005070"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Fog_16" ID="{D97A7950-C449-422D-BE45-03675717C895}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Fog_17" ID="{C69FDB2A-B3FD-4B22-BF63-DCBC496561A9}" ShortID="476649842">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Fog_17" ID="{29374B2F-8B75-4565-A431-49A81D2DDEBC}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Fog\AMB_RFX_Fog_17.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="956440345"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Fog_17" ID="{29374B2F-8B75-4565-A431-49A81D2DDEBC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Fog_18" ID="{392F32EB-EA03-4F1A-82F9-43920D9D48EA}" ShortID="18651118">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Fog_18" ID="{ED0407C4-149A-4899-A7A3-A41730B20EF2}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Fog\AMB_RFX_Fog_18.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="401835787"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Fog_18" ID="{ED0407C4-149A-4899-A7A3-A41730B20EF2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_RFX_Fog_19" ID="{47C1C87B-7A98-496C-A30C-91B5506AC61C}" ShortID="286808058">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_RFX_Fog_19" ID="{826C6D95-F52A-4B76-9382-64BAF18D1175}">
+											<Language>SFX</Language>
+											<AudioFile>wetransfer-501fc2\AMB_RFX_Fog\AMB_RFX_Fog_19.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="741398974"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_RFX_Fog_19" ID="{826C6D95-F52A-4B76-9382-64BAF18D1175}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="VX_RingMaster" ID="{3CB1FDE4-8CE5-4C7E-B2EC-289742E89957}" ShortID="597458714">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="VX_RingMaster_EndofTurn" ID="{C8E6F37B-8867-4509-BC2A-CFA274460DEB}" ShortID="587523384">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="VX_Ringmasters_EndofTurn-001" ID="{189756CD-EBD4-4405-9BA3-B185C8A1E190}" ShortID="736918312">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VX_Ringmasters_EndofTurn-001" ID="{D879C4DA-2440-44B7-B468-B12460EB4028}">
+											<Language>SFX</Language>
+											<AudioFile>VX_Ringmasters_EndofTurn-001.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="439656464"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VX_Ringmasters_EndofTurn-001" ID="{D879C4DA-2440-44B7-B468-B12460EB4028}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="VX_Ringmasters_EndofTurn-002" ID="{D9023DF5-B1E4-4FEA-B72C-DD4BAEEC2F17}" ShortID="849053221">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VX_Ringmasters_EndofTurn-002" ID="{251290FF-8FE8-42A5-88D4-E7B3B3DD9A20}">
+											<Language>SFX</Language>
+											<AudioFile>VX_Ringmasters_EndofTurn-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1033722515"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VX_Ringmasters_EndofTurn-002" ID="{251290FF-8FE8-42A5-88D4-E7B3B3DD9A20}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="VX_Ringmasters_EndofTurn-009" ID="{9EF15A32-D537-430F-9FD7-3BAEA457036A}" ShortID="702977923">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VX_Ringmasters_EndofTurn-009" ID="{BDF6C030-2219-432F-8BB9-52F852283736}">
+											<Language>SFX</Language>
+											<AudioFile>VX_Ringmasters_EndofTurn-009.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="887078690"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VX_Ringmasters_EndofTurn-009" ID="{BDF6C030-2219-432F-8BB9-52F852283736}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="VX_Ringmasters_EndofTurn-016" ID="{BA38FD04-9BC5-4161-B3CE-DD2E9CA8E3F0}" ShortID="604550166">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{EC5A58AA-4A4E-47F1-9F75-4B969899D67E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{940C1CB2-268F-49D8-A09D-D53859F93695}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VX_Ringmasters_EndofTurn-016" ID="{BD2FDD55-DE4F-469F-8E0B-F796B4B5118B}">
+											<Language>SFX</Language>
+											<AudioFile>VX_Ringmasters_EndofTurn-016.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="462044328"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VX_Ringmasters_EndofTurn-016" ID="{BD2FDD55-DE4F-469F-8E0B-F796B4B5118B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

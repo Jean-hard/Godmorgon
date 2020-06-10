@@ -25,6 +25,7 @@ namespace AK
         static const AkUniqueID CURSOR_ENDOFTURN = 626715967U;
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_HIT = 1010055213U;
+        static const AkUniqueID ENEMY_HIT_BLOCK = 2041288531U;
         static const AkUniqueID ENEMY_MOVING = 3438446492U;
         static const AkUniqueID FEEBACK_GOLD = 1737977583U;
         static const AkUniqueID FEEDBACK_CHEST = 365110558U;
@@ -33,14 +34,13 @@ namespace AK
         static const AkUniqueID MECHANICAL = 192460720U;
         static const AkUniqueID PARK_THEME = 1752074195U;
         static const AkUniqueID PLAY_AMB_GENERAL_BC = 1006941571U;
+        static const AkUniqueID PLAYER_DEATH = 3083087645U;
+        static const AkUniqueID PLAYER_HIT = 871813740U;
+        static const AkUniqueID PLAYER_HIT_BLOCK = 2142322930U;
         static const AkUniqueID PLAYER_MOVE = 2248092158U;
         static const AkUniqueID RINGMASTER_ENDOFTURN = 4061952277U;
         static const AkUniqueID SFX_FEEDBACK_CURSOR_COMEBACK = 2677054925U;
-        static const AkUniqueID SFX_FEEDBACK_CURSOR_ENDOFTURN = 3654010921U;
         static const AkUniqueID TITLE_SCREEN = 3853285476U;
-        static const AkUniqueID VX_PLAYER_DEATH = 1264447162U;
-        static const AkUniqueID VX_PLAYER_HIT_BLOCK = 3734767061U;
-        static const AkUniqueID VX_PLAYER_HIT_HP = 27316982U;
     } // namespace EVENTS
 
     namespace STATES

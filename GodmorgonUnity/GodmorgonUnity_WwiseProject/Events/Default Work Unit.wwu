@@ -3,12 +3,6 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Mechanical" ID="{BCE6EBEE-AE30-4A33-8AA5-6363608EACCA}"/>
-				<Event Name="Park_Theme" ID="{358C4FE9-55ED-49EE-9F1E-2EAB55424CA6}"/>
-				<Event Name="Cursor_EndofTurn" ID="{3C6B17C8-4AF3-47D2-A9DE-24B37C5EA4DE}"/>
-				<Event Name="Ringmaster_EndofTurn" ID="{88BEFBD5-2D81-4196-879B-1DBBFC914996}"/>
-				<Event Name="Fog_Clear" ID="{A12F69FF-0C09-4AF3-BB9C-810D3A22F17E}"/>
-				<Event Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}"/>
 				<Folder Name="Cards" ID="{53D7B75A-65D6-4DB6-BF72-AD2A9E233BE6}" ShortID="68679455">
 					<ChildrenList>
 						<Event Name="Cards_Buy" ID="{F847DD0D-9EE6-481B-8BC6-74BA8D0EAB9F}">
@@ -118,7 +112,17 @@
 				</Folder>
 				<Folder Name="Enemy" ID="{3D51E2DE-4691-4A73-A17C-C61353884E3B}" ShortID="266076159">
 					<ChildrenList>
-						<Event Name="Enemy_Moving" ID="{9F52D0A8-BA82-4714-A4D5-E1534B767317}"/>
+						<Event Name="Enemy_Moving" ID="{9F52D0A8-BA82-4714-A4D5-E1534B767317}">
+							<ChildrenList>
+								<Action Name="" ID="{17478400-9BB9-43C7-938E-CE9A5B16C0F3}" ShortID="767345031">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Enemy_Move" ID="{3E506F4E-F1BC-4198-BE77-8A036E0C2B6A}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="Enemy_Death" ID="{71E958E0-ED60-41E3-A055-A4665C28FD7B}">
 							<ChildrenList>
 								<Action Name="" ID="{36DDAD87-6686-4912-9C7B-0C3C399A1B1A}" ShortID="740017100">
@@ -130,7 +134,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Enemy_Hit" ID="{86A15A22-8775-4110-90BF-D8D9EC132356}"/>
+						<Event Name="Enemy_Hit" ID="{86A15A22-8775-4110-90BF-D8D9EC132356}">
+							<ChildrenList>
+								<Action Name="" ID="{1E9C0527-E837-4B70-AAC6-C8EB6FE134B4}" ShortID="811509424">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Enemy_Hit_HP" ID="{C1F92A7F-A0C6-4F76-B6E6-E3223E260E48}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Hit_Block" ID="{9F7DDD9C-3150-47C5-84F6-C87FBE958C54}">
+							<ChildrenList>
+								<Action Name="" ID="{82E3442F-A149-4CAB-B08D-2B4C9EFF45C1}" ShortID="325411151">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Enemy_Hit_Block" ID="{06A3D076-AC0B-455F-BD0C-CCEB340AD490}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Feedback" ID="{97CCAD5D-1A20-4F16-8618-FAF7A0620E44}" ShortID="700552779">
@@ -157,57 +182,9 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="Player" ID="{7D0DA2F7-5493-47C5-9586-59EA48215D29}" ShortID="985409967">
-					<ChildrenList>
-						<Event Name="Player_Move" ID="{5D074021-DF2B-4B4C-A410-DD8D9B651568}">
+						<Event Name="Cursor_EndofTurn" ID="{3C6B17C8-4AF3-47D2-A9DE-24B37C5EA4DE}">
 							<ChildrenList>
-								<Action Name="" ID="{7F968992-0821-4C99-B14D-5BB12B941C65}" ShortID="478715791">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="SFX_Player_Move" ID="{6136D6CF-5D86-403E-8BB7-D293AD152FD6}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="VX_Player_Hit_HP" ID="{9D6AA618-8668-41EF-9853-25734377A7AA}">
-							<ChildrenList>
-								<Action Name="" ID="{0F1A834D-10EA-41A1-B138-7192071CF452}" ShortID="638977739">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="VX_Player_Hit_HP" ID="{BE0F9640-42AC-419E-ADD9-963DED1D2BBE}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="VX_Player_Death" ID="{456771E3-EA8E-445E-B278-57B073A89FF0}">
-							<ChildrenList>
-								<Action Name="" ID="{A76B86FE-6EA3-48F4-9858-A966EB796B2C}" ShortID="226561431">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="VX_Player_Death" ID="{308C5727-5582-4091-A1C6-10EB8992C982}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="VX_Player_Hit_Block" ID="{D283A77D-01BE-485C-B7FB-A2711CEB114A}">
-							<ChildrenList>
-								<Action Name="" ID="{7817E4AC-B862-46F8-A492-0D07E000787D}" ShortID="873095310">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="VX_Player_Hit_Block" ID="{791CBCCF-0A48-4875-9180-D8DABBFCC110}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="SFX_Feedback_Cursor_EndofTurn" ID="{2AE33256-B5F1-4497-AE46-B991D0888870}">
-							<ChildrenList>
-								<Action Name="" ID="{47454012-FD3B-4387-914F-EA576F1222D8}" ShortID="321848284">
+								<Action Name="" ID="{EBC7EB1E-7E7C-4C89-AFAC-2D629B1A9566}" ShortID="695880570">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="SFX_Feedback_Cursor_EndofTurn" ID="{13133C83-B901-47A3-9B48-A2E350463211}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
@@ -229,6 +206,54 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Player" ID="{7D0DA2F7-5493-47C5-9586-59EA48215D29}" ShortID="985409967">
+					<ChildrenList>
+						<Event Name="Player_Move" ID="{5D074021-DF2B-4B4C-A410-DD8D9B651568}">
+							<ChildrenList>
+								<Action Name="" ID="{7F968992-0821-4C99-B14D-5BB12B941C65}" ShortID="478715791">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SFX_Player_Move" ID="{6136D6CF-5D86-403E-8BB7-D293AD152FD6}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Hit" ID="{9D6AA618-8668-41EF-9853-25734377A7AA}">
+							<ChildrenList>
+								<Action Name="" ID="{0F1A834D-10EA-41A1-B138-7192071CF452}" ShortID="638977739">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Player_Hit_HP" ID="{BE0F9640-42AC-419E-ADD9-963DED1D2BBE}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Death" ID="{456771E3-EA8E-445E-B278-57B073A89FF0}">
+							<ChildrenList>
+								<Action Name="" ID="{A76B86FE-6EA3-48F4-9858-A966EB796B2C}" ShortID="226561431">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Player_Death" ID="{308C5727-5582-4091-A1C6-10EB8992C982}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Hit_Block" ID="{D283A77D-01BE-485C-B7FB-A2711CEB114A}">
+							<ChildrenList>
+								<Action Name="" ID="{7817E4AC-B862-46F8-A492-0D07E000787D}" ShortID="873095310">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Player_Hit_Block" ID="{791CBCCF-0A48-4875-9180-D8DABBFCC110}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 				<Folder Name="Ambiances" ID="{823C2660-26C5-47BC-8CCD-CE9B6A484871}" ShortID="928750778">
 					<ChildrenList>
 						<Event Name="Play_Amb_General_BC" ID="{DF5AA0CC-278E-4DC0-A96A-86DD271277A2}">
@@ -242,19 +267,82 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Mechanical" ID="{BCE6EBEE-AE30-4A33-8AA5-6363608EACCA}">
+							<ChildrenList>
+								<Action Name="" ID="{520D2EF2-B985-44B7-9813-CDD55CC837CF}" ShortID="445535145">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_Mecha_RFX" ID="{F390C1D1-C2DC-4CDF-8F3E-672CEB2C4864}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Fog_Clear" ID="{A12F69FF-0C09-4AF3-BB9C-810D3A22F17E}">
+							<ChildrenList>
+								<Action Name="" ID="{E35FD345-C104-41C0-9466-27FD2759611B}" ShortID="4003605">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_Fog_RFX" ID="{D8703AF8-3E47-4F35-8C84-7B46657BC268}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Park_Theme" ID="{358C4FE9-55ED-49EE-9F1E-2EAB55424CA6}">
+							<ChildrenList>
+								<Action Name="" ID="{5361042D-C3B8-4CBC-8DB2-55D208CDB520}" ShortID="255676096">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_Park_Theme" ID="{D0F5A6AA-C419-4E0C-B88B-DA65200D16A4}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="GamePlayerTheme" ID="{E1505A01-24DF-4867-B14D-06AB3C8CB741}">
+				<Folder Name="Music" ID="{3A545314-2D00-464E-A8AA-38B9ED64330C}" ShortID="690401995">
 					<ChildrenList>
-						<Action Name="" ID="{C70D1098-DA38-4A4F-B796-87BD73B04E8C}" ShortID="367046807">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="GamePlayerTheme" ID="{E1505A01-24DF-4867-B14D-06AB3C8CB741}">
+							<ChildrenList>
+								<Action Name="" ID="{C70D1098-DA38-4A4F-B796-87BD73B04E8C}" ShortID="367046807">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}">
+							<ChildrenList>
+								<Action Name="" ID="{63953CE5-8C44-407D-BF3B-1BAA87B23E63}" ShortID="430740632">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
+				<Folder Name="RingMaster" ID="{FEB0FB12-5DB3-4014-920D-85818DABCD58}" ShortID="696552998">
+					<ChildrenList>
+						<Event Name="Ringmaster_EndofTurn" ID="{88BEFBD5-2D81-4196-879B-1DBBFC914996}">
+							<ChildrenList>
+								<Action Name="" ID="{64612C9E-C3F7-4E34-8684-1FCB60FC3F96}" ShortID="350771735">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_RingMaster_EndofTurn" ID="{C8E6F37B-8867-4509-BC2A-CFA274460DEB}" WorkUnitID="{9E30E5EB-F907-4D66-A66C-2C6207B78BED}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
