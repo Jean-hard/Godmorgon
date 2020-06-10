@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Every damages are reduced to 1.
   actionCost: 3
   price: 0
-  template: {fileID: 21300000, guid: e3c34f8d3fc6d7245b3c368a67e4e9c2, type: 3}
+  template: {fileID: 21300000, guid: d130799b7e8210f41bf24082e411ab55, type: 3}
   artwork: {fileID: 21300000, guid: c1bee892507aa684f903cb4fb1657b9a, type: 3}
   effectsData:
   - currentEffect: 3

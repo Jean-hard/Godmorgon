@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Inflict 1 damages for each explored rooms.
   actionCost: 1
   price: 0
-  template: {fileID: 21300000, guid: 1d745d74e1df57a4f8c364824a22661f, type: 3}
+  template: {fileID: 21300000, guid: d914663f37f4d974aa4c14141b89f8c0, type: 3}
   artwork: {fileID: 21300000, guid: 5628ecb6eedc5e74ca25f0ded95089f8, type: 3}
   effectsData:
   - currentEffect: 0

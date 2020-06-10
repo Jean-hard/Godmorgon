@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Useless
   actionCost: -1
   price: 0
-  template: {fileID: 21300000, guid: 765c25476ee81c84383e6580ff8fd230, type: 3}
+  template: {fileID: 21300000, guid: 60871062556b2664f8cb2208648d9690, type: 3}
   artwork: {fileID: 21300000, guid: 6f538b18525db2c44a15935ef668cf5f, type: 3}
   effectsData:
   - currentEffect: 5

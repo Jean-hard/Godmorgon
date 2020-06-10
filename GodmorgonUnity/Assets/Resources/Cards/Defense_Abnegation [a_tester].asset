@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Discard all your cards, gain [nbBlock] block by card discarded.
   actionCost: 2
   price: 72
-  template: {fileID: 21300000, guid: fc1c7338e24c63749a3b728afadd2de4, type: 3}
+  template: {fileID: 21300000, guid: f44370d35cac10f4f805debd227b407b, type: 3}
   artwork: {fileID: 21300000, guid: 9a239aa739ace534f871bae45295920b, type: 3}
   effectsData:
   - currentEffect: 2
