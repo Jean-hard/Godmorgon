@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public bool draftPanelActivated = false;
 
+    public Image finalFade = null;
+    public float timeFade = 2;
+
     #region Singleton Pattern
     private static GameManager _instance;
 
@@ -70,8 +73,15 @@ public class GameManager : MonoBehaviour
 
         MusicManager.Instance.PlayMechanical();
         MusicManager.Instance.PlayParkTheme();
-
         //MusicManager.Instance.PlayCardsPlay();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown("n"))
+        {
+            StartCoroutine(LaunchFinalFade());
+        }
     }
 
     /**
@@ -282,6 +292,24 @@ public class GameManager : MonoBehaviour
             draftUpdated = false;
             draftPanel.gameObject.SetActive(false);
             draftPanelActivated = false;
+        }
+    }
+
+    public IEnumerator LaunchFinalFade()
+    {
+        handManager.gameObject.SetActive(false);
+
+        Color originalColor = finalFade.color;
+        Color targetColor = finalFade.color;
+        targetColor.a = 1;
+
+        float currentTime = 0.0f;
+
+        while (currentTime <= timeFade)
+        {
+            finalFade.color = Color.Lerp(originalColor, targetColor, currentTime);
+            currentTime += Time.deltaTime;
+            yield return null;
         }
     }
 }
