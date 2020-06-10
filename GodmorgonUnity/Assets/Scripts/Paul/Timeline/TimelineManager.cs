@@ -203,6 +203,8 @@ namespace GodMorgon.Timeline
                 BuffManager.Instance.ResetAllBonus();
 
                 actionGearAnimations[3].Stop();
+
+                GameManager.Instance.ShowNewTurnImage();
             }
             else
             {
