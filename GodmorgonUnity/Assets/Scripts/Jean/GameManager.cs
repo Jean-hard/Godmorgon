@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using GodMorgon.Models;
 using GodMorgon.StateMachine;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     public bool draftPanelActivated = false;
 
     public Image finalFade = null;
+    public Image ThankYouImage = null;
     public float timeFade = 2;
 
     #region Singleton Pattern
@@ -299,15 +301,27 @@ public class GameManager : MonoBehaviour
     {
         handManager.gameObject.SetActive(false);
 
-        Color originalColor = finalFade.color;
-        Color targetColor = finalFade.color;
-        targetColor.a = 1;
+        Color originalColorFade = finalFade.color;
+        Color targetColorFade = finalFade.color;
+        targetColorFade.a = 1;
+
+        Color originalColorThanks = ThankYouImage.color;
+        Color targetColorThanks = ThankYouImage.color;
+        targetColorThanks.a = 1;
 
         float currentTime = 0.0f;
 
         while (currentTime <= timeFade)
         {
-            finalFade.color = Color.Lerp(originalColor, targetColor, currentTime);
+            finalFade.color = Color.Lerp(originalColorFade, targetColorFade, currentTime);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+
+        currentTime = 0;
+        while (currentTime <= timeFade)
+        {
+            ThankYouImage.color = Color.Lerp(originalColorThanks, targetColorThanks, currentTime);
             currentTime += Time.deltaTime;
             yield return null;
         }
