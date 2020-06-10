@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f2daa42059e4364882b798109a33406
+guid: c22ceea10816ac24cb6cc2d7ec17002c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: Nova-Classic-Personal-Use-Only
   fontNames:
   - Nova-Classic-Personal-Use-Only
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: c22ceea10816ac24cb6cc2d7ec17002c, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
