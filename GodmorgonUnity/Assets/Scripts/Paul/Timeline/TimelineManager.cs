@@ -178,6 +178,9 @@ namespace GodMorgon.Timeline
 
             actionGearAnimations[nbActualAction - 1].Play();
 
+            //SFX ringmaster laugh
+            MusicManager.Instance.PlayRingMasterEndTurn();
+
 
             isRunning = true;
             //wait for the action to finish
@@ -208,7 +211,7 @@ namespace GodMorgon.Timeline
                 GameManager.Instance.ShowNewTurnImage();
 
                 //SFX end ringmaster Turn
-                MusicManager.Instance.PlayRingMasterEndTurn();
+                MusicManager.Instance.PlayCursorEnd();
             }
             else
             {

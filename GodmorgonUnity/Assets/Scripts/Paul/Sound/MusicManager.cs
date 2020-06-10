@@ -35,6 +35,8 @@ namespace GodMorgon.Sound
         public AK.Wwise.Event Fog_Clear;
         public AK.Wwise.Event Title_Screen;
 
+        public AK.Wwise.Event cursorEnd;
+
         public AK.Wwise.Event PlayerTheme;
         //public AK.Wwise.State RingmasterState;
 
@@ -169,6 +171,11 @@ namespace GodMorgon.Sound
         public void PlayEnemyMoving()
         {
             Enemy_Moving.Post(gameObject);
+        }
+
+        public void PlayCursorEnd()
+        {
+            cursorEnd.Post(gameObject);
         }
     }
 }

@@ -265,6 +265,9 @@ namespace GodMorgon.Enemy
             tileIndex = 0;
             canMove = true; //On autorise le mouvement lancé par l'Update
             isMoveFinished = false; //Le bool retournera false tant que le mouvement n'est pas fini
+
+            //SFX enemy move
+            MusicManager.Instance.PlayEnemyMoving();
         }
 
         private void LaunchMoveMechanic()
