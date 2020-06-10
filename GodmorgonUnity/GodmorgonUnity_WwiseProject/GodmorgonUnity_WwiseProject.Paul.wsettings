@@ -68,6 +68,7 @@
 				<Property Name="MonitoringManager\GameObjectFilter\x64_GameObjectFilters" Type="string" Value=""/>
 				<Property Name="Music Transition List\{7139DA34-AD70-49AC-BE36-F14014727712}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{9BDDD7BE-6BA4-44BB-9D37-899951D1FF69}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{9E8D6333-F6B6-40E8-80AF-2632002B6F70}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{9F7DA552-2058-483C-B91C-D8D78CA48C89}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{C1E16B4F-041C-4604-AE1E-441F7915A80B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>

@@ -26,6 +26,11 @@
 								<MusicSegment Name="MUS_Main_Theme_1_V2" ID="{0915ADAF-E010-4C7F-B5EB-C4E50C6556A2}" ShortID="648870587">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="114242.129821882"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -65,9 +70,8 @@
 														<MusicClip Name="MUS_Main_Theme_1_V2" ID="{5116119A-954B-42A6-BA2E-587A7839A8AD}">
 															<PropertyList>
 																<Property Name="BeginTrimOffset" Type="Real64" Value="20172.6587393224"/>
-																<Property Name="EndTrimOffset" Type="Real64" Value="99839.1041666667"/>
+																<Property Name="EndTrimOffset" Type="Real64" Value="91879.5373572061"/>
 																<Property Name="FadeInDuration" Type="Real64" Value="1684.56440411879"/>
-																<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																<Property Name="PlayAt" Type="Real64" Value="-20172.6587393224"/>
 															</PropertyList>
 															<AudioSourceRef Name="MUS_Main_Theme_1_V2" ID="{A2B94038-9BE3-4AEA-BC3F-10BE806539E3}"/>
@@ -84,7 +88,7 @@
 																				<Flags>5</Flags>
 																			</Point>
 																			<Point>
-																				<XPos>99.8391041666667</XPos>
+																				<XPos>91.87954</XPos>
 																				<YPos>0</YPos>
 																				<Flags>37</Flags>
 																			</Point>
@@ -99,12 +103,12 @@
 																		<PointList>
 																			<Point>
 																				<XPos>20.17266</XPos>
-																				<YPos>-0</YPos>
+																				<YPos>0</YPos>
 																				<Flags>5</Flags>
 																			</Point>
 																			<Point>
-																				<XPos>99.8391041666667</XPos>
-																				<YPos>0</YPos>
+																				<XPos>91.87954</XPos>
+																				<YPos>-0</YPos>
 																				<Flags>37</Flags>
 																			</Point>
 																		</PointList>
@@ -118,12 +122,17 @@
 																		<PointList>
 																			<Point>
 																				<XPos>20.17266</XPos>
-																				<YPos>-0</YPos>
+																				<YPos>0</YPos>
 																				<Flags>5</Flags>
 																			</Point>
 																			<Point>
-																				<XPos>99.8391041666667</XPos>
-																				<YPos>0</YPos>
+																				<XPos>89.91362</XPos>
+																				<YPos>-0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>91.87954</XPos>
+																				<YPos>-8.24361</YPos>
 																				<Flags>37</Flags>
 																			</Point>
 																		</PointList>
@@ -141,7 +150,7 @@
 										<MusicCue Name="Exit Cue" ID="{2270FCF3-FB1F-4D8C-ABFE-4906479CF8A1}">
 											<PropertyList>
 												<Property Name="CueType" Type="int16" Value="1"/>
-												<Property Name="TimeMs" Type="Real64" Value="99839.1041666666"/>
+												<Property Name="TimeMs" Type="Real64" Value="71791.1068380888"/>
 											</PropertyList>
 										</MusicCue>
 									</CueList>

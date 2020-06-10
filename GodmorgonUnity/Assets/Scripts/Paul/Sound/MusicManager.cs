@@ -59,7 +59,7 @@ namespace GodMorgon.Sound
         // Start is called before the first frame update
         void Start()
         {
-            
+            MusicManager.Instance.PlayPlayerTurnTheme();
         }
 
         // Update is called once per frame
