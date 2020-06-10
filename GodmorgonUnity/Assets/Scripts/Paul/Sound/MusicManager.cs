@@ -33,7 +33,6 @@ namespace GodMorgon.Sound
         public AK.Wwise.Event Ringmaster_EndofTurn;
 
         public AK.Wwise.Event Fog_Clear;
-        public AK.Wwise.Event Title_Screen;
 
         public AK.Wwise.Event cursorEnd;
 
@@ -161,11 +160,6 @@ namespace GodMorgon.Sound
         public void PlayFogClear()
         {
             Fog_Clear.Post(gameObject);
-        }
-
-        public void PlayTitleScreen()
-        {
-            Title_Screen.Post(gameObject);
         }
 
         public void PlayEnemyMoving()
