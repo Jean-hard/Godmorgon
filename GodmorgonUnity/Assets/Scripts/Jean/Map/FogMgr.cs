@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-//using System.Numerics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -43,6 +42,7 @@ public class FogMgr : MonoBehaviour
     [Header("Version with particules")]
     public List<GameObject> fogParticulePrefabs = new List<GameObject>();
     public Transform fogParent;
+    public List<Vector3Int> roomsClearedAtStart = new List<Vector3Int>();
 
     public List<Vector3Int> positionsToSpawn = new List<Vector3Int>();
     
@@ -65,6 +65,12 @@ public class FogMgr : MonoBehaviour
         foreach(RoomData room in RoomEffectManager.Instance.roomsDataArr)
         {
             AddFogParticuleOnRoom(room);
+        }
+
+        foreach(Vector3Int room in roomsClearedAtStart)
+        {
+            RoomData currentRoomData = RoomEffectManager.Instance.GetRoomData(room);
+            StopFogParticuleOnRoom(currentRoomData);
         }
 
         hasUpdatedFog = false;
