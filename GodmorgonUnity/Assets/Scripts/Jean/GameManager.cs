@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     //Animations signalant les différents tours
     public Animation playerTurnAnimation = null;
     public Animation ringmasterTurnAnimation = null;
+    public Animation newTurnAnimation = null;
 
     //color advertising by default
     private Color advertisingDefaultColor;
@@ -243,6 +244,17 @@ public class GameManager : MonoBehaviour
             playerTurnAnimation.gameObject.GetComponent<Image>().color = advertisingDefaultColor;
         }
         ringmasterTurnAnimation.Play();
+    }
+
+    //affiche le texte signalant le nouveau tour
+    public void ShowNewTurnImage()
+    {
+        if (newTurnAnimation.isPlaying)
+        {
+            newTurnAnimation.Stop();
+            newTurnAnimation.gameObject.GetComponent<Image>().color = advertisingDefaultColor;
+        }
+        newTurnAnimation.Play();
     }
 
     //lock or unlock the dragging of all the card in hand
