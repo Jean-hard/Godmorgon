@@ -5,6 +5,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	365110558	Feedback_Chest			\Default Work Unit\Feedback\Feedback_Chest	
 	577725723	Cards_Buy			\Default Work Unit\Cards\Cards_Buy	
 	626715967	Cursor_EndofTurn			\Default Work Unit\Cursor_EndofTurn	
+	838674935	GamePlayerTheme			\Default Work Unit\GamePlayerTheme	
 	1006941571	Play_Amb_General_BC			\Default Work Unit\Ambiances\Play_Amb_General_BC	
 	1010055213	Enemy_Hit			\Default Work Unit\Enemy\Enemy_Hit	
 	1205999388	Enemy_Death			\Default Work Unit\Enemy\Enemy_Death	
@@ -26,6 +27,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	3853285476	Title_Screen			\Default Work Unit\Title_Screen	
 	4061952277	Ringmaster_EndofTurn			\Default Work Unit\Ringmaster_EndofTurn	
 	4284303397	Cards_Remove			\Default Work Unit\Cards\Cards_Remove	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3653852827	TurnState			\Default Work Unit\TurnState	
+
+State	ID	Name	State Group			Notes
+	748895195	None	TurnState			
+	1069431850	Player	TurnState			
+	1506151517	Ringmaster	TurnState			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	2763717	SFX_Enemy_Death_2	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\SFX_Enemy_Death_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_AM\SFX_Enemy_AM\SFX_Enemy_Death\SFX_Enemy_Death_2		176464
@@ -98,6 +107,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	779731409	SFX_Cursor_Comeback-002	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\UI\SFX_Cursor_Comeback\SFX_Cursor_Comeback-002_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_AM\SFX_Feedback_AM\SFX_Feedback_Cursor_Comeback\SFX_Cursor_Comeback-002		398468
 	783213697	SFX_Cards_Draw_3	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\SFX_Cards_Draw_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_AM\SFX_Cards_AM\SFX_Cards_Draw\SFX_Cards_Draw_3		103716
 	816304199	SFX_Cards_Draw_2	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\SFX_Cards_Draw_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_AM\SFX_Cards_AM\SFX_Cards_Draw\SFX_Cards_Draw_2		132364
+	832796481	MUS_Main_Theme_1_V2	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\MUS_Main_Theme_1_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\TurnTheme\Player\MUS_Main_Theme_1_V2\MUS_Main_Theme_1_V2		19169172
 	845640922	AMB_RFX_Mechanical-014	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\Amb_RFX_Mechanical\AMB_RFX_Mechanical-014_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMB_AM\Amb_General_BC\Amb_Mecha_RFX\AMB_RFX_Mechanical-014		333688
 	859363770	SFX_Cursor_EndofTurn-002	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\UI\SFX_Cursor_EndofTurn\SFX_Cursor_EndofTurn-002_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_AM\SFX_Feedback_AM\SFX_Feedback_Cursor_EndofTurn\SFX_Cursor_EndofTurn-002		119700
 	859489350	SFX_Feedback_Chest_2	T:\Projets IIM\A4\Godmorgon_2\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Windows\SFX\SFX_Feedback_Chest_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_AM\SFX_Feedback_AM\SFX_Feedback_Chest\SFX_Feedback_Chest_2		220564

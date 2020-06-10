@@ -29,6 +29,7 @@ namespace AK
         static const AkUniqueID FEEBACK_GOLD = 1737977583U;
         static const AkUniqueID FEEDBACK_CHEST = 365110558U;
         static const AkUniqueID FOG_CLEAR = 3349601745U;
+        static const AkUniqueID GAMEPLAYERTHEME = 838674935U;
         static const AkUniqueID MECHANICAL = 192460720U;
         static const AkUniqueID PARK_THEME = 1752074195U;
         static const AkUniqueID PLAY_AMB_GENERAL_BC = 1006941571U;

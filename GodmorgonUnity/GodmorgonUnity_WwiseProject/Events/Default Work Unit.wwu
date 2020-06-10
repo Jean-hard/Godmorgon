@@ -244,6 +244,17 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="GamePlayerTheme" ID="{E1505A01-24DF-4867-B14D-06AB3C8CB741}">
+					<ChildrenList>
+						<Action Name="" ID="{C70D1098-DA38-4A4F-B796-87BD73B04E8C}" ShortID="367046807">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

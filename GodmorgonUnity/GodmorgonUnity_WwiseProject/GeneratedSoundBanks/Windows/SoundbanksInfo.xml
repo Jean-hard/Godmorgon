@@ -222,6 +222,14 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3349601745" Name="Fog_Clear" ObjectPath="\Events\Default Work Unit\Fog_Clear" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="838674935" Name="GamePlayerTheme" ObjectPath="\Events\Default Work Unit\GamePlayerTheme" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="832796481" Language="SFX">
+							<ShortName>MUS_Main_Theme_1_V2.wav</ShortName>
+							<Path>SFX\MUS_Main_Theme_1_V2_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="192460720" Name="Mechanical" ObjectPath="\Events\Default Work Unit\Mechanical" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1752074195" Name="Park_Theme" ObjectPath="\Events\Default Work Unit\Park_Theme" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1006941571" Name="Play_Amb_General_BC" ObjectPath="\Events\Default Work Unit\Ambiances\Play_Amb_General_BC" DurationType="Infinite">

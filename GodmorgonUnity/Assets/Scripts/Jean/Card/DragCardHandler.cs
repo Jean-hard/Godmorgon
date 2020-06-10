@@ -131,7 +131,7 @@ public class DragCardHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             dropPosManager.HidePositionsToDrop(_card);
 
             //sound
-            MusicManager.Instance.PlayDropCard();
+            MusicManager.Instance.PlayCardsPlay();
             //MusicManager.Instance.PlayRollingKart();  //pas ici qu'il doit être activé
 
             //discard the used card
