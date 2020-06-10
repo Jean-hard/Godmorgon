@@ -37,6 +37,8 @@ namespace GodMorgon.CardEffect
                 //add the Power Up sequence
                 GSA_FastShoes fastShoesAction = new GSA_FastShoes();
                 GameSequencer.Instance.AddAction(fastShoesAction);
+
+                PlayerManager.Instance.OnPlayerFastShoes();
             }
         }
     }

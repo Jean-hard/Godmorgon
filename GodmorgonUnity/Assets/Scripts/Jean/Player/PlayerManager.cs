@@ -62,6 +62,8 @@ public class PlayerManager : MonoBehaviour
     public ParticleSystemScript playerShield = null;
     public ParticleSystemScript playerPowerUp = null;
     public ParticleSystemScript playerKillerInstinct = null;
+    public ParticleSystemScript playerCounter = null;
+    public ParticleSystemScript playerFastShoes = null;
     public List<ParticleSystemScript> wheelParticules = new List<ParticleSystemScript>();
 
     #region Singleton Pattern
@@ -649,9 +651,21 @@ public class PlayerManager : MonoBehaviour
         playerKillerInstinct.launchParticle();
     }
 
+    public void OnPlayerCounter()
+    {
+        playerCounter.launchParticle();
+    }
+
+    public void OnPlayerFastShoes()
+    {
+        playerFastShoes.launchParticle();
+    }
+
     public void StopVisualEffect()
     {
         playerKillerInstinct.stopParticle();
+        playerFastShoes.stopParticle();
+        playerCounter.stopParticle();
     }
     #endregion
 }

@@ -53,6 +53,8 @@ namespace GodMorgon.CardEffect
                 BuffManager.Instance.counterDamage = effectData.counterDamagePoint;
                 GSA_PlayerCounter counterAction = new GSA_PlayerCounter();
                 GameSequencer.Instance.AddAction(counterAction);
+
+                PlayerManager.Instance.OnPlayerCounter();
             }
 
             //apply effect
