@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using GodMorgon.Sound;
 
 public enum RoomEffect
 {
@@ -244,6 +245,9 @@ public class RoomEffectManager : MonoBehaviour
 
         //Ajoute la gold à la bourse du joueur
         PlayerManager.Instance.AddGold(goldInChest);
+
+        //SFX chest room
+        MusicManager.Instance.PlayFeedbackChest();
 
         StartCoroutine(TimedRoomEffect());
     }

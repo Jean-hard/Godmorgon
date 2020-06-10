@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+using GodMorgon.Sound;
+
 [Serializable]
 public class Bounds
 {
@@ -198,6 +200,9 @@ public class FogMgr : MonoBehaviour
         }
 
         StartCoroutine(TimedAction(timeAfterAction));
+
+        //SFX fog clear
+        MusicManager.Instance.PlayFogClear();
     }
 
     
@@ -402,6 +407,9 @@ public class FogMgr : MonoBehaviour
         }
 
         StartCoroutine(TimedAction(timeAfterAction));
+
+        //SFX fog clear
+        MusicManager.Instance.PlayFogClear();
     }
 
     /**

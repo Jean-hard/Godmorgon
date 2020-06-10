@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GodMorgon.Sound;
 
 
 namespace GodMorgon.Shop
@@ -128,6 +129,9 @@ namespace GodMorgon.Shop
                 card.gameObject.SetActive(false);
                 actualContent.Remove(card.card);
                 PlayerManager.Instance.UpdateGoldText();    //Met à jour les golds sur l'écran de jeu
+
+                //SFX card buy
+                MusicManager.Instance.PlayCardsBuy();
 
                 hasPlayerBuy = true;
             }

@@ -16,7 +16,6 @@ namespace GodMorgon.StateMachine
             GameManager.Instance.ShowPlayerTurnImage();
             GameManager.Instance.UnlockDragCardHandler(true);
 
-            MusicManager.Instance.PlayPlayerTurnTheme();
         }
     }
 }

@@ -30,7 +30,6 @@ namespace GodMorgon.Sound
         public AK.Wwise.Event Enemy_Death;
         public AK.Wwise.Event Enemy_Moving;
 
-        public AK.Wwise.Event Cursor_EndofTurn;
         public AK.Wwise.Event Ringmaster_EndofTurn;
 
         public AK.Wwise.Event Fog_Clear;
@@ -60,7 +59,7 @@ namespace GodMorgon.Sound
         // Start is called before the first frame update
         void Start()
         {
-            
+            MusicManager.Instance.PlayPlayerTurnTheme();
         }
 
         // Update is called once per frame
@@ -126,42 +125,47 @@ namespace GodMorgon.Sound
         {
             Cards_Spell.Post(gameObject);
         }
+
         public void PlayCardsBuy()
         {
             Cards_Buy.Post(gameObject);
         }
+
         public void PlayMechanical()
         {
             Mechanical.Post(gameObject);
         }
+
         public void PlayParkTheme()
         {
             Park_Theme.Post(gameObject);
         }
+
         public void PlayEnemyHit()
         {
             Enemy_Hit.Post(gameObject);
         }
+
         public void PlayPlayerHit()
         {
             Player_Hit.Post(gameObject);
         }
-        public void PlayCursorEndOfTurn()
-        {
-            Cursor_EndofTurn.Post(gameObject);
-        }
+
         public void PlayRingMasterEndTurn()
         {
             Ringmaster_EndofTurn.Post(gameObject);
         }
+
         public void PlayFogClear()
         {
             Fog_Clear.Post(gameObject);
         }
+
         public void PlayTitleScreen()
         {
             Title_Screen.Post(gameObject);
         }
+
         public void PlayEnemyMoving()
         {
             Enemy_Moving.Post(gameObject);
