@@ -1,6 +1,7 @@
 ﻿{
 	"name": "GodMorgon",
 	"references": [
-        "Wwise"
+        "Wwise",
+		"Unity.TextMeshPro"
     ]
 }

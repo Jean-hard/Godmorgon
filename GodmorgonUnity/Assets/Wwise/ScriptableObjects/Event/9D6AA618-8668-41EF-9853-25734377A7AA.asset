@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808cbb1dcbfc0fa4fa03ab9d67b27098, type: 3}
   m_Name: 9D6AA618-8668-41EF-9853-25734377A7AA
   m_EditorClassIdentifier: 
-  objectName: VX_Player_Hit_HP
-  id: 27316982
+  objectName: Player_Hit
+  id: 871813740
   guid: 9D6AA618-8668-41EF-9853-25734377A7AA

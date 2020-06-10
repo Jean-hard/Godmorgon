@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using TMPro;
 
 using GodMorgon.StateMachine;
 using GodMorgon.Player;
@@ -20,10 +21,10 @@ public class PlayerManager : MonoBehaviour
 
     [Header("UI Settings")]
     public Image healthBar;
-    public Text healthText;
-    public Text blockText;
-    public Text goldValueText;
-    public Text tokenText;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI blockText;
+    public TextMeshProUGUI goldValueText;
+    public TextMeshProUGUI tokenText;
 
     [Header("Movement Settings")]
     public float playerSpeed = 1f;

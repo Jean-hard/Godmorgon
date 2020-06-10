@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using TMPro;
 
 using GodMorgon.Models;
 using GodMorgon.StateMachine;
@@ -21,9 +22,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public int cardId;
 
-    public Text nameText;
-    public Text descriptionText;
-    public Text costText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI costText;
 
     public Image artworkImage;
     public Image template;
