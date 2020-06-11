@@ -8,6 +8,7 @@
 						<State Name="None" ID="{6356896E-7EC3-4F01-A367-0283CF9DA656}"/>
 						<State Name="Player" ID="{BCFEC34A-32B5-4B83-B516-000D4E65B916}"/>
 						<State Name="Ringmaster" ID="{7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A}"/>
+						<State Name="Menu" ID="{56A30171-29E6-406D-B7FA-DB348B9916F3}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

@@ -30,7 +30,6 @@ namespace AK
         static const AkUniqueID FEEBACK_GOLD = 1737977583U;
         static const AkUniqueID FEEDBACK_CHEST = 365110558U;
         static const AkUniqueID FOG_CLEAR = 3349601745U;
-        static const AkUniqueID GAMEPLAYERTHEME = 838674935U;
         static const AkUniqueID MECHANICAL = 192460720U;
         static const AkUniqueID PARK_THEME = 1752074195U;
         static const AkUniqueID PLAY_AMB_GENERAL_BC = 1006941571U;
@@ -51,6 +50,7 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID MENU = 2607556080U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PLAYER = 1069431850U;
                 static const AkUniqueID RINGMASTER = 1506151517U;

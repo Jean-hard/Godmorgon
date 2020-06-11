@@ -304,9 +304,9 @@
 				</Folder>
 				<Folder Name="Music" ID="{3A545314-2D00-464E-A8AA-38B9ED64330C}" ShortID="690401995">
 					<ChildrenList>
-						<Event Name="GamePlayerTheme" ID="{E1505A01-24DF-4867-B14D-06AB3C8CB741}">
+						<Event Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}">
 							<ChildrenList>
-								<Action Name="" ID="{C70D1098-DA38-4A4F-B796-87BD73B04E8C}" ShortID="367046807">
+								<Action Name="" ID="{63953CE5-8C44-407D-BF3B-1BAA87B23E63}" ShortID="430740632">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
@@ -315,12 +315,29 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}">
+						<Event Name="Mus_Menu" ID="{17CDC260-6B84-4CAB-BB71-D72BC1E1E9D1}">
 							<ChildrenList>
-								<Action Name="" ID="{63953CE5-8C44-407D-BF3B-1BAA87B23E63}" ShortID="430740632">
+								<Action Name="" ID="{91E3C86B-02F6-471D-823E-9EE78CD21D8D}" ShortID="889665215">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
+											<ObjectRef Name="Menu" ID="{56A30171-29E6-406D-B7FA-DB348B9916F3}" WorkUnitID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Mus_None" ID="{8C4EEBB7-C4C0-4799-9B86-D5D1E5FA9074}">
+							<ChildrenList>
+								<Action Name="" ID="{E7F1BB26-20B2-4824-9C4D-2C588C8B2CB7}" ShortID="156537974">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="None" ID="{6356896E-7EC3-4F01-A367-0283CF9DA656}" WorkUnitID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

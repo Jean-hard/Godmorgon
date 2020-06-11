@@ -9,7 +9,6 @@
 						<ObjectRef Name="Ambiances" ID="{823C2660-26C5-47BC-8CCD-CE9B6A484871}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Player" ID="{7D0DA2F7-5493-47C5-9586-59EA48215D29}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Cursor_EndofTurn" ID="{3C6B17C8-4AF3-47D2-A9DE-24B37C5EA4DE}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="GamePlayerTheme" ID="{E1505A01-24DF-4867-B14D-06AB3C8CB741}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Park_Theme" ID="{358C4FE9-55ED-49EE-9F1E-2EAB55424CA6}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Mechanical" ID="{BCE6EBEE-AE30-4A33-8AA5-6363608EACCA}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Enemy" ID="{3D51E2DE-4691-4A73-A17C-C61353884E3B}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
