@@ -36,7 +36,7 @@ namespace GodMorgon.Sound
 
         public AK.Wwise.Event cursorEnd;
 
-        public AK.Wwise.Event PlayerTheme;
+        //public AK.Wwise.Event PlayerTheme;
         //public AK.Wwise.State RingmasterState;
 
         #region Singleton Pattern
@@ -60,7 +60,7 @@ namespace GodMorgon.Sound
         // Start is called before the first frame update
         void Start()
         {
-            MusicManager.Instance.PlayPlayerTurnTheme();
+            //MusicManager.Instance.PlayPlayerTurnTheme();
         }
 
         // Update is called once per frame
@@ -74,7 +74,7 @@ namespace GodMorgon.Sound
 
         public void PlayPlayerTurnTheme()
         {
-            PlayerTheme.Post(gameObject);
+            //PlayerTheme.Post(gameObject);
         }
 
         //public void PlayRingmasterTurnTheme()
