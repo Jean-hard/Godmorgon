@@ -17,14 +17,14 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: d220adce33713443b6353c1aa5503967
     GuidInternal: 
-    m_lastTime: -8586098756690388656
+    m_lastTime: -8586098118369142822
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: b21c0c948f26d849a09dd53859f93695
     GuidInternal: 
-    m_lastTime: -8586098756694886798
+    m_lastTime: -8586098118380379053
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -40,7 +40,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 373ae5b7949aa14c9a49a81c65bfa4fb
     GuidInternal: 
-    m_lastTime: -8586098756690528738
+    m_lastTime: -8586097424358683392
     List:
     - name: Main
       guid: 6003b9fee289174ebe946e7b0909e0ba
@@ -56,7 +56,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 18df17eb1a42a94fb2768ca9fbe003fe
     GuidInternal: 
-    m_lastTime: -8586098756695156590
+    m_lastTime: -8586097378662283926
     List:
     - name: Ambiances
       guid: 60263c82c526bc478ccdce9b6a484871
@@ -244,9 +244,11 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Feedback
+        ObjectType: 4
       - ElementName: Cursor_EndofTurn
         ObjectType: 3
-      Path: Default Work Unit\Cursor_EndofTurn
+      Path: Default Work Unit\Feedback\Cursor_EndofTurn
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -289,6 +291,20 @@ MonoBehaviour:
       - ElementName: Enemy_Hit
         ObjectType: 3
       Path: Default Work Unit\Enemy\Enemy_Hit
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Hit_Block
+      guid: 9cdd7d9f5031c54784f6c87fbe958c54
+      id: 2041288531
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Enemy
+        ObjectType: 4
+      - ElementName: Enemy_Hit_Block
+        ObjectType: 3
+      Path: Default Work Unit\Enemy\Enemy_Hit_Block
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -354,9 +370,11 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambiances
+        ObjectType: 4
       - ElementName: Fog_Clear
         ObjectType: 3
-      Path: Default Work Unit\Fog_Clear
+      Path: Default Work Unit\Ambiances\Fog_Clear
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -366,9 +384,81 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambiances
+        ObjectType: 4
       - ElementName: Mechanical
         ObjectType: 3
-      Path: Default Work Unit\Mechanical
+      Path: Default Work Unit\Ambiances\Mechanical
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Mus_Menu
+      guid: 60c2cd17846bab4cbb71d72bc1e1e9d1
+      id: 3149643052
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Mus_Menu
+        ObjectType: 3
+      Path: Default Work Unit\Music\Mus_Menu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Mus_None
+      guid: b7eb4e8cc0c499479b86d5d1e5fa9074
+      id: 1825203175
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Mus_None
+        ObjectType: 3
+      Path: Default Work Unit\Music\Mus_None
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Mus_Player
+      guid: 778fb549d8b0b64a8a5baf4b923284de
+      id: 1587987990
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Mus_Player
+        ObjectType: 3
+      Path: Default Work Unit\Music\Mus_Player
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Mus_Ringmaster
+      guid: 0232b6fd9169284a9386f3658eceec5d
+      id: 1880655969
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Mus_Ringmaster
+        ObjectType: 3
+      Path: Default Work Unit\Music\Mus_Ringmaster
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Music
+      guid: 1453543a002d4e46a8aa38b9ed64330c
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Music
+        ObjectType: 3
+      Path: Default Work Unit\Music\Music
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -378,9 +468,11 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambiances
+        ObjectType: 4
       - ElementName: Park_Theme
         ObjectType: 3
-      Path: Default Work Unit\Park_Theme
+      Path: Default Work Unit\Ambiances\Park_Theme
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -412,6 +504,48 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Player_Death
+      guid: e37167458eea5e44b27857b073a89ff0
+      id: 3083087645
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Player
+        ObjectType: 4
+      - ElementName: Player_Death
+        ObjectType: 3
+      Path: Default Work Unit\Player\Player_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Hit
+      guid: 18a66a9d6886ef41985325734377a7aa
+      id: 871813740
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Player
+        ObjectType: 4
+      - ElementName: Player_Hit
+        ObjectType: 3
+      Path: Default Work Unit\Player\Player_Hit
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Hit_Block
+      guid: 7da783d2be015c48b7fba2711ceb114a
+      id: 2142322930
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Player
+        ObjectType: 4
+      - ElementName: Player_Hit_Block
+        ObjectType: 3
+      Path: Default Work Unit\Player\Player_Hit_Block
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Player_Move
       guid: 2140075d2bdf4c4ba410dd8d9b651568
       id: 2248092158
@@ -426,15 +560,31 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: RingMaster
+      guid: 12fbb0feb35d1440920d85818dabcd58
+      id: 1506151517
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: RingMaster
+        ObjectType: 4
+      - ElementName: RingMaster
+        ObjectType: 3
+      Path: Default Work Unit\RingMaster\RingMaster
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Ringmaster_EndofTurn
       guid: d5fbbe88812d9641879b1dbbfc914996
       id: 4061952277
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: RingMaster
+        ObjectType: 4
       - ElementName: Ringmaster_EndofTurn
         ObjectType: 3
-      Path: Default Work Unit\Ringmaster_EndofTurn
+      Path: Default Work Unit\RingMaster\Ringmaster_EndofTurn
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -444,25 +594,11 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Player
+      - ElementName: Feedback
         ObjectType: 4
       - ElementName: SFX_Feedback_Cursor_Comeback
         ObjectType: 3
-      Path: Default Work Unit\Player\SFX_Feedback_Cursor_Comeback
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: SFX_Feedback_Cursor_EndofTurn
-      guid: 5632e32af1b59744ae46b991d0888870
-      id: 3654010921
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Player
-        ObjectType: 4
-      - ElementName: SFX_Feedback_Cursor_EndofTurn
-        ObjectType: 3
-      Path: Default Work Unit\Player\SFX_Feedback_Cursor_EndofTurn
+      Path: Default Work Unit\Feedback\SFX_Feedback_Cursor_Comeback
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -472,51 +608,11 @@ MonoBehaviour:
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
       - ElementName: Title_Screen
         ObjectType: 3
-      Path: Default Work Unit\Title_Screen
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: VX_Player_Death
-      guid: e37167458eea5e44b27857b073a89ff0
-      id: 1264447162
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Player
-        ObjectType: 4
-      - ElementName: VX_Player_Death
-        ObjectType: 3
-      Path: Default Work Unit\Player\VX_Player_Death
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: VX_Player_Hit_Block
-      guid: 7da783d2be015c48b7fba2711ceb114a
-      id: 3734767061
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Player
-        ObjectType: 4
-      - ElementName: VX_Player_Hit_Block
-        ObjectType: 3
-      Path: Default Work Unit\Player\VX_Player_Hit_Block
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: VX_Player_Hit_HP
-      guid: 18a66a9d6886ef41985325734377a7aa
-      id: 27316982
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Player
-        ObjectType: 4
-      - ElementName: VX_Player_Hit_HP
-        ObjectType: 3
-      Path: Default Work Unit\Player\VX_Player_Hit_HP
+      Path: Default Work Unit\Music\Title_Screen
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -525,14 +621,14 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: e8ed79a78084244ea3a2708de730abd5
     GuidInternal: 
-    m_lastTime: -8586098756695146597
+    m_lastTime: -8586098118381047269
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 0fa91cb90daeb14dbacee7b04132a4d2
     GuidInternal: 
-    m_lastTime: -8586098756690458791
+    m_lastTime: -8586097448242841637
     List:
     - name: TurnState
       guid: cb84467e0b6a94439f3081482398c12b
@@ -544,6 +640,12 @@ MonoBehaviour:
         ObjectType: 9
       Path: Default Work Unit\TurnState
       values:
+      - name: Menu
+        guid: 7101a356e6296d40b7fadb348b9916f3
+        id: 2607556080
+        PathAndIcons:
+        - ElementName: Menu
+          ObjectType: 8
       - name: None
         guid: 6e895663c37e014fa3670283cf9da656
         id: 748895195
@@ -570,16 +672,24 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 983f95c515a2f44cb6ee7bf5aece0106
     GuidInternal: 
-    m_lastTime: -8586098756690448798
+    m_lastTime: -8586098118369207786
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 7c3990d46ce63044979e0355f208c74a
     GuidInternal: 
-    m_lastTime: -8586098756690398651
+    m_lastTime: -8586098118369187846
     List: []
   ExpandedItems:
   - /GodmorgonUnity_WwiseProject
+  - /GodmorgonUnity_WwiseProject/Events
+  - /GodmorgonUnity_WwiseProject/Events/Default Work Unit
+  - /GodmorgonUnity_WwiseProject/Events/Default Work Unit/Music
+  - /GodmorgonUnity_WwiseProject/SoundBanks
+  - /GodmorgonUnity_WwiseProject/SoundBanks/Default Work Unit
+  - /GodmorgonUnity_WwiseProject/States
+  - /GodmorgonUnity_WwiseProject/States/Default Work Unit
+  - /GodmorgonUnity_WwiseProject/States/Default Work Unit/TurnState
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

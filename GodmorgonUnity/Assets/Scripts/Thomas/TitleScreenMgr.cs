@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class TitleScreenMgr : MonoBehaviour
 {
     public GameObject playButton = null;
-    public GameObject musicManagerObject = null;
 
     public float waitTime = 2f;
 
