@@ -343,6 +343,34 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Mus_Ringmaster" ID="{FDB63202-6991-4A28-9386-F3658ECEEC5D}">
+							<ChildrenList>
+								<Action Name="" ID="{7AD3964A-032E-47AA-BE16-2862A5157BD6}" ShortID="1070138978">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ringmaster" ID="{7005B2A7-E59C-4EBD-A950-D7F1D3B52E2A}" WorkUnitID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Mus_Player" ID="{49B58F77-B0D8-4AB6-8A5B-AF4B923284DE}">
+							<ChildrenList>
+								<Action Name="" ID="{CE5B128A-5DC4-4574-B667-15F093DAB74F}" ShortID="552629206">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player" ID="{BCFEC34A-32B5-4B83-B516-000D4E65B916}" WorkUnitID="{B91CA90F-AE0D-4DB1-BACE-E7B04132A4D2}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="RingMaster" ID="{FEB0FB12-5DB3-4014-920D-85818DABCD58}" ShortID="696552998">

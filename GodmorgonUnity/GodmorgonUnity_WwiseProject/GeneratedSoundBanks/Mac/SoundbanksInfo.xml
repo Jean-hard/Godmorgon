@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\LastGodmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\LastGodmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\LastGodmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Jean\Documents\Cours IIM\A4\DiamondProject\LastGodmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles>
@@ -386,6 +386,10 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3149643052" Name="Mus_Menu" ObjectPath="\Events\Default Work Unit\Music\Mus_Menu" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1825203175" Name="Mus_None" ObjectPath="\Events\Default Work Unit\Music\Mus_None" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1587987990" Name="Mus_Player" ObjectPath="\Events\Default Work Unit\Music\Mus_Player" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1880655969" Name="Mus_Ringmaster" ObjectPath="\Events\Default Work Unit\Music\Mus_Ringmaster" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1752074195" Name="Park_Theme" ObjectPath="\Events\Default Work Unit\Ambiances\Park_Theme" DurationType="OneShot" DurationMin="4.500000" DurationMax="8.314354">
 					<IncludedMemoryFiles>
 						<File Id="269865782" Language="SFX">

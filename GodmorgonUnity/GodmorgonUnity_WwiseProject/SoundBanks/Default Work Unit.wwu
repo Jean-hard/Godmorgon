@@ -6,14 +6,19 @@
 				<SoundBank Name="Main" ID="{FEB90360-89E2-4E17-BE94-6E7B0909E0BA}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Ringmaster_EndofTurn" ID="{88BEFBD5-2D81-4196-879B-1DBBFC914996}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Music" ID="{3A545314-2D00-464E-A8AA-38B9ED64330C}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Mus_None" ID="{8C4EEBB7-C4C0-4799-9B86-D5D1E5FA9074}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Ambiances" ID="{823C2660-26C5-47BC-8CCD-CE9B6A484871}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Player" ID="{7D0DA2F7-5493-47C5-9586-59EA48215D29}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Cursor_EndofTurn" ID="{3C6B17C8-4AF3-47D2-A9DE-24B37C5EA4DE}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Park_Theme" ID="{358C4FE9-55ED-49EE-9F1E-2EAB55424CA6}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Mus_Ringmaster" ID="{FDB63202-6991-4A28-9386-F3658ECEEC5D}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Mechanical" ID="{BCE6EBEE-AE30-4A33-8AA5-6363608EACCA}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Enemy" ID="{3D51E2DE-4691-4A73-A17C-C61353884E3B}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Mus_Player" ID="{49B58F77-B0D8-4AB6-8A5B-AF4B923284DE}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fog_Clear" ID="{A12F69FF-0C09-4AF3-BB9C-810D3A22F17E}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Title_Screen" ID="{18F8C444-5E9D-4B9D-9094-6DEE724672E7}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Mus_Menu" ID="{17CDC260-6B84-4CAB-BB71-D72BC1E1E9D1}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Cards" ID="{53D7B75A-65D6-4DB6-BF72-AD2A9E233BE6}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Feedback" ID="{97CCAD5D-1A20-4F16-8618-FAF7A0620E44}" WorkUnitID="{EB17DF18-421A-4FA9-B276-8CA9FBE003FE}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

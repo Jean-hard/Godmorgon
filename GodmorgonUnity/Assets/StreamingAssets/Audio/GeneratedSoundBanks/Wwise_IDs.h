@@ -31,6 +31,10 @@ namespace AK
         static const AkUniqueID FEEDBACK_CHEST = 365110558U;
         static const AkUniqueID FOG_CLEAR = 3349601745U;
         static const AkUniqueID MECHANICAL = 192460720U;
+        static const AkUniqueID MUS_MENU = 3149643052U;
+        static const AkUniqueID MUS_NONE = 1825203175U;
+        static const AkUniqueID MUS_PLAYER = 1587987990U;
+        static const AkUniqueID MUS_RINGMASTER = 1880655969U;
         static const AkUniqueID PARK_THEME = 1752074195U;
         static const AkUniqueID PLAY_AMB_GENERAL_BC = 1006941571U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
