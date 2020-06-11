@@ -309,7 +309,7 @@
 								<Action Name="" ID="{63953CE5-8C44-407D-BF3B-1BAA87B23E63}" ShortID="430740632">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player" ID="{C1E16B4F-041C-4604-AE1E-441F7915A80B}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
+											<ObjectRef Name="TurnTheme" ID="{9F7DA552-2058-483C-B91C-D8D78CA48C89}" WorkUnitID="{AA62AF53-4A91-412B-BCC4-F4EF6462B30E}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

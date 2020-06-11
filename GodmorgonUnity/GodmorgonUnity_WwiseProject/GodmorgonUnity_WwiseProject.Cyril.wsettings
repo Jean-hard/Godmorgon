@@ -6,6 +6,7 @@
 				<Property Name="Event Action List\{17CDC260-6B84-4CAB-BB71-D72BC1E1E9D1}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{18F8C444-5E9D-4B9D-9094-6DEE724672E7}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{49B58F77-B0D8-4AB6-8A5B-AF4B923284DE}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{88BEFBD5-2D81-4196-879B-1DBBFC914996}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{8C4EEBB7-C4C0-4799-9B86-D5D1E5FA9074}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{E1505A01-24DF-4867-B14D-06AB3C8CB741}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{FDB63202-6991-4A28-9386-F3658ECEEC5D}\x64_Expand States" Type="string" Value=""/>
@@ -44,6 +45,8 @@
 				<Property Name="Music Transition List\{0FE1F6F5-57E2-4C80-BB84-218F3D73D87B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{425634A2-79A4-4E18-897D-A8DEC7B749DD}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{582C9E4B-15A9-4AA3-B968-08B9A992E3AA}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{9BDDD7BE-6BA4-44BB-9D37-899951D1FF69}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{9F7DA552-2058-483C-B91C-D8D78CA48C89}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{C1E16B4F-041C-4604-AE1E-441F7915A80B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
