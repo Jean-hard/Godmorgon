@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263b189b8ed9f6c4ba28419440b18187, type: 3}
+  m_Name: ArmourChest
+  m_EditorClassIdentifier: 
+  cardType: 0
+  id: 1
+  name: Armour
+  description: +10 PV max
+  actionCost: 1
+  template: {fileID: 21300000, guid: e365c8d97edf02b4bbe2c837548d0266, type: 3}
+  artwork: {fileID: 21300000, guid: e23130bc5054b804e950aad8536d29b5, type: 3}
+  effectsData: []
+  lifeBonus: 10
+  powerBonus: 0
+  StuffType: 1
