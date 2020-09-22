@@ -21,7 +21,7 @@ namespace GodMorgon.StateMachine
             EnemyManager.Instance.UpdateEnemiesInSameRoom();
             GameManager.Instance.UnlockDragCardHandler(false);
 
-            TimelineManager.Instance.DoAction();
+            //TimelineManager.Instance.DoAction();
         }
     }
 }

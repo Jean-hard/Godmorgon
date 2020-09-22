@@ -171,8 +171,6 @@ namespace GodMorgon.Timeline
          */
         public IEnumerator ActionExecution()
         {
-            //on lance l'animation du logo
-            StartCoroutine(ActionLogoAnimation());
             //particulePos.gameObject.SetActive(true);
             particulePos.gameObject.GetComponent<ParticleSystem>().Play();
 
@@ -259,7 +257,7 @@ namespace GodMorgon.Timeline
 
         /**
          * Animation à chaque tour du ringmaster
-         * le logo se déplace vers le centre de l'écran et et s'agrandit
+         * le logo s'agrandit
          */
         public IEnumerator ActionLogoAnimation()
         {
