@@ -252,12 +252,22 @@ public class GameManager : MonoBehaviour
     //affiche le texte signalant le tour du Ringmaster
     public void ShowRingmasterTurnImage()
     {
+        //on lance l'animation du logo
+        StartCoroutine(TimelineManager.Instance.ActionLogoAnimation());
+
         if (playerTurnAnimation.isPlaying)
         {
             playerTurnAnimation.Stop();
             playerTurnAnimation.gameObject.GetComponent<Image>().color = advertisingDefaultColor;
         }
         ringmasterTurnAnimation.Play();
+        StartCoroutine(TimelineActionCoroutine());
+    }
+
+    public IEnumerator TimelineActionCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        TimelineManager.Instance.DoAction();
     }
 
     //affiche le texte signalant le nouveau tour
