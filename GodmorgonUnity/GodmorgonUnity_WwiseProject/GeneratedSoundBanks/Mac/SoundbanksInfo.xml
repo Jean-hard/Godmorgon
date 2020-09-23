@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>T:\Projets IIM\A5\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>T:\Projets IIM\A5\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>T:\Projets IIM\A5\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>E:\PC_INTERNE_POSTCOPY\Godmorgon\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>T:\Projets IIM\A5\Godmorgon\GodmorgonUnity\GodmorgonUnity_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles>

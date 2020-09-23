@@ -17,14 +17,14 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: d220adce33713443b6353c1aa5503967
     GuidInternal: 
-    m_lastTime: -8586098118369142822
+    m_lastTime: -8586009128391759659
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: b21c0c948f26d849a09dd53859f93695
     GuidInternal: 
-    m_lastTime: -8586098118380379053
+    m_lastTime: -8586009128418147731
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -40,7 +40,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 373ae5b7949aa14c9a49a81c65bfa4fb
     GuidInternal: 
-    m_lastTime: -8586097424358683392
+    m_lastTime: -8586009128393109953
     List:
     - name: Main
       guid: 6003b9fee289174ebe946e7b0909e0ba
@@ -56,7 +56,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 18df17eb1a42a94fb2768ca9fbe003fe
     GuidInternal: 
-    m_lastTime: -8586097378662283926
+    m_lastTime: -8586009128418527821
     List:
     - name: Ambiances
       guid: 60263c82c526bc478ccdce9b6a484871
@@ -621,14 +621,14 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: e8ed79a78084244ea3a2708de730abd5
     GuidInternal: 
-    m_lastTime: -8586098118381047269
+    m_lastTime: -8586009128418517809
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 0fa91cb90daeb14dbacee7b04132a4d2
     GuidInternal: 
-    m_lastTime: -8586097448242841637
+    m_lastTime: -8586009128393109953
     List:
     - name: TurnState
       guid: cb84467e0b6a94439f3081482398c12b
@@ -672,22 +672,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 983f95c515a2f44cb6ee7bf5aece0106
     GuidInternal: 
-    m_lastTime: -8586098118369207786
+    m_lastTime: -8586009128393980159
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPath: Default Work Unit
     guid: 7c3990d46ce63044979e0355f208c74a
     GuidInternal: 
-    m_lastTime: -8586098118369187846
+    m_lastTime: -8586009128393390023
     List: []
   ExpandedItems:
   - /GodmorgonUnity_WwiseProject
-  - /GodmorgonUnity_WwiseProject/Events
-  - /GodmorgonUnity_WwiseProject/Events/Default Work Unit
-  - /GodmorgonUnity_WwiseProject/Events/Default Work Unit/Music
-  - /GodmorgonUnity_WwiseProject/SoundBanks
-  - /GodmorgonUnity_WwiseProject/SoundBanks/Default Work Unit
   - /GodmorgonUnity_WwiseProject/States
   - /GodmorgonUnity_WwiseProject/States/Default Work Unit
   - /GodmorgonUnity_WwiseProject/States/Default Work Unit/TurnState
